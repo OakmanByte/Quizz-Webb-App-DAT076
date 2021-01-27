@@ -15,4 +15,13 @@ function goBack() {
     window.history.back()
 }
 
+function showCorrectAnswer(){
+    
+            var alternatives = [];
+            $.each($("input[name='alternativ']:checked"), function() {
+                alternatives.push($(this).val());
+            });
+            alert("The checked alternatives were: " + alternatives.join(", "));
+}
+
 

@@ -27,22 +27,22 @@
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
                                 <div class="checkbox">
-                                    <label><input type="checkbox" value="">x=5</label>
+                                    <label><input type="checkbox" id="checkbox1" name ="alternativ" value="false">x=5</label>
                                 </div>
                             </li>
                             <li class="list-group-item">
                                 <div class="checkbox">
-                                    <label><input type="checkbox" value="">x=10</label>
+                                    <label><input type="checkbox" id="checkbox2" name ="alternativ" value="false">x=10</label>
                                 </div>
                             </li>
                             <li class="list-group-item">
                                 <div class="checkbox">
-                                    <label><input type="checkbox" value="">x=7</label>
+                                    <label><input type="checkbox" id="checkbox3" name ="alternativ" value="true">x=7</label>
                                 </div>
                             </li>
                             <li class="list-group-item">
                                 <div class="checkbox">
-                                    <label><input type="checkbox" value="">x=12</label>
+                                    <label><input type="checkbox" id="checkbox4" name ="alternativ" value="false">x=12</label>
                                 </div>
                             </li>
                         </ul>
@@ -50,9 +50,10 @@
                 </div>
                 <div class="col-sm">
                     <div class="btn-group" role="group">
-                        <button class="button" onclick="goToNextQuestion()">Next Question </button>
-                        <button class="button" class="btn btn-secondary" onclick="goBack()">Back</button>
-                    </div>
+                        <button class="button" onclick="goToNextQuestion()">Nexts Question </button>
+                        <button class="button" onclick="goBack()">Back</button>
+                        <button class="button" onclick="showCorrectAnswer()">Check Answer</button>
+                     </div>
                 </div>
             </div>
         </div>
