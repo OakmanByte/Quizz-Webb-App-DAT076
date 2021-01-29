@@ -40,7 +40,23 @@ function showCorrectAnswer(checkboxes){
         alert("Wrong answer!");
     
     
-}  
+}
+
+function login(password){
+    
+    if(password.val() != ""){
+                    
+        Load_Second_Page();
+    }
+    
+    //If nothing has been entered into the password field do not
+    //start a quiz
+    else{
+
+        alert("You need to enter a password!");
+        }
+    
+}
 
 
 

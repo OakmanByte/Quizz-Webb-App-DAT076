@@ -32,13 +32,13 @@
                 <input class="password" type="text" id="password" name="password" placeholder="Enter password!">
             </div>
             <div>
-                <button class="button" id="startquizbutton" >Start Button</button>
+                <button class="button" id="startquizbutton" onclick="login(document.getElementById('password'))" >Start Button</button>
             </div>
         </div>
         
         <!-- Option 1: Bootstrap Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        
+        <!<!-- comment 
         <script type="text/javascript">
         $(document).ready(function(){
             $('#startquizbutton').click(function(){
@@ -51,7 +51,7 @@
                      alert("You need to enter a password!");
                 }
             });
-        });
-        </script>
+        });  -->
+         
     </body>
 </html>
