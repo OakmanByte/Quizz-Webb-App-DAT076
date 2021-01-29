@@ -15,6 +15,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         
         <script type="text/javascript" src="js/index.js"></script>
+        
         <title>Start Page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -32,26 +33,13 @@
                 <input class="password" type="text" id="password" name="password" placeholder="Enter password!">
             </div>
             <div>
-                <button class="button" id="startquizbutton" onclick="login(document.getElementById('password'))" >Start Button</button>
+                <button class="button" id="startquizbutton" onclick="login()">Start Button</button>
             </div>
         </div>
         
         <!-- Option 1: Bootstrap Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <!<!-- comment 
-        <script type="text/javascript">
-        $(document).ready(function(){
-            $('#startquizbutton').click(function(){
-                //If any password has been entered, load quiz page
-                if($('#password').val() != ""){
-                    Load_Second_Page();
-                }else{
-                    //If nothing has been entered into the password field do not
-                    //start a quiz
-                     alert("You need to enter a password!");
-                }
-            });
-        });  -->
+        
          
     </body>
 </html>
