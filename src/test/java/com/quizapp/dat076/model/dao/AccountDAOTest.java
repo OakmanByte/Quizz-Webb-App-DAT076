@@ -1,6 +1,11 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.quizapp.dat076.model.dao;
 
-import com.quizapp.dat076.model.dao.CarDAO;
-import com.quizapp.dat076.model.entity.Car;
+import com.quizapp.dat076.model.entity.Account;
 import javax.ejb.EJB;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -13,43 +18,39 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ *
+ * @author Emma Dirnberger
+ */
 @RunWith(Arquillian.class)
-public class CarDAOTest {
-    Car test1;
-    Car test2;
-    Car test3;
+public class AccountDAOTest {
+    Account test = new Account("user", "user@gmail.com", "password");
 
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class)
-                .addClasses(CarDAO.class, Car.class)
+                .addClasses(AccountDAO.class, Account.class)
                 .addAsResource("META-INF/persistence.xml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
 
     @EJB
-    private CarDAO carDAO;
+    private AccountDAO accountDAO;
 
     @Before
-    public void init() {
-        test1 = new Car("IFF780", "Renault Clio");
-        test2 = new Car("LTP520", "Volvo 760GT");
-        test3 = new Car("XOL345", "Isuzu Traga");
-        carDAO.create(test1);
-        carDAO.create(test2);
-        carDAO.create(test3);
+    public void setUp() {
+        accountDAO.create(test);
     }
-
+    
     @After
     public void tearDown() {
-        carDAO.remove(test1);
-        carDAO.remove(test2);
-        carDAO.remove(test3);
+        accountDAO.remove(test);
     }
+    
 
     @Test
-    public void checkThatFindCarsMatchingNameMatchesCorrectly() {
-        Assert.assertTrue(true);
+    public void checkThatFindAccountsMatchingNameMatchesCorrectly() {
+        Assert.assertTrue(accountDAO.getFirst().getUsername().equals(test.getUsername()));
         /* Some better condition */
     }
 }

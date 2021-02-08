@@ -18,18 +18,17 @@ import lombok.Getter;
  */
 @Stateless
 public class CarDAO extends AbstractDAO<Car> {
-    
-    
-    
-    @Getter @PersistenceContext(unitName = "QuizApp")
+
+    @Getter
+    @PersistenceContext(unitName = "QuizApp")
     private EntityManager entityManager;
-    
-    public CarDAO(){
+
+    public CarDAO() {
         super(Car.class);
     }
-    
-    public List<Car>findCarsMatchingName() {
+
+    public List<Car> findCarsMatchingName() {
         throw new UnsupportedOperationException("Not yet implemented");
     }
-    
+
 }
