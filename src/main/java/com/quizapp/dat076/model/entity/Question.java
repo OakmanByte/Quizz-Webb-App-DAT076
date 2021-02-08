@@ -26,12 +26,13 @@ public class Question implements Serializable {
     
     //@id private int id;
     @Id private String question;
+    //Attributes
     @NotNull private String alt1;
     @NotNull private String alt2;
     @NotNull private String alt3;
     @NotNull private String alt4;
     @NotNull private int answer;
-    
+    //Relations
     @ManyToOne private Quiz quiz;
     
     
