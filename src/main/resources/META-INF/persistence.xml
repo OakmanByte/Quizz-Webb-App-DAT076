@@ -3,6 +3,7 @@
   <!-- Define Persistence Unit -->
   <persistence-unit name="my_persistence_unit">
     <class>com.quizapp.dat076.model.entity.Car</class>
+    <class>com.quizapp.dat076.model.entity.Quiz></class>
   </persistence-unit>
   
   <persistence-unit name="QuizApp" transaction-type="JTA">
