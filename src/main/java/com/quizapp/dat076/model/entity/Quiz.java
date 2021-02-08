@@ -29,7 +29,16 @@ public class Quiz implements Serializable {
     
     @Id @GeneratedValue private int id;
     @NotNull private String title;
-    @ManyToOne private Account creator;
+    //@ManyToOne private Account creator;
     
-    @OneToMany(mappedBy = "quiz") private List<Question> questions;
+    //@OneToMany(mappedBy = "quiz") private List<Question> questions;
+    
+    /*public Quiz(String title, Account creator){
+        this.title = title;
+        this.creator = creator;
+    }*/
+    
+    public Quiz(String title){
+        this.title = title;
+    }
 }
