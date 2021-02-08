@@ -39,6 +39,7 @@ public class AccountDAOTest {
 
     @Before
     public void setUp() {
+        accountDAO.remove(test);
         accountDAO.create(test);
     }
     

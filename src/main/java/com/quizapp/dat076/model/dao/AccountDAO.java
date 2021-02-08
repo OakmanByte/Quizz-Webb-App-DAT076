@@ -10,6 +10,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -34,14 +35,12 @@ public class AccountDAO extends AbstractDAO<Account>{
         throw new UnsupportedOperationException("Not yet implemented");
     }
     
-    // Currently not working, WIP
-    public Account findByUsername(String username) {
-        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Account> cq = cb.createQuery(Account.class);
-        Root<Account> model = cq.from(Account.class);
-        cq.where(cb.equal(model.get("username"), username));
-        TypedQuery<Account> q = entityManager.createQuery(cq);
-        return q.getSingleResult();
+    public void findByEmail(String email) {
+        //TODO
+    }
+    
+    public void findUser(String username) {
+        //TODO
     }
     
 }
