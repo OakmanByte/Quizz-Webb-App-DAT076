@@ -15,7 +15,7 @@ import lombok.Getter;
 
 /**
  *
- * @author Emma Dirnberger
+ * @author Emma Dirnberger, Anton
  */
 @Stateless
 public class AccountDAO extends AbstractDAO<String,Account> {

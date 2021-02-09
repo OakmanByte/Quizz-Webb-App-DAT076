@@ -17,7 +17,7 @@ import lombok.Getter;
 
 /**
  *
- * @author Albin
+ * @author Albin, Anton
  */
 @Stateless
 public class QuizDAO extends AbstractDAO<Integer,Quiz> {
