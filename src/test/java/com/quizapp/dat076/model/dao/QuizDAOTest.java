@@ -54,6 +54,7 @@ public void init() {
 @Test
 public void testTrue() {
     Assert.assertTrue(true); /* Some better condition */
+   // Assert.assertTrue(quizDAO.findQuizzesByTitle("First quiz") != null);
 }
     
 }

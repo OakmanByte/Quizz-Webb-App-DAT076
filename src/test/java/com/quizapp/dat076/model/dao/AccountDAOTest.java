@@ -25,6 +25,8 @@ import org.junit.runner.RunWith;
 @RunWith(Arquillian.class)
 public class AccountDAOTest {
     Account test = new Account("user", "user@gmail.com", "password");
+    Account test1 = new Account("user1", "user1@gmail.com", "password");
+    Account test2 = new Account("user2", "user2@gmail.com", "password");
 
     @Deployment
     public static WebArchive createDeployment() {
@@ -39,19 +41,35 @@ public class AccountDAOTest {
 
     @Before
     public void setUp() {
-        accountDAO.remove(test);
         accountDAO.create(test);
+        accountDAO.create(test1);
+        accountDAO.create(test2);
     }
     
     @After
     public void tearDown() {
         accountDAO.remove(test);
+        accountDAO.remove(test1);
+        accountDAO.remove(test2);
     }
     
-
-    @Test
-    public void checkThatFindAccountsMatchingNameMatchesCorrectly() {
-        Assert.assertTrue(accountDAO.getFirst().getUsername().equals(test.getUsername()));
-        /* Some better condition */
+    @Test   
+    public void searchUserNotNull() {
+        //TODO
+    }
+    
+    @Test  
+    public void findUserByEmail() {
+        //TODO
+    }
+    
+    @Test   
+    public void findUserByUsername() {
+        //TODO
+    }
+    
+    @Test   
+    public void updateEmail() {
+        //TODO
     }
 }

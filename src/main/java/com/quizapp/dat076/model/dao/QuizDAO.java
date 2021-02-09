@@ -6,10 +6,8 @@
 package com.quizapp.dat076.model.dao;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.quizapp.dat076.model.entity.Account;
 import com.quizapp.dat076.model.entity.QQuiz;
 import com.quizapp.dat076.model.entity.Quiz;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

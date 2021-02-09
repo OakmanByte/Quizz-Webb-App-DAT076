@@ -5,16 +5,12 @@
  */
 package com.quizapp.dat076.model.dao;
 
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.quizapp.dat076.model.entity.Account;
-import java.util.List;
+import com.quizapp.dat076.model.entity.QAccount;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import lombok.Getter;
 
 /**
@@ -22,25 +18,39 @@ import lombok.Getter;
  * @author Emma Dirnberger
  */
 @Stateless
-public class AccountDAO extends AbstractDAO<Account>{
+public class AccountDAO extends AbstractDAO<Account> {
 
-    @Getter @PersistenceContext(unitName = "QuizApp")
+    @Getter
+    @PersistenceContext(unitName = "QuizApp")
     private EntityManager entityManager;
-    
-    public AccountDAO(){
+    private JPAQueryFactory queryFactory;
+    private QAccount account = QAccount.account;
+
+    public AccountDAO() {
         super(Account.class);
+        queryFactory = new JPAQueryFactory(entityManager);
     }
-    
-    public List<Account>findAccountsMatchingName() {
-        throw new UnsupportedOperationException("Not yet implemented");
+
+    public Account findByEmail(String email) {
+        if (null == queryFactory) {
+            queryFactory = new JPAQueryFactory(entityManager);
+        }
+        
+        QAccount ac = QAccount.account;
+
+        Account c = queryFactory.selectFrom(ac)
+                .where(ac.email.eq(email))
+                .fetchOne();
+
+        return c;
     }
-    
-    public void findByEmail(String email) {
+
+    public void findByUsername(String username) {
         //TODO
     }
-    
-    public void findUser(String username) {
+
+    public void updateEmail(String email) {
         //TODO
     }
-    
+
 }
