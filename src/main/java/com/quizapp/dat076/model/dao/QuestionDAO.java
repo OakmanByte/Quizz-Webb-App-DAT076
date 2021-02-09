@@ -17,6 +17,8 @@ import lombok.Getter;
  *
  * @author anton
  */
+
+//Make sure correct Datatype in <>
 @Stateless
 public class QuestionDAO extends AbstractDAO<String,Question>{
     
@@ -30,5 +32,16 @@ public class QuestionDAO extends AbstractDAO<String,Question>{
         super(Question.class);
         query = new JPAQuery(entityManager);
     }
+    
+    
+    public int findCorrectAlternativeByQuestion(String queryQuestion ){
+    
+      
+       // return query.select(question.answer).where(question.question.eq(queryQuestion)).fetch();
+        
+    return 0;
+    }
+    
+    
 
 }
