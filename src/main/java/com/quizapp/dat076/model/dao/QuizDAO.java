@@ -5,7 +5,8 @@
  */
 package com.quizapp.dat076.model.dao;
 
-import com.querydsl.jpa.impl.JPAQueryFactory;
+
+import com.mysema.query.jpa.impl.JPAQuery;
 import com.quizapp.dat076.model.entity.QQuiz;
 import com.quizapp.dat076.model.entity.Quiz;
 import java.util.List;
@@ -24,24 +25,28 @@ public class QuizDAO extends AbstractDAO<Quiz> {
     
     @Getter @PersistenceContext(unitName = "QuizApp")
     private EntityManager entityManager;
-    private JPAQueryFactory queryFactory;
-    private QQuiz quiz = QQuiz.quiz;
+    //private JPAQueryFactory queryFactory;
+    
     
     public QuizDAO(){
         super(Quiz.class);
-        queryFactory = new JPAQueryFactory(entityManager);
+        //queryFactory = new JPAQueryFactory(entityManager);
+        
     }
     
     public Quiz findQuizByID(int id){
         
-        return queryFactory.selectFrom(quiz).where(quiz.id.eq(id)).fetchOne();
-        
+       // return queryFactory.selectFrom(quiz).where(quiz.id.eq(id)).fetchOne();
+        return null;
     }
     
     public List<Quiz>findQuizzesByTitle(String title) {
         
-        List<Quiz> quizzes = queryFactory.selectFrom(quiz).where(quiz.title.eq(title)).fetch();
-        return quizzes;
+        
+        JPAQuery query = new JPAQuery(entityManager);    
+        
+        return query.from(QQuiz.quiz).where(QQuiz.quiz.title.eq(title)).list(QQuiz.quiz);
+        
         
     }
     
@@ -54,7 +59,7 @@ public class QuizDAO extends AbstractDAO<Quiz> {
     
     public void removeQuizById(int id){
         
-        queryFactory.delete(quiz).where(quiz.id.eq(id)).execute();
+       // queryFactory.delete(quiz).where(quiz.id.eq(id)).execute();
         
         /*
         boolean removed;

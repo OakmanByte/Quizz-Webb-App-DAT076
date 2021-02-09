@@ -54,7 +54,10 @@ public void init() {
 @Test
 public void testTrue() {
     Assert.assertTrue(true); /* Some better condition */
-   // Assert.assertTrue(quizDAO.findQuizzesByTitle("First quiz") != null);
+    assert quizDAO != null;
+    System.out.println("HERE!");
+    System.out.println(quizDAO.findQuizzesByTitle("First quiz").toString());
+    Assert.assertTrue(quizDAO.findQuizzesByTitle("First quiz") != null);
 }
     
 }

@@ -5,7 +5,7 @@
  */
 package com.quizapp.dat076.model.dao;
 
-import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.mysema.query.jpa.impl.JPAQuery;
 import com.quizapp.dat076.model.entity.Account;
 import com.quizapp.dat076.model.entity.QAccount;
 import javax.ejb.Stateless;
@@ -23,24 +23,24 @@ public class AccountDAO extends AbstractDAO<Account> {
     @Getter
     @PersistenceContext(unitName = "QuizApp")
     private EntityManager entityManager;
-    private JPAQueryFactory queryFactory;
+    private JPAQuery query;
     private QAccount account = QAccount.account;
 
     public AccountDAO() {
         super(Account.class);
-        queryFactory = new JPAQueryFactory(entityManager);
+        query = new JPAQuery(entityManager);
     }
 
-    public Account findByEmail(String email) {
-        if (null == queryFactory) {
-            queryFactory = new JPAQueryFactory(entityManager);
+    public JPAQuery findByEmail(String email) {
+        if (null == query) {
+            query = new JPAQuery(entityManager);
         }
         
         QAccount ac = QAccount.account;
 
-        Account c = queryFactory.selectFrom(ac)
+        JPAQuery c = query.from(ac)
                 .where(ac.email.eq(email))
-                .fetchOne();
+                .fetch();
 
         return c;
     }
