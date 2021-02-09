@@ -19,6 +19,7 @@ import lombok.Getter;
  *
  * @author anton
  */
+//Make sure correct Datatype in <>
 @Stateless
 public class CategoryDAO extends AbstractDAO<String,Category> {
     
