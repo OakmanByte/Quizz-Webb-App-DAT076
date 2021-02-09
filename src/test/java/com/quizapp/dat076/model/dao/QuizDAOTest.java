@@ -6,7 +6,6 @@
 package com.quizapp.dat076.model.dao;
 
 import com.quizapp.dat076.model.entity.Account;
-import com.quizapp.dat076.model.entity.Car;
 import com.quizapp.dat076.model.entity.Quiz;
 import java.util.List;
 import javax.ejb.EJB;
