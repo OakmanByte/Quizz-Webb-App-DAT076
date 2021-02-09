@@ -8,6 +8,7 @@ package com.quizapp.dat076.model.dao;
 import com.mysema.query.jpa.impl.JPAQuery;
 import com.quizapp.dat076.model.entity.QQuestion;
 import com.quizapp.dat076.model.entity.Question;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import lombok.Getter;
@@ -16,6 +17,7 @@ import lombok.Getter;
  *
  * @author anton
  */
+@Stateless
 public class QuestionDAO extends AbstractDAO<String,Question>{
     
  @Getter
