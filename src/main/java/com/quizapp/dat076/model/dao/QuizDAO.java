@@ -20,7 +20,7 @@ import lombok.Getter;
  * @author Albin
  */
 @Stateless
-public class QuizDAO extends AbstractDAO<Quiz> {
+public class QuizDAO extends AbstractDAO<Integer,Quiz> {
     
     
     @Getter @PersistenceContext(unitName = "QuizApp")
@@ -34,11 +34,6 @@ public class QuizDAO extends AbstractDAO<Quiz> {
         
     }
     
-    public Quiz findQuizByID(int id){
-        
-       // return queryFactory.selectFrom(quiz).where(quiz.id.eq(id)).fetchOne();
-        return null;
-    }
     
     public List<Quiz>findQuizzesByTitle(String title) {
         

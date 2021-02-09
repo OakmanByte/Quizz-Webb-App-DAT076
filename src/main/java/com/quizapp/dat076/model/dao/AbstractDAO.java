@@ -19,7 +19,7 @@ import lombok.RequiredArgsConstructor;
  * @author Albin
  */
 @RequiredArgsConstructor
-public abstract class AbstractDAO<T> {
+public abstract class AbstractDAO<K,T> {
 
     private final Class<T> entityType;
 
@@ -38,6 +38,12 @@ public abstract class AbstractDAO<T> {
 
     public void create(T entity) {
         getEntityManager().persist(entity);
+    }
+    
+    public T find(K key){
+        
+      return getEntityManager().find(entityType, key);
+
     }
 
     public List<T> findAll() {

@@ -18,7 +18,7 @@ import lombok.Getter;
  * @author Emma Dirnberger
  */
 @Stateless
-public class AccountDAO extends AbstractDAO<Account> {
+public class AccountDAO extends AbstractDAO<String,Account> {
 
     @Getter
     @PersistenceContext(unitName = "QuizApp")
