@@ -46,19 +46,21 @@ public class CategoryDAOTest {
         categoryDAO.create(test2);
         categoryDAO.create(test3);
     }
-    
+    /*
     @After
     public void tearDown(){
         categoryDAO.remove(test1);
         categoryDAO.remove(test2);
         categoryDAO.remove(test3);
-    }
+    }*/
 
     @Test
     //TODO
     public void checkThatFindCategoryCorrectly() {
         Assert.assertTrue(true);
         /* Some better condition */
+        System.out.println("TJOHO");
+       
         Assert.assertTrue(categoryDAO.findCategory("Geography") != null);
         Assert.assertTrue(categoryDAO.findCategory("Math") != null);
         Assert.assertTrue(categoryDAO.findCategory("Music") != null);
