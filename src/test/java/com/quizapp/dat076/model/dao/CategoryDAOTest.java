@@ -25,6 +25,9 @@ import org.junit.runner.RunWith;
 
 @RunWith(Arquillian.class)
 public class CategoryDAOTest {
+    Category test1 = new Category("Geography");
+    Category test2 = new Category("Math");
+    Category test3 = new Category("Music");
     
     @Deployment
     public static WebArchive createDeployment() {
@@ -39,7 +42,16 @@ public class CategoryDAOTest {
     @Before
     //TODO
     public void init() {
-        categoryDAO.create(new Category("Geography"));
+        categoryDAO.create(test1);
+        categoryDAO.create(test2);
+        categoryDAO.create(test3);
+    }
+    
+    @After
+    public void tearDown(){
+        categoryDAO.remove(test1);
+        categoryDAO.remove(test2);
+        categoryDAO.remove(test3);
     }
 
     @Test
@@ -47,6 +59,9 @@ public class CategoryDAOTest {
     public void checkThatFindCategoryCorrectly() {
         Assert.assertTrue(true);
         /* Some better condition */
+        Assert.assertTrue(categoryDAO.findCategory("Geography") != null);
+        Assert.assertTrue(categoryDAO.findCategory("Math") != null);
+        Assert.assertTrue(categoryDAO.findCategory("Music") != null);
     }
     
 }

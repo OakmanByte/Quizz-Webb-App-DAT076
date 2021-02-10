@@ -5,7 +5,9 @@
  */
 package com.quizapp.dat076.model.dao;
 
+import com.mysema.query.jpa.impl.JPAQuery;
 import com.quizapp.dat076.model.entity.Category;
+import com.quizapp.dat076.model.entity.QCategory;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,14 +22,22 @@ public class CategoryDAO extends AbstractDAO<Category>{
 
     @Getter @PersistenceContext(unitName = "QuizApp")
     private EntityManager entityManager;
+    private JPAQuery query;
+    private QCategory cat = QCategory.category1;
     
     public CategoryDAO(){
         super(Category.class);
+        query=new JPAQuery(entityManager);
     }
     
 //TODO
-    public Category findCategory(String username) {
-        throw new UnsupportedOperationException("Not yet implemented");
+    public JPAQuery findCategory(String catInput) {
+        if(query==null){
+            query= new JPAQuery(entityManager);
+        }
+        QCategory cat= QCategory.category1;
+        return query.from(cat).where(cat.category.eq(catInput));
+        
     }
     
 }
