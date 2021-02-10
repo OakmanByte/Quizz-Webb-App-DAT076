@@ -6,42 +6,34 @@
 package com.quizapp.dat076.model.dao;
 
 import com.mysema.query.jpa.impl.JPAQuery;
-import com.quizapp.dat076.model.entity.QQuestion;
-import com.quizapp.dat076.model.entity.Question;
+import com.quizapp.dat076.model.entity.Category;
+import com.quizapp.dat076.model.entity.QCategory;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import com.quizapp.dat076.model.entity.QRatings;
+import com.quizapp.dat076.model.entity.Ratings;
 import lombok.Getter;
 
 /**
  *
  * @author anton
  */
-
-//Make sure correct Datatype in <>
-@Stateless
-public class QuestionDAO extends AbstractDAO<String,Question>{
+public class RatingsDAO extends AbstractDAO<String,Ratings> {
     
- @Getter
+
+    @Getter
     @PersistenceContext(unitName = "QuizApp")
     private EntityManager entityManager;
     private JPAQuery query;
-    private QQuestion question = QQuestion.question1;
+    private QRatings rating = QRatings.ratings;
 
-    public QuestionDAO() {
-        super(Question.class);
-        query = new JPAQuery(entityManager);
+    public RatingsDAO() {
+           super(Ratings.class);
+            query = new JPAQuery(entityManager);
     }
+    public int test(){
     
-    
-    public int findCorrectAlternativeByQuestion(String queryQuestion ){
-    
-      
-        //return query.select(question.answer).where(question.question.eq(queryQuestion)).fetch();
-        
     return 0;
     }
-    
-    
-
 }
