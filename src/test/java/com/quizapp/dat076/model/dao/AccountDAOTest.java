@@ -6,6 +6,9 @@
 package com.quizapp.dat076.model.dao;
 
 import com.quizapp.dat076.model.entity.Account;
+import com.quizapp.dat076.model.entity.Quiz;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -24,14 +27,16 @@ import org.junit.runner.RunWith;
  */
 @RunWith(Arquillian.class)
 public class AccountDAOTest {
-    Account test = new Account("user", "user@gmail.com", "password");
-    Account test1 = new Account("user1", "user1@gmail.com", "password");
-    Account test2 = new Account("user2", "user2@gmail.com", "password");
+    //TODO add dummy data for quizzes
+    Quiz quiz = new Quiz("Such Amaze");
+    Account test = new Account("user", "user@gmail.com", "password", null);
+    Account test1 = new Account("user1", "user1@gmail.com", "password", null);
+    Account test2 = new Account("user2", "user2@gmail.com", "password", null);
 
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class)
-                .addClasses(AccountDAO.class, Account.class)
+                .addClasses(AccountDAO.class, Account.class, Quiz.class)
                 .addAsResource("META-INF/persistence.xml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
