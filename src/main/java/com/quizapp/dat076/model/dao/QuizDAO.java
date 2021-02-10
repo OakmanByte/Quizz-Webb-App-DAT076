@@ -7,6 +7,7 @@ package com.quizapp.dat076.model.dao;
 
 
 import com.mysema.query.jpa.impl.JPAQuery;
+import com.quizapp.dat076.model.entity.Account;
 import com.quizapp.dat076.model.entity.QQuiz;
 import com.quizapp.dat076.model.entity.Quiz;
 import java.util.List;
@@ -25,34 +26,33 @@ public class QuizDAO extends AbstractDAO<Integer,Quiz> {
     
     @Getter @PersistenceContext(unitName = "QuizApp")
     private EntityManager entityManager;
-    //private JPAQueryFactory queryFactory;
+    private QQuiz quiz = QQuiz.quiz;
+    private JPAQuery query;
     
     
     public QuizDAO(){
         super(Quiz.class);
-        //queryFactory = new JPAQueryFactory(entityManager);
-        
     }
     
     
     public List<Quiz>findQuizzesByTitle(String title) {
         
+        query = new JPAQuery(entityManager);    
         
-        JPAQuery query = new JPAQuery(entityManager);    
-        
-        return query.from(QQuiz.quiz).where(QQuiz.quiz.title.eq(title)).list(QQuiz.quiz);
-        
+        return query.from(quiz).where(quiz.title.eq(title)).list(quiz);
         
     }
     
     /*public List<Quiz> findQuizzesByCreator(Account creator){
         
-        List<Quiz> quizzes = queryFactory.selectFrom(quiz).where(quiz.creator.eq(creator)).fetch();
+        JPAQuery query = new JPAQuery(entityManager);  
+        
+        List<Quiz> quizzes = query.from(quiz).where(quiz.creator.eq(creator)).fetch();
         return quizzes;
         
     }*/
     
-    public void removeQuizById(int id){
+    /*public void removeQuizById(int id){
         
        // queryFactory.delete(quiz).where(quiz.id.eq(id)).execute();
         
@@ -69,7 +69,7 @@ public class QuizDAO extends AbstractDAO<Integer,Quiz> {
        
        return removed;*/
         
-    }
+    //}
     
     /*public void removeAllQuizzesByCreator(Account creator){
         
