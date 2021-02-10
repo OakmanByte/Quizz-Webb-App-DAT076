@@ -72,7 +72,7 @@ public class AccountDAOTest {
     
     @Test   
     public void updateEmail() {
-        //TODO
+        //TODO make it prettier
         test.setEmail("HEJ@gmail.com");
         Assert.assertTrue(test.getEmail().equals("HEJ@gmail.com"));
     }
