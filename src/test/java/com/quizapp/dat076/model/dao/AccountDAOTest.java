@@ -59,17 +59,21 @@ public class AccountDAOTest {
     }
     
     @Test  
-    public void findUserByEmail() {
-        //TODO
+    public void findAccountByEmail() {
+        //TODO make this more readable and nicer looking
+        Assert.assertTrue(accountDAO.findByEmail(test.getEmail()).getUsername().equals(test.getUsername()));
     }
     
     @Test   
-    public void findUserByUsername() {
-        //TODO
+    public void findAccountByUsername() {
+        //TODO make this more readable and nicer looking
+        Assert.assertTrue(accountDAO.findByUsername(test.getUsername()).getEmail().equals(test.getEmail()));
     }
     
     @Test   
     public void updateEmail() {
         //TODO
+        test.setEmail("HEJ@gmail.com");
+        Assert.assertTrue(test.getEmail().equals("HEJ@gmail.com"));
     }
 }
