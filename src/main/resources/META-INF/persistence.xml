@@ -3,7 +3,7 @@
   <!-- Define Persistence Unit -->
   <persistence-unit name="my_persistence_unit">
     <class>com.quizapp.dat076.model.entity.Account</class>
-    <class>com.quizapp.dat076.model.entity.Quiz&gt;</class>
+    <class>com.quizapp.dat076.model.entity.Quiz;</class>
   </persistence-unit>
   <persistence-unit name="QuizApp" transaction-type="JTA">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
