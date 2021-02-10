@@ -13,12 +13,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import lombok.Getter;
 
-/**
- *
+/*
  * @author Rebecka Axelborn
  */
 @Stateless
-public class CategoryDAO extends AbstractDAO<Category>{
+public class CategoryDAO extends AbstractDAO<String,Category>{
 
     @Getter @PersistenceContext(unitName = "QuizApp")
     private EntityManager entityManager;
@@ -36,8 +35,9 @@ public class CategoryDAO extends AbstractDAO<Category>{
             query= new JPAQuery(entityManager);
         }
         QCategory cat= QCategory.category1;
-        return query.from(cat).where(cat.category.eq(catInput));
+        
+        JPAQuery c = query.from(cat).where(cat.category.eq(catInput)).fetch();
+        return c;
         
     }
-    
 }

@@ -5,7 +5,7 @@
  */
 package com.quizapp.dat076.model.dao;
 
-import com.quizapp.dat076.model.entity.Category;
+import com.quizapp.dat076.model.entity.Account;
 import javax.ejb.EJB;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -20,48 +20,56 @@ import org.junit.runner.RunWith;
 
 /**
  *
- * @author Rebecka Axelborn
+ * @author Emma Dirnberger
  */
-
 @RunWith(Arquillian.class)
-public class CategoryDAOTest {
-    Category test1 = new Category("Geography");
-    Category test2 = new Category("Math");
-    Category test3 = new Category("Music");
-    
+public class AccountDAOTest {
+    Account test = new Account("user", "user@gmail.com", "password");
+    Account test1 = new Account("user1", "user1@gmail.com", "password");
+    Account test2 = new Account("user2", "user2@gmail.com", "password");
+
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class)
-                .addClasses(CategoryDAO.class, Category.class)
+                .addClasses(AccountDAO.class, Account.class)
                 .addAsResource("META-INF/persistence.xml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
+
     @EJB
-    private CategoryDAO categoryDAO;
+    private AccountDAO accountDAO;
 
     @Before
-    //TODO
     public void setUp() {
-        categoryDAO.create(test1);
-        categoryDAO.create(test2);
-        categoryDAO.create(test3);
+        accountDAO.create(test);
+        accountDAO.create(test1);
+        accountDAO.create(test2);
     }
     
     @After
-    public void tearDown(){
-        categoryDAO.remove(test1);
-        categoryDAO.remove(test2);
-        categoryDAO.remove(test3);
-    }
-
-    @Test
-    //TODO
-    public void checkThatFindCategoryCorrectly() {
-        Assert.assertTrue(true);
-        /* Some better condition */
-        Assert.assertTrue(categoryDAO.findCategory("Geography") != null);
-        Assert.assertTrue(categoryDAO.findCategory("Math") != null);
-        Assert.assertTrue(categoryDAO.findCategory("Music") != null);
+    public void tearDown() {
+        accountDAO.remove(test);
+        accountDAO.remove(test1);
+        accountDAO.remove(test2);
     }
     
+    @Test   
+    public void searchUserNotNull() {
+        //TODO
+    }
+    
+    @Test  
+    public void findUserByEmail() {
+        //TODO
+    }
+    
+    @Test   
+    public void findUserByUsername() {
+        //TODO
+    }
+    
+    @Test   
+    public void updateEmail() {
+        //TODO
+    }
 }

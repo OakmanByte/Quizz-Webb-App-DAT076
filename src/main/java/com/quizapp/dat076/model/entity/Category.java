@@ -30,7 +30,7 @@ public class Category implements Serializable {
     @NotNull private int answer;
     //Relations
     //@ManyToOne private Quiz quiz;
-    @OneToMany(mappedBy = "quizzCategory") private List<Quiz> categories;
+    //@OneToMany(mappedBy = "quizzCategory") private List<Quiz> categories;
     
     public Category (String category){
         this.category=category;

@@ -2,16 +2,14 @@
 <persistence version="2.2" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
   <!-- Define Persistence Unit -->
   <persistence-unit name="my_persistence_unit">
-    <class>com.quizapp.dat076.model.entity.Car</class>
-    <class>com.quizapp.dat076.model.entity.Quiz></class>
+    <class>com.quizapp.dat076.model.entity.Account</class>
+    <class>com.quizapp.dat076.model.entity.Quiz&gt;</class>
   </persistence-unit>
-  
   <persistence-unit name="QuizApp" transaction-type="JTA">
-      <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-      <jta-data-source>jdbc/QuizApp</jta-data-source>
-      <properties>
-          <property name="eclipselink.ddl-generation" value="create-tables"/>
-      </properties>
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <jta-data-source>jdbc/QuizApp</jta-data-source>
+    <properties>
+      <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+    </properties>
   </persistence-unit>
-  
 </persistence>
