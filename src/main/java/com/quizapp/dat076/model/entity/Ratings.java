@@ -5,8 +5,11 @@
  */
 package com.quizapp.dat076.model.entity;
 
+import com.quizzapp.dat076.model.database.dao.key.RatingsPK;
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,9 +22,10 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Ratings {
+@IdClass(RatingsPK.class)
+public class Ratings implements Serializable {
     
      @Id private int category;
-    
+     @Id private int id;
     
 }
