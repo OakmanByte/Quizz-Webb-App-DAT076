@@ -39,8 +39,9 @@ public class Quiz implements Serializable {
         this.creator = creator;
     }*/
    
-    public Quiz(String title){
+    public Quiz(String title, Account account){
         this.title = title;
+        this.creator = account;
     }
 }
 

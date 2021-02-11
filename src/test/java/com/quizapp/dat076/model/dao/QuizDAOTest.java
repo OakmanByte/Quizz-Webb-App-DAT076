@@ -27,13 +27,19 @@ import org.junit.runner.RunWith;
 @RunWith(Arquillian.class)
 public class QuizDAOTest {
 
-    Quiz first = new Quiz("First quiz");
-    Quiz second = new Quiz("Second quiz");
-    Quiz third = new Quiz("Third quiz");
+    
+    Account account1 = new Account("user1", "user1@gmail.com", "password1", null);
+    Account account2 = new Account("user2", "user2@gmail.com", "password2", null);
+    Account account3 = new Account("user3", "user3@gmail.com", "password3", null);
+    
+    Quiz first = new Quiz("First quiz", account1);
+    Quiz second = new Quiz("Second quiz", account2);
+    Quiz third = new Quiz("Third quiz", account3);
 
-    Quiz bonus1 = new Quiz("Bonus quiz");
-    Quiz bonus2 = new Quiz("Bonus quiz");
-    Quiz bonus3 = new Quiz("Bonus quiz");
+    Quiz bonus1 = new Quiz("Bonus quiz", account1);
+    Quiz bonus2 = new Quiz("Bonus quiz", account2);
+    Quiz bonus3 = new Quiz("Bonus quiz", account3);
+    
 
     @Deployment
     public static WebArchive createDeployment() {
@@ -67,35 +73,25 @@ public class QuizDAOTest {
         quizDAO.remove(bonus2);
         quizDAO.remove(bonus3);
     }
-
-    /*@Test
-    public void testTrue() {
-        Assert.assertTrue(true);
-        assert quizDAO != null;
-        System.out.println("HERE!");
-        //System.out.println(quizDAO.findQuizzesByTitle("First quiz").toString());
-        //Assert.assertTrue(quizDAO.findQuizzesByTitle("First quiz") != null);
-    }*/
     
-    
-    @Test
+    //@Test
     /**
      * Checks that the quiz id leads to the correct quiz
      */
-    public void testFind_ID(){
+    /*public void testFind_ID(){
         
         Quiz firstQuiz = quizDAO.find(1);
         assert (firstQuiz.getTitle().equals("First quiz"));
         assert (firstQuiz.equals(first));
         
-        Quiz thirdQuiz = quizDAO.find(3);
+        Quiz secondQuiz = quizDAO.find(2);
         assert (thirdQuiz.getTitle().equals("Third quiz"));
-        assert (thirdQuiz.equals(third));
+        assert (thirdQuiz.equals(fourth));
         
-        Quiz bonusQuiz = quizDAO.find(5);
+        Quiz bonusQuiz = quizDAO.find(6);
         assert (bonusQuiz.getTitle().equals("Bonus quiz"));
-        assert (bonusQuiz.equals(bonus2));
-    }
+        assert (bonusQuiz.equals(bonus3));
+    }*/
     
     
     @Test
@@ -142,5 +138,24 @@ public class QuizDAOTest {
         }
 
     }
+     @Test
+    /**
+     * Checks that the correct number of quizzes are returned when filtering by
+     * creator, and that the quizzes are correct.
+     */
+    public void testFindQuizzesByCreator() {
+
+        //Retrieve the quizzes created by account1
+        List<Quiz> quizzes = quizDAO.findQuizzesByCreator(account1);
+        
+        //Check that the number of quizzes created by account1 is 2, and that
+        //the quizzes returned are matches what is expected
+        assert(quizzes.size() == 2);
+        assert(quizzes.get(0).getTitle().equals("First quiz") && quizzes.get(0).getCreator().getUsername().equals("user1"));
+        assert(quizzes.get(1).getTitle().equals("Bonus quiz") && quizzes.get(1).getCreator().getUsername().equals("user1"));
+
+    }
+    
+    
 
 }
