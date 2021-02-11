@@ -5,30 +5,27 @@
  */
 package com.quizapp.dat076.model.entity;
 
+import com.quizzapp.dat076.model.database.dao.key.RatingsPK;
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
+import javax.persistence.IdClass;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
  *
- * @author Albin
+ * @author anton
  */
 @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Account implements Serializable {
-    @Id private String username;
-    @Column(unique=true) private String email;
-    @NotNull private String password;
-    //Commented out to set up Account tests before any created Quiz, add later.
-    @OneToMany(mappedBy = "creator") private List<Quiz> createdQuizzes;
+@IdClass(RatingsPK.class)
+public class Ratings implements Serializable {
+    
+     @Id private int category;
+     @Id private int id;
     
 }

@@ -38,7 +38,7 @@ public class QuizDAOTest {
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class)
-                .addClasses(QuizDAO.class, Quiz.class)
+                .addClasses(QuizDAO.class, Quiz.class, Account.class)
                 .addAsResource("META-INF/persistence.xml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
