@@ -66,13 +66,13 @@ public class AccountDAOTest {
     @Test  
     public void findAccountByEmail() {
         //TODO make this more readable and nicer looking
-        Assert.assertTrue(accountDAO.findByEmail(test.getEmail()).getUsername().equals(test.getUsername()));
+        Assert.assertTrue(accountDAO.findAccountByEmail(test.getEmail()).getUsername().equals(test.getUsername()));
     }
     
     @Test   
     public void findAccountByUsername() {
         //TODO make this more readable and nicer looking
-        Assert.assertTrue(accountDAO.findByUsername(test.getUsername()).getEmail().equals(test.getEmail()));
+        Assert.assertTrue(accountDAO.findAccountByUsername(test.getUsername()).getEmail().equals(test.getEmail()));
     }
     
     @Test   
