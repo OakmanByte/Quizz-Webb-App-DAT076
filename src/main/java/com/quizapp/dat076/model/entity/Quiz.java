@@ -29,7 +29,7 @@ public class Quiz implements Serializable {
     //Attributes
     @NotNull private String title;
     @ManyToOne private Account creator;
-   // @ManyToOne private Category quizzCategory;
+    @ManyToOne private Category quizzCategory;
     
     //@OneToMany(mappedBy = "quiz") private List<Question> questions;
     
