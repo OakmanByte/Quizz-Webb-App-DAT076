@@ -29,7 +29,7 @@ public class CategoryDAO extends AbstractDAO<String,Category>{
         query=new JPAQuery(entityManager);
     }
     
-//TODO
+
     public Category findCategory(String catInput) {
 
         if(query==null){
@@ -41,12 +41,6 @@ public class CategoryDAO extends AbstractDAO<String,Category>{
         Category c =query.from(cat)
                 .where(cat.category.eq(catInput))
                 .singleResult(cat);
-        
-       /* query = new JPAQuery(entityManager);
-        
-        return query.from(QCategory.category1)
-                .where(QCategory.category1.category.eq(catInput))
-                .singleResult(cat);*/
 
        System.out.println(c.toString());
         return c;
