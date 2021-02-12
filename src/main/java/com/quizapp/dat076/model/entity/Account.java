@@ -28,7 +28,6 @@ public class Account implements Serializable {
     @Id private String username;
     @Column(unique=true) private String email;
     @NotNull private String password;
-    //Commented out to set up Account tests before any created Quiz, add later.
     @OneToMany(mappedBy = "creator") private List<Quiz> createdQuizzes;
     
 }

@@ -6,10 +6,8 @@
 package com.quizapp.dat076.model.dao;
 
 import com.mysema.query.jpa.impl.JPAQuery;
-import com.mysema.query.jpa.impl.JPAUpdateClause;
 import com.quizapp.dat076.model.entity.Account;
 import com.quizapp.dat076.model.entity.QAccount;
-import com.quizapp.dat076.model.entity.Quiz;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -43,9 +41,5 @@ public class AccountDAO extends AbstractDAO<String, Account> {
         return query.from(QAccount.account)
                 .where(QAccount.account.username.eq(username))
                 .singleResult(account);
-    }
-    
-    public void getQuiz(Quiz quiz){
-        //TODO
     }
 }
