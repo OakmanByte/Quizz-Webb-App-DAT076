@@ -7,6 +7,7 @@ package com.quizapp.dat076.model.entity;
 
 import java.io.Serializable;
 import java.util.List;
+import com.quizapp.dat076.model.entity.Quiz;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -28,15 +29,12 @@ import lombok.NoArgsConstructor;
 public class Category implements Serializable {
     @Id private String category;
     
-    //Attributes
- // @NotNull private int answer;
-    //Relations
-   // @ManyToOne private Quiz quiz;
-    //@OneToMany(mappedBy = "quizzCategory") 
-    // private List<Quiz> categories;
-    /*
+   
+    @OneToMany(mappedBy = "quizzCategory") 
+     private List<Quiz> categories;
+    
     public Category(String category){
         this.category = category;
         
-    }*/
+    }
 }

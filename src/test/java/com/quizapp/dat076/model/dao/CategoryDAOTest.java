@@ -5,6 +5,7 @@
  */
 package com.quizapp.dat076.model.dao;
 
+import com.quizapp.dat076.model.entity.Account;
 import com.quizapp.dat076.model.entity.Category;
 import com.quizapp.dat076.model.entity.Quiz;
 import javax.ejb.EJB;
@@ -33,7 +34,7 @@ public class CategoryDAOTest {
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class)
-                .addClasses(CategoryDAO.class, Category.class)
+                .addClasses(CategoryDAO.class, Category.class, Quiz.class, Account.class)
                 .addAsResource("META-INF/persistence.xml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
@@ -58,10 +59,6 @@ public class CategoryDAOTest {
     @Test
     //TODO
     public void checkThatFindCategoryCorrectly() {
-        Assert.assertTrue(true);
-        /* Some better condition */
-        System.out.println("TJOHO");
-       
         Assert.assertTrue(categoryDAO.findCategory("Geography") != null);
         Assert.assertTrue(categoryDAO.findCategory("Math") != null);
         Assert.assertTrue(categoryDAO.findCategory("Music") != null);
