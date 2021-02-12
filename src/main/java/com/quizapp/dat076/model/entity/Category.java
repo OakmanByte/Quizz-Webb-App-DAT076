@@ -11,6 +11,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,14 +29,14 @@ public class Category implements Serializable {
     @Id private String category;
     
     //Attributes
-    @NotNull private int answer;
+ // @NotNull private int answer;
     //Relations
-    //@ManyToOne private Quiz quiz;
-    @OneToMany(mappedBy = "quizzCategory") 
-    private List<Quiz> categories;
-    
+   // @ManyToOne private Quiz quiz;
+    //@OneToMany(mappedBy = "quizzCategory") 
+    // private List<Quiz> categories;
+    /*
     public Category(String category){
         this.category = category;
         
-    }
+    }*/
 }
