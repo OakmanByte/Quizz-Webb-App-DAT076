@@ -25,7 +25,7 @@ public abstract class AbstractDAO<K,T> {
 
     protected abstract EntityManager getEntityManager();
 
-    public long count() {
+   /* public long count() {
         final CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
         final CriteriaQuery cq = builder.createQuery();
         final Root<T> rt = cq.from(entityType);
@@ -34,7 +34,7 @@ public abstract class AbstractDAO<K,T> {
 
         final Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult());
-    }
+    }*/
 
     public void create(T entity) {
         getEntityManager().persist(entity);
@@ -45,11 +45,21 @@ public abstract class AbstractDAO<K,T> {
       return getEntityManager().find(entityType, key);
 
     }
+    public int countTest(){
+        CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<Long> cq = builder.createQuery(Long.class);
+        Root<T> root = cq.from(entityType);
+        cq.select(builder.count(root));
+        Long count = getEntityManager().createQuery(cq).getSingleResult();
+        return count.intValue();
+    }
 
     public List<T> findAll() {
-        final CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
-        cq.select(cq.from(entityType));
-        return getEntityManager().createQuery(cq).getResultList();
+      CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
+      CriteriaQuery<T> cq = builder.createQuery(entityType);
+      cq.from(entityType);
+      TypedQuery<T> query = getEntityManager().createQuery((cq));
+      return query.getResultList();
     }
 
     public T getFirst() {

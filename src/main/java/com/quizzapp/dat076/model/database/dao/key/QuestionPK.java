@@ -6,41 +6,17 @@
 package com.quizzapp.dat076.model.database.dao.key;
 
 import java.io.Serializable;
+import lombok.Data;
 
 /**
  *
  * @author anton
+ * Composite key for Question since it needs the quiz id aswell
  */
-public class QuestionPK  {
+@Data
+public class QuestionPK implements Serializable {
     
     private String question;
     private int id;
-    
-// Question is a waek entitety , uniquliy identifeied by its primary key and quizz id 
-
-@Override
-public int hashCode() {
-    return id * 12345;
+   
 }
-
-@Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (obj instanceof QuestionPK) {
-            
-        }
-
-        return false;
-    }
-
-
-}
-
-
-
-

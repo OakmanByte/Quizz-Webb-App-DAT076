@@ -13,12 +13,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import com.quizapp.dat076.model.entity.QRatings;
 import com.quizapp.dat076.model.entity.Ratings;
+import java.util.List;
 import lombok.Getter;
 
 /**
  *
  * @author anton
  */
+@Stateless
 public class RatingsDAO extends AbstractDAO<String,Ratings> {
     
 
@@ -32,8 +34,18 @@ public class RatingsDAO extends AbstractDAO<String,Ratings> {
            super(Ratings.class);
             query = new JPAQuery(entityManager);
     }
-    public int test(){
     
-    return 0;
-    }
+  public Ratings FindHighRated(int score)
+   {
+       JPAQuery query = new JPAQuery(entityManager);
+       
+       return query.from(rating).where(rating.score.loe(score)).singleResult(rating);
+      
+      
+   }
+public int FindHighestRated(){
+      JPAQuery query = new JPAQuery(entityManager);
+      int maxRating = query.from(rating).list(rating.score.max()).get(0);
+      return maxRating;
+}
 }

@@ -4,37 +4,20 @@
  * and open the template in the editor.
  */
 package com.quizzapp.dat076.model.database.dao.key;
+import lombok.Data;
+
+import com.quizapp.dat076.model.entity.Ratings;
+import java.io.Serializable;
 
 /**
  *
  * @author anton
+ * Composite key for Ratings since it needs the quiz id aswell
  */
-public class RatingsPK {
+@Data
+public class RatingsPK implements Serializable {
     
     private int category;
     private int id;
     
-    
-    @Override
-public int hashCode() {
-    return id * 12345;
 }
-
-@Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (obj instanceof RatingsPK) {
-            
-        }
-
-        return false;
-    }
-
-
-}
-   
