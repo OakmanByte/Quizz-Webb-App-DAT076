@@ -46,13 +46,13 @@ public class CategoryDAOTest {
         categoryDAO.create(test2);
         categoryDAO.create(test3);
     }
-    /*
+    
     @After
     public void tearDown(){
         categoryDAO.remove(test1);
         categoryDAO.remove(test2);
         categoryDAO.remove(test3);
-    }*/
+    }
 
     @Test
     //TODO
