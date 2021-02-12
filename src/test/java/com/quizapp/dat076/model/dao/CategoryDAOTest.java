@@ -6,6 +6,7 @@
 package com.quizapp.dat076.model.dao;
 
 import com.quizapp.dat076.model.entity.Category;
+import com.quizapp.dat076.model.entity.Quiz;
 import javax.ejb.EJB;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
@@ -32,7 +33,7 @@ public class CategoryDAOTest {
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class)
-                .addClasses(CategoryDAO.class, Category.class)
+                .addClasses(CategoryDAO.class, Category.class, Quiz.class)
                 .addAsResource("META-INF/persistence.xml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }

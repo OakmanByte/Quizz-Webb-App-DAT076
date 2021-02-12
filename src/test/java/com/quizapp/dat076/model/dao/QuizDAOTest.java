@@ -33,28 +33,34 @@ public class QuizDAOTest {
     Account account2 = new Account("user2", "user2@gmail.com", "password2", null);
     Account account3 = new Account("user3", "user3@gmail.com", "password3", null);
     
-    Quiz first = new Quiz("First quiz", account1);
-    Quiz second = new Quiz("Second quiz", account2);
-    Quiz third = new Quiz("Third quiz", account3);
+    Quiz first = new Quiz("First quiz", account1, null);
+    Quiz second = new Quiz("Second quiz", account2, null);
+    Quiz third = new Quiz("Third quiz", account3, null);
 
-    Quiz bonus1 = new Quiz("Bonus quiz", account1);
-    Quiz bonus2 = new Quiz("Bonus quiz", account2);
-    Quiz bonus3 = new Quiz("Bonus quiz", account3);
+    Quiz bonus1 = new Quiz("Bonus quiz", account1, null);
+    Quiz bonus2 = new Quiz("Bonus quiz", account2, null);
+    Quiz bonus3 = new Quiz("Bonus quiz", account3, null);
     
 
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class)
-                .addClasses(QuizDAO.class, Quiz.class, Account.class, Category.class)
+                .addClasses(QuizDAO.class, Quiz.class, AccountDAO.class, Account.class, Category.class)
                 .addAsResource("META-INF/persistence.xml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
 
     @EJB
     private QuizDAO quizDAO;
+    @EJB
+    private AccountDAO acDAO;
     
     @Before
     public void setUp() {
+        acDAO.create(account1);
+        acDAO.create(account2);
+        acDAO.create(account3);
+        
         quizDAO.create(first);
         quizDAO.create(second);
         quizDAO.create(third);
@@ -73,6 +79,10 @@ public class QuizDAOTest {
         quizDAO.remove(bonus1);
         quizDAO.remove(bonus2);
         quizDAO.remove(bonus3);
+        
+        acDAO.remove(account1);
+        acDAO.remove(account2);
+        acDAO.remove(account3);
     }
     
     //@Test
