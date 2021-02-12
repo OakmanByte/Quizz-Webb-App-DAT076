@@ -27,5 +27,8 @@ public class Ratings implements Serializable {
     
      @Id private int category;
      @Id private int id;
+     private int score;
+     private String review;
+     
     
 }
