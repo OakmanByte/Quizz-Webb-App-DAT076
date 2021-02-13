@@ -6,36 +6,44 @@
 package com.quizapp.dat076.model.dao;
 
 import com.mysema.query.jpa.impl.JPAQuery;
-import com.quizapp.dat076.model.entity.Account;
 import com.quizapp.dat076.model.entity.Category;
-import com.quizapp.dat076.model.entity.QAccount;
 import com.quizapp.dat076.model.entity.QCategory;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import lombok.Getter;
 
-/**
- *
- * @author anton
+/*
+ * @author Rebecka Axelborn
  */
-//Make sure correct Datatype in <>
 @Stateless
-public class CategoryDAO extends AbstractDAO<String,Category> {
-    
+public class CategoryDAO extends AbstractDAO<String,Category>{
 
-    @Getter
-    @PersistenceContext(unitName = "QuizApp")
+    @Getter @PersistenceContext(unitName = "QuizApp")
     private EntityManager entityManager;
     private JPAQuery query;
-    private QCategory category = QCategory.category1;
-
-    public CategoryDAO() {
-        super(Category.class);
-        query = new JPAQuery(entityManager);
-    }
-    public int test(){
+    private QCategory cat = QCategory.category1;
     
-    return 0;
+    public CategoryDAO(){
+        super(Category.class);
+        query=new JPAQuery(entityManager);
+    }
+    
+
+    public Category findCategory(String catInput) {
+
+        if(query==null){
+            query= new JPAQuery(entityManager);
+        }
+        QCategory cat= QCategory.category1;
+        
+        query = new JPAQuery(entityManager);
+        Category c =query.from(cat)
+                .where(cat.category.eq(catInput))
+                .singleResult(cat);
+
+       System.out.println(c.toString());
+        return c;
+        
     }
 }
