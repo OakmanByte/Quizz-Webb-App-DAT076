@@ -27,7 +27,7 @@ public class QuizDAO extends AbstractDAO<Integer,Quiz> {
     
     @Getter @PersistenceContext(unitName = "QuizApp")
     private EntityManager entityManager;
-    private QQuiz quiz = QQuiz.quiz;
+    private final QQuiz quiz = QQuiz.quiz;
     private JPAQuery query;
     
     
@@ -58,9 +58,9 @@ public class QuizDAO extends AbstractDAO<Integer,Quiz> {
         return query.from(quiz).where(quiz.quizzCategory.eq(category)).list(quiz);
     }
     
-    /*public void removeQuizById(int id){
+    public void removeQuizById(int id){
         
-       // queryFactory.delete(quiz).where(quiz.id.eq(id)).execute();
+       // query.remove(quiz).where(quiz.id.eq(id)).execute();
         
         /*
         boolean removed;
@@ -75,7 +75,7 @@ public class QuizDAO extends AbstractDAO<Integer,Quiz> {
        
        return removed;*/
         
-    //}
+    }
     
     /*public void removeAllQuizzesByCreator(Account creator){
         
