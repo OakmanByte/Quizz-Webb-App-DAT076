@@ -33,8 +33,8 @@ public class AccountDAOTest {
     Account account3 = new Account("user2", "user2@gmail.com", "password", null);
     
     Quiz quiz1 = new Quiz("Such Amaze", account1, null);
-    Quiz quiz2 = new Quiz("Such Amaze", account1, null);
-    Quiz quiz3 = new Quiz("Such Amaze", account1, null);
+    Quiz quiz2 = new Quiz("Very Much", account1, null);
+    Quiz quiz3 = new Quiz("Best Quiz", account1, null);
 
     @Deployment
     public static WebArchive createDeployment() {
@@ -58,6 +58,13 @@ public class AccountDAOTest {
         quizDAO.create(quiz1);
         quizDAO.create(quiz2);
         quizDAO.create(quiz3);
+        
+        quiz1.setCreator(account1);
+        quiz2.setCreator(account1);
+        quiz3.setCreator(account1);
+        
+        quizDAO.update(quiz1);
+        accountDAO.update(account1);
     }
     
     @After
@@ -95,7 +102,8 @@ public class AccountDAOTest {
     @Test
     public void checkSizeOfQuizListForAccount() {
         // Is it possible to make so account1.getCreatedQuizzes() isn't empty?
-        //int sizeOfQuizList = account1.getCreatedQuizzes().size();
+        int sizeOfQuizList = account1.getCreatedQuizzes().size();
+        System.out.println("***** size is " + sizeOfQuizList);
         
         //Retrieve the quizzes created by account1
         List<Quiz> quizzes = quizDAO.findQuizzesByCreator(account1);
