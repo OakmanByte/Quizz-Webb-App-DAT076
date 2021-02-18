@@ -32,45 +32,72 @@ and open the template in the editor.
         }
     }
     
-     .rainbow_text_animated {
-            background: linear-gradient(to right, #6666ff, #0099ff , #00ff00, #ff3399, #6666ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: rainbow_animation 12s ease-in-out infinite;
-            background-size: 400% 100%;
+    .rainbow_text_animated {
+         background: linear-gradient(to right, #6666ff, #0099ff , #00ff00, #ff3399, #6666ff);
+         -webkit-background-clip: text;
+         background-clip: text;
+         color: transparent;
+         animation: rainbow_animation 12s ease-in-out infinite;
+         background-size: 400% 100%;
     }
     
     
     body {
-    background-color: linen;
+        background-image: url(homepagebackground.jpg);
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
     }
 
     h1 {
-    font-size: 50px;
-    text-align: center;
-    font-family: Brush Script MT, cursive;
+        font-size: 50px;
+        text-align: center;
+        font-family: Brush Script MT, cursive;
     }
     
         h2 {
-    text-align: center;
-    font-family: Brush Script MT, cursive;
+        text-align: center;
+        font-family: Brush Script MT, cursive;
     }
-    
-    h:commandButton {
         
-    margin-right: 100px;  
-    margin-left: 100px;    
-    }
-    
     #loginblock
     {
-   position:absolute; top:0; right:0;
+          position: fixed;
+          top: 70%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+   
     }
-    #homepagecenterblock{
-           
-     text-align: center;
+    
+      #playblock
+    {
+          position: fixed;
+          top: 30%;
+          left: 50%;
+          transform: translate(-50%, -50%);
     }
+    
+    .standardbutton{
+        
+        background-color: #0099ff;
+        border: none;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-left: 50px;
+        margin-bottom: 25px;
+    }
+    
+    .panelgridstyle {
+    background-color: gray;
+}
+    
+    
     
     
 </style>
@@ -83,34 +110,45 @@ and open the template in the editor.
         <div>
             <h1 class="rainbow_text_animated"> QUIZZ WEBB APP!</h1> 
             <h2> Made by: group X </h2> 
-        </div>       
+        </div>
+    
+    <h:form id = "playblock">
+         <h:panelGrid id = "playpanel" columns = "1" border = "3"
+                      cellpadding = "40" cellspacing = "0" styleClass="panelgridstyle">
+
+            <h:outputText value = "Enter quizz code below"/>
+            <h:inputText/>
+         </h:panelGrid>
+      </h:form>
      
     <h:form id = "loginblock">
-         <h:panelGrid id = "panel" columns = "2" border = "10"
-            cellpadding = "10" cellspacing = "1">
+         <h:panelGrid id = "loginpanel" columns = "2" border = "3"
+                      cellpadding = "40" cellspacing = "0" styleClass="panelgridstyle">
             
             <f:facet name = "header">
                <h:outputText value = "Login"/>
             </f:facet>
             <h:outputLabel value = "Username" />
-            <h:inputSecret  />
+            <h:inputText/>
             <h:outputLabel value = "Password" />
             <h:inputSecret />
             
             <f:facet name = "footer">
                <h:panelGroup style = "display:block; text-align:center">
-                  <h:commandButton id = "loginButton" value = "Login" action ="temp" />
-                  <h:commandButton id = "guestloginButton" value = "Login as Guest" action ="temp" />
+                  <h:commandButton id = "loginButton" value = "Login" action ="temp" styleClass="standardbutton" />
+                  <h:commandButton id = "guestloginButton" value = "Play as Guest" action ="temp" styleClass="standardbutton" />
                </h:panelGroup>
             </f:facet>
          </h:panelGrid>
       </h:form>
                                
-    <h:form id ="homepagecenterblock">  
-            <h:commandButton action = "temp" value = "Go to temp" />
-            <h:commandButton action = "temp" value = "Go to temp" /> 
-            <h:commandButton action = "temp" value = "Go to temp" />
-            <h:commandButton action = "temp" value = "Go to temp" />
+    <h:form>  
+            <h:commandButton  action = "temp" value = "Go to temp" styleClass="standardbutton" />
+            <h:commandButton action = "temp" value = "Go to temp" styleClass="standardbutton" /> 
+    </h:form>
+    <h:form>
+        <h:commandButton action = "temp" value = "Go to temp" styleClass="standardbutton" />
+        <h:commandButton action = "temp" value = "Go to temp" styleClass="standardbutton" />
     </h:form>
     
 </html>
