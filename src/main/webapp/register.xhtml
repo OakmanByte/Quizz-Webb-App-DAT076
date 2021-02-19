@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>Registration Page</title>
+</h:head>
+<h:body>
+    <f:view>
+        <h:form id="registerForm">
+            <table>
+                <tr>
+                    <td><h:outputText value="Enter a username:" /></td>
+                    <td><h:inputText id="username" value="#{user.username}"
+                            required="true" requiredMessage="Please enter a username" /></td>
+                    <td><h:message for="username" style="color:red" /></td>
+                </tr>
+                <tr>
+                    <td><h:outputText value="Enter your email:" /></td>
+                    <td><h:inputText id="email" value="#{user.email}"
+                            required="true" requiredMessage="Please enter an email" /></td>
+                    <td><h:message for="email" style="color:red" /></td>
+                </tr>
+                <tr>
+                    <td><h:outputText value="Enter password :" /></td>
+                    <td><h:inputSecret id="psw" value="#{user.password}"
+                            required="true" requiredMessage="Please enter a password" /></td>
+                    <td><h:message for="psw" style="color:red" /></td>
+                </tr>
+                <tr>
+                    <td />
+                    <!-- action="user add"
+                    <td><h:commandButton id="whatever" value="Register" action="#user.add"/></td> -->
+                    <td><h:commandButton id="button-btn" value="Register" type="submit" action="result"/></td>
+                </tr>
+                <tr>
+                    <td><h:outputLink value="home.xhtml">Home</h:outputLink></td>
+                </tr>
+            </table>
+        </h:form>
+    </f:view>
+</h:body>
+</html>
