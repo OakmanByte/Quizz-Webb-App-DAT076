@@ -60,22 +60,25 @@ public class Login implements Serializable {
         
         public String login(){
             
+            System.out.println("Result of validation:" + validateUsernamePassword() );
+            
             //Starting connect
             if(validateUsernamePassword()){
             
                 HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance( ).getExternalContext( ).getRequest( );        
                 try {
                         request.login( username, password );
+                        
                 }
                 catch ( ServletException e ) {
                     
                     FacesMessage facesMessage = new FacesMessage("This is a message");
                     FacesContext.getCurrentInstance().addMessage( "Unknown login", facesMessage);
-                    return null;
+                    return "failure";
                 }       
-                return "login";
+                return "success";
             }
-            return null;
+            return "failure";
        }
 
 
