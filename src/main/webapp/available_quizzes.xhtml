@@ -22,7 +22,7 @@ and open the template in the editor.
                     <p:column headerText="Category" sortBy="#{quiz.quizzCategory.category}" >#{quiz.quizzCategory.category}</p:column>
                     <p:column headerText="Creator" >#{quiz.creator.username}</p:column>
                     <p:column>
-                        <p:button href="show" icon="fa fa-fw fa-search-plus">
+                        <p:button href="quizpage.xhtml" icon="fa fa-fw fa-search-plus" value="go to quiz page">
                             <f:param name="quizId" value="#{quiz.id}"/>
                         </p:button>
                     </p:column>
