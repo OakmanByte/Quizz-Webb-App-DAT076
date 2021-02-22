@@ -26,19 +26,15 @@
 
     <managed-bean>
     <managed-bean-name>Login</managed-bean-name>
-    <managed-bean-class>homepageBeans.Login</managed-bean-class>
-    <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
+    <managed-bean-class>homepageBeans.LoginController</managed-bean-class>
+    
+    <managed-bean-scope>request</managed-bean-scope></managed-bean>
     <navigation-rule>
     <from-view-id>/homepage.xhtml</from-view-id>
     <navigation-case>
     <from-outcome>success</from-outcome>
     <to-view-id>/temp.xhtml</to-view-id>
     </navigation-case>
-    <navigation-case>
-    <from-outcome>failure</from-outcome>
-    <to-view-id>/homepage.xhtml</to-view-id>
-    </navigation-case>
     </navigation-rule>
-
 </faces-config>
+

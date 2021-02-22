@@ -44,6 +44,14 @@ public class QuizDAO extends AbstractDAO<Integer,Quiz> {
         
     }
     
+        public Quiz findQuizByID(int id) {
+        
+        query = new JPAQuery(entityManager);
+        
+        return query.from(quiz).where(quiz.id.eq(id)).singleResult(quiz);
+        
+    }
+    
     public List<Quiz> findQuizzesByCreator(Account creator){
         
         query = new JPAQuery(entityManager);

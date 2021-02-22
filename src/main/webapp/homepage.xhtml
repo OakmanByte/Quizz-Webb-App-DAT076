@@ -112,12 +112,13 @@ and open the template in the editor.
             <h2> Made by: group X </h2> 
         </div>
     
-    <h:form id = "playblock">
+    <h:form  id = "playblock">
          <h:panelGrid id = "playpanel" columns = "1" border = "3"
                       cellpadding = "40" cellspacing = "0" styleClass="panelgridstyle">
 
             <h:outputText value = "Enter quizz code below"/>
-            <h:inputText/>
+            <h:inputText id ="quizzid" value="#{ValidateQuizzID.id}" />
+            <h:commandButton id = "guestloginButton" value = "Play as Guest" action ="#{ValidateQuizzID.validateQuizzId}" styleClass="standardbutton" />
          </h:panelGrid>
       </h:form>
      
@@ -129,27 +130,15 @@ and open the template in the editor.
                <h:outputText value = "Login"/>
             </f:facet>
             <h:outputLabel value = "Username" />
-            <h:inputText id ="username" value="#{Login.username}"/>
+            <h:inputText id ="username" value="#{loginViewBean.username}"/>
             <h:outputLabel value = "Password" />
-            <h:inputSecret id="password" value="#{Login.password}"/>
+            <h:inputSecret id="password" value="#{loginViewBean.password}"/>
             
             <f:facet name = "footer">
                <h:panelGroup style = "display:block; text-align:center">
-                  <h:commandButton id = "loginButton" value = "Login" action = "#{Login.login}" styleClass="standardbutton" />
-                  
-                  <h:commandButton id = "guestloginButton" value = "Play as Guest" action ="temp" styleClass="standardbutton" />
+                  <h:commandButton id = "loginButton" value = "Login" action = "#{loginController.login}" styleClass="standardbutton" />
                </h:panelGroup>
             </f:facet>
          </h:panelGrid>
     </h:form>
-                               
-    <h:form>  
-            <h:commandButton  action = "temp" value = "Go to temp" styleClass="standardbutton" />
-            <h:commandButton action = "temp" value = "Go to temp" styleClass="standardbutton" /> 
-    </h:form>
-    <h:form>
-        <h:commandButton action = "temp" value = "Go to temp" styleClass="standardbutton" />
-        <h:commandButton action = "temp" value = "Go to temp" styleClass="standardbutton" />
-    </h:form>
-    
 </html>
