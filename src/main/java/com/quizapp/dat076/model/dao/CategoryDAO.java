@@ -17,33 +17,33 @@ import lombok.Getter;
  * @author Rebecka Axelborn
  */
 @Stateless
-public class CategoryDAO extends AbstractDAO<String,Category>{
+public class CategoryDAO extends AbstractDAO<String, Category> {
 
-    @Getter @PersistenceContext(unitName = "QuizApp")
+    @Getter
+    @PersistenceContext(unitName = "QuizApp")
     private EntityManager entityManager;
     private JPAQuery query;
     private QCategory cat = QCategory.category1;
-    
-    public CategoryDAO(){
+
+    public CategoryDAO() {
         super(Category.class);
-        query=new JPAQuery(entityManager);
+        query = new JPAQuery(entityManager);
     }
-    
 
     public Category findCategory(String catInput) {
 
-        if(query==null){
-            query= new JPAQuery(entityManager);
+        if (query == null) {
+            query = new JPAQuery(entityManager);
         }
-        QCategory cat= QCategory.category1;
-        
+        QCategory cat = QCategory.category1;
+
         query = new JPAQuery(entityManager);
-        Category c =query.from(cat)
+        Category c = query.from(cat)
                 .where(cat.category.eq(catInput))
                 .singleResult(cat);
 
-       System.out.println(c.toString());
+        System.out.println(c.toString());
         return c;
-        
+
     }
 }

@@ -27,11 +27,12 @@ import org.junit.runner.RunWith;
  */
 @RunWith(Arquillian.class)
 public class AccountDAOTest {
+
     //Dummy data to test the database
     Account account1 = new Account("user", "user@gmail.com", "password", null);
     Account account2 = new Account("user1", "user1@gmail.com", "password", null);
     Account account3 = new Account("user2", "user2@gmail.com", "password", null);
-    
+
     Quiz quiz1 = new Quiz("Such Amaze", account1, null);
     Quiz quiz2 = new Quiz("Very Much", account1, null);
     Quiz quiz3 = new Quiz("Best Quiz", account1, null);
@@ -54,60 +55,60 @@ public class AccountDAOTest {
         accountDAO.create(account1);
         accountDAO.create(account2);
         accountDAO.create(account3);
-        
+
         quizDAO.create(quiz1);
         quizDAO.create(quiz2);
         quizDAO.create(quiz3);
-        
+
         quiz1.setCreator(account1);
         quiz2.setCreator(account1);
         quiz3.setCreator(account1);
-        
+
         quizDAO.update(quiz1);
         accountDAO.update(account1);
     }
-    
+
     @After
     public void tearDown() {
         quizDAO.remove(quiz1);
         quizDAO.remove(quiz2);
-        quizDAO.remove(quiz3); 
-        
+        quizDAO.remove(quiz3);
+
         accountDAO.remove(account1);
         accountDAO.remove(account2);
         accountDAO.remove(account3);
     }
-    
-    @Test  
+
+    @Test
     public void findAccountByEmail() {
         //TODO make this more readable and nicer looking
         Assert.assertTrue(accountDAO.findAccountByEmail(account1.getEmail())
                 .getUsername().equals(account1.getUsername()));
     }
-    
-    @Test   
+
+    @Test
     public void findAccountByUsername() {
         //TODO make this more readable and nicer looking
         Assert.assertTrue(accountDAO.findAccountByUsername(account1.getUsername())
                 .getEmail().equals(account1.getEmail()));
     }
-    
-    @Test   
+
+    @Test
     public void updateEmail() {
         String emailTest = "HEJ@gmail.com";
         account1.setEmail(emailTest);
         Assert.assertTrue(account1.getEmail().equals(emailTest));
     }
-    
+
     @Test
     public void checkSizeOfQuizListForAccount() {
         // Is it possible to make so account1.getCreatedQuizzes() isn't empty?
         int sizeOfQuizList = account1.getCreatedQuizzes().size();
         System.out.println("***** size is " + sizeOfQuizList);
-        
+
         //Retrieve the quizzes created by account1
         List<Quiz> quizzes = quizDAO.findQuizzesByCreator(account1);
-        
+
         //3 quizzes have been added to account1, therefore size should be 3
         Assert.assertTrue(quizzes.size() == 3);
     }

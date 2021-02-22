@@ -5,7 +5,6 @@
  */
 package homepageBeans;
 
-
 import java.io.Serializable;
 import javax.annotation.security.DeclareRoles;
 import javax.enterprise.context.RequestScoped;
@@ -28,7 +27,6 @@ import org.omnifaces.util.Faces;
 @Data
 public class LoginController implements Serializable {
 
-
     @Inject
     private SecurityContext securityContext;
     @Inject
@@ -41,7 +39,7 @@ public class LoginController implements Serializable {
         final AuthenticationStatus status = securityContext.authenticate(Faces.getRequest(), Faces.getResponse(), AuthenticationParameters.withParams().credential(credential));
 
         return status == AuthenticationStatus.SUCCESS ? "success" : "";
-   
+
     }
 
     public String logout() {

@@ -19,13 +19,13 @@ import lombok.RequiredArgsConstructor;
  * @author Albin
  */
 @RequiredArgsConstructor
-public abstract class AbstractDAO<K,T> {
+public abstract class AbstractDAO<K, T> {
 
     private final Class<T> entityType;
 
     protected abstract EntityManager getEntityManager();
 
-   /* public long count() {
+    /* public long count() {
         final CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
         final CriteriaQuery cq = builder.createQuery();
         final Root<T> rt = cq.from(entityType);
@@ -35,17 +35,17 @@ public abstract class AbstractDAO<K,T> {
         final Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult());
     }*/
-
     public void create(T entity) {
         getEntityManager().persist(entity);
     }
-    
-    public T find(K key){
-        
-      return getEntityManager().find(entityType, key);
+
+    public T find(K key) {
+
+        return getEntityManager().find(entityType, key);
 
     }
-    public int countTest(){
+
+    public int countTest() {
         CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<Long> cq = builder.createQuery(Long.class);
         Root<T> root = cq.from(entityType);
@@ -55,11 +55,11 @@ public abstract class AbstractDAO<K,T> {
     }
 
     public List<T> findAll() {
-      CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
-      CriteriaQuery<T> cq = builder.createQuery(entityType);
-      cq.from(entityType);
-      TypedQuery<T> query = getEntityManager().createQuery((cq));
-      return query.getResultList();
+        CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<T> cq = builder.createQuery(entityType);
+        cq.from(entityType);
+        TypedQuery<T> query = getEntityManager().createQuery((cq));
+        return query.getResultList();
     }
 
     public T getFirst() {
@@ -71,14 +71,16 @@ public abstract class AbstractDAO<K,T> {
     public void remove(T entity) {
         getEntityManager().remove(getEntityManager().merge(entity));
     }
-    
-    public T update (T entity){
+
+    public T update(T entity) {
         return getEntityManager().merge(entity);
     }
-    public void flush(){
+
+    public void flush() {
         getEntityManager().flush();
     }
-    public void refresh(T entity){
+
+    public void refresh(T entity) {
         getEntityManager().refresh(entity);
     }
 }

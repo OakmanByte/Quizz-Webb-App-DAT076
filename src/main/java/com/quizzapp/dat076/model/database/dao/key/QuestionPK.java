@@ -10,13 +10,12 @@ import lombok.Data;
 
 /**
  *
- * @author anton
- * Composite key for Question since it needs the quiz id aswell
+ * @author anton Composite key for Question since it needs the quiz id aswell
  */
 @Data
 public class QuestionPK implements Serializable {
-    
+
     private String question;
     private int id;
-   
+
 }

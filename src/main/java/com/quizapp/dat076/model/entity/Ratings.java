@@ -24,11 +24,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @IdClass(RatingsPK.class)
 public class Ratings implements Serializable {
-    
-     @Id private int category;
-     @Id private int id;
-     private int score;
-     private String review;
-     
-    
+
+    @Id
+    private int category;
+    @Id
+    private int id;
+    private int score;
+    private String review;
+
 }

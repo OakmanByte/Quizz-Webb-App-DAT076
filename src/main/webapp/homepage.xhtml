@@ -6,139 +6,50 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:p="http://primefaces.org/ui">
-    
-<head>
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
-<style>
+    <head>
+        <link rel="stylesheet" type = "text/css" href="homepage.css"> </link>
+    </head> 
 
-    #shadowBox {
-        background-color: rgb(0, 0, 0);
-        /* Fallback color */
-        background-color: rgba(0, 0, 0, 0.2);
-        /* Black w/opacity/see-through */
-        border: 3px solid;
-    }
-
-    @keyframes rainbow_animation {
-        0%,100% {
-        background-position: 0 0;
-        }
-
-        50% {
-            background-position: 100% 0;
-        }
-    }
-    
-    .rainbow_text_animated {
-         background: linear-gradient(to right, #6666ff, #0099ff , #00ff00, #ff3399, #6666ff);
-         -webkit-background-clip: text;
-         background-clip: text;
-         color: transparent;
-         animation: rainbow_animation 12s ease-in-out infinite;
-         background-size: 400% 100%;
-    }
-    
-    
-    body {
-        background-image: url(homepagebackground.jpg);
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-    }
-
-    h1 {
-        font-size: 50px;
-        text-align: center;
-        font-family: Brush Script MT, cursive;
-    }
-    
-        h2 {
-        text-align: center;
-        font-family: Brush Script MT, cursive;
-    }
-        
-    #loginblock
-    {
-          position: fixed;
-          top: 70%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-   
-    }
-    
-      #playblock
-    {          
-        position: fixed;
-        top: 30%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-    
-    .standardbutton{
-        
-        background-color: #0099ff;
-        border: none;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin-left: 50px;
-        margin-bottom: 25px;
-    }
-    
-    .panelgridstyle {
-    background-color: gray;
-}
-    
-    
-    
-    
-</style>
-</head> 
-    
     <head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
-        <div>
-            <h1 class="rainbow_text_animated"> QUIZZ WEBB APP!</h1> 
-            <h2> Made by: group X </h2> 
-        </div>
-    
+    <div>
+        <h1 class="rainbow_text_animated"> QUIZZ WEBB APP!</h1> 
+        <h2> Made by: group X </h2> 
+    </div>
+
     <h:form  id = "playblock">
-         <h:panelGrid id = "playpanel" columns = "1" border = "3"
-                      cellpadding = "40" cellspacing = "0" styleClass="panelgridstyle">
+        <h:panelGrid id = "playpanel" columns = "1" border = "3"
+                     cellpadding = "40" cellspacing = "0" styleClass="panelgridstyle">
 
             <h:outputText value = "Enter quizz code below"/>
             <h:inputText id ="quizzid" value="#{ValidateQuizzID.id}" />
             <h:commandButton id = "guestloginButton" value = "Play as Guest" action ="#{ValidateQuizzID.validateQuizzId}" styleClass="standardbutton" />
-         </h:panelGrid>
-      </h:form>
-     
+        </h:panelGrid>
+    </h:form>
+
     <h:form id = "loginblock">
-         <h:panelGrid id = "loginpanel" columns = "2" border = "3"
-                      cellpadding = "40" cellspacing = "0" styleClass="panelgridstyle">
-            
+        <h:panelGrid id = "loginpanel" columns = "2" border = "3"
+                     cellpadding = "40" cellspacing = "0" styleClass="panelgridstyle">
+
             <f:facet name = "header">
-               <h:outputText value = "Login"/>
+                <h:outputText value = "Login"/>
             </f:facet>
             <h:outputLabel value = "Username" />
             <h:inputText id ="username" value="#{loginViewBean.username}"/>
             <h:outputLabel value = "Password" />
             <h:inputSecret id="password" value="#{loginViewBean.password}"/>
-            
+
             <f:facet name = "footer">
-               <h:panelGroup style = "display:block; text-align:center">
-                  <h:commandButton id = "loginButton" value = "Login" action = "#{loginController.login}" styleClass="standardbutton" />
-               </h:panelGroup>
+                <h:panelGroup style = "display:block; text-align:center">
+                    <h:commandButton id = "loginButton" value = "Login" action = "#{loginController.login}" styleClass="standardbutton" />
+                </h:panelGroup>
             </f:facet>
-         </h:panelGrid>
+        </h:panelGrid>
     </h:form>
 </html>

@@ -28,15 +28,14 @@ import org.junit.runner.RunWith;
 @RunWith(Arquillian.class)
 public class QuizDAOTest {
 
-    
     Account account1 = new Account("user1", "user1@gmail.com", "password1", null);
     Account account2 = new Account("user2", "user2@gmail.com", "password2", null);
     Account account3 = new Account("user3", "user3@gmail.com", "password3", null);
-    
+
     Category c1 = new Category("General Knowledge");
     Category c2 = new Category("Science");
     Category c3 = new Category("Movies");
-    
+
     Quiz first = new Quiz("First quiz", account1, c1);
     Quiz second = new Quiz("Second quiz", account2, c2);
     Quiz third = new Quiz("Third quiz", account3, c3);
@@ -44,7 +43,6 @@ public class QuizDAOTest {
     Quiz bonus1 = new Quiz("Bonus quiz", account1, c2);
     Quiz bonus2 = new Quiz("Bonus quiz", account2, c2);
     Quiz bonus3 = new Quiz("Bonus quiz", account3, c1);
-    
 
     @Deployment
     public static WebArchive createDeployment() {
@@ -60,66 +58,65 @@ public class QuizDAOTest {
     private AccountDAO acDAO;
     @EJB
     private CategoryDAO catDAO;
-    
+
     @Before
     public void setUp() {
         acDAO.create(account1);
         acDAO.create(account2);
         acDAO.create(account3);
-        
+
         catDAO.create(c1);
         catDAO.create(c2);
         catDAO.create(c3);
-        
+
         quizDAO.create(first);
         quizDAO.create(second);
         quizDAO.create(third);
-        
+
         quizDAO.create(bonus1);
         quizDAO.create(bonus2);
         quizDAO.create(bonus3);
     }
-    
+
     @After
     public void tearDown() {
         quizDAO.remove(first);
         quizDAO.remove(second);
         quizDAO.remove(third);
-        
+
         quizDAO.remove(bonus1);
         quizDAO.remove(bonus2);
         quizDAO.remove(bonus3);
-        
+
         acDAO.remove(account1);
         acDAO.remove(account2);
         acDAO.remove(account3);
-        
+
         catDAO.remove(c1);
         catDAO.remove(c2);
         catDAO.remove(c3);
-        
+
     }
-    
+
     //@Test
     /**
      * Checks that the quiz id leads to the correct quiz
      */
-    public void testFind_ID(){
-        
+    public void testFind_ID() {
+
         Quiz firstQuiz = quizDAO.find(1);
         assert (firstQuiz.getTitle().equals("First quiz"));
         assert (firstQuiz.equals(first));
-        
+
         Quiz secondQuiz = quizDAO.find(2);
         assert (secondQuiz.getTitle().equals("Second quiz"));
         assert (secondQuiz.equals(second));
-        
+
         Quiz bonusQuiz = quizDAO.find(6);
         assert (bonusQuiz.getTitle().equals("Bonus quiz"));
         assert (bonusQuiz.equals(bonus3));
     }
-    
-    
+
     @Test
     /**
      * Checks that only one quiz is returned by findQuizByTitle() when the title
@@ -164,7 +161,7 @@ public class QuizDAOTest {
         }
 
     }
-    
+
     @Test
     /**
      * Checks that the correct number of quizzes are returned when filtering by
@@ -174,38 +171,37 @@ public class QuizDAOTest {
 
         //Retrieve the quizzes created by account1
         List<Quiz> quizzes = quizDAO.findQuizzesByCreator(account1);
-        
+
         //Check that the number of quizzes created by account1 is 2, and that
         //the quizzes returned are matches what is expected
-        assert(quizzes.size() == 2);
-        assert(quizzes.get(0).getTitle().equals("First quiz") && quizzes.get(0).getCreator().getUsername().equals("user1"));
-        assert(quizzes.get(1).getTitle().equals("Bonus quiz") && quizzes.get(1).getCreator().getUsername().equals("user1"));
+        assert (quizzes.size() == 2);
+        assert (quizzes.get(0).getTitle().equals("First quiz") && quizzes.get(0).getCreator().getUsername().equals("user1"));
+        assert (quizzes.get(1).getTitle().equals("Bonus quiz") && quizzes.get(1).getCreator().getUsername().equals("user1"));
 
     }
-    
+
     @Test
     /**
      * Checks that filtering by category return the expected quizzes
      */
-    public void testFindQuizzesByCategory(){
-        
+    public void testFindQuizzesByCategory() {
+
         //Retrieve the quizzes with category "General Knowledge"
         List<Quiz> quizzes = quizDAO.findQuizzesByCategory(c1);
-        
-        assert(quizzes.size() == 2);
-        for(Quiz quiz: quizzes){
-            assert(quiz.getQuizzCategory().getCategory().equals(c1.getCategory()));
+
+        assert (quizzes.size() == 2);
+        for (Quiz quiz : quizzes) {
+            assert (quiz.getQuizzCategory().getCategory().equals(c1.getCategory()));
         }
-        
+
         //Retrieve the quizzes with category "Science"
         List<Quiz> quizzes2 = quizDAO.findQuizzesByCategory(c2);
-        
-        assert(quizzes2.size() == 3);
-        for(Quiz quiz: quizzes2){
-            assert(quiz.getQuizzCategory().getCategory().equals(c2.getCategory()));
+
+        assert (quizzes2.size() == 3);
+        for (Quiz quiz : quizzes2) {
+            assert (quiz.getQuizzCategory().getCategory().equals(c2.getCategory()));
         }
-        
+
     }
-    
 
 }

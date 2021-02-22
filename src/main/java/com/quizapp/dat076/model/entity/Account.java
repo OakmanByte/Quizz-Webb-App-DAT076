@@ -25,9 +25,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Account implements Serializable {
-    @Id private String username;
-    @Column(unique=true) private String email;
-    @NotNull private String password;
-    @OneToMany(mappedBy = "creator") private List<Quiz> createdQuizzes;
-    
+
+    @Id
+    private String username;
+    @Column(unique = true)
+    private String email;
+    @NotNull
+    private String password;
+    @OneToMany(mappedBy = "creator")
+    private List<Quiz> createdQuizzes;
+
 }

@@ -17,12 +17,11 @@ import lombok.Getter;
  *
  * @author anton
  */
-
 //Make sure correct Datatype in <>
 @Stateless
-public class QuestionDAO extends AbstractDAO<String,Question>{
-    
- @Getter
+public class QuestionDAO extends AbstractDAO<String, Question> {
+
+    @Getter
     @PersistenceContext(unitName = "QuizApp")
     private EntityManager entityManager;
     private JPAQuery query;
@@ -32,16 +31,12 @@ public class QuestionDAO extends AbstractDAO<String,Question>{
         super(Question.class);
         query = new JPAQuery(entityManager);
     }
-    
-    
-    public int findCorrectAlternativeByQuestion(String queryQuestion ){
+
+    public int findCorrectAlternativeByQuestion(String queryQuestion) {
         //JPAQuery query = new JPAQuery(entityManager);
-      
+
         //return query.select(question.answer).where(question.question.eq(queryQuestion)).fetch();
-        
-    return 0;
+        return 0;
     }
-    
-    
 
 }

@@ -27,13 +27,13 @@ public class LoginViewBean implements Serializable {
     private SecurityContext securityContext;
 
     public boolean isAdmin() {
-        
+
         return securityContext.isCallerInRole("admin");
     }
-    
+
     public boolean isUser() {
 
-        return username!=null;
+        return username != null;
     }
 
 }

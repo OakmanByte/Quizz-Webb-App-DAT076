@@ -27,14 +27,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Category implements Serializable {
-    @Id private String category;
-    
-   
-    @OneToMany(mappedBy = "quizzCategory") 
-     private List<Quiz> categories;
-    
-    public Category(String category){
+
+    @Id
+    private String category;
+
+    @OneToMany(mappedBy = "quizzCategory")
+    private List<Quiz> categories;
+
+    public Category(String category) {
         this.category = category;
-        
+
     }
 }

@@ -21,8 +21,7 @@ import lombok.Getter;
  * @author anton
  */
 @Stateless
-public class RatingsDAO extends AbstractDAO<String,Ratings> {
-    
+public class RatingsDAO extends AbstractDAO<String, Ratings> {
 
     @Getter
     @PersistenceContext(unitName = "QuizApp")
@@ -31,21 +30,20 @@ public class RatingsDAO extends AbstractDAO<String,Ratings> {
     private QRatings rating = QRatings.ratings;
 
     public RatingsDAO() {
-           super(Ratings.class);
-            query = new JPAQuery(entityManager);
+        super(Ratings.class);
+        query = new JPAQuery(entityManager);
     }
-    
-  public Ratings FindHighRated(int score)
-   {
-       JPAQuery query = new JPAQuery(entityManager);
-       
-       return query.from(rating).where(rating.score.loe(score)).singleResult(rating);
-      
-      
-   }
-public int FindHighestRated(){
-      JPAQuery query = new JPAQuery(entityManager);
-      int maxRating = query.from(rating).list(rating.score.max()).get(0);
-      return maxRating;
-}
+
+    public Ratings FindHighRated(int score) {
+        JPAQuery query = new JPAQuery(entityManager);
+
+        return query.from(rating).where(rating.score.loe(score)).singleResult(rating);
+
+    }
+
+    public int FindHighestRated() {
+        JPAQuery query = new JPAQuery(entityManager);
+        int maxRating = query.from(rating).list(rating.score.max()).get(0);
+        return maxRating;
+    }
 }

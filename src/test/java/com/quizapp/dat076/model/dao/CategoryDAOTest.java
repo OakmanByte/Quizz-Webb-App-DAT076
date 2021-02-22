@@ -24,13 +24,13 @@ import org.junit.runner.RunWith;
  *
  * @author Rebecka Axelborn
  */
-
 @RunWith(Arquillian.class)
 public class CategoryDAOTest {
+
     Category test1 = new Category("Geography");
     Category test2 = new Category("Math");
     Category test3 = new Category("Music");
-    
+
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class)
@@ -48,9 +48,9 @@ public class CategoryDAOTest {
         categoryDAO.create(test2);
         categoryDAO.create(test3);
     }
-    
+
     @After
-    public void tearDown(){
+    public void tearDown() {
         categoryDAO.remove(test1);
         categoryDAO.remove(test2);
         categoryDAO.remove(test3);
@@ -63,5 +63,5 @@ public class CategoryDAOTest {
         Assert.assertTrue(categoryDAO.findCategory("Math") != null);
         Assert.assertTrue(categoryDAO.findCategory("Music") != null);
     }
-    
+
 }
