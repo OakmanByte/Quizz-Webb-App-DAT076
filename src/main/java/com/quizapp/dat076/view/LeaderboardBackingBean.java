@@ -14,14 +14,15 @@ import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.inject.Inject;
+import lombok.Data;
 
 
 /**
  *
  * @author Rebecka
  */
-
-@Named("LeaderboardBackingBean")
+@Data
+@Named
 @ViewScoped
 public class LeaderboardBackingBean implements Serializable{
     private List<Account> accounts;
@@ -35,12 +36,16 @@ public class LeaderboardBackingBean implements Serializable{
        System.out.println(accounts + "OJOJOJ");
     }
     
-    public List<Account> getAccounts() {
-        return accounts;
-    }
-
-    public void setController(LeaderboardController controller) {
-        this.controller = controller;
+    public int test (){
+        return accounts.size();
     }
     
+  /*  public List<Account> getAccounts() {
+        return accounts;
+    }*/
+
+   /* public void setController(LeaderboardController controller) {
+        this.controller = controller;
+    }
+    */
 }

@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Random;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 
@@ -24,6 +25,8 @@ import javax.inject.Named;
 @ApplicationScoped
 public class LeaderboardController implements Serializable {
     private List<Account> accounts;
+    /*@Inject
+    private LeaderboardBackingBean leaderboardBackingBean;*/
     
     @PostConstruct
     public void init(){
