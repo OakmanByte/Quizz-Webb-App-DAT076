@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<h:body>
+    <h:form>
+        <p:panel header="Update Rating">
+            <p:panelGrid columns="1" layout="grid">
+                <p:outputLabel for="ratings-score" value="Enter new rating score"/>
+                <p:inputText id="ratings-score" value='#{ratingsBackingBean.ratingsScore}'/>
+                
+                <p:outputLabel for="ratings-review" value="Enter new rating review"/>
+                <p:inputText id="ratings-review" value='#{ratingsBackingBean.ratingsReview}'/>
+                
+                <p:commandButton value="Update" action="#{ratingsBackingBean.update()}" ajax="false"/>
+            </p:panelGrid>
+            <input type="hidden" name="ratingsId" value='#{param.ratingsId}'/>
+            <input type="hidden" value="${_csrf.token}" name="${_csrf.parameterName}"/>
+        </p:panel>
+    </h:form>
+</h:body>
+</html>
+
