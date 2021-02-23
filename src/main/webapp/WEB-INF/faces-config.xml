@@ -36,5 +36,19 @@
     <to-view-id>/temp.xhtml</to-view-id>
     </navigation-case>
     </navigation-rule>
+    <navigation-rule>
+        <description>register new user</description>
+        <from-view-id>/register.xhtml</from-view-id>
+        <navigation-case> 
+            <from-action>#{user.add}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id> 
+        </navigation-case>
+<!--        <navigation-case>
+            <from-action>#{user.add}</from-action>
+            <from-outcome>unsuccess</from-outcome>
+            <to-view-id>/unsuccess.xhtml</to-view-id>
+        </navigation-case>-->
+    </navigation-rule>
 </faces-config>
 
