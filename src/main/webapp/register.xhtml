@@ -8,37 +8,35 @@
 <h:head>
     <title>Registration Page</title>
 </h:head>
-<h:body>
-    <f:view>
-        <h:form id="registerForm">
-            <table>
-                <tr>
-                    <td><h:outputText value="Enter a username:" /></td>
-                    <td><h:inputText id="username" value="#{userbean.username}"
-                            required="true" requiredMessage="Please enter a username" /></td>
-                    <td><h:message for="username" style="color:red" /></td>
-                </tr>
-                <tr>
-                    <td><h:outputText value="Enter your email:" /></td>
-                    <td><h:inputText id="email" value="#{userbean.email}"
-                            required="true" requiredMessage="Please enter an email" /></td>
-                    <td><h:message for="email" style="color:red" /></td>
-                </tr>
-                <tr>
-                    <td><h:outputText value="Enter password :" /></td>
-                    <td><h:inputSecret id="psw" value="#{userbean.password}"
-                            required="true" requiredMessage="Please enter a password" /></td>
-                    <td><h:message for="psw" style="color:red" /></td>
-                </tr>
-                <tr>
-                    <td />
-                    <td><h:commandButton id="button-btn" value="Register" type="submit" action="#{userbean.add}"/></td>
-                </tr>
-                <tr>
-                    <td><h:outputLink value="home.xhtml">Home</h:outputLink></td>
-                </tr>
-            </table>
-        </h:form>
-    </f:view>
-</h:body>
+    
+<h:form id="RegisterForm">
+    <h2>Register Account</h2>
+    <h:panelGrid columns="3" columnClasses="label,field,message">
+        <h:outputLabel for="username" value="Enter a username:" />
+        <h:inputText id="username" value="#{user.username}"
+                     required="true" requiredMessage="Please enter a username">
+            <f:validator validatorId="usernameValidator" />
+        </h:inputText>
+        <h:message for="username" style="color:red" />
+
+        <h:outputLabel for="email" value="Enter your email:" />
+        <h:inputText id="email" value="#{user.email}" 
+                       required="true" requiredMessage="Please enter your email, eg:yourid@domain.com">
+             <f:validator validatorId="emailValidator" />
+        </h:inputText>
+        <h:message for="email" style="color:red" />
+        
+                <h:outputLabel for="email" value="Enter a password:" />
+        <h:inputSecret id="password" value="#{user.password}"
+                       required="true" requiredMessage="Password cannot be empty">
+             <f:validateLength minimum="6" maximum="50" />
+        </h:inputSecret>
+        <h:message for="password" style="color:red" />
+
+        <h:panelGroup />
+        <h:commandButton value="Register" type="submit" action="#{user.add}" />
+        <h:panelGroup />
+        <h:outputLink value="index.xhtml">Home</h:outputLink>
+    </h:panelGrid>
+</h:form>
 </html>
