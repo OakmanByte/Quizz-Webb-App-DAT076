@@ -6,7 +6,10 @@
 package com.quizapp.dat076.controller;
 
 import com.quizapp.dat076.model.entity.Account;
+import com.quizapp.dat076.model.entity.Leaderboard;
+import com.quizapp.dat076.model.entity.Quiz;
 import com.quizapp.dat076.view.LeaderboardBackingBean;
+import com.quizzapp.dat076.model.database.dao.key.LeaderboardPK;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +18,7 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import lombok.Data;
 
 
 /**
@@ -23,15 +27,45 @@ import javax.inject.Named;
  */
 @Named
 @ApplicationScoped
+@Data
 public class LeaderboardController implements Serializable {
-    private List<Account> accounts;
+    private List<Leaderboard> accounts;
     /*@Inject
     private LeaderboardBackingBean leaderboardBackingBean;*/
+    
+    Account acc1;
+    Account acc2;
+    Account acc3;
+    
+    Quiz quiz1;
+    Quiz quiz2;
+    Quiz quiz3;
+    
+    LeaderboardPK pk1;
+    LeaderboardPK pk2;
+    LeaderboardPK pk3;
+    LeaderboardPK pk4;
+    LeaderboardPK pk5;
+    LeaderboardPK pk6;
+    LeaderboardPK pk7;
+    LeaderboardPK pk8;
+    LeaderboardPK pk9;
+    
+    Leaderboard lead1;
+    Leaderboard lead2;
+    Leaderboard lead3;
+    Leaderboard lead4;
+    Leaderboard lead5;
+    Leaderboard lead6;
+    Leaderboard lead7;
+    Leaderboard lead8;
+    Leaderboard lead9;
+
     
     @PostConstruct
     public void init(){
         accounts = new ArrayList<>();
-        accounts.add(new Account("Rebecka","rebecka@me.com","psgjsg",null));
+       /* accounts.add(new Account("Rebecka","rebecka@me.com","psgjsg",null));
         accounts.add(new Account("Emma","reemma@me.com","psdsgjsg",null));
         accounts.add(new Account("AntonE","antone@me.com","psgsdfjsg",null));
         accounts.add(new Account("AntonB","antonb@me.com","pssegg",null));
@@ -49,23 +83,61 @@ public class LeaderboardController implements Serializable {
         accounts.add(new Account("Robotnick","dr@me.com","notEggman",null));
         accounts.add(new Account("Mario","plumberNo1@me.com","nfds",null));
         accounts.add(new Account("Luigi","plumberNo2@me.com","mvbnv",null));
-        accounts.add(new Account("Peach","SaveMe@me.com","dfnvf",null));
-
-    
-    }
-    
-    public List<Account> getAccounts() {
-        List<Account> acc = new ArrayList<>(accounts);
-        System.out.println(acc + "LALALA");
-        return acc;
+        accounts.add(new Account("Peach","SaveMe@me.com","dfnvf",null));*/
         
+       acc1= new Account("Rebecka","rebecka@me.com","psgjsg",null);
+       acc2= new Account("Emma","reemma@me.com","psdsgjsg",null);
+       acc3= new Account("AntonE","antone@me.com","psgsdfjsg",null);
+       
+       quiz1 = new Quiz("Such Amaze", acc1, null);
+       quiz2 = new Quiz("Very Much", acc2, null);
+       quiz3 = new Quiz("Best Quiz", acc2, null);
+       
+       quiz1.setCreator(acc1);
+       quiz2.setCreator(acc1);
+       quiz3.setCreator(acc1);
+        
+   
+       pk1 = new LeaderboardPK(acc1.getUsername(),quiz1.getId());
+       pk2 = new LeaderboardPK(acc1.getUsername(),quiz2.getId());
+       pk3 = new LeaderboardPK(acc1.getUsername(),quiz3.getId());
+       pk4 = new LeaderboardPK(acc2.getUsername(),quiz1.getId());
+       pk5 = new LeaderboardPK(acc2.getUsername(),quiz2.getId());
+       pk6 = new LeaderboardPK(acc2.getUsername(),quiz3.getId());
+       pk7 = new LeaderboardPK(acc3.getUsername(),quiz1.getId());
+       pk8 = new LeaderboardPK(acc3.getUsername(),quiz2.getId());
+       pk9 = new LeaderboardPK(acc3.getUsername(),quiz3.getId());
+
+       
+       lead1 = new Leaderboard(pk1,acc1,quiz1,100);
+       lead2 = new Leaderboard(pk2,acc1,quiz2,70);
+       lead3 = new Leaderboard(pk3,acc1,quiz3,30);
+       lead4 = new Leaderboard(pk4,acc2,quiz1,90);
+       lead5 = new Leaderboard(pk5,acc2,quiz2,60);
+       lead6 = new Leaderboard(pk6,acc2,quiz3,20);
+       lead7 = new Leaderboard(pk7,acc3,quiz1,80);
+       lead8 = new Leaderboard(pk8,acc3,quiz2,50);
+       lead9 = new Leaderboard(pk9,acc3,quiz3,10);
+       
+       accounts.add(lead1);
+       accounts.add(lead2);
+       accounts.add(lead3);
+       accounts.add(lead4);
+       accounts.add(lead5);
+       accounts.add(lead6);
+       accounts.add(lead7);
+       accounts.add(lead8);
+       accounts.add(lead9);
+
+       sortHighest();
     }
     
-    public List<Account> getAccounts(int size) {
+    
+    public List<Leaderboard> getAccounts(int size) {
             if (size > accounts.size()) {
             Random rand = new Random();
 
-            List<Account> randomList = new ArrayList<>();
+            List<Leaderboard> randomList = new ArrayList<>();
             for (int i = 0; i < size; i++) {
                 int randomIndex = rand.nextInt(accounts.size());
                 randomList.add(accounts.get(randomIndex));
@@ -78,15 +150,12 @@ public class LeaderboardController implements Serializable {
             return new ArrayList<>(accounts.subList(0, size));
         }
     }
-    /*
-    	public List<Account> getClonedProducts(int size) throws CloneNotSupportedException {
-		List<Account> results = new ArrayList<>();
-		List<Account> originals = getAccounts(size);
-		for (Account original : originals) {
-			results.add((Account)original.clone());
-		}
-		return results;
-	}*/
     
+    public void sortHighest(){
+         accounts.sort((l1,l2) 
+                      -> l2.getScore().compareTo( 
+                          l1.getScore())); 
+    }
+   
     
 }
