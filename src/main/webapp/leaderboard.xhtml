@@ -13,12 +13,14 @@ and open the template in the editor.
         <title>Leaderboard</title>
     </h:head>
     <h:body>
-        <p>#{leaderboardBackingBean.test()}</p>
         <h:form>
             <div class="card">
                 <p:dataTable var="account" value="#{leaderboardBackingBean.accounts}">
                     <p:column headerText="User">
-                        <h:outputText value="#{account.username}" />
+                        <h:outputText value="#{account.account.username}" />
+                    </p:column>
+                    <p:column headerText="Score">
+                        <h:outputText value="#{account.score}" />
                     </p:column>
                 </p:dataTable>
             </div>
