@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <style>
+
+        #header {
+            background-color: rgba(0, 0, 0, 0.1);
+            border: 0.1px solid;
+
+            margin-top: 0;
+            margin-bottom: 2.5em;
+            padding-left: 2em;
+            height: 100%;
+        }
+
+        .header_title {
+            text-align: left;
+            font-weight: bold;
+            font-size: 30px;
+            font-family: monospace;
+            letter-spacing: 2px;
+        }
+
+        .header_right{
+            font-size: 15px;
+            padding-right: 0.5em;
+        }
+
+    </style>
+
+    <h:head>
+        <title>QuizAppHeader</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+
+
+
+    <h:body>
+        
+        <p:toolbar id="header">
+
+            <f:facet name="left">
+                <p:toolbarGroup>
+                    <h2 class="header_title"><a href="homepage.xhtml" style="text-decoration: none">Quiz App</a></h2>
+                </p:toolbarGroup>
+            </f:facet>
+
+            <f:facet name="right">
+                <div>
+                    <div class="header_right" style="display: table-cell">
+                        <h3 class="header_right"><a href="homepage.xhtml" style="text-decoration: none">My Account</a></h3>
+                    </div>
+
+                    <div class="header_right" style="display: table-cell">
+                        <h3 class="header_right"><a href="homepage.xhtml" style="text-decoration: none">Help</a></h3>
+                    </div>
+                </div>
+            </f:facet>
+
+        </p:toolbar>
+
+        <section>
+            <div class="container">
+                <ui:insert name="content" />
+            </div>
+        </section>
+        
+    </h:body>
+</html>
