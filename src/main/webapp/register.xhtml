@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+    <title>Registration Page</title>
+</h:head>
+    
+<h:form id="RegisterForm">
+    <h2>Register Account</h2>
+    <h:panelGrid columns="3" columnClasses="label,field,message">
+        <h:outputLabel for="username" value="Enter a username:" />
+        <h:inputText id="username" value="#{user.username}"
+                     required="true" requiredMessage="Please enter a username">
+            <f:validator validatorId="usernameValidator" />
+        </h:inputText>
+        <h:message for="username" style="color:red" />
+
+        <h:outputLabel for="email" value="Enter your email:" />
+        <h:inputText id="email" value="#{user.email}" 
+                       required="true" requiredMessage="Please enter your email, eg:yourid@domain.com">
+             <f:validator validatorId="emailValidator" />
+        </h:inputText>
+        <h:message for="email" style="color:red" />
+        
+                <h:outputLabel for="email" value="Enter a password:" />
+        <h:inputSecret id="password" value="#{user.password}"
+                       required="true" requiredMessage="Password cannot be empty">
+             <f:validateLength minimum="6" maximum="50" />
+        </h:inputSecret>
+        <h:message for="password" style="color:red" />
+
+        <h:panelGroup />
+        <h:commandButton value="Register" type="submit" action="#{user.add}" />
+        <h:panelGroup />
+        <h:outputLink value="index.xhtml">Home</h:outputLink>
+    </h:panelGrid>
+</h:form>
+</html>
