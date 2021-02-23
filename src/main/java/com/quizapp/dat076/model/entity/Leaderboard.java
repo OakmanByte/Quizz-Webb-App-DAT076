@@ -12,12 +12,18 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
  * @author Rebec
  */
+@Data
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Leaderboard implements Serializable {
     
     @EmbeddedId
@@ -32,5 +38,7 @@ public class Leaderboard implements Serializable {
     @MapsId("quizID")
     @JoinColumn(name ="quiz_id")
     Quiz quiz;
+    
+    Integer score;
     
 }
