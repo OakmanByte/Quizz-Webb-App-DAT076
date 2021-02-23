@@ -14,27 +14,25 @@
             <table>
                 <tr>
                     <td><h:outputText value="Enter a username:" /></td>
-                    <td><h:inputText id="username" value="#{user.username}"
+                    <td><h:inputText id="username" value="#{userbean.username}"
                             required="true" requiredMessage="Please enter a username" /></td>
                     <td><h:message for="username" style="color:red" /></td>
                 </tr>
                 <tr>
                     <td><h:outputText value="Enter your email:" /></td>
-                    <td><h:inputText id="email" value="#{user.email}"
+                    <td><h:inputText id="email" value="#{userbean.email}"
                             required="true" requiredMessage="Please enter an email" /></td>
                     <td><h:message for="email" style="color:red" /></td>
                 </tr>
                 <tr>
                     <td><h:outputText value="Enter password :" /></td>
-                    <td><h:inputSecret id="psw" value="#{user.password}"
+                    <td><h:inputSecret id="psw" value="#{userbean.password}"
                             required="true" requiredMessage="Please enter a password" /></td>
                     <td><h:message for="psw" style="color:red" /></td>
                 </tr>
                 <tr>
                     <td />
-                    <!-- action="user add"
-                    <td><h:commandButton id="whatever" value="Register" action="#user.add"/></td> -->
-                    <td><h:commandButton id="button-btn" value="Register" type="submit" action="result"/></td>
+                    <td><h:commandButton id="button-btn" value="Register" type="submit" action="#{userbean.add}"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLink value="home.xhtml">Home</h:outputLink></td>
