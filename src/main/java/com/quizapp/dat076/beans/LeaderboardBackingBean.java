@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.quizapp.dat076.view;
+package com.quizapp.dat076.beans;
 
 import com.quizapp.dat076.controller.LeaderboardController;
 import com.quizapp.dat076.model.entity.Account;
