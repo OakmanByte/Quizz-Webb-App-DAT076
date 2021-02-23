@@ -1,14 +1,6 @@
 
 /* homepage.css */
 
-#shadowBox {
-    background-color: rgb(0, 0, 0);
-    /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.2);
-    /* Black w/opacity/see-through */
-    border: 3px solid;
-}
-
 @keyframes rainbow_animation {
     0%,100% {
         background-position: 0 0;
@@ -56,6 +48,7 @@ h2 {
     top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
+    text-align: center;
 
 }
 
@@ -65,6 +58,7 @@ h2 {
     top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
+    text-align: center;
 }
 
 .standardbutton{
@@ -76,10 +70,12 @@ h2 {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin-left: 50px;
-    margin-bottom: 25px;
 }
 
-.panelgridstyle {
-    background-color: gray;
+.panelgridstyle td {
+    background-color: #DCDDDF;
+    text-align: center;
+    
 }
+
+
