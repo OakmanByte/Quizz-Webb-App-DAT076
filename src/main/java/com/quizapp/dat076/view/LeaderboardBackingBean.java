@@ -8,6 +8,7 @@ package com.quizapp.dat076.view;
 
 import com.quizapp.dat076.controller.LeaderboardController;
 import com.quizapp.dat076.model.entity.Account;
+import com.quizapp.dat076.model.entity.Leaderboard;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -25,7 +26,7 @@ import lombok.Data;
 @Named
 @ViewScoped
 public class LeaderboardBackingBean implements Serializable{
-    private List<Account> accounts;
+    private List<Leaderboard> accounts;
     
     @Inject
     private LeaderboardController controller;
@@ -33,19 +34,9 @@ public class LeaderboardBackingBean implements Serializable{
     @PostConstruct
     public void init(){
        accounts = controller.getAccounts();
-       System.out.println(accounts + "OJOJOJ");
     }
     
     public int test (){
         return accounts.size();
     }
-    
-  /*  public List<Account> getAccounts() {
-        return accounts;
-    }*/
-
-   /* public void setController(LeaderboardController controller) {
-        this.controller = controller;
-    }
-    */
 }
