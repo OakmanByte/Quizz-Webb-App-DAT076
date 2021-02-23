@@ -61,7 +61,8 @@ public class LeaderboardDAOTest {
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class)
-                .addClasses(LeaderboardDAO.class, Category.class, Quiz.class, Account.class,QuizDAO.class, AccountDAO.class)
+                .addClasses(LeaderboardDAO.class, Category.class, Quiz.class, Account.class, QuizDAO.class, AccountDAO.class, Leaderboard.class,
+                        LeaderboardPK.class)
                 .addAsResource("META-INF/persistence.xml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
@@ -75,7 +76,7 @@ public class LeaderboardDAOTest {
     @Before
     //Initiating and creating here. Quiz has to be created to generate an id.
     public void setUp() {
-      /* acc1= new Account("Rebecka","rebecka@me.com","psgjsg",null);
+       acc1= new Account("Rebecka","rebecka@me.com","psgjsg",null);
        acc2= new Account("Emma","reemma@me.com","psdsgjsg",null);
        acc3= new Account("AntonE","antone@me.com","psgsdfjsg",null);
        
@@ -132,6 +133,7 @@ public class LeaderboardDAOTest {
        lead8 = new Leaderboard(pk8,acc3,quiz2,50);
        lead9 = new Leaderboard(pk9,acc3,quiz3,10);
        
+       System.out.printf("Creating leaderboard with PK %s, acc %s, quiz %d\n", lead1.getLeaderID(), lead1.getAccount().getUsername(), lead1.getQuiz().getId());
        leaderboardDAO.create(lead1);
        leaderboardDAO.create(lead2);
        leaderboardDAO.create(lead3);
@@ -140,19 +142,11 @@ public class LeaderboardDAOTest {
        leaderboardDAO.create(lead6);
        leaderboardDAO.create(lead7);
        leaderboardDAO.create(lead8);
-       leaderboardDAO.create(lead9);*/
+       leaderboardDAO.create(lead9);
     }
     
     @After
     public void tearDown(){
-    /*   accountDAO.remove(acc1);
-       accountDAO.remove(acc2);
-       accountDAO.remove(acc3);
-       
-       quizDAO.remove(quiz1);
-       quizDAO.remove(quiz2);
-       quizDAO.remove(quiz3);
-       
        leaderboardDAO.remove(lead1);
        leaderboardDAO.remove(lead2);
        leaderboardDAO.remove(lead3);
@@ -161,21 +155,26 @@ public class LeaderboardDAOTest {
        leaderboardDAO.remove(lead6);
        leaderboardDAO.remove(lead7);
        leaderboardDAO.remove(lead8);
-       leaderboardDAO.remove(lead9);*/
+       leaderboardDAO.remove(lead9);
+
+       quizDAO.remove(quiz1);
+       quizDAO.remove(quiz2);
+       quizDAO.remove(quiz3);
+       
+       accountDAO.remove(acc1);
+       accountDAO.remove(acc2);
+       accountDAO.remove(acc3);       
     }
 
     @Test
     public void checkNrPlayersbyQuizId() {
-       /* Assert.assertTrue(categoryDAO.findCategory("Geography") != null);
-        Assert.assertTrue(categoryDAO.findCategory("Math") != null);
-        Assert.assertTrue(categoryDAO.findCategory("Music") != null);*/
-      
-     /*  List<Leaderboard> quizplayers = leaderboardDAO.findScoresByQuizID(quiz1.getId());
+       
+       List<Leaderboard> quizplayers = leaderboardDAO.findScoresByQuizID(quiz1.getId());
        List<Leaderboard> quizplayers2 = leaderboardDAO.findScoresByQuizID(quiz2.getId());
        List<Leaderboard> quizplayers3 = leaderboardDAO.findScoresByQuizID(quiz3.getId());
        Assert.assertTrue(quizplayers.size()==3);
        Assert.assertTrue(quizplayers2.size()==3);
-       Assert.assertTrue(quizplayers3.size()==3);*/
+       Assert.assertTrue(quizplayers3.size()==3);
     }
     
 }
