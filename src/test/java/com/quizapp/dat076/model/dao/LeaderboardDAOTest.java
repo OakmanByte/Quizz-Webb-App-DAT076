@@ -75,7 +75,7 @@ public class LeaderboardDAOTest {
     @Before
     //Initiating and creating here. Quiz has to be created to generate an id.
     public void setUp() {
-      /* acc1= new Account("Rebecka","rebecka@me.com","psgjsg",null);
+       acc1= new Account("Rebecka","rebecka@me.com","psgjsg",null);
        acc2= new Account("Emma","reemma@me.com","psdsgjsg",null);
        acc3= new Account("AntonE","antone@me.com","psgsdfjsg",null);
        
@@ -140,12 +140,12 @@ public class LeaderboardDAOTest {
        leaderboardDAO.create(lead6);
        leaderboardDAO.create(lead7);
        leaderboardDAO.create(lead8);
-       leaderboardDAO.create(lead9);*/
+       leaderboardDAO.create(lead9);
     }
     
     @After
     public void tearDown(){
-    /*   accountDAO.remove(acc1);
+       accountDAO.remove(acc1);
        accountDAO.remove(acc2);
        accountDAO.remove(acc3);
        
@@ -161,22 +161,21 @@ public class LeaderboardDAOTest {
        leaderboardDAO.remove(lead6);
        leaderboardDAO.remove(lead7);
        leaderboardDAO.remove(lead8);
-       leaderboardDAO.remove(lead9);*/
+       leaderboardDAO.remove(lead9);
     }
 
     @Test
-    //TODO
     public void checkNrPlayersbyQuizId() {
        /* Assert.assertTrue(categoryDAO.findCategory("Geography") != null);
         Assert.assertTrue(categoryDAO.findCategory("Math") != null);
         Assert.assertTrue(categoryDAO.findCategory("Music") != null);*/
-     /*  
+      
        List<Leaderboard> quizplayers = leaderboardDAO.findScoresByQuizID(quiz1.getId());
        List<Leaderboard> quizplayers2 = leaderboardDAO.findScoresByQuizID(quiz2.getId());
        List<Leaderboard> quizplayers3 = leaderboardDAO.findScoresByQuizID(quiz3.getId());
        Assert.assertTrue(quizplayers.size()==3);
        Assert.assertTrue(quizplayers2.size()==3);
-       Assert.assertTrue(quizplayers3.size()==3);*/
+       Assert.assertTrue(quizplayers3.size()==3);
     }
     
 }
