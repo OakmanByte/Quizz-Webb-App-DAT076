@@ -17,24 +17,24 @@ and open the template in the editor.
     </h:head>
     
     <h:body>
+        
         <ui:composition template="WEB-INF/template/common.xhtml">
             <ui:define name="title">Leaderboard</ui:define>
             <ui:define name="content">
                 
                 <h:form>
                     <div class="card">
-                        <p:dataTable var="account" value="#{leaderboardBackingBean.accounts}">
+                        <p:dataTable var="board" value="#{leaderboardBackingBean.board}">
                             <p:column headerText="User">
-                                <h:outputText value="#{account.account.username}" />
+                                <h:outputText value="#{board.account.username}" />
                             </p:column>
                             <p:column headerText="Score">
-                                <h:outputText value="#{account.score}" />
+                                <h:outputText value="#{board.score}" />
                             </p:column>
                         </p:dataTable>
                     </div>
                 </h:form>
-            </ui:define>
+           </ui:define>
         </ui:composition>
-
     </h:body>
 </html>
