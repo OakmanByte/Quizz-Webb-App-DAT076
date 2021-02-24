@@ -1,3 +1,5 @@
+package com.quizapp.dat076.validators;
+
 
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.PARAMETER;
@@ -17,15 +19,15 @@ import javax.validation.Payload;
 
 /**
  *
- * @author Rebec
+ * @author Emma Dirnberger
  */
 
-    @Constraint(validatedBy = EmailExistsValidator.class)
+    @Constraint(validatedBy = UserExistsValidator.class)
     @Target({FIELD, PARAMETER})
     @Retention(RUNTIME)
-    public @interface EmailExists {
+    public @interface UserExists {
 
-        String message() default "Email already exists";
+        String message() default "Username already exists!";
 
         Class<?>[] groups() default {};
 

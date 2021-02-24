@@ -1,3 +1,5 @@
+package com.quizapp.dat076.validators;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,30 +8,26 @@
 
 /**
  *
- * @author Rebec
+ * @author Emma Dirnberger
  */
 import com.quizapp.dat076.model.dao.AccountDAO;
 import static javax.validation.constraintvalidation.ValidationTarget.ANNOTATED_ELEMENT;
 import static javax.validation.constraintvalidation.ValidationTarget.PARAMETERS;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
-import javax.faces.validator.ValidatorException;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import javax.validation.constraintvalidation.SupportedValidationTarget;
 
 @SupportedValidationTarget({ANNOTATED_ELEMENT, PARAMETERS})
-public class EmailExistsValidator implements ConstraintValidator<EmailExists, String> {
+public class UserExistsValidator implements ConstraintValidator<UserExists, String> {
 
     @EJB
     private AccountDAO accountDAO;
 
     @Override
-    public boolean isValid(String email, ConstraintValidatorContext context) {
+    public boolean isValid(String username, ConstraintValidatorContext context) {
 
-        return accountDAO.findAccountByEmail(email) != null;
+        return accountDAO.findAccountByUsername(username) == null;
 
     }
 }

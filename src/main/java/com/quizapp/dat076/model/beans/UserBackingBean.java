@@ -2,6 +2,8 @@ package com.quizapp.dat076.model.beans;
 
 import com.quizapp.dat076.model.dao.AccountDAO;
 import com.quizapp.dat076.model.entity.Account;
+import com.quizapp.dat076.validators.EmailExists;
+import com.quizapp.dat076.validators.UserExists;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
@@ -23,12 +25,12 @@ import lombok.Setter;
 @Setter
 @Getter
 @Named("user")
-public class UserBean {
+public class UserBackingBean {
 
+    @UserExists
     private String username;
-   // @Email @EmailExists
-    private String email;
-    
+    @Email @EmailExists
+    private String email; 
     private String password;
 
     @EJB
