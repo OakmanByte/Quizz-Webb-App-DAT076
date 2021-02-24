@@ -6,6 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+import javax.validation.constraints.Email;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,7 +26,9 @@ import lombok.Setter;
 public class UserBean {
 
     private String username;
+   // @Email @EmailExists
     private String email;
+    
     private String password;
 
     @EJB
