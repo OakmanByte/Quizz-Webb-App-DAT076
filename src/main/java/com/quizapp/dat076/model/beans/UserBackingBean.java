@@ -4,6 +4,7 @@ import com.quizapp.dat076.model.dao.AccountDAO;
 import com.quizapp.dat076.model.entity.Account;
 import com.quizapp.dat076.validators.EmailExists;
 import com.quizapp.dat076.validators.UserExists;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
@@ -32,6 +33,7 @@ public class UserBackingBean {
     @Email @EmailExists
     private String email; 
     private String password;
+    private String userrole;
 
     @EJB
     private AccountDAO accountDAO;
@@ -41,6 +43,7 @@ public class UserBackingBean {
         username = "";
         email = "";
         password = "";
+        userrole = "user";
     }
 
     /**
@@ -48,7 +51,7 @@ public class UserBackingBean {
      * TODO make a prettier solution
      */
     public String add() {
-        Account accountToCreate = new Account(username, email, password, null);
+        Account accountToCreate = new Account(username, email, password, userrole, null);
 
         if (!userExists()) {
             accountDAO.create(accountToCreate);
@@ -56,6 +59,7 @@ public class UserBackingBean {
             username = "";
             email = "";
             password = "";
+            userrole="";
             return "success";
         } else {
             return "unsuccess";

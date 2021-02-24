@@ -27,11 +27,12 @@ import org.junit.runner.RunWith;
  */
 @RunWith(Arquillian.class)
 public class AccountDAOTest {
+    
 
     //Dummy data to test the database
-    Account account1 = new Account("user", "user@gmail.com", "password", null);
-    Account account2 = new Account("user1", "user1@gmail.com", "password", null);
-    Account account3 = new Account("user2", "user2@gmail.com", "password", null);
+    Account account1 = new Account("user", "user@gmail.com", "password", "user", null);
+    Account account2 = new Account("user1", "user1@gmail.com", "password", "user", null);
+    Account account3 = new Account("user2", "user2@gmail.com", "password", "user", null);
 
     Quiz quiz1 = new Quiz("Such Amaze", account1, null);
     Quiz quiz2 = new Quiz("Very Much", account1, null);

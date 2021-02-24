@@ -30,7 +30,7 @@ public class DatabaseIdentityStore implements IdentityStore {
         
         if (account != null && account.getPassword().equals(usernamePasswordCredential.getPasswordAsString())) {
             //fill in list with roles that exist get roll from databse and store in list 
-            return new CredentialValidationResult(account.getUsername(), new HashSet<>(asList("user","admin")));
+            return new CredentialValidationResult(account.getUsername(), new HashSet<>(asList(account.getUserrole())));
         }
         return INVALID_RESULT;
     }
