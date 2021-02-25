@@ -5,8 +5,10 @@
  */
 package com.quizapp.dat076.model.beans;
 
+import homepageBeans.LoginViewBean;
 import com.quizapp.dat076.model.entity.Ratings;
 import com.quizapp.dat076.model.dao.RatingsDAO;
+import com.quizapp.dat076.model.entity.Account;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,16 +31,20 @@ public class RatingsBackingBean implements Serializable
 {
     @EJB
     private RatingsDAO ratingsDAO;
+    private LoginViewBean loginviewBean;
     
     private int ratingsScore;
-    private int ratingsCategory;
+
     private int ratingsId;
     private String ratingsReview;
+    private String ratingscreator;
     
     private Ratings rating;
     
+    
+
    public int getScoreRating()
-   {
+   { 
        return ratingsScore;
    }
    public void setScoreRating(int ratingsScore)
@@ -46,12 +52,14 @@ public class RatingsBackingBean implements Serializable
        this.ratingsScore=ratingsScore;
    }
    
+  
+   
    public String add(){
        Ratings rating = new Ratings();
-       rating.setId(ratingsId);
-       rating.setCategory(ratingsId);
+     
        rating.setScore(ratingsScore);
        rating.SetReview(ratingsReview);
+       rating.setUsername(loginviewBean.getUsername());
        ratingsDAO.addRating(rating);
        return "sucess";
    }

@@ -8,6 +8,7 @@ package com.quizapp.dat076.model.entity;
 import com.quizzapp.dat076.model.database.dao.key.RatingsPK;
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.ManyToOne;
@@ -27,29 +28,30 @@ import lombok.NoArgsConstructor;
 public class Ratings implements Serializable {
 
    
-     @Id private int category;
-     @Id private int id;
+  
+      @Id
+     @GeneratedValue
+      private int id;
      private int score;
      private String review;
      @ManyToOne private Account creator;
      @ManyToOne private Quiz quiz;
    
 
-    public Ratings( int score, String review) {
+    
+    public Ratings(int id,int category, int score, String review, Account creator) {
         super();
+        this.id = id;
+
         this.score = score;
         this.review = review;
+        this.creator = creator;
+        
     }
     
-    
-    public int getCategory()
-    {
-        return category;
-    }
-    
-    public void setCategory(int category)
-    {
-        this.category = category;
+    public Ratings clone(){
+        
+        return new Ratings(getId(), getScore(),getReview(),getAccount());
     }
     
     public int getId()
@@ -80,5 +82,15 @@ public class Ratings implements Serializable {
     {
         this.review = review;
     }
-     
+  
+   
+    
+    public void setUsername(String username){
+        this.creator.setUsername(username);
+    }
+    
+   
+        
+    
+                 
 }
