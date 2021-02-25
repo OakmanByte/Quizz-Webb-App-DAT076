@@ -12,8 +12,7 @@
         <p:panel header="Create Rating">
             <p:panelGrid columns="1" layout="grid">
              
-                <p:outputLabel for="ratings-id" value="Enter Rating ID"/>
-                <p:inputText id="ratings-id" value='#{ratingsBackingBean.ratingsId}'/>
+             
                 
                  <p:outputLabel for="ratings-category" value="Enter Rating Category"/>
                  <p:inputText id="ratings-category" value='#{ratingsBackingBean.ratingsCategory}'/>
@@ -23,7 +22,7 @@
                 
                  <p:outputLabel for="ratings-review" value="Enter Rating Review"/>
                  <p:inputText id="ratings-review" value='#{ratingsBackingBean.ratingsReview}'/>
-                
+              
                 <p:commandButton value="Create" action="#{ratingsBackingBean.add()}" ajax="false"/>
             </p:panelGrid>
             <input type="hidden" value="${_csrf.token}" name="${_csrf.parameterName}"/>
