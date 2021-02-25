@@ -49,10 +49,7 @@ public class Ratings implements Serializable {
         
     }
     
-    public Ratings clone(){
-        
-        return new Ratings(getId(), getScore(),getReview(),getAccount());
-    }
+  
     
     public int getId()
     {
