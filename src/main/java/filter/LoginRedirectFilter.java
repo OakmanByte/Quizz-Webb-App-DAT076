@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author anton
  */
-@WebFilter({"/temp.xhtml",})
+@WebFilter({"/temp.xhtml","/accountpage.xhtml",})
 
 public class LoginRedirectFilter extends HttpFilter {
 
@@ -30,6 +30,7 @@ public class LoginRedirectFilter extends HttpFilter {
     @Inject
     private SecurityContext securityContext;
 
+    @Override
     protected void doFilter(HttpServletRequest request, HttpServletResponse response,
             FilterChain chain) throws IOException, ServletException {
 

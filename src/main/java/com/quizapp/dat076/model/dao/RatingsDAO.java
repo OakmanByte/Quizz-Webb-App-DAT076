@@ -30,12 +30,7 @@ public class RatingsDAO extends AbstractDAO<String, Ratings> {
     private EntityManager entityManager;
     private JPAQuery query;
     private QRatings rating = QRatings.ratings;
-      List<Ratings> ratings;
-
- public List<Ratings> getRatigns() {
-        return new ArrayList<>(ratings);
-    }
-
+   
   
     public RatingsDAO() {
         super(Ratings.class);
@@ -43,25 +38,7 @@ public class RatingsDAO extends AbstractDAO<String, Ratings> {
     }
 
     
-    public List<Ratings> getRatings(int size) {
-
-        if (size > ratings.size()) {
-            Random rand = new Random();
-
-            List<Ratings> randomList = new ArrayList<>();
-            for (int i = 0; i < size; i++) {
-                int randomIndex = rand.nextInt(ratings.size());
-                randomList.add(ratings.get(randomIndex));
-            }
-
-            return randomList;
-        }
-
-        else {
-            return new ArrayList<>(ratings.subList(0, size));
-        }
-    }
-
+  
     
     public void addRating(Ratings rating){
         entityManager.persist(rating);
