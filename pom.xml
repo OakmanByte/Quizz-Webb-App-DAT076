@@ -37,12 +37,6 @@
             <type>jar</type>
         </dependency>
         <dependency>
-            <groupId>org.omnifaces</groupId>
-            <artifactId>omnifaces</artifactId>
-            <version>3.4.1</version>
-            <type>jar</type>
-        </dependency>
-        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>${jakartaee}</version>
@@ -85,7 +79,7 @@
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
-            <version>8.0</version>
+            <version>10.0.0-RC1</version>
         </dependency>
         <dependency>
             <groupId>org.omnifaces</groupId>

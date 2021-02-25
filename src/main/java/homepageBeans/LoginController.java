@@ -44,6 +44,6 @@ public class LoginController implements Serializable {
 
     public String logout() {
         Faces.invalidateSession();
-        return "";
+        return "homepage.xhtml";
     }
 }

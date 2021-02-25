@@ -15,14 +15,12 @@
         <h:outputLabel for="username" value="Enter a username:" />
         <h:inputText id="username" value="#{user.username}"
                      required="true" requiredMessage="Please enter a username">
-            <f:validator validatorId="usernameValidator" />
         </h:inputText>
         <h:message for="username" style="color:red" />
 
         <h:outputLabel for="email" value="Enter your email:" />
         <h:inputText id="email" value="#{user.email}" 
                        required="true" requiredMessage="Please enter your email, eg:yourid@domain.com">
-             <f:validator validatorId="emailValidator" />
         </h:inputText>
         <h:message for="email" style="color:red" />
         

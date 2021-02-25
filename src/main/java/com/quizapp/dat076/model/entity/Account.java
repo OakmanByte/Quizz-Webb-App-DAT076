@@ -32,6 +32,8 @@ public class Account implements Serializable {
     private String email;
     @NotNull
     private String password;
+    @NotNull
+    private String userrole;
     @OneToMany(mappedBy = "creator")
     private List<Quiz> createdQuizzes;
 
