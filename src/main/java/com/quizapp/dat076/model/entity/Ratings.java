@@ -29,9 +29,11 @@ public class Ratings implements Serializable {
 
    
   
-      @Id
+     @Id
      @GeneratedValue
       private int id;
+     @Id
+     private int category;
      private int score;
      private String review;
      @ManyToOne private Account creator;
