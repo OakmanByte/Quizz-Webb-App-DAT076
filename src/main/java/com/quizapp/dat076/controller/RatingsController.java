@@ -47,13 +47,6 @@ public class RatingsController {
         }
     }
 
-    public List<Ratings> getClonedRatings(int size){
-        List<Ratings> results = new ArrayList<>();
-        List<Ratings> orginals = getRatings(size);
-       for (Ratings original : orginals) {
-			results.add(original.clone());
-		}
-        return results;
-    }
+  
     
 }
