@@ -1,0 +1,21 @@
+
+/* 
+    Created on : Feb 25, 2021, 12:46:59 PM
+    Author     : Emma Dirnberger
+*/
+.message {
+    color: #e66767;
+}
+
+.commandButton {
+    background-color: red;
+}
+.ui-panelgrid tr, .ui-panelgrid td {
+    background-color: blueviolet;
+}
+
+#header{
+    background-color: red;
+    width: 100%;
+    height: 60px;
+}
