@@ -25,12 +25,8 @@ and open the template in the editor.
     <h:form  id = "playblock">
         <h:panelGrid id = "playpanel" columns = "1" border = "3"
                      cellpadding = "40" cellspacing = "0" styleClass="panelgridstyle">
-            <f:facet name = "header">
-                <h:outputText value = "Enter quizz code below"/>
-            </f:facet>
-            <h:inputText id ="quizzid" value="#{ValidateQuizzID.id}" />
             <h:panelGroup style = "display:block; text-align:center">
-                <h:commandButton id = "guestloginButton" value = "Play as Guest" action ="#{ValidateQuizzID.validateQuizzId}" styleClass="standardbutton" />
+                <h:commandButton id = "guestloginButton" value = "Play as Guest" action ="available_quizzes" styleClass="standardbutton" />
             </h:panelGroup>
         </h:panelGrid>
     </h:form>
