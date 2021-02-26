@@ -34,6 +34,7 @@
     <navigation-case>
     <from-outcome>success</from-outcome>
     <to-view-id>/accountpage.xhtml</to-view-id>
+    <redirect />
     </navigation-case>
     
     </navigation-rule>
