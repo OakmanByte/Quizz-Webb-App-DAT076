@@ -67,7 +67,7 @@ public class RatingsBackingBean implements Serializable
        rating.setCategory(ratingscategory);
        rating.setCreator(accountDAO.findAccountByUsername(loginviewbean.getUsername()));
        ratingsDAO.addRating(rating);
-       return "sucess";
+       return "success";
    }
    public void update(){
      
