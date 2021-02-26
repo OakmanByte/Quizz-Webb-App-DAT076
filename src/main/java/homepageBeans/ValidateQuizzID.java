@@ -7,7 +7,9 @@ package homepageBeans;
 
 import com.quizapp.dat076.model.dao.QuizDAO;
 import com.quizapp.dat076.model.entity.Quiz;
+import java.io.Serializable;
 import javax.ejb.EJB;
+import javax.inject.Named;
 
 import lombok.Data;
 
@@ -15,17 +17,24 @@ import lombok.Data;
  *
  * @author anton
  */
-public class ValidateQuizzID {
+@Named
+@Data
+public class ValidateQuizzID implements Serializable {
 
     private int id;
     @EJB
     private QuizDAO quizDAO;
 
-    public Boolean validateQuizzId() {
+    public String quizExists() {
 
         Quiz Q = quizDAO.findQuizByID(id);
 
-        return Q != null;
+        if ( Q != null ) {
+        
+        return "quizpage";
+        }
+        else
+            return "";
     }
 
 }
