@@ -21,10 +21,10 @@
                     <div class="card" style="text-align: center">
                    
                     <p:column>
-                          <p:button value="Answer 1 " icon="fa fa-fw fa-diamond" style="margin-left: 20px; word-wrap: break-word; background-color: goldenrod; font-size: 20px; font-weight: bold; width: 30em; height: 10em " href="."/>
+                        <p:button value="#{playQuizBackingBean.getcurrentQuestion().alt1}" icon="fa fa-fw fa-diamond" style="margin-left: 20px; word-wrap: break-word; background-color: goldenrod; font-size: 20px; font-weight: bold; width: 30em; height: 10em " href="."/>
                     </p:column>
                       <p:column>
-                          <p:button value="Answer 2" icon="fa fa-fw fa-briefcase" style="margin-left: 20px; word-wrap: break-word; background-color: green; font-size: 20px; font-weight: bold; width: 30em; height: 10em;"  href="."/>
+                          <p:button value="#{playQuizBackingBean.getcurrentQuestion().alt2}" icon="fa fa-fw fa-briefcase" style="margin-left: 20px; word-wrap: break-word; background-color: green; font-size: 20px; font-weight: bold; width: 30em; height: 10em;"  href="."/>
                     </p:column>
                          </div>
                          </h:form>
@@ -39,10 +39,10 @@
                  <h:form>
                 <div class="card" style="text-align: center">
                       <p:column>
-                          <p:button value="Answer 3" icon="fa fa-fw fa-android" style="margin-left: 20px; word-wrap: break-word; background-color: red; font-size: 20px; font-weight: bold; width: 30em; height: 10em"  href="."/>
+                          <p:button value="#{playQuizBackingBean.getcurrentQuestion().alt3}" icon="fa fa-fw fa-android" style="margin-left: 20px; word-wrap: break-word; background-color: red; font-size: 20px; font-weight: bold; width: 30em; height: 10em"  href="."/>
                     </p:column>
                       <p:column>
-                          <p:button value="Answer 4" icon="fa fa-fw fa-bank" style="margin-left: 20px; word-wrap: break-word; background-color: blue; font-size: 20px; font-weight: bold; width: 30em; height: 10em"  href="."/>
+                          <p:button value="#{playQuizBackingBean.getcurrentQuestion().alt4}" icon="fa fa-fw fa-bank" style="margin-left: 20px; word-wrap: break-word; background-color: blue; font-size: 20px; font-weight: bold; width: 30em; height: 10em"  href="."/>
                     </p:column>
                     </div>
                 </h:form>
