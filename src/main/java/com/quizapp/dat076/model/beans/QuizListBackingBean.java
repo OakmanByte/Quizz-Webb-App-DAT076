@@ -7,9 +7,11 @@ package com.quizapp.dat076.model.beans;
 
 import com.quizapp.dat076.model.dao.AccountDAO;
 import com.quizapp.dat076.model.dao.CategoryDAO;
+import com.quizapp.dat076.model.dao.QuestionDAO;
 import com.quizapp.dat076.model.dao.QuizDAO;
 import com.quizapp.dat076.model.entity.Account;
 import com.quizapp.dat076.model.entity.Category;
+import com.quizapp.dat076.model.entity.Question;
 import com.quizapp.dat076.model.entity.Quiz;
 import java.io.Serializable;
 import java.util.List;
@@ -47,6 +49,8 @@ public class QuizListBackingBean implements Serializable {
     Quiz bonus1 = new Quiz("Bonus quiz", account1, c2);
     Quiz bonus2 = new Quiz("Bonus quiz", account2, c2);
     Quiz bonus3 = new Quiz("Bonus quiz", account3, c1);
+    
+    Question question1 = new Question("Which planet is closest to the sun?", first.getId(), "Pluto", "Venus", "Merkurius", "Mars", 3, first );
 
     //Retrieve the beans for the DAO:s
     @EJB
@@ -57,6 +61,9 @@ public class QuizListBackingBean implements Serializable {
 
     @EJB
     private QuizDAO quizDAO;
+    
+    @EJB
+    private QuestionDAO questDAO;
 
     //The list of all quizzes
     private List<Quiz> quizzes;
@@ -80,6 +87,8 @@ public class QuizListBackingBean implements Serializable {
         quizDAO.create(bonus2);
         quizDAO.create(bonus3);
         
+        questDAO.create(question1);
+        
         
         quizzes = quizDAO.findAll();
 
@@ -102,6 +111,8 @@ public class QuizListBackingBean implements Serializable {
         catDAO.remove(c1);
         catDAO.remove(c2);
         catDAO.remove(c3);
+        
+        questDAO.remove(question1);
     }
 
 }
