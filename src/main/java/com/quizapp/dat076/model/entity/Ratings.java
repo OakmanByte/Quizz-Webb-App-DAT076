@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,7 +38,7 @@ public class Ratings implements Serializable {
      private int score;
      private String review;
      @ManyToOne private Account creator;
-     @ManyToOne private Quiz quiz;
+     @OneToOne  private Quiz quiz;
    
 
     
