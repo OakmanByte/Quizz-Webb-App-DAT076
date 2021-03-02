@@ -82,5 +82,5 @@ public class UserBackingBean {
 
         return accountDAO.findAccountByEmail(email) != null
                 || accountDAO.findAccountByUsername(username) != null;
-    }
+    }  
 }

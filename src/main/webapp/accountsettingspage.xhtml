@@ -9,16 +9,24 @@ and open the template in the editor.
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-    <head>
+    <h:head>
         <title>Settings</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
+        <link rel="stylesheet" type = "text/css" href="accountpage.css"> </link>
+    </h:head>
     <body>
         <h:form>
          <h:outputLabel value = "What is your age?" />
          <h:inputText id ="age" value="#{user.age}"/>     
-            <h:outputLabel value = "What is your favorite quizz category?" />
-            <h:inputText id="favoritecategory" validator="#{accountSettingsBean.validateCategory}" value="#{user.favoritecategory}"/>
-         </h:form>
+            
+         <h:outputLabel value = "What is your favorite quizz category?" />
+            <p:selectOneMenu id="favoriteCategorySelected" value="#{user.favoritecategory}">
+                    <f:selectItem itemLabel ="Select one Item" />
+                    <f:selectItems value="#{accountSettingsBackingBean.correctcategories}"/>
+            </p:selectOneMenu>
+         
+<h:button id = "goToAccountPageFromSettingsPage" value = "Save changes and return to account page" outcome = "accountpage" styleClass="standardbutton" />
+         
+        </h:form>
     </body>
 </html>
