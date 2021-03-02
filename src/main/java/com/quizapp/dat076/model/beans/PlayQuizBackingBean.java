@@ -12,6 +12,8 @@ import com.quizapp.dat076.model.entity.Quiz;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -40,6 +42,10 @@ public class PlayQuizBackingBean implements Serializable {
     private List<Question> questions;
     private Question currentQuestion;
     private int currentQuestionIndex;
+    private int correctAnswerIndex;
+    
+    private boolean isAnswered;
+    private int points;
 
     /*public List<Question> getQuestions() {
 
@@ -48,20 +54,55 @@ public class PlayQuizBackingBean implements Serializable {
 
         return questions;
     }*/
-
+    
     public Question getcurrentQuestion() {
 
-        if( questions == null){
+        if (questions == null) {
             questions = questionDAO.findQuestionsinQuiz(quizDAO.find(quizId));
         }
-        
+
         currentQuestion = questions.get(currentQuestionIndex);
+        correctAnswerIndex = currentQuestion.getAnswer();
 
         return currentQuestion;
     }
-    
-    public void nextQuestion(){
+
+    public void nextQuestion() {
         currentQuestionIndex++;
+        isAnswered = false;
+
+    }
+    
+    public void incPoints(){
+        points++;
+    }
+
+    private void addMessage(FacesMessage.Severity severity, String summary, String detail) {
+        FacesContext.getCurrentInstance().
+                addMessage(null, new FacesMessage(severity, summary, detail));
+    }
+    
+    public boolean isCorrectAnswer(int answer){
+        return (answer == correctAnswerIndex);
+    }
+    
+    public void correctAnswer() {
+        if(isAnswered){
+            return;
+        }
+        
+        addMessage(FacesMessage.SEVERITY_INFO, "Correct answer", "1 point");
+        points++;
+        isAnswered = true;
+    }
+    
+    public void incorrectAnswer(){
+        if(isAnswered){
+            return;
+        }
+        
+        addMessage(FacesMessage.SEVERITY_ERROR, "Incorrect answer", "No point for you");
+        isAnswered = true;
     }
 
 }
