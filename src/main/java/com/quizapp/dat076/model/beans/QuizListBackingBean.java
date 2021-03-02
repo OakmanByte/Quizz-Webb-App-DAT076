@@ -53,7 +53,7 @@ public class QuizListBackingBean implements Serializable {
 
     Question question1 = new Question("Which planet is closest to the sun?", spaceQuiz.getId(), "Pluto", "Venus", "Merkurius", "Mars", 3, spaceQuiz);
     Question question2 = new Question("Which was the first country to send a human into space?", spaceQuiz.getId(), "Sweden", "USSR", "USA", "East Germany", 2, spaceQuiz);
-    Question question3 = new Question("What were Buzz Aldrin's first words on the moon?", spaceQuiz.getId(), "Beautiful view", "The moon is a cheese after all", "Hello world!", "That's one small step for man, one giant leap for mankind", 1, first);
+    Question question3 = new Question("What were Buzz Aldrin's first words on the moon?", spaceQuiz.getId(), "Beautiful view", "The moon is a cheese after all", "Hello world!", "That's one small step for a man, one giant leap for mankind", 1, spaceQuiz);
 
     //Retrieve the beans for the DAO:s
     @EJB
