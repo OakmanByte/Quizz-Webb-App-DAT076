@@ -5,7 +5,6 @@
  */
 package com.quizapp.dat076.model.beans;
 
-
 import com.quizapp.dat076.model.dao.QuestionDAO;
 import com.quizapp.dat076.model.dao.QuizDAO;
 import com.quizapp.dat076.model.entity.Question;
@@ -18,6 +17,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import lombok.Data;
 import org.omnifaces.cdi.Param;
+
 /**
  *
  * @author Anton Blomdell / Albin
@@ -25,34 +25,43 @@ import org.omnifaces.cdi.Param;
 @Data
 @Named
 @ViewScoped
-public class PlayQuizBackingBean implements Serializable{
-    
+public class PlayQuizBackingBean implements Serializable {
+
     @Inject
     @Param(name = "quizId")
     private int quizId;
-    
+
     @EJB
     private QuizDAO quizDAO;
+
     @EJB
     private QuestionDAO questionDAO;
-    
+
     private List<Question> questions;
-    private Question currentquestion;
-    
-    
-   public List<Question> getQuestions(){
-        
-     questions =  questionDAO.findQuestionsinQuiz(quizDAO.find(quizId));
-     currentquestion = questions.get(0);
-        
+    private Question currentQuestion;
+    private int currentQuestionIndex;
+
+    /*public List<Question> getQuestions() {
+
+        questions = questionDAO.findQuestionsinQuiz(quizDAO.find(quizId));
+        currentquestion = questions.get(0);
+
         return questions;
-    }
-    public Question getcurrentQuestion(){
+    }*/
+
+    public Question getcurrentQuestion() {
+
+        if( questions == null){
+            questions = questionDAO.findQuestionsinQuiz(quizDAO.find(quizId));
+        }
         
-     questions =  questionDAO.findQuestionsinQuiz(quizDAO.find(quizId));
-     currentquestion = questions.get(0);
-        
-        return currentquestion;
+        currentQuestion = questions.get(currentQuestionIndex);
+
+        return currentQuestion;
     }
     
+    public void nextQuestion(){
+        currentQuestionIndex++;
+    }
+
 }
