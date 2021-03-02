@@ -12,6 +12,7 @@ and open the template in the editor.
 
     <head>
         <link rel="stylesheet" type = "text/css" href="homepage.css"> </link>
+        <link rel="stylesheet" type = "text/css" href="common.css"> </link>
     </head> 
 
     <head>
@@ -37,15 +38,15 @@ and open the template in the editor.
             <f:facet name = "header">
                 <h:outputText value = "Login"/>
             </f:facet>
-            <h:outputLabel value = "Username" />
+            <h:outputLabel value = "Username" style="color: #ed8d8d;"/>
             <h:inputText id ="username" value="#{loginViewBean.username}"/>
-            <h:outputLabel value = "Password" />
+            <h:outputLabel value = "Password" style="color: #ed8d8d;"/>
             <h:inputSecret id="password" value="#{loginViewBean.password}"/>
 
             <f:facet name = "footer">
                 <h:panelGroup style = "display:block; text-align:center">
                     <h:commandButton id = "loginButton" value = "Login" action = "#{loginController.login}" styleClass="standardbutton" />
-                    <h:link outcome="register.xhtml" value="Don't have an account? Click here to create one!" />
+                    <h:link outcome="register.xhtml" style="color:#29c7ac;" value="Don't have an account? Click here to create one!" />
                 </h:panelGroup>
             </f:facet>
         </h:panelGrid>
