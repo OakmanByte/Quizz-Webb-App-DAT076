@@ -11,6 +11,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,9 +32,11 @@ public class UserBackingBean {
 
     @UserExists
     private String username;
-    @Email @EmailExists
-    private String email; 
-    @Min(value = 6, message = "Password must be at least 6 characters")
+    @Email
+    @EmailExists
+    private String email;
+    @Size(min = 6, max = 12, message
+            = "Password must be between 6 and 12 characters")
     private String password;
     private String userrole;
 
@@ -49,8 +52,8 @@ public class UserBackingBean {
     }
 
     /**
-     * Creating an Account database entry based on the input data.
-     * TODO make a prettier solution
+     * Creating an Account database entry based on the input data. TODO make a
+     * prettier solution
      */
     public String add() {
         Account accountToCreate = new Account(username, email, password, userrole, null);
@@ -61,7 +64,7 @@ public class UserBackingBean {
             username = "";
             email = "";
             password = "";
-            userrole="";
+            userrole = "";
             return "success";
         } else {
             return "unsuccess";
