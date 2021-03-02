@@ -10,6 +10,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,6 +33,7 @@ public class UserBackingBean {
     private String username;
     @Email @EmailExists
     private String email; 
+    @Min(value = 6, message = "Password must be at least 6 characters")
     private String password;
     private String userrole;
 

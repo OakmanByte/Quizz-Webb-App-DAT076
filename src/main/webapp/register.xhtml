@@ -32,14 +32,14 @@
                         <!--                    <h:outputLabel for="email" value="Enter a password:" />-->
                         <b:inputSecret id="password" value="#{user.password}" placeholder="Password"
                                        required="true" requiredMessage="Password cannot be empty">
-                            <f:validateLength minimum="6" maximum="50" />
                         </b:inputSecret>
                         <b:message for="password" />
 
                         <h:panelGroup />
-                        <b:commandButton id="registerButton" value="Register" type="submit" action="#{user.add}" />
+                        <b:commandButton value="Register" type="submit" action="#{user.add}" />
+                        <!-- TODO get the styling out of the document -->
+                        <h:outputLink value="index.xhtml" style="color:#ed8d8d;">Home</h:outputLink>
                         <h:panelGroup />
-                        <h:outputLink value="index.xhtml">Home</h:outputLink>
                     </b:panelGrid>
                 </b:panel>
             </b:container>
