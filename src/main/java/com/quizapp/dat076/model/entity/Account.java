@@ -34,6 +34,10 @@ public class Account implements Serializable {
     private String password;
     @NotNull
     private String userrole;
+   
+    private String country; 
+    private int age;
+   
     @OneToMany(mappedBy = "creator")
     private List<Quiz> createdQuizzes;
 

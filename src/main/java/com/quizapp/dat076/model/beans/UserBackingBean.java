@@ -34,6 +34,8 @@ public class UserBackingBean {
     private String email; 
     private String password;
     private String userrole;
+    private String country;
+    private int age;
 
     @EJB
     private AccountDAO accountDAO;
@@ -44,6 +46,8 @@ public class UserBackingBean {
         email = "";
         password = "";
         userrole = "user";
+        country = "";
+        age = 0;
     }
 
     /**
@@ -51,7 +55,7 @@ public class UserBackingBean {
      * TODO make a prettier solution
      */
     public String add() {
-        Account accountToCreate = new Account(username, email, password, userrole, null);
+        Account accountToCreate = new Account(username, email, password, userrole, country, age,  null);
 
         if (!userExists()) {
             accountDAO.create(accountToCreate);
@@ -60,6 +64,8 @@ public class UserBackingBean {
             email = "";
             password = "";
             userrole="";
+            country = "";
+            age = 0;
             return "success";
         } else {
             return "unsuccess";

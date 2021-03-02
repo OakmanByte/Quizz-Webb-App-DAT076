@@ -76,9 +76,9 @@ public class LeaderboardDAOTest {
     @Before
     //Initiating and creating here. Quiz has to be created to generate an id.
     public void setUp() {
-       acc1= new Account("Rebecka","rebecka@me.com","psgjsg","user",null);
-       acc2= new Account("Emma","reemma@me.com","psdsgjsg","user",null);
-       acc3= new Account("AntonE","antone@me.com","psgsdfjsg","user",null);
+       acc1= new Account("Rebecka","rebecka@me.com","psgjsg","user","Sweden", 20,null);
+       acc2= new Account("Emma","reemma@me.com","psdsgjsg","user","Sweden", 20,null);
+       acc3= new Account("AntonE","antone@me.com","psgsdfjsg","user","Sweden", 20,null);
        
        accountDAO.create(acc1);
        accountDAO.create(acc2);

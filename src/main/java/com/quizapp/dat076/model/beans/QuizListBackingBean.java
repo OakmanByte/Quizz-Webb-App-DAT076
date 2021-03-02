@@ -32,9 +32,9 @@ public class QuizListBackingBean implements Serializable {
 
     
     //Initializing the contents to be added to the database
-    Account account1 = new Account("user1", "user1@gmail.com", "password1", "user", null);
-    Account account2 = new Account("user2", "user2@gmail.com", "password2", "user", null);
-    Account account3 = new Account("user3", "user3@gmail.com", "password3", "user", null);
+    Account account1 = new Account("user1", "user1@gmail.com", "password1", "user", "Sweden", 20, null);
+    Account account2 = new Account("user2", "user2@gmail.com", "password2", "user","Sweden", 20, null);
+    Account account3 = new Account("user3", "user3@gmail.com", "password3", "user","Sweden", 20, null);
 
     Category c1 = new Category("General Knowledge");
     Category c2 = new Category("Science");
