@@ -35,7 +35,7 @@ public class Account implements Serializable {
     @NotNull
     private String userrole;
    
-    private String country; 
+    private String favoritecategory; 
     private int age;
    
     @OneToMany(mappedBy = "creator")

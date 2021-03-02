@@ -30,9 +30,9 @@ public class AccountDAOTest {
     
 
     //Dummy data to test the database
-    Account account1 = new Account("user", "user@gmail.com", "password", "user","Sweden", 20, null);
-    Account account2 = new Account("user1", "user1@gmail.com", "password", "user","Sweden", 20, null);
-    Account account3 = new Account("user2", "user2@gmail.com", "password", "user","Sweden", 20, null);
+    Account account1 = new Account("user", "user@gmail.com", "password", "user","Science", 20, null);
+    Account account2 = new Account("user1", "user1@gmail.com", "password", "user","Science", 20, null);
+    Account account3 = new Account("user2", "user2@gmail.com", "password", "user","Science", 20, null);
 
     Quiz quiz1 = new Quiz("Such Amaze", account1, null);
     Quiz quiz2 = new Quiz("Very Much", account1, null);
