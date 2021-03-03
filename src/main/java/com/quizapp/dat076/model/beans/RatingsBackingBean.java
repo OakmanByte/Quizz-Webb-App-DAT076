@@ -6,7 +6,6 @@
 package com.quizapp.dat076.model.beans;
 
 import com.quizapp.dat076.model.dao.AccountDAO;
-import homepageBeans.LoginViewBean;
 import com.quizapp.dat076.model.entity.Ratings;
 import com.quizapp.dat076.model.dao.RatingsDAO;
 import com.quizapp.dat076.model.entity.Account;
@@ -36,7 +35,7 @@ public class RatingsBackingBean implements Serializable
     @EJB
     private AccountDAO accountDAO;
     @Inject
-    private LoginViewBean loginviewbean;
+    private UserBean userBean;
     private int ratingsScore;
 
     private int ratingsId;
@@ -65,7 +64,7 @@ public class RatingsBackingBean implements Serializable
        rating.setScore(ratingsScore);
        rating.SetReview(ratingsReview);
        rating.setCategory(ratingscategory);
-       rating.setCreator(accountDAO.findAccountByUsername(loginviewbean.getUsername()));
+       rating.setCreator(accountDAO.findAccountByUsername(userBean.getAccount().getUsername()));
        ratingsDAO.addRating(rating);
        return "success";
    }

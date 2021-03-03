@@ -8,6 +8,7 @@ package com.quizapp.dat076.model.dao;
 import com.mysema.query.jpa.impl.JPAQuery;
 import com.quizapp.dat076.model.entity.Category;
 import com.quizapp.dat076.model.entity.QCategory;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

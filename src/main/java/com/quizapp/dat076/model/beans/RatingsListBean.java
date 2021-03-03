@@ -8,7 +8,6 @@ package com.quizapp.dat076.model.beans;
 import com.quizapp.dat076.controller.RatingsController;
 import com.quizapp.dat076.model.dao.RatingsDAO;
 import com.quizapp.dat076.model.entity.Ratings;
-import homepageBeans.LoginViewBean;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;

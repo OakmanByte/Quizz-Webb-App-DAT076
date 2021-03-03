@@ -38,3 +38,9 @@ a.panel-title-link {
     color: #ed8d8d;
     text-align: center;
 }
+
+input::placeholder {
+  color: #fff;
+}
+
+
