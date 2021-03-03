@@ -8,24 +8,24 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-          <h:form>
-        <p:panel header="Create Rating">
-            <p:panelGrid columns="1" layout="grid">
-             
-             
-       
-                 
-                 <p:outputLabel for="ratings-score" value="Enter Rating Score"/>
-                 <p:inputText id="ratings-score" value='#{ratingsBackingBean.ratingsScore}'/>
-                
-                 <p:outputLabel for="ratings-review" value="Enter Rating Review"/>
-                 <p:inputText id="ratings-review" value='#{ratingsBackingBean.ratingsReview}'/>
-              
-                <p:commandButton value="Create" action="#{ratingsBackingBean.add()}" ajax="false"/>
-            </p:panelGrid>
-            <input type="hidden" value="${_csrf.token}" name="${_csrf.parameterName}"/>
-        </p:panel>
-    </h:form>
+        <h:form>
+            <p:panel header="Create Rating">
+                <p:panelGrid columns="1" layout="grid">
+
+
+
+
+                    <p:outputLabel for="ratings-score" value="Enter Rating Score"/>
+                    <p:inputText id="ratings-score" value='#{ratingsBackingBean.ratingsScore}'/>
+
+                    <p:outputLabel for="ratings-review" value="Enter Rating Review"/>
+                    <p:inputText id="ratings-review" value='#{ratingsBackingBean.ratingsReview}'/>
+
+                    <p:commandButton value="Create" action="#{ratingsBackingBean.add()}" ajax="false"/>
+                </p:panelGrid>
+                <input type="hidden" value="${_csrf.token}" name="${_csrf.parameterName}"/>
+            </p:panel>
+        </h:form>
     </h:body>
 </html>
 

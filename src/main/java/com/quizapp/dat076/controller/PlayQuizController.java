@@ -25,13 +25,13 @@ public class PlayQuizController implements Serializable {
     private PlayQuizBackingBean playQuizBackingBean;
 
     public void onAnswer(int answerIndex) {
-        
-        if(answerIndex == playQuizBackingBean.getCorrectAnswerIndex()){
+
+        if (answerIndex == playQuizBackingBean.getCorrectAnswerIndex()) {
             playQuizBackingBean.correctAnswer();
-        }else{
+        } else {
             playQuizBackingBean.incorrectAnswer();
         }
-        
+
     }
 
     public void nextQuestion() {

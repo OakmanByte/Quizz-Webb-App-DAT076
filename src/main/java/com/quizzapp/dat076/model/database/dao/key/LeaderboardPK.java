@@ -21,10 +21,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LeaderboardPK implements Serializable {
-    @Column(name="user_name")
+
+    @Column(name = "user_name")
     String username;
-    
-    @Column(name="quiz_id")
+
+    @Column(name = "quiz_id")
     int quizID;
-    
+
 }

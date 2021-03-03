@@ -41,19 +41,18 @@ public class Account implements Serializable {
     private String password;
     @NotNull
     private String userrole;
-   //Aknowlefge indte snyggt
-    private String favoritecategory; 
+    //Aknowlefge indte snyggt
+    private String favoritecategory;
     @Min(0)
     @Max(110)
     private int age;
-    
+
     //Check out LOB annotation, saving bytestream for user profile picture
     @Lob
     @Basic(fetch = FetchType.LAZY)
     private byte[] profilePicture;
     //and merge after setter 
 
-   
     @OneToMany(mappedBy = "creator")
     private List<Quiz> createdQuizzes;
 

@@ -5,7 +5,6 @@ package com.quizapp.dat076.validators;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Emma Dirnberger

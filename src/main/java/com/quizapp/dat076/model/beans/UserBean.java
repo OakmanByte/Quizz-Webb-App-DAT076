@@ -22,9 +22,9 @@ import lombok.Data;
 @Named
 @SessionScoped
 public class UserBean implements Serializable {
-    
+
     private Account account;
-    
+
     @Inject
     private SecurityContext securityContext;
 
@@ -37,12 +37,12 @@ public class UserBean implements Serializable {
 
         return account.getUsername() != null;
     }
-    
+
     @PostConstruct
-    private void init(){
-    
-    account = new Account();
-    
+    private void init() {
+
+        account = new Account();
+
     }
 
 }

@@ -16,17 +16,17 @@ and open the template in the editor.
     </h:head>
     <body>
         <h:form>
-         <h:outputLabel value = "What is your age?" />
-         <h:inputText id ="age" value="#{userBean.account.age}"/>     
-            
-         <h:outputLabel value = "What is your favorite quizz category?" />
-         <p:selectOneMenu id="favoriteCategorySelected" value="#{userBean.account.favoritecategory}">
-                    <f:selectItem itemLabel ="Select one Item" />
-                    <f:selectItems value="#{accountSettingsBackingBean.categories}"/>
+            <h:outputLabel value = "What is your age?" />
+            <h:inputText id ="age" value="#{userBean.account.age}"/>     
+
+            <h:outputLabel value = "What is your favorite quizz category?" />
+            <p:selectOneMenu id="favoriteCategorySelected" value="#{userBean.account.favoritecategory}">
+                <f:selectItem itemLabel ="Select one Item" />
+                <f:selectItems value="#{accountSettingsBackingBean.categories}"/>
             </p:selectOneMenu>
-         
-         <p:commandButton value = "Save changes and return to account page" action="#{accountSettingsBackingBean.updateAgeandFavoriteQuizz}" styleClass="standardbutton" />
-         
+
+            <p:commandButton value = "Save changes and return to account page" action="#{accountSettingsBackingBean.updateAgeandFavoriteQuizz}" styleClass="standardbutton" />
+
         </h:form>
     </body>
 </html>

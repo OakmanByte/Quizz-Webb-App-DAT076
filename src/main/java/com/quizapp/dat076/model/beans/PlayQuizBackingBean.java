@@ -8,7 +8,6 @@ package com.quizapp.dat076.model.beans;
 import com.quizapp.dat076.model.dao.QuestionDAO;
 import com.quizapp.dat076.model.dao.QuizDAO;
 import com.quizapp.dat076.model.entity.Question;
-import com.quizapp.dat076.model.entity.Quiz;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
@@ -43,7 +42,7 @@ public class PlayQuizBackingBean implements Serializable {
     private Question currentQuestion;
     private int currentQuestionIndex;
     private int correctAnswerIndex;
-    
+
     private boolean isAnswered;
     private int points;
 
@@ -54,7 +53,6 @@ public class PlayQuizBackingBean implements Serializable {
 
         return questions;
     }*/
-    
     public Question getcurrentQuestion() {
 
         if (questions == null) {
@@ -72,8 +70,8 @@ public class PlayQuizBackingBean implements Serializable {
         isAnswered = false;
 
     }
-    
-    public void incPoints(){
+
+    public void incPoints() {
         points++;
     }
 
@@ -81,26 +79,26 @@ public class PlayQuizBackingBean implements Serializable {
         FacesContext.getCurrentInstance().
                 addMessage(null, new FacesMessage(severity, summary, detail));
     }
-    
-    public boolean isCorrectAnswer(int answer){
+
+    public boolean isCorrectAnswer(int answer) {
         return (answer == correctAnswerIndex);
     }
-    
+
     public void correctAnswer() {
-        if(isAnswered){
+        if (isAnswered) {
             return;
         }
-        
+
         addMessage(FacesMessage.SEVERITY_INFO, "Correct answer", "1 point");
         points++;
         isAnswered = true;
     }
-    
-    public void incorrectAnswer(){
-        if(isAnswered){
+
+    public void incorrectAnswer() {
+        if (isAnswered) {
             return;
         }
-        
+
         addMessage(FacesMessage.SEVERITY_ERROR, "Incorrect answer", "No point for you");
         isAnswered = true;
     }

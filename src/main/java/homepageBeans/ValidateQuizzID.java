@@ -17,6 +17,8 @@ import lombok.Data;
  *
  * @author anton
  */
+
+/*
 @Named
 @Data
 public class ValidateQuizzID implements Serializable {
@@ -38,3 +40,4 @@ public class ValidateQuizzID implements Serializable {
     }
 
 }
+*/

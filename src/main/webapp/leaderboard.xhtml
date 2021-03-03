@@ -15,13 +15,13 @@ and open the template in the editor.
     <h:head>
         <title>Leaderboard</title>
     </h:head>
-    
+
     <h:body>
-        
+
         <ui:composition template="WEB-INF/template/common.xhtml">
             <ui:define name="title">Leaderboard</ui:define>
             <ui:define name="content">
-                
+
                 <h:form>
                     <div class="card">
                         <p:dataTable var="board" value="#{leaderboardBackingBean.board}">
@@ -34,7 +34,7 @@ and open the template in the editor.
                         </p:dataTable>
                     </div>
                 </h:form>
-           </ui:define>
+            </ui:define>
         </ui:composition>
     </h:body>
 </html>

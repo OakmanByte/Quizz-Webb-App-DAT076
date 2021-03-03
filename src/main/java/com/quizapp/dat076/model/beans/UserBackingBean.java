@@ -4,15 +4,11 @@ import com.quizapp.dat076.model.dao.AccountDAO;
 import com.quizapp.dat076.model.entity.Account;
 import com.quizapp.dat076.validators.EmailExists;
 import com.quizapp.dat076.validators.UserExists;
-import java.util.Arrays;
-import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -33,8 +29,9 @@ public class UserBackingBean {
 
     @UserExists
     private String username;
-    @Email @EmailExists
-    private String email; 
+    @Email
+    @EmailExists
+    private String email;
     //@Size(min = 6, max = 12, message= "Password must be between 6 and 12 characters")
     private String password;
     private String userrole;
@@ -57,7 +54,9 @@ public class UserBackingBean {
     }
 
     /**
-     * Creating an Account database entry based on the input data.TODO make a prettier solution
+     * Creating an Account database entry based on the input data.TODO make a
+     * prettier solution
+     *
      * @return
      */
     public String add() {
@@ -69,7 +68,7 @@ public class UserBackingBean {
             username = "";
             email = "";
             password = "";
-            userrole="";
+            userrole = "";
             favoritecategory = "";
             age = 0;
             return "success";
@@ -88,5 +87,5 @@ public class UserBackingBean {
 
         return accountDAO.findAccountByEmail(email) != null
                 || accountDAO.findAccountByUsername(username) != null;
-    }  
+    }
 }

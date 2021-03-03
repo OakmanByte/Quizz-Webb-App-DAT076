@@ -23,20 +23,20 @@ import org.omnifaces.util.Utils;
 @RequestScoped
 @Data
 public class UploadImageBean {
-    
+
     private Part file;
     private byte[] content;
-    
+
     @Inject
     private UserBean userBean;
-    
+
     @EJB
     private AccountDAO accountDAO;
 
     public void read() throws IOException {
         content = Utils.toByteArray(file.getInputStream());
-                 
+
         userBean.getAccount().setProfilePicture(content);
-        accountDAO.update(userBean.getAccount()); 
+        accountDAO.update(userBean.getAccount());
     }
 }

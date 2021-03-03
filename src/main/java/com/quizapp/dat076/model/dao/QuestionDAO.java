@@ -28,17 +28,17 @@ public class QuestionDAO extends AbstractDAO<String, Question> {
     private EntityManager entityManager;
     private JPAQuery query;
     private QQuestion question = QQuestion.question1;
-    
+
     public QuestionDAO() {
         super(Question.class);
         query = new JPAQuery(entityManager);
     }
-    
-    public List<Question> findQuestionsinQuiz(Quiz quiz){
-         query = new JPAQuery(entityManager);
+
+    public List<Question> findQuestionsinQuiz(Quiz quiz) {
+        query = new JPAQuery(entityManager);
 
         return query.from(question).where(question.quiz.eq(quiz)).list(question);
-        
+
     }
 
     public int findCorrectAlternativeByQuestion(String queryQuestion) {
