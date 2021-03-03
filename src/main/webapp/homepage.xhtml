@@ -21,13 +21,13 @@ and open the template in the editor.
     <div>
         <h1 class="rainbow_text_animated"> QUIZZ WEBB APP!</h1> 
     </div>
-  
-        <h:panelGrid id = "playpanel" columns = "1" border = "3"
-                     cellpadding = "40" cellspacing = "0" styleClass="panelgridstyle">
-            <h:panelGroup style = "display:block; text-align:center">
-                <h:button id = "guestloginButton" value = "Play as Guest" outcome ="available_quizzes" styleClass="standardbutton" />
-            </h:panelGroup>
-        </h:panelGrid>
+
+    <h:panelGrid id = "playpanel" columns = "1" border = "3"
+                 cellpadding = "40" cellspacing = "0" styleClass="panelgridstyle">
+        <h:panelGroup style = "display:block; text-align:center">
+            <h:button id = "guestloginButton" value = "Play as Guest" outcome ="available_quizzes" styleClass="standardbutton" />
+        </h:panelGroup>
+    </h:panelGrid>
 
 
     <h:form id = "loginblock">
@@ -38,9 +38,9 @@ and open the template in the editor.
                 <h:outputText value = "Login"/>
             </f:facet>
             <h:outputLabel value = "Username" />
-            <h:inputText id ="username" value="#{loginViewBean.username}"/>
+            <h:inputText id ="username" value="#{userBean.account.username}"/>
             <h:outputLabel value = "Password" />
-            <h:inputSecret id="password" value="#{loginViewBean.password}"/>
+            <h:inputSecret id="password" value="#{userBean.account.password}"/>
 
             <f:facet name = "footer">
                 <h:panelGroup style = "display:block; text-align:center">

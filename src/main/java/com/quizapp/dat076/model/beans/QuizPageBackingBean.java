@@ -30,8 +30,8 @@ public class QuizPageBackingBean implements Serializable {
 
     @EJB
     private QuizDAO quizDAO;
-    
-    public Quiz getQuiz(){
+
+    public Quiz getQuiz() {
         return quizDAO.find(quizId);
     }
 

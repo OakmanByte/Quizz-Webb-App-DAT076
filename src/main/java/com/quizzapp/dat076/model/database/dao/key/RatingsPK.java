@@ -7,7 +7,6 @@ package com.quizzapp.dat076.model.database.dao.key;
 
 import lombok.Data;
 
-import com.quizapp.dat076.model.entity.Ratings;
 import java.io.Serializable;
 
 /**

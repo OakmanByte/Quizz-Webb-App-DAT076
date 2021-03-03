@@ -14,20 +14,19 @@ import javax.security.enterprise.identitystore.IdentityStore;
 /**
  *
  * @author anton
- * @RolesAllowed == tillåt metoder från viss roll (allowed roles atr)
- * implemnt roles in database
+ * @RolesAllowed == tillåt metoder från viss roll (allowed roles atr) implemnt
+ * roles in database
  */
 @ApplicationScoped
 public class DatabaseIdentityStore implements IdentityStore {
-    
+
     @EJB
     private AccountDAO accountDAO;
-    
 
     public CredentialValidationResult validate(UsernamePasswordCredential usernamePasswordCredential) {
-        
+
         Account account = accountDAO.findAccountByUsername(usernamePasswordCredential.getCaller());
-        
+
         if (account != null && account.getPassword().equals(usernamePasswordCredential.getPasswordAsString())) {
             //fill in list with roles that exist get roll from databse and store in list 
             return new CredentialValidationResult(account.getUsername(), new HashSet<>(asList(account.getUserrole())));

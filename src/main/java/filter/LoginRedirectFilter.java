@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author anton
  */
-@WebFilter({"/temp.xhtml","/accountpage.xhtml",})
+@WebFilter({"/temp.xhtml", "/accountpage.xhtml",})
 
 public class LoginRedirectFilter extends HttpFilter {
 

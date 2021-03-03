@@ -4,13 +4,11 @@ import com.quizapp.dat076.model.dao.AccountDAO;
 import com.quizapp.dat076.model.entity.Account;
 import com.quizapp.dat076.validators.EmailExists;
 import com.quizapp.dat076.validators.UserExists;
-import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
@@ -39,6 +37,9 @@ public class UserBackingBean {
             = "Password must be between 6 and 12 characters")
     private String password;
     private String userrole;
+    private String favoritecategory;
+    private int age;
+    private byte[] profilePicture;
 
     @EJB
     private AccountDAO accountDAO;
@@ -49,14 +50,18 @@ public class UserBackingBean {
         email = "";
         password = "";
         userrole = "user";
+        favoritecategory = "";
+        age = 0;
+        //something for profilepicture
     }
 
     /**
-     * Creating an Account database entry based on the input data. TODO make a
-     * prettier solution
+     * Creating an Account database entry based on the input data.
+     *
+     * @return
      */
     public String add() {
-        Account accountToCreate = new Account(username, email, password, userrole, null);
+        Account accountToCreate = new Account(username, email, password, userrole, favoritecategory, age, profilePicture, null);
 
         if (!userExists()) {
             accountDAO.create(accountToCreate);
@@ -65,6 +70,8 @@ public class UserBackingBean {
             email = "";
             password = "";
             userrole = "";
+            favoritecategory = "";
+            age = 0;
             return "success";
         } else {
             return "unsuccess";

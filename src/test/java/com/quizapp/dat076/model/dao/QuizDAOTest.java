@@ -7,6 +7,7 @@ package com.quizapp.dat076.model.dao;
 
 import com.quizapp.dat076.model.entity.Account;
 import com.quizapp.dat076.model.entity.Category;
+import com.quizapp.dat076.model.entity.Question;
 import com.quizapp.dat076.model.entity.Quiz;
 import java.util.List;
 import javax.ejb.EJB;
@@ -16,7 +17,6 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,9 +28,9 @@ import org.junit.runner.RunWith;
 @RunWith(Arquillian.class)
 public class QuizDAOTest {
 
-    Account account1 = new Account("user1", "user1@gmail.com", "password1","user", null);
-    Account account2 = new Account("user2", "user2@gmail.com", "password2", "user",null);
-    Account account3 = new Account("user3", "user3@gmail.com", "password3","user", null);
+    Account account1 = new Account("user1", "user1@gmail.com", "password1", "user", "Science", 20, null, null);
+    Account account2 = new Account("user2", "user2@gmail.com", "password2", "user", "Science", 20, null, null);
+    Account account3 = new Account("user3", "user3@gmail.com", "password3", "user", "Science", 20, null, null);
 
     Category c1 = new Category("General Knowledge");
     Category c2 = new Category("Science");
@@ -47,7 +47,7 @@ public class QuizDAOTest {
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class)
-                .addClasses(QuizDAO.class, Quiz.class, AccountDAO.class, Account.class, CategoryDAO.class, Category.class)
+                .addClasses(QuizDAO.class, Quiz.class, AccountDAO.class, Account.class, CategoryDAO.class, Category.class, Question.class)
                 .addAsResource("META-INF/persistence.xml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
