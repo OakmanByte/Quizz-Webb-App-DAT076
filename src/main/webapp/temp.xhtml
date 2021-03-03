@@ -13,14 +13,14 @@ and open the template in the editor.
     </head>
     <body>
         <div>YOu have logged in!</div>
-        <div> #{loginViewBean.username} </div>
+        <div> #{userBean.username} </div>
 
-        <h:panelGroup rendered="#{loginViewBean.admin}">
+        <h:panelGroup rendered="#{userBean.admin}">
 
             <h2> I am an admin</h2>
 
         </h:panelGroup>
-        <h:panelGroup rendered="#{loginViewBean.user}">
+        <h:panelGroup rendered="#{userBean.user}">
 
             <h2> I am an user</h2>
 

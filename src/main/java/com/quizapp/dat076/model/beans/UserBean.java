@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package homepageBeans;
+package com.quizapp.dat076.model.beans;
 
+import com.quizapp.dat076.model.entity.Account;
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -19,10 +21,13 @@ import lombok.Data;
 @Data
 @Named
 @SessionScoped
-public class LoginViewBean implements Serializable {
-
-    private String password;
-    private String username;
+public class UserBean implements Serializable {
+    
+    private Account account;
+    
+    //private String password;
+    //private String username;
+    
     @Inject
     private SecurityContext securityContext;
 
@@ -33,7 +38,14 @@ public class LoginViewBean implements Serializable {
 
     public boolean isUser() {
 
-        return username != null;
+        return account.getUsername() != null;
+    }
+    
+    @PostConstruct
+    private void init(){
+    
+    account = new Account();
+    
     }
 
 }
