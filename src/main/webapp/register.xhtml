@@ -16,20 +16,17 @@
         <h:form id="RegisterForm">
             <b:container fluid="true">
                 <b:panel title="Register Account" >
-                    <b:panelGrid columns="3" columnClasses="label,field,message" styleClass="panelgridstyle" >
-<!--                        <h:outputLabel for="username" value="Enter a username:" />-->
+                    <b:panelGrid columns="3" columnClasses="label,field,message" >
                         <b:inputText id="username" value="#{user.username}" placeholder="Username"
                                      required="true" requiredMessage="Please enter a username" >
                         </b:inputText>
                         <b:message for="username" />
 
-                        <!--                    <h:outputLabel for="email" value="Enter your email:" />-->
                         <b:inputText id="email" value="#{user.email}" placeholder="Email"
                                      required="true" requiredMessage="Please enter your email, eg:yourid@domain.com">
                         </b:inputText>
                         <b:message for="email" />
 
-                        <!--                    <h:outputLabel for="email" value="Enter a password:" />-->
                         <b:inputSecret id="password" value="#{user.password}" placeholder="Password"
                                        required="true" requiredMessage="Password cannot be empty">
                         </b:inputSecret>
