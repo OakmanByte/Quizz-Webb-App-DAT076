@@ -8,6 +8,7 @@ package com.quizapp.dat076.model.dao;
 import com.quizapp.dat076.model.entity.Account;
 import com.quizapp.dat076.model.entity.Category;
 import com.quizapp.dat076.model.entity.Leaderboard;
+import com.quizapp.dat076.model.entity.Question;
 import com.quizapp.dat076.model.entity.Quiz;
 import com.quizzapp.dat076.model.database.dao.key.LeaderboardPK;
 import java.util.ArrayList;
@@ -62,7 +63,7 @@ public class LeaderboardDAOTest {
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class)
                 .addClasses(LeaderboardDAO.class, Category.class, Quiz.class, Account.class, QuizDAO.class, AccountDAO.class, Leaderboard.class,
-                        LeaderboardPK.class)
+                        LeaderboardPK.class, Question.class)
                 .addAsResource("META-INF/persistence.xml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }

@@ -7,6 +7,7 @@ package com.quizapp.dat076.model.dao;
 
 import com.quizapp.dat076.model.entity.Account;
 import com.quizapp.dat076.model.entity.Category;
+import com.quizapp.dat076.model.entity.Question;
 import com.quizapp.dat076.model.entity.Quiz;
 import java.util.List;
 import javax.ejb.EJB;
@@ -41,7 +42,7 @@ public class AccountDAOTest {
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class)
-                .addClasses(AccountDAO.class, Account.class, QuizDAO.class, Quiz.class, Category.class)
+                .addClasses(AccountDAO.class, Account.class, QuizDAO.class, Quiz.class, Category.class, Question.class)
                 .addAsResource("META-INF/persistence.xml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
