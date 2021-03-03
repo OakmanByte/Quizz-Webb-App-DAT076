@@ -8,19 +8,35 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:o="http://omnifaces.org/ui">
     
     
-    <head>
+    <h:head>
         <title>My Account</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" type = "text/css" href="accountpage.css"> </link> 
-    </head>
+    </h:head>
     <body>       
 <section class="profile">
   <header class="header">
     <div class="details">
-      <img src="ProfilePicturePlaceholder.jpg" alt="John Doe" class="profile-pic"/>
+        
+        <h:form enctype="multipart/form-data">
+    <h:panelGrid columns="3">
+        <o:outputLabel for="file" value="Image" />
+        <o:inputFile id="file" value="#{uploadImageBean.file}" 
+            accept="image/*" acceptMessage="Wrong file type! Should match {2}"
+            maxsize="#{1024 * 1024}" maxsizeMessage="File too large! Should be no more than {2}">
+            <f:ajax listener="#{uploadImageBean.read()}" render="@form" />
+        </o:inputFile>
+        <h:message id="file_m" for="file" />
+    </h:panelGrid>
+   
+            <o:graphicImage value="#{userBean.account.profilePicture}" dataURI="true" width="600" 
+        rendered="#{not empty userBean.account.profilePicture}" class="profile-pic"/> 
+</h:form>
+        
       <h1 class="heading">#{userBean.account.username}</h1>
       <div class="location">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">

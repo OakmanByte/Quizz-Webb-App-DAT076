@@ -25,9 +25,6 @@ public class UserBean implements Serializable {
     
     private Account account;
     
-    //private String password;
-    //private String username;
-    
     @Inject
     private SecurityContext securityContext;
 

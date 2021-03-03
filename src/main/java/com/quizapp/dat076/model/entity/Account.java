@@ -7,9 +7,12 @@ package com.quizapp.dat076.model.entity;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
@@ -45,7 +48,9 @@ public class Account implements Serializable {
     private int age;
     
     //Check out LOB annotation, saving bytestream for user profile picture
-    //private byte[] profilePicture;
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    private byte[] profilePicture;
     //and merge after setter 
 
    
