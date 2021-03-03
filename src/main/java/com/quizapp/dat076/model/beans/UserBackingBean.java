@@ -12,6 +12,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -34,7 +35,7 @@ public class UserBackingBean {
     private String username;
     @Email @EmailExists
     private String email; 
-    @Min(value = 6, message = "Password must be at least 6 characters")
+    //@Size(min = 6, max = 12, message= "Password must be between 6 and 12 characters")
     private String password;
     private String userrole;
     private String favoritecategory;
