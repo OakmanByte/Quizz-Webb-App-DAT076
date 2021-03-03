@@ -42,13 +42,12 @@ public class Ratings implements Serializable {
    
 
     
-    public Ratings(int id,int category, int score, String review, Account creator) {
+    public Ratings(int category, int score, String review, Account creator, Quiz quiz) {
         super();
-        this.id = id;
-
         this.score = score;
         this.review = review;
         this.creator = creator;
+        this.quiz =quiz;
         
     }
     
