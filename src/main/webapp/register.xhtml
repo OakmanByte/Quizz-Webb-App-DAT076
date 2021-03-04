@@ -9,14 +9,13 @@
 
     <h:head>
         <title>Registration Page</title>
-        <link rel="stylesheet" type = "text/css" href="homepage.css"> </link> 
         <link rel="stylesheet" type = "text/css" href="common.css"> </link>
     </h:head>
     <h:body>
         <h:form id="RegisterForm">
             <b:container fluid="true">
                 <b:panel title="Register Account" >
-                    <b:panelGrid columns="3" columnClasses="label,field,message" >
+                    <b:panelGrid columns="1" columnClasses="field" styleClass="panelgridstyle" >
                         <b:inputText id="username" value="#{user.username}" placeholder="Username"
                                      required="true" requiredMessage="Please enter a username" >
                         </b:inputText>
@@ -34,8 +33,7 @@
 
                         <h:panelGroup />
                         <b:commandButton value="Register" type="submit" styleClass="registerbutton" action="#{user.add}" />
-                        <!-- TODO get the styling out of the document -->
-                        <h:outputLink value="index.xhtml" style="color:#ed8d8d;">Home</h:outputLink>
+                        <h:outputLink value="index.xhtml" styleClass="linkcolor">Home</h:outputLink>
                         <h:panelGroup />
                     </b:panelGrid>
                 </b:panel>
