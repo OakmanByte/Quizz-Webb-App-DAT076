@@ -7,13 +7,9 @@ package com.quizapp.dat076.model.entity;
 
 import java.io.Serializable;
 import java.util.List;
-import com.quizapp.dat076.model.entity.Quiz;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -36,6 +32,13 @@ public class Category implements Serializable {
 
     public Category(String category) {
         this.category = category;
+
+    }
+
+    @Override
+    public String toString() {
+
+        return category;
 
     }
 }

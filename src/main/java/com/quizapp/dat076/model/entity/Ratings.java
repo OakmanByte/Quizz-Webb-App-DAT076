@@ -28,68 +28,53 @@ import lombok.NoArgsConstructor;
 @IdClass(RatingsPK.class)
 public class Ratings implements Serializable {
 
-   
-  
-     @Id
-     @GeneratedValue
-      private int id;
-     @Id
-     private int category;
-     private int score;
-     private String review;
-     @ManyToOne private Account creator;
-     @OneToOne  private Quiz quiz;
-   
+    @Id
+    @GeneratedValue
+    private int id;
+    @Id
+    private int category;
+    private int score;
+    private String review;
+    @ManyToOne
+    private Account creator;
+    @OneToOne
+    private Quiz quiz;
 
-    
     public Ratings(int category, int score, String review, Account creator, Quiz quiz) {
         super();
         this.score = score;
         this.review = review;
         this.creator = creator;
-        this.quiz =quiz;
-        
+        this.quiz = quiz;
+
     }
-    
-  
-    
-    public int getId()
-    {
-    return id;
+
+    public int getId() {
+        return id;
     }
-    
-    public void setId(int id)
-    {
-    this.id = id;
+
+    public void setId(int id) {
+        this.id = id;
     }
-    
-    public int getScore()
-    {
+
+    public int getScore() {
         return score;
     }
-    
-    public void setScore(int score)
-    {
+
+    public void setScore(int score) {
         this.score = score;
     }
-    public String getReview()
-    {
-       return review;
+
+    public String getReview() {
+        return review;
     }
-    
-    public void SetReview(String review)
-    {
+
+    public void SetReview(String review) {
         this.review = review;
     }
-  
-   
-    
-    public void setUsername(String username){
+
+    public void setUsername(String username) {
         this.creator.setUsername(username);
     }
-    
-   
-        
-    
-                 
+
 }

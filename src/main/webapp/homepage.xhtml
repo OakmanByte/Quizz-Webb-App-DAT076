@@ -32,9 +32,9 @@ and open the template in the editor.
                     <h:panelGrid id = "loginpanelgrid" columns = "2"
                                  cellspacing = "0" styleClass="panelgridstyle" >
                         <h:outputLabel value = "Username" styleClass = "loginlabels" />
-                        <h:inputText id ="username" value="#{loginViewBean.username}"/>
+                        <h:inputText id ="username" value="#{userBean.account.username}"/>
                         <h:outputLabel value = "Password" styleClass = "loginlabels"/>
-                        <h:inputSecret id="password" value="#{loginViewBean.password}"/>
+                        <h:inputSecret id="password" value="#{userBean.account.password}"/>
                     </h:panelGrid>
 
                     <h:panelGroup styleClass = "blockpanelgroup">

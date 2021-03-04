@@ -5,13 +5,11 @@
  */
 package com.quizapp.dat076.controller;
 
-
 import com.quizapp.dat076.model.entity.Ratings;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import javax.enterprise.context.ApplicationScoped;
-import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 /**
@@ -21,14 +19,14 @@ import javax.inject.Named;
 @Named
 @ApplicationScoped
 public class RatingsController {
-    
-         List<Ratings> ratings;
 
-        public List<Ratings> getRatings() {
+    List<Ratings> ratings;
+
+    public List<Ratings> getRatings() {
         return new ArrayList<>(ratings);
     }
 
-      public List<Ratings> getRatings(int size) {
+    public List<Ratings> getRatings(int size) {
 
         if (size > ratings.size()) {
             Random rand = new Random();
@@ -40,13 +38,9 @@ public class RatingsController {
             }
 
             return randomList;
-        }
-
-        else {
+        } else {
             return new ArrayList<>(ratings.subList(0, size));
         }
     }
 
-  
-    
 }

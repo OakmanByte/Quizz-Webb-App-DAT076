@@ -34,7 +34,9 @@ public class Quiz implements Serializable {
     @ManyToOne
     private Category quizzCategory;
 
-    //@OneToMany(mappedBy = "quiz") private List<Question> questions;
+    @OneToMany(mappedBy = "quiz")
+    private List<Question> questions;
+
     /*public Quiz(String title, Account creator){
         this.title = title;
         this.creator = creator;
@@ -43,6 +45,7 @@ public class Quiz implements Serializable {
         this.title = title;
         this.creator = account;
         this.quizzCategory = cat;
+
     }
 
 }

@@ -11,29 +11,29 @@
     <h:body>
 
         <ui:composition template="WEB-INF/template/common.xhtml">
-            
+
             <ui:define name="content">
-                
+
                 <h:form>
-                    
+
                     <p:dataTable value="#{ratingsListBean.ratings}" var="ratings">
-                        
+
                         <f:facet name="header">
                             List of Ratings
                         </f:facet>
-                        
+
                         <p:column headerText="Score" sortBy="#{ratings.score}" >#{ratings.score}</p:column>
                         <p:column headerText="Review" sortBy="#{ratings.review}" >#{ratings.review}</p:column>
                         <p:column headerText="Creator" >#{ratings.creator.username}</p:column>
-                        
-                 
-                        
+
+
+
                     </p:dataTable>
-                    
+
                 </h:form>
-                
+
             </ui:define>
-            
+
         </ui:composition>
     </h:body>
 </html>

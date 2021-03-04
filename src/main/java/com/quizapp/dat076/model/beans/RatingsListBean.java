@@ -5,21 +5,17 @@
  */
 package com.quizapp.dat076.model.beans;
 
-import com.quizapp.dat076.controller.RatingsController;
 import com.quizapp.dat076.model.dao.RatingsDAO;
 import com.quizapp.dat076.model.entity.Ratings;
-import homepageBeans.LoginViewBean;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.List;
-import java.util.UUID;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import org.primefaces.PrimeFaces;
-
 
 /**
  *
@@ -28,26 +24,26 @@ import org.primefaces.PrimeFaces;
 @Named
 @ViewScoped
 public class RatingsListBean implements Serializable {
-    
-      private List<Ratings> allRatings;
-      private Ratings selectedRating;
-      private List<Ratings> selectedRatings;
-    
+
+    private List<Ratings> allRatings;
+    private Ratings selectedRating;
+    private List<Ratings> selectedRatings;
+
     @Inject
     private RatingsDAO ratingsDAO;
- 
-  //  private RatingsController ratingsController;
-    
+
+    //  private RatingsController ratingsController;
     @PostConstruct
-    public void postConstruct(){
+    public void postConstruct() {
         allRatings = ratingsDAO.findAll();
-        
+
     }
-    
-    public List<Ratings> getRatings(){
+
+    public List<Ratings> getRatings() {
         return allRatings;
     }
-       public Ratings getSelectedRatings() {
+
+    public Ratings getSelectedRatings() {
         return selectedRating;
     }
 
@@ -66,8 +62,6 @@ public class RatingsListBean implements Serializable {
     public void openNew() {
         this.selectedRating = new Ratings();
     }
-    
-    
 
     public void deleteRating() {
         this.allRatings.remove(this.selectedRating);
@@ -96,6 +90,5 @@ public class RatingsListBean implements Serializable {
         PrimeFaces.current().ajax().update("form:messages", "form:dt-ratings");
         PrimeFaces.current().executeScript("PF('dtratings').clearFilters()");
     }
-    
-    
+
 }

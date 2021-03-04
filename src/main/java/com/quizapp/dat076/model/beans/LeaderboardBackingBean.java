@@ -7,7 +7,6 @@ package com.quizapp.dat076.model.beans;
 
 import com.quizapp.dat076.controller.LeaderboardController;
 import com.quizapp.dat076.model.dao.LeaderboardDAO;
-import com.quizapp.dat076.model.entity.Account;
 import com.quizapp.dat076.model.entity.Leaderboard;
 import java.io.Serializable;
 import java.util.List;
