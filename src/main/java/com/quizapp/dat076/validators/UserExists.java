@@ -16,8 +16,9 @@ import javax.validation.Payload;
  * and open the template in the editor.
  */
 /**
- *
+ * Not sure
  * @author Emma Dirnberger
+ * @see com.quizapp.dat076.validators.UserExistsValidator
  */
 @Constraint(validatedBy = UserExistsValidator.class)
 @Target({FIELD, PARAMETER})

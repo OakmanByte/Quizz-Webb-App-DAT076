@@ -23,7 +23,7 @@ import lombok.Data;
 import org.omnifaces.cdi.ViewScoped;
 
 /**
- *
+ * Backing Bean Class
  * @author Albin
  */
 @Data

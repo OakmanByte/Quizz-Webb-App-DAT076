@@ -17,8 +17,10 @@ import javax.inject.Named;
 import lombok.Data;
 
 /**
+ * Backing Bean for accountssettingspage.xhtml
+ * @author Anton Ekman
+ * 
  *
- * @author anton
  */
 @Data
 @Named

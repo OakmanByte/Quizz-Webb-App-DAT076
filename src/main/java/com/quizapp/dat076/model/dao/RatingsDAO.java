@@ -16,8 +16,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import lombok.Getter;
 
 /**
- *
- * @author anton
+ * A DAO for the entity ratings. Has methods for retrivng all ratings, finding highest score with or without a specifc score argument. 
+ * @author Unknown
  */
 @Stateless
 public class RatingsDAO extends AbstractDAO<String, Ratings> {

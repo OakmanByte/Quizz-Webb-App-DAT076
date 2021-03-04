@@ -18,7 +18,7 @@ import javax.inject.Inject;
 import lombok.Data;
 
 /**
- *
+ * Backing Bean for leaderboard.xhtml.
  * @author Rebecka
  */
 @Data

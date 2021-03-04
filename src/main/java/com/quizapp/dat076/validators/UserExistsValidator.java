@@ -6,7 +6,7 @@ package com.quizapp.dat076.validators;
  * and open the template in the editor.
  */
 /**
- *
+ * A validator class for checking if an username already exists. Used for registrations.
  * @author Emma Dirnberger
  */
 import com.quizapp.dat076.model.dao.AccountDAO;

@@ -15,7 +15,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import lombok.Getter;
 
-/*
+/**
+ * A DAO for the leaderboard "entity". Has a method for retriving a leaderboard from a quizid. 
  * @author Rebecka Axelborn
  */
 @Stateless

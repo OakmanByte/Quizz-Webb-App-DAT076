@@ -18,8 +18,8 @@ import javax.faces.view.ViewScoped;
 import org.primefaces.PrimeFaces;
 
 /**
- *
- * @author Antpack
+ * Backing Bean for ratingsresults.xhtml
+ * @author Anton Blomdell
  */
 @Named
 @ViewScoped

@@ -15,8 +15,10 @@ import javax.inject.Named;
 import lombok.Data;
 
 /**
- *
+ * Controller class for the LeaderboardBackingBean. Handles the retrival of accounts that is displayed on the leaderboard. 
  * @author Rebecka
+ * @see com.quizapp.dat076.model.beans.LeaderboardBackingBean
+ *
  */
 @Named
 @ApplicationScoped

@@ -17,7 +17,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- *
+ * Entity class for a leaderboard that can be used for each unique quizz.
  * @author Rebec
  */
 @Data

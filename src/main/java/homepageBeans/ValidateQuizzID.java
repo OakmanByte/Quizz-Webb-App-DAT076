@@ -14,7 +14,7 @@ import javax.inject.Named;
 import lombok.Data;
 
 /**
- *
+ * Not used atm, for homepage if you wanna enter quizz id and go to quizz id instead of what we do now.
  * @author anton
  */
 

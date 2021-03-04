@@ -10,8 +10,8 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- *
- * @author anton Composite key for Ratings since it needs the quiz id aswell
+ * A class for handling composite keys for the ratings entity.
+ * @author Anton Ekman
  */
 @Data
 public class RatingsPK implements Serializable {

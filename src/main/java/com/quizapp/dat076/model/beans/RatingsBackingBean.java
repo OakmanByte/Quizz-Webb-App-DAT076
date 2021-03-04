@@ -17,8 +17,8 @@ import javax.inject.Named;
 import lombok.Data;
 
 /**
- *
- * @author Antpack
+ * Backing Bean for ratings.xhtml and ratingsedit.xhtml
+ * @author Anton Blomdell
  */
 @Data
 @Named

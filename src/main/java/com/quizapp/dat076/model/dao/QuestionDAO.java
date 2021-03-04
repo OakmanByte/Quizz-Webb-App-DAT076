@@ -16,8 +16,8 @@ import javax.persistence.PersistenceContext;
 import lombok.Getter;
 
 /**
- *
- * @author anton
+ * A DAO for the question entity. Has a method for retriving all questions in a quizz.
+ * @author Anton Ekman
  */
 //Make sure correct Datatype in <>
 @Stateless

@@ -12,10 +12,9 @@ import static javax.security.enterprise.identitystore.CredentialValidationResult
 import javax.security.enterprise.identitystore.IdentityStore;
 
 /**
- *
- * @author anton
- * @RolesAllowed == tillåt metoder från viss roll (allowed roles atr) implemnt
- * roles in database
+ * This class is an identitystore that handles the validation of a caller's credentialss. In this case it's managing the login functionallity of the website.
+ * @author Anton Ekman 
+ * 
  */
 @ApplicationScoped
 public class DatabaseIdentityStore implements IdentityStore {

@@ -15,7 +15,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- *
+ * Entity class for a category that a quizz can have.
  * @author Albin
  */
 @Data

@@ -16,7 +16,7 @@ import lombok.Data;
 import org.omnifaces.cdi.Param;
 
 /**
- *
+ * Backing Bean for available_quizzes.xhtml
  * @author Albin
  */
 @Data

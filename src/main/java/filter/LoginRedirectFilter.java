@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
- * @author anton
+ * A filter class that handles filteration of diffrent pages based on the users roll. Makes it possible to restric certain pages from none users or none admins. 
+ * @author Anton Ekman
  */
 @WebFilter({"/temp.xhtml", "/accountpage.xhtml",})
 

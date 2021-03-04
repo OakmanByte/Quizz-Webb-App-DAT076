@@ -22,8 +22,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- *
+ * A test class for the CategoryDAO class.
  * @author Rebecka Axelborn
+ * @see com.quizapp.dat076.model.dao.CategoryDAO
  */
 @RunWith(Arquillian.class)
 public class CategoryDAOTest {

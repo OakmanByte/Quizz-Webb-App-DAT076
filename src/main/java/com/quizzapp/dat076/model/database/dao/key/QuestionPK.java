@@ -9,8 +9,8 @@ import java.io.Serializable;
 import lombok.Data;
 
 /**
- *
- * @author anton Composite key for Question since it needs the quiz id aswell
+ * A class for handling composite keys for the question entity.
+ * @author Anton Ekman 
  */
 @Data
 public class QuestionPK implements Serializable {

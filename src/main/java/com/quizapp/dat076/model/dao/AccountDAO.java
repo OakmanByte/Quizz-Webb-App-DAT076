@@ -14,8 +14,9 @@ import javax.persistence.PersistenceContext;
 import lombok.Getter;
 
 /**
- *
- * @author Emma Dirnberger, Anton
+ * A DAO for the account entity. Has methods for retriving accounts with an email and/or username. 
+ * @author Emma Dirnberger
+ * @author Anton Blomdell
  */
 @Stateless
 public class AccountDAO extends AbstractDAO<String, Account> {

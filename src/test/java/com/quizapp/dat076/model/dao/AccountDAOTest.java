@@ -23,8 +23,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- *
+ * A test class for the accountDAO class.
  * @author Emma Dirnberger
+ * @see com.quizapp.dat076.model.dao.AccountDAO
  */
 @RunWith(Arquillian.class)
 public class AccountDAOTest {

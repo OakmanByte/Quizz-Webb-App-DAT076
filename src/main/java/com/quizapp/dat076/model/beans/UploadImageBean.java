@@ -16,8 +16,9 @@ import lombok.Data;
 import org.omnifaces.util.Utils;
 
 /**
- *
- * @author anton
+ * Backing bean for handling uploading of profile pictures in accountpage.xhtml. Utilizes omnifaces inputFile component. 
+ * @author Anton Ekman
+ * @author Omnifaces unknown contributor
  */
 @Named
 @RequestScoped

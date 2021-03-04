@@ -26,8 +26,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- *
- * @author Rebec
+ * A test class for the LeaderboardDAO class.
+ * @author Rebecka
+ * @see com.quizapp.dat076.model.dao.LeaderboardDAO
  */
 @RunWith(Arquillian.class)
 public class LeaderboardDAOTest {

@@ -13,8 +13,9 @@ import javax.inject.Named;
 import lombok.Data;
 
 /**
- *
+ * Controller for PlayQuizBackingBean class. Handles the function of going to the next question aswell checking if the correct answer was choosen by the player when playing the quiz.
  * @author Albin
+ * @see com.quizapp.dat076.model.beans.PlayQuizBackingBean
  */
 @Data
 @ViewScoped

@@ -13,8 +13,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- *
- * @author Rebec
+ * A class for handling composite keys for the leaderboard "entity".
+ * @author Rebecka
  */
 @Data
 @Embeddable

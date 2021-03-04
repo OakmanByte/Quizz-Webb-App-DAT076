@@ -18,8 +18,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- *
- * @author anton
+ * Entity class for the ratings entity. 
+ * @author Anton Ekman
  */
 @Data
 @Entity

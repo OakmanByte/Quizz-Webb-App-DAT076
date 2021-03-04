@@ -20,8 +20,9 @@ import lombok.Data;
 import org.omnifaces.cdi.Param;
 
 /**
- *
- * @author Anton Blomdell / Albin
+ * Backing Bean for playquiz.xhtml.
+ * @author Anton Blomdell
+ * @author Albin
  */
 @Data
 @Named

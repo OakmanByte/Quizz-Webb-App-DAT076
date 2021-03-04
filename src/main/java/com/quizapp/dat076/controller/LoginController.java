@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package homepageBeans;
+package com.quizapp.dat076.controller;
 
 import com.quizapp.dat076.model.beans.UserBean;
 import com.quizapp.dat076.model.dao.AccountDAO;
@@ -21,6 +21,12 @@ import javax.security.enterprise.credential.Credential;
 import javax.security.enterprise.credential.UsernamePasswordCredential;
 import lombok.Data;
 import org.omnifaces.util.Faces;
+
+/**
+ * Controller class for login authentication.
+ * @author Anton Ekman
+ * @see com.quizapp.dat076.model.DatabaseIdentityStore
+ */
 
 @DeclareRoles({"admin", "user"})
 @CustomFormAuthenticationMechanismDefinition(loginToContinue = @LoginToContinue(useForwardToLogin = false))

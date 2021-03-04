@@ -22,8 +22,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- *
+ * A test class for the QuizDAO class.
  * @author Albin
+ * @see com.quizapp.dat076.model.dao.QuizDAO
  */
 @RunWith(Arquillian.class)
 public class QuizDAOTest {

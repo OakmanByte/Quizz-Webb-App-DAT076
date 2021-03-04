@@ -19,8 +19,8 @@ import lombok.Setter;
  * and open the template in the editor.
  */
 /**
- *
- * @author Emma Dirnberger
+ * Backing bean for register.xhtml. Handles the registration and creation of a user. 
+ * @author Emma
  */
 @RequestScoped
 @Setter

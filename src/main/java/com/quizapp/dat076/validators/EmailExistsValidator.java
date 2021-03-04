@@ -6,8 +6,8 @@ package com.quizapp.dat076.validators;
  * and open the template in the editor.
  */
 /**
- *
- * @author Rebec
+ * A validator class for checking if an email already exists. Used for registrations.
+ * @author Rebecka
  */
 import com.quizapp.dat076.model.dao.AccountDAO;
 import static javax.validation.constraintvalidation.ValidationTarget.ANNOTATED_ELEMENT;

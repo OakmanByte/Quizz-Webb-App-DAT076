@@ -24,8 +24,8 @@ import javax.ejb.Singleton;
 import javax.ejb.Startup;
 
 /**
- *
- * @author Rebec
+ * Temporary class for initilization each run of the program with finished data in the databsae such as accounts, quizzes, categories, questions etc. Used for work not meant for final product.
+ * @author Rebecka
  */
 @Startup
 @Singleton

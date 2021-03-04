@@ -17,6 +17,13 @@ import lombok.NoArgsConstructor;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+/**
+ * Entity Class for a general quiz, utilizing 2 other entites for it's identification.  
+ * @author Unknown
+ * @see com.quizapp.dat076.model.entity.Account
+ * @see com.quizapp.dat076.model.entity.Category
+ */
+
 @Data
 @Entity
 @NoArgsConstructor
