@@ -23,7 +23,7 @@ import lombok.Data;
 import org.omnifaces.cdi.ViewScoped;
 
 /**
- * Backing Bean Class
+ * Backing Bean for available_quizzes.xhtml
  * @author Albin
  */
 @Data
