@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:f="http://java.sun.com/jsf/core"
+       xmlns:p="http://primefaces.org/ui"
+       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+    
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+          <ui:composition template="WEB-INF/template/common.xhtml">
+              <ui:define name="content">
+                  <h:form>
+                      <h3 style ="text-align: center; margin-left: 20px; font-size: 25px; "> Score : #{endQuizBackingBean.points} </h3>
+                  
+             
+                      
+                      <h3 style ="text-align: center; margin-left: 20px; font-size: 25px; "> Creator :  #{endQuizBackingBean.fetchQuiz().creator.username}  </h3>
+                      
+              
+                      
+                     <div class="card" style="text-align: center">
+                      <div style="text-align: center; margin-right:  1em; margin-top: 0.5em" >
+                        <p:commandButton value="Leave Ratings" action="#{playQuizController.redirectRatings()}"  icon="fa fa-fw fa-arrow-right" update="@form" />
+                    </div>
+                      <div style="text-align: center; margin-right: 1em; margin-top: 0.5em" >
+                        <p:commandButton value="Play More Quiz" action="#{playQuizController.redirectPlay()}" icon="fa fa-fw fa-arrow-right" update="@form" />
+                    </div>
+                      <div style="text-align: center; margin-right: 1em; margin-top: 0.5em" >
+                        <p:commandButton value="Account Page" action="#{playQuizController.redirectAccount()}" icon="fa fa-fw fa-arrow-right" update="@form" />
+                    </div>
+                     </div>
+                  </h:form> 
+              
+              
+              </ui:define>
+
+          
+          
+          </ui:composition>
+     
+    </h:body>
+</html>
+

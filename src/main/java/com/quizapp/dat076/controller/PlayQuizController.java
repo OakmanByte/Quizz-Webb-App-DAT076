@@ -6,7 +6,11 @@
 package com.quizapp.dat076.controller;
 
 import com.quizapp.dat076.model.beans.PlayQuizBackingBean;
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -24,7 +28,8 @@ public class PlayQuizController implements Serializable {
 
     @Inject
     private PlayQuizBackingBean playQuizBackingBean;
-
+    
+   
     public void onAnswer(int answerIndex) {
 
         if (answerIndex == playQuizBackingBean.getCorrectAnswerIndex()) {
@@ -38,5 +43,30 @@ public class PlayQuizController implements Serializable {
     public void nextQuestion() {
         playQuizBackingBean.nextQuestion();
     }
-
+    
+    public String redirectRatings(){
+    
+    return "ratings.xhtml" + "?faces-redirect=true";
+    }
+    
+    public String redirectAccount(){
+    
+    return "accountpage.xhtml" + "?faces-redirect=true";
+    }
+    
+    public String redirectPlay(){
+    
+    return "available_quizzes.xhtml" + "?faces-redirect=true";
+    }
+    public void EndQuiz(){
+        
+        playQuizBackingBean.isEndQuiz();
+      
+        try {
+            FacesContext.getCurrentInstance()
+                    .getExternalContext().redirect("endquiz.xhtml");
+        } catch (IOException ex) {
+            Logger.getLogger(PlayQuizController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

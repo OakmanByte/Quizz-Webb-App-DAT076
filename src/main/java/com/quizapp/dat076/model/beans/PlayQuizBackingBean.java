@@ -46,7 +46,10 @@ public class PlayQuizBackingBean implements Serializable {
 
     private boolean isAnswered;
     private int points;
+    
 
+    private boolean isFinished;
+    
     /*public List<Question> getQuestions() {
 
         questions = questionDAO.findQuestionsinQuiz(quizDAO.find(quizId));
@@ -102,6 +105,15 @@ public class PlayQuizBackingBean implements Serializable {
 
         addMessage(FacesMessage.SEVERITY_ERROR, "Incorrect answer", "No point for you");
         isAnswered = true;
+    }
+    
+    
+    
+    public void isEndQuiz(){
+   
+     
+            isFinished = true;
+     
     }
 
 }

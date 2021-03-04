@@ -4,7 +4,7 @@
        xmlns:h="http://java.sun.com/jsf/html"
        xmlns:f="http://java.sun.com/jsf/core"
        xmlns:p="http://primefaces.org/ui"
-       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">>
+       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 
     <h:head>
@@ -58,6 +58,14 @@
 
                     <div style="text-align: right; margin-right: 1em; margin-top: 0.5em" >
                         <p:commandButton value="Next question" action="#{playQuizController.nextQuestion()}" disabled="#{!playQuizBackingBean.answered}" icon="fa fa-fw fa-arrow-right" update="@form" />
+                    </div>
+                    
+                     <div style="text-align: left; margin-right: 1em; margin-top: 0.5em;" >
+                         <p:button href="endquiz.xhtml" icon="fa fa-fw fa-arrow-right" value="Go to end quiz"> 
+                             <f:param name="quizId" value="#{playQuizBackingBean.quizId}"/>
+                           <f:param name="points" value="#{playQuizBackingBean.points}"/>
+                         </p:button>
+                        
                     </div>
 
 
