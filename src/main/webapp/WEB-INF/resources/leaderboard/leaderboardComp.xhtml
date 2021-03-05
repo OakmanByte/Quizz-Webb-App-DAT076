@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <cc:interface>
+        <cc:attribute name="value"/>
+        <cc:implementation>
+            <c:if test="#{cc.attrs.value.size()==0}">
+                <h1 >No players yet</h1>
+            </c:if>
+            <c:if test="#{cc.attrs.value.size()!=0}">
+                <h:form>
+
+
+                    <div class="card">
+                        <p:dataTable var="board" value="#{cc.attrs.value}" >
+                            <p:column headerText="User">
+                                <h:outputText value="#{board.account.username}" />
+                            </p:column>
+                            <p:column headerText="Score">
+                                <h:outputText value="#{board.score}" />
+                            </p:column>
+                        </p:dataTable>
+                    </div>
+
+                </h:form>
+            </c:if>
+        </cc:implementation> 
+
+    </cc:interface>
+</html>
