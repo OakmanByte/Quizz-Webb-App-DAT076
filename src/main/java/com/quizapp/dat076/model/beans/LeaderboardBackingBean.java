@@ -35,16 +35,19 @@ public class LeaderboardBackingBean implements Serializable {
     @Inject
     private LeaderboardController controller;
 
-    @PostConstruct
-    public void init() {
-        board = leaderboardDAO.findScoresByQuizID(1);
+   // @PostConstruct
+    /*public void init() {
+        
         //board = controller.getAccounts(board,8);
-    }
+    }*/
 
-    public List<Leaderboard> getBoard() {
+    public List<Leaderboard> getBoard(int id) {
+        board = leaderboardDAO.findScoresByQuizID(id);
+        if(board!=null){
         board.sort((l1, l2)
                 -> l2.getScore().compareTo(
                         l1.getScore()));
+        }
         return board;
     }
 
