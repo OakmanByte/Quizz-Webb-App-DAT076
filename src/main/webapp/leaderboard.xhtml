@@ -18,13 +18,15 @@ and open the template in the editor.
     
     <h:body>
         
-        <ui:composition template="WEB-INF/template/common.xhtml">
-            <ui:define name="title">Leaderboard</ui:define>
-            <ui:define name="content">
-                
+  
                 <h:form>
+                    <p>#{leaderboardBackingBean.board.size()}</p>
+                    <c:if test="#{leaderboardBackingBean.board.size()==0}">
+                    <h1>No players yet</h1>
+                    </c:if>
+                    <c:otherwise>
                     <div class="card">
-                        <p:dataTable var="board" value="#{leaderboardBackingBean.board}">
+                        <p:dataTable var="board" value="#{leaderboardBackingBean.board}" rendered ="#{not empty leaderboardBackingBean.board}" >
                             <p:column headerText="User">
                                 <h:outputText value="#{board.account.username}" />
                             </p:column>
@@ -33,8 +35,8 @@ and open the template in the editor.
                             </p:column>
                         </p:dataTable>
                     </div>
+                    </c:otherwise>
                 </h:form>
-           </ui:define>
-        </ui:composition>
+
     </h:body>
 </html>
