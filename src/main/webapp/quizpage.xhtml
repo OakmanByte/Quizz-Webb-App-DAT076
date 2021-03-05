@@ -9,14 +9,16 @@ and open the template in the editor.
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:ld="http://java.sun.com/jsf/composite/leaderboard"
+      xmlns:b="http://bootsfaces.net/ui">
     <h:head>
         <title>QuizPage</title>
     </h:head>
 
     <h:body>
 
-        <ui:composition template="WEB-INF/template/common.xhtml">
+     <ui:composition template="WEB-INF/template/common.xhtml">
 
             <ui:define name="content">
 
@@ -29,6 +31,8 @@ and open the template in the editor.
                 <div style="text-align: center">
                     <p:button value="Start quiz" icon="fa fa-fw fa-play-circle" href="."/>
                 </div>
+                
+                <ld:leaderboardComp value="#{leaderboardBackingBean.getBoard(quizPageBackingBean.quiz.id)}"></ld:leaderboardComp>
 
             </ui:define>
 
