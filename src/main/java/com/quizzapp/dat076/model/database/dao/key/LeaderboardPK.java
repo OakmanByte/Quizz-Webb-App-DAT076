@@ -13,18 +13,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- *
- * @author Rebec
+ * A class for handling composite keys for the leaderboard "entity".
+ * @author Rebecka
  */
 @Data
 @Embeddable
 @NoArgsConstructor
 @AllArgsConstructor
 public class LeaderboardPK implements Serializable {
-    @Column(name="user_name")
+
+    @Column(name = "user_name")
     String username;
-    
-    @Column(name="quiz_id")
+
+    @Column(name = "quiz_id")
     int quizID;
-    
+
 }

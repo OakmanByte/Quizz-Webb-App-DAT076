@@ -9,37 +9,32 @@
 
     <h:head>
         <title>Registration Page</title>
-        <link rel="stylesheet" type = "text/css" href="homepage.css"> </link> 
         <link rel="stylesheet" type = "text/css" href="common.css"> </link>
     </h:head>
     <h:body>
         <h:form id="RegisterForm">
             <b:container fluid="true">
-                <b:panel id="test" title="Register Account" >
-                    <b:panelGrid columns="3" columnClasses="label,field,message" styleClass="panelgridstyle" >
-<!--                        <h:outputLabel for="username" value="Enter a username:" />-->
+                <b:panel title="Register Account" >
+                    <b:panelGrid columns="1" columnClasses="field" styleClass="panelgridstyle" >
                         <b:inputText id="username" value="#{user.username}" placeholder="Username"
                                      required="true" requiredMessage="Please enter a username" >
                         </b:inputText>
                         <b:message for="username" />
 
-                        <!--                    <h:outputLabel for="email" value="Enter your email:" />-->
                         <b:inputText id="email" value="#{user.email}" placeholder="Email"
                                      required="true" requiredMessage="Please enter your email, eg:yourid@domain.com">
                         </b:inputText>
                         <b:message for="email" />
 
-                        <!--                    <h:outputLabel for="email" value="Enter a password:" />-->
                         <b:inputSecret id="password" value="#{user.password}" placeholder="Password"
                                        required="true" requiredMessage="Password cannot be empty">
-                            <f:validateLength minimum="6" maximum="50" />
                         </b:inputSecret>
                         <b:message for="password" />
 
                         <h:panelGroup />
-                        <b:commandButton id="registerButton" value="Register" type="submit" action="#{user.add}" />
+                        <b:commandButton value="Register" type="submit" styleClass="registerbutton" action="#{user.add}" />
+                        <h:outputLink value="index.xhtml" styleClass="linkcolor">Home</h:outputLink>
                         <h:panelGroup />
-                        <h:outputLink value="index.xhtml">Home</h:outputLink>
                     </b:panelGrid>
                 </b:panel>
             </b:container>

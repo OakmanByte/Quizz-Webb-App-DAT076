@@ -12,26 +12,18 @@
 }
 
 .rainbow_text_animated {
+/*    TODO put all colors in a file*/
     background: linear-gradient(to right, #6666ff, #0099ff , #00ff00, #ff3399, #6666ff);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     animation: rainbow_animation 12s ease-in-out infinite;
     background-size: 400% 100%;
-}
-
-
-body {
-    background-image: url(homepagebackground.jpg);
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    padding: 0.80em;
 }
 
 h1 {
+    /*   TODO change to em*/
     font-size: 50px;
     text-align: center;
     font-family: Brush Script MT, cursive;
@@ -62,22 +54,85 @@ h2 {
 }
 
 .standardbutton{
-
-    background-color: #0099ff;
-    border: none;
-    padding: 15px 32px;
+    color: #ed8d8d;
+    background-color: #393232;
+    border-color: black;
+    padding: 1em 2em;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin-right: 10px;
-    
+    font-size: 1em;
+    margin-right: 2em;
+    margin-left: 2em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+
+}
+
+.standardbutton:hover {
+    color: #ed8d8d;
+    background-color: #8d6262;
+    border-color: black;
+}
+
+.standardbutton:active:focus {
+    color: #393232;
+    background-color: #8d6262;
+    border-color: black;
+}
+
+.guestplaybutton{
+    color: #29c7ac;
+    background-color: #393232;
+    border-color: black;
+    padding: 1em 2em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    margin: 2em;
+
+}
+
+.guestplaybutton:hover {
+    color: #29c7ac;;
+    background-color: #008080;
+    border-color: black;
+}
+
+.guestplaybutton:active:focus {
+    color: #393232;
+    background-color: #008080;
+    border-color: black;
+}
+
+.blockpanelgroup {
+    display: block; 
+    text-align: center;
 }
 
 .panelgridstyle td {
-    background-color: #DCDDDF;
+    background-color: #4d4545;
     text-align: center;
-    
+    margin: 0 auto;
 }
 
+.loginpanel {
+    width: 30%; 
+    margin: 0 auto;
+}
+
+.loginlabels {
+    color: #ed8d8d; 
+    padding: 30px; 
+    margin: 0 auto;
+}
+
+.linkcolor {
+    color: #29c7ac;
+}
+
+.linkcolor:hover {
+    color: #008080;
+}
 

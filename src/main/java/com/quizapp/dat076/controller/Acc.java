@@ -9,9 +9,10 @@ import java.util.List;
 
 /**
  *
- * @author Rebec
+ * IDK?
  */
 public class Acc {
+
     private String username;
     private String email;
     private String password;
@@ -20,5 +21,5 @@ public class Acc {
     Acc(String rebecka, String rebeckamecom, String psgjsg, Object object) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

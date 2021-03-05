@@ -5,28 +5,20 @@
  */
 package com.quizapp.dat076.controller;
 
-import com.quizapp.dat076.model.entity.Account;
 import com.quizapp.dat076.model.entity.Leaderboard;
-import com.quizapp.dat076.model.entity.Quiz;
-import com.quizapp.dat076.model.beans.LeaderboardBackingBean;
-import com.quizapp.dat076.model.dao.AccountDAO;
-import com.quizapp.dat076.model.dao.LeaderboardDAO;
-import com.quizapp.dat076.model.dao.QuizDAO;
-import com.quizzapp.dat076.model.database.dao.key.LeaderboardPK;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 import lombok.Data;
 
 /**
- *
+ * Controller class for the LeaderboardBackingBean. Handles the retrival of accounts that is displayed on the leaderboard. 
  * @author Rebecka
+ * @see com.quizapp.dat076.model.beans.LeaderboardBackingBean
+ *
  */
 @Named
 @ApplicationScoped

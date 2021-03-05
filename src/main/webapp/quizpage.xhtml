@@ -29,7 +29,9 @@ and open the template in the editor.
                 <h2 style="text-align: center">Quiz created by:  #{quizPageBackingBean.quiz.creator.username}</h2>
 
                 <div style="text-align: center">
-                    <p:button value="Start quiz" icon="fa fa-fw fa-play-circle" href="."/>
+                    <p:button href="playquiz.xhtml" icon="fa fa-fw fa-play-circle" value="go to play quiz">
+                        <f:param name="quizId" value="#{quizPageBackingBean.quizId}"/>
+                    </p:button>
                 </div>
                 
                 <ld:leaderboardComp value="#{leaderboardBackingBean.getBoard(quizPageBackingBean.quiz.id)}"></ld:leaderboardComp>

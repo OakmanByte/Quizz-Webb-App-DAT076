@@ -15,10 +15,9 @@ and open the template in the editor.
     <h:head>
         <title>Leaderboard</title>
     </h:head>
-    
+
     <h:body>
-        
-  
+
                 <h:form>
                     <p>#{leaderboardBackingBean.board.size()}</p>
                     <c:if test="#{leaderboardBackingBean.board.size()==0}">
@@ -37,6 +36,5 @@ and open the template in the editor.
                     </div>
                     </c:otherwise>
                 </h:form>
-
     </h:body>
 </html>

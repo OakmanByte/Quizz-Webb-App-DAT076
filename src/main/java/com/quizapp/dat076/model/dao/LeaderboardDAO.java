@@ -15,28 +15,29 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import lombok.Getter;
 
-/*
+/**
+ * A DAO for the leaderboard "entity". Has a method for retriving a leaderboard from a quizid. 
  * @author Rebecka Axelborn
  */
 @Stateless
-public class LeaderboardDAO extends AbstractDAO<String,Leaderboard>{
+public class LeaderboardDAO extends AbstractDAO<String, Leaderboard> {
 
-    @Getter @PersistenceContext(unitName = "QuizApp")
+    @Getter
+    @PersistenceContext(unitName = "QuizApp")
     private EntityManager entityManager;
     private JPAQuery query;
     private QLeaderboard qLeaderboard = QLeaderboard.leaderboard;
-    
-    public LeaderboardDAO(){
+
+    public LeaderboardDAO() {
         super(Leaderboard.class);
-        query=new JPAQuery(entityManager);
+        query = new JPAQuery(entityManager);
     }
-    
 
     public List<Leaderboard> findScoresByQuizID(int quizID) {
-        
+
         query = new JPAQuery(entityManager);
-        
+
         return query.from(qLeaderboard).where(qLeaderboard.quiz.id.eq(quizID)).list(qLeaderboard);
-        
+
     }
 }

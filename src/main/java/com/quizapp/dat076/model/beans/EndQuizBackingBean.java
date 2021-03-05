@@ -5,6 +5,13 @@
  */
 package com.quizapp.dat076.model.beans;
 
+/**
+ *
+ * @author Anton
+ */
+
+
+
 import com.quizapp.dat076.model.dao.QuizDAO;
 import com.quizapp.dat076.model.entity.Quiz;
 import java.io.Serializable;
@@ -15,24 +22,25 @@ import javax.inject.Named;
 import lombok.Data;
 import org.omnifaces.cdi.Param;
 
-/**
- * Backing Bean for available_quizzes.xhtml
- * @author Albin
- */
 @Data
 @Named
 @ViewScoped
-public class QuizPageBackingBean implements Serializable {
-
+public class EndQuizBackingBean implements Serializable{
+    
     @Inject
     @Param(name = "quizId")
     private int quizId;
-
+    @Inject
+    @Param(name = "points")
+    private int points;
+    
+    private Quiz quiz;
     @EJB
     private QuizDAO quizDAO;
-
-    public Quiz getQuiz() {
-        return quizDAO.find(quizId);
+  
+    public Quiz fetchQuiz(){
+     
+        quiz = quizDAO.find(quizId);
+        return quiz;
     }
-
 }

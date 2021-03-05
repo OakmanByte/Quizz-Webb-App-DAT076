@@ -26,7 +26,7 @@
 
     <managed-bean>
     <managed-bean-name>Login</managed-bean-name>
-    <managed-bean-class>homepageBeans.LoginController</managed-bean-class>
+    <managed-bean-class>com.quizapp.dat076.controller.LoginController</managed-bean-class>
     
     <managed-bean-scope>request</managed-bean-scope></managed-bean>
     <navigation-rule>

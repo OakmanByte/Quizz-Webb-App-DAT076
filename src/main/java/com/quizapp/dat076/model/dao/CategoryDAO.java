@@ -13,8 +13,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import lombok.Getter;
 
-/*
- * @author Rebecka Axelborn
+/**
+ * A DAO for the category entity. Has a method for finding a specific category. 
+ * @author Rebecka
  */
 @Stateless
 public class CategoryDAO extends AbstractDAO<String, Category> {

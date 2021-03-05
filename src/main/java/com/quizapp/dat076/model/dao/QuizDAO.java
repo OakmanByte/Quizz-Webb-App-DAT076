@@ -17,8 +17,9 @@ import javax.persistence.PersistenceContext;
 import lombok.Getter;
 
 /**
- *
- * @author Albin, Anton
+ * A DAO for the Quiz entity. Has methods for retriving quizzes by either title,id,creator or category.
+ * @author Albin
+ * @author Anton Blomdell
  */
 @Stateless
 public class QuizDAO extends AbstractDAO<Integer, Quiz> {

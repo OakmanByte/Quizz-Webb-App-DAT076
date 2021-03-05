@@ -7,9 +7,11 @@ package com.quizapp.dat076.model.beans;
 
 import com.quizapp.dat076.model.dao.AccountDAO;
 import com.quizapp.dat076.model.dao.CategoryDAO;
+import com.quizapp.dat076.model.dao.QuestionDAO;
 import com.quizapp.dat076.model.dao.QuizDAO;
 import com.quizapp.dat076.model.entity.Account;
 import com.quizapp.dat076.model.entity.Category;
+import com.quizapp.dat076.model.entity.Question;
 import com.quizapp.dat076.model.entity.Quiz;
 import java.io.Serializable;
 import java.util.List;
@@ -21,24 +23,23 @@ import lombok.Data;
 import org.omnifaces.cdi.ViewScoped;
 
 /**
- *
+ * Backing Bean for available_quizzes.xhtml
  * @author Albin
  */
 @Data
 @Named
 @ViewScoped
 public class QuizListBackingBean implements Serializable {
-    
 
-    
     //Initializing the contents to be added to the database
-    Account account1 = new Account("user1", "user1@gmail.com", "password1", "user", null);
-    Account account2 = new Account("user2", "user2@gmail.com", "password2", "user", null);
-    Account account3 = new Account("user3", "user3@gmail.com", "password3", "user", null);
+    Account account1 = new Account("user1", "user1@gmail.com", "password1", "user", "Sweden", 20, null, null);
+    Account account2 = new Account("user2", "user2@gmail.com", "password2", "user", "Sweden", 20, null, null);
+    Account account3 = new Account("user3", "user3@gmail.com", "password3", "user", "Sweden", 20, null, null);
 
     Category c1 = new Category("General Knowledge");
     Category c2 = new Category("Science");
     Category c3 = new Category("Movies");
+    Category c4 = new Category("Space");
 
     Quiz first = new Quiz("First quiz", account1, c1);
     Quiz second = new Quiz("Second quiz", account2, c2);
@@ -47,6 +48,12 @@ public class QuizListBackingBean implements Serializable {
     Quiz bonus1 = new Quiz("Bonus quiz", account1, c2);
     Quiz bonus2 = new Quiz("Bonus quiz", account2, c2);
     Quiz bonus3 = new Quiz("Bonus quiz", account3, c1);
+
+    Quiz spaceQuiz = new Quiz("Space Quiz", account1, c4);
+
+    Question question1 = new Question("Which planet is closest to the sun?", spaceQuiz.getId(), "Pluto", "Venus", "Merkurius", "Mars", 3, spaceQuiz);
+    Question question2 = new Question("Which was the first country to send a human into space?", spaceQuiz.getId(), "Sweden", "USSR", "USA", "East Germany", 2, spaceQuiz);
+    Question question3 = new Question("What were Buzz Aldrin's first words on the moon?", spaceQuiz.getId(), "Beautiful view", "The moon is a cheese after all", "Hello world!", "That's one small step for a man, one giant leap for mankind", 1, spaceQuiz);
 
     //Retrieve the beans for the DAO:s
     @EJB
@@ -58,33 +65,47 @@ public class QuizListBackingBean implements Serializable {
     @EJB
     private QuizDAO quizDAO;
 
+    @EJB
+    private QuestionDAO questDAO;
+
     //The list of all quizzes
     private List<Quiz> quizzes;
 
+    private static boolean databaseInitialized = false;
+
     @PostConstruct
     private void init() {
-        
-        acDAO.create(account1);
-        acDAO.create(account2);
-        acDAO.create(account3);
 
-        catDAO.create(c1);
-        catDAO.create(c2);
-        catDAO.create(c3);
+        if (!databaseInitialized) {
+            acDAO.create(account1);
+            acDAO.create(account2);
+            acDAO.create(account3);
 
-        quizDAO.create(first);
-        quizDAO.create(second);
-        quizDAO.create(third);
+            catDAO.create(c1);
+            catDAO.create(c2);
+            catDAO.create(c3);
+            catDAO.create(c4);
 
-        quizDAO.create(bonus1);
-        quizDAO.create(bonus2);
-        quizDAO.create(bonus3);
-        
-        
+            quizDAO.create(first);
+            quizDAO.create(second);
+            quizDAO.create(third);
+
+            quizDAO.create(bonus1);
+            quizDAO.create(bonus2);
+            quizDAO.create(bonus3);
+            quizDAO.create(spaceQuiz);
+
+            questDAO.create(question1);
+            questDAO.create(question2);
+            questDAO.create(question3);
+        }
+
+        databaseInitialized = true;
+
         quizzes = quizDAO.findAll();
 
     }
-    
+
     @PreDestroy
     public void tearDown() {
         quizDAO.remove(first);
@@ -94,6 +115,7 @@ public class QuizListBackingBean implements Serializable {
         quizDAO.remove(bonus1);
         quizDAO.remove(bonus2);
         quizDAO.remove(bonus3);
+        quizDAO.remove(spaceQuiz);
 
         acDAO.remove(account1);
         acDAO.remove(account2);
@@ -102,6 +124,11 @@ public class QuizListBackingBean implements Serializable {
         catDAO.remove(c1);
         catDAO.remove(c2);
         catDAO.remove(c3);
+        catDAO.remove(c4);
+
+        questDAO.remove(question1);
+        questDAO.remove(question2);
+        questDAO.remove(question3);
     }
 
 }

@@ -11,16 +11,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import com.quizapp.dat076.model.entity.QRatings;
 import com.quizapp.dat076.model.entity.Ratings;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import javax.annotation.PostConstruct;
 import javax.persistence.criteria.CriteriaQuery;
 import lombok.Getter;
 
 /**
- *
- * @author anton
+ * A DAO for the entity ratings. Has methods for retrivng all ratings, finding highest score with or without a specifc score argument. 
+ * @author Unknown
  */
 @Stateless
 public class RatingsDAO extends AbstractDAO<String, Ratings> {
@@ -30,38 +27,33 @@ public class RatingsDAO extends AbstractDAO<String, Ratings> {
     private EntityManager entityManager;
     private JPAQuery query;
     private QRatings rating = QRatings.ratings;
-   
-  
+
     public RatingsDAO() {
         super(Ratings.class);
         query = new JPAQuery(entityManager);
     }
 
-    
-  
-    
-    public void addRating(Ratings rating){
+    public void addRating(Ratings rating) {
         entityManager.persist(rating);
     }
-    
-    public List<Ratings> findAllRatings(){
+
+    public List<Ratings> findAllRatings() {
         CriteriaQuery<Ratings> cq = entityManager.getCriteriaBuilder().createQuery(Ratings.class);
         cq.select(cq.from(Ratings.class));
         return entityManager.createQuery(cq).getResultList();
     }
-  
-    
-  public Ratings FindHighRated(int score)
-   {
-       JPAQuery query = new JPAQuery(entityManager);
-       
-       return query.from(rating).where(rating.score.loe(score)).singleResult(rating);
-      
-   }
-public int FindHighestRated(){
-      JPAQuery query = new JPAQuery(entityManager);
-      int maxRating = query.from(rating).list(rating.score.max()).get(0);
-      return maxRating;
-}
+
+    public Ratings FindHighRated(int score) {
+        JPAQuery query = new JPAQuery(entityManager);
+
+        return query.from(rating).where(rating.score.loe(score)).singleResult(rating);
+
+    }
+
+    public int FindHighestRated() {
+        JPAQuery query = new JPAQuery(entityManager);
+        int maxRating = query.from(rating).list(rating.score.max()).get(0);
+        return maxRating;
+    }
 
 }

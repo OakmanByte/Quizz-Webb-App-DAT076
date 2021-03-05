@@ -17,7 +17,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- *
+ * Entity class for a leaderboard that can be used for each unique quizz.
  * @author Rebec
  */
 @Data
@@ -25,20 +25,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Leaderboard implements Serializable {
-    
+
     @EmbeddedId
     LeaderboardPK leaderID;
-    
+
     @ManyToOne
     @MapsId("username")
-    @JoinColumn(name ="user_name")
+    @JoinColumn(name = "user_name")
     Account account;
-    
+
     @ManyToOne
     @MapsId("quizID")
-    @JoinColumn(name ="quiz_id")
+    @JoinColumn(name = "quiz_id")
     Quiz quiz;
-    
+
     Integer score;
-    
+
 }

@@ -18,35 +18,35 @@ and open the template in the editor.
     <h:body>
 
         <ui:composition template="WEB-INF/template/common.xhtml">
-            
+
             <ui:define name="content">
-                
+
                 <h:form>
-                    
+
                     <p:dataTable value="#{quizListBackingBean.quizzes}" var="quiz">
-                        
+
                         <f:facet name="header">
                             List of Quizzes
                         </f:facet>
-                        
+
                         <p:column headerText="Title" sortBy="#{quiz.title}" >#{quiz.title}</p:column>
                         <p:column headerText="Category" sortBy="#{quiz.quizzCategory.category}" >#{quiz.quizzCategory.category}</p:column>
                         <p:column headerText="Creator" >#{quiz.creator.username}</p:column>
-                        
+
                         <p:column>
                             <p:button href="quizpage.xhtml" icon="fa fa-fw fa-search-plus" value="go to quiz page">
                                 <f:param name="quizId" value="#{quiz.id}"/>
                             </p:button>
                         </p:column>
-                        
+
                     </p:dataTable>
-                    
+
                 </h:form>
-                
+
             </ui:define>
-            
+
         </ui:composition>
-        
+
     </h:body>
 
 

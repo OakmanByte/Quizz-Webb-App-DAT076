@@ -7,7 +7,6 @@ package com.quizapp.dat076.model.dao;
 
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -15,8 +14,12 @@ import javax.persistence.criteria.Root;
 import lombok.RequiredArgsConstructor;
 
 /**
- *
+ * A DAO that provides generall useful methods for the handling and restriving of data from the database. 
  * @author Albin
+ * @author Anton Ekman
+ * @author Anton Blomdell
+ * @author Emma
+ * @author Rebecka
  */
 @RequiredArgsConstructor
 public abstract class AbstractDAO<K, T> {

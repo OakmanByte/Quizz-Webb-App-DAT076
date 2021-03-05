@@ -17,6 +17,13 @@ import lombok.NoArgsConstructor;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+/**
+ * Entity Class for a general quiz, utilizing 2 other entites for it's identification.  
+ * @author Unknown
+ * @see com.quizapp.dat076.model.entity.Account
+ * @see com.quizapp.dat076.model.entity.Category
+ */
+
 @Data
 @Entity
 @NoArgsConstructor
@@ -34,7 +41,9 @@ public class Quiz implements Serializable {
     @ManyToOne
     private Category quizzCategory;
 
-    //@OneToMany(mappedBy = "quiz") private List<Question> questions;
+    @OneToMany(mappedBy = "quiz")
+    private List<Question> questions;
+
     /*public Quiz(String title, Account creator){
         this.title = title;
         this.creator = creator;
@@ -43,6 +52,7 @@ public class Quiz implements Serializable {
         this.title = title;
         this.creator = account;
         this.quizzCategory = cat;
+
     }
 
 }

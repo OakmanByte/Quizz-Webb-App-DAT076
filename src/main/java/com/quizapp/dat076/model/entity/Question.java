@@ -17,7 +17,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- *
+ * Entity Class for a question and it's alternativs. 
  * @author Albin
  */
 @Data

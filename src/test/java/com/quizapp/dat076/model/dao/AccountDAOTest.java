@@ -7,6 +7,7 @@ package com.quizapp.dat076.model.dao;
 
 import com.quizapp.dat076.model.entity.Account;
 import com.quizapp.dat076.model.entity.Category;
+import com.quizapp.dat076.model.entity.Question;
 import com.quizapp.dat076.model.entity.Quiz;
 import java.util.List;
 import javax.ejb.EJB;
@@ -22,17 +23,17 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- *
+ * A test class for the accountDAO class.
  * @author Emma Dirnberger
+ * @see com.quizapp.dat076.model.dao.AccountDAO
  */
 @RunWith(Arquillian.class)
 public class AccountDAOTest {
-    
 
     //Dummy data to test the database
-    Account account1 = new Account("user", "user@gmail.com", "password", "user", null);
-    Account account2 = new Account("user1", "user1@gmail.com", "password", "user", null);
-    Account account3 = new Account("user2", "user2@gmail.com", "password", "user", null);
+    Account account1 = new Account("user", "user@gmail.com", "password", "user", "Science", 20, null, null);
+    Account account2 = new Account("user1", "user1@gmail.com", "password", "user", "Science", 20, null, null);
+    Account account3 = new Account("user2", "user2@gmail.com", "password", "user", "Science", 20, null, null);
 
     Quiz quiz1 = new Quiz("Such Amaze", account1, null);
     Quiz quiz2 = new Quiz("Very Much", account1, null);
@@ -41,7 +42,7 @@ public class AccountDAOTest {
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class)
-                .addClasses(AccountDAO.class, Account.class, QuizDAO.class, Quiz.class, Category.class)
+                .addClasses(AccountDAO.class, Account.class, QuizDAO.class, Quiz.class, Category.class, Question.class)
                 .addAsResource("META-INF/persistence.xml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }

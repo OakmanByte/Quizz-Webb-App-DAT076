@@ -1,6 +1,5 @@
 package com.quizapp.dat076.validators;
 
-
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.PARAMETER;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
@@ -16,22 +15,21 @@ import javax.validation.Payload;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
- *
+ * Not sure
  * @author Emma Dirnberger
+ * @see com.quizapp.dat076.validators.UserExistsValidator
  */
+@Constraint(validatedBy = UserExistsValidator.class)
+@Target({FIELD, PARAMETER})
+@Retention(RUNTIME)
+public @interface UserExists {
 
-    @Constraint(validatedBy = UserExistsValidator.class)
-    @Target({FIELD, PARAMETER})
-    @Retention(RUNTIME)
-    public @interface UserExists {
+    String message() default "Username already exists!";
 
-        String message() default "Username already exists!";
+    Class<?>[] groups() default {};
 
-        Class<?>[] groups() default {};
+    Class<? extends Payload>[] payload() default {};
 
-        Class<? extends Payload>[] payload() default {};
-
-        ConstraintTarget validationAppliesTo() default ConstraintTarget.IMPLICIT;
-    }
+    ConstraintTarget validationAppliesTo() default ConstraintTarget.IMPLICIT;
+}
