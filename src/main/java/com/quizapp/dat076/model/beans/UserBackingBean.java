@@ -1,5 +1,6 @@
 package com.quizapp.dat076.model.beans;
 
+import com.quizapp.dat076.model.Argon2PasswordHashing;
 import com.quizapp.dat076.model.dao.AccountDAO;
 import com.quizapp.dat076.model.entity.Account;
 import com.quizapp.dat076.validators.EmailExists;
@@ -12,6 +13,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
+import com.quizapp.dat076.model.Argon2PasswordHashing;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -61,7 +63,10 @@ public class UserBackingBean {
      * @return
      */
     public String add() {
-        Account accountToCreate = new Account(username, email, password, userrole, favoritecategory, age, profilePicture, null);
+        
+        Argon2PasswordHashing argon = new Argon2PasswordHashing();
+        
+        Account accountToCreate = new Account(username, email, argon.hashPassword(password), userrole, favoritecategory, age, profilePicture, null);
 
         if (!userExists()) {
             accountDAO.create(accountToCreate);

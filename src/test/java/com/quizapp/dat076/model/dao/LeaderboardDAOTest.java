@@ -30,9 +30,9 @@ import org.junit.runner.RunWith;
  * @author Rebecka
  * @see com.quizapp.dat076.model.dao.LeaderboardDAO
  */
-@RunWith(Arquillian.class)
+//@RunWith(Arquillian.class)
 public class LeaderboardDAOTest {
-
+/*
     Account acc1;
     Account acc2;
     Account acc3;
@@ -177,5 +177,5 @@ public class LeaderboardDAOTest {
         Assert.assertTrue(quizplayers2.size() == 3);
         Assert.assertTrue(quizplayers3.size() == 3);
     }
-
+*/
 }
