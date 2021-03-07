@@ -49,11 +49,4 @@ public class LeaderboardBackingBean implements Serializable {
         }
         return board;
     }
-
-    public void test() {
-        System.out.println("BIITCH \n");
-        for (Leaderboard x : board) {
-            System.out.printf("username: %s , quizid: %d , score: %d \n", x.getAccount().getUsername(), x.getQuiz().getId(), x.getScore());
-        }
-    }
 }
