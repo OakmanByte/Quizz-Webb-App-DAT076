@@ -13,30 +13,40 @@ and open the template in the editor.
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
-    <cc:interface>
-        <cc:attribute name="value"/>
-        <cc:implementation>
-            <c:if test="#{cc.attrs.value.size()==0}">
-                <h1 >No players yet</h1>
-            </c:if>
-            <c:if test="#{cc.attrs.value.size()!=0}">
-                <h:form>
+
+    <h:body>
+        <cc:interface>
+            <cc:attribute name="value"/>
+            <cc:implementation>
+                <c:if test="#{cc.attrs.value.size()==0}">
+                    <h1 styleClass="no">No players yet</h1>
+                </c:if>
+                <c:if test="#{cc.attrs.value.size()!=0}">
+                    <h:form>
 
 
-                    <div class="card">
-                        <p:dataTable var="board" value="#{cc.attrs.value}" >
-                            <p:column headerText="User">
-                                <h:outputText value="#{board.account.username}" />
-                            </p:column>
-                            <p:column headerText="Score">
-                                <h:outputText value="#{board.score}" />
-                            </p:column>
-                        </p:dataTable>
-                    </div>
+                        <div class="card" styleClass="noPlayers">
+                            <p:dataTable var="board" value="#{cc.attrs.value}" rowIndexVar="index">
+                                <p:column headerText="Place">
+                                    <f:facet name="Place">
+                                        <h:outputText value="index" />
+                                    </f:facet>
+                                    <h:outputText 
+                                        value="#{index + 1}" />
+                                </p:column>
+                                <p:column headerText="User">
+                                    <h:outputText value="#{board.account.username}" />
+                                </p:column>
+                                <p:column headerText="Score">
+                                    <h:outputText value="#{board.score}" />
+                                </p:column>
+                            </p:dataTable>
+                        </div>
 
-                </h:form>
-            </c:if>
-        </cc:implementation> 
+                    </h:form>
+                </c:if>
+            </cc:implementation> 
 
-    </cc:interface>
+        </cc:interface>
+    </h:body>
 </html>
