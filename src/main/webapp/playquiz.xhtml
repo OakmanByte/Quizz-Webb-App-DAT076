@@ -4,7 +4,8 @@
        xmlns:h="http://java.sun.com/jsf/html"
        xmlns:f="http://java.sun.com/jsf/core"
        xmlns:p="http://primefaces.org/ui"
-       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+       xmlns:b="http://bootsfaces.net/ui">
 
 
     <h:head>
@@ -16,9 +17,10 @@
 
             <ui:define name="content">
 
-                <h:form>
+                <h:form id="questionform">
 
                     <h3 style ="text-align: center; margin-left: 20px; font-size: 25px; ">#{playQuizBackingBean.getcurrentQuestion().question} </h3>
+
 
                     <div>
                         <div style="display: table-cell">
@@ -28,46 +30,55 @@
                         <div style="display: table-cell">
                             <h3 style ="margin-left: 2.5em; font-size: 20px; ">Points: #{playQuizBackingBean.points} / #{playQuizBackingBean.questions.size()}</h3>
                         </div>
+
+                        <div style="display: table-cell">
+
+                            <h3 class="p-text-center" style ="margin-left: 2.5em; font-size: 20px">
+                                <h:outputText id="txt_count" value="Time left: #{playQuizBackingBean.timer} seconds"/>
+                            </h3>
+                            <p:poll interval="1" listener="#{playQuizBackingBean.decrementTimer()}" update="txt_count"  />
+
+                        </div>
                     </div>
+
 
                     <div class="card" style="text-align: center">
 
                         <p:column>
-                            <p:commandButton value="#{playQuizBackingBean.getcurrentQuestion().alt1}" action="#{playQuizController.onAnswer(1)}" update="@form" disabled="#{playQuizBackingBean.answered and !playQuizBackingBean.isCorrectAnswer(1)}" icon ="fa fa-fw fa-diamond" style="margin-left: 20px; word-wrap: break-word; background-color: goldenrod; font-size: 20px; font-weight: bold; width: 30em; height: 10em " />
+                            <p:commandButton value="#{playQuizBackingBean.getcurrentQuestion().alt1}"  action="#{playQuizController.onAnswer(1)}" update="@form" disabled="#{ (playQuizBackingBean.currentQuestionAnswered and !playQuizBackingBean.isCorrectAnswer(1)) or playQuizBackingBean.timerAtZero}" icon ="fa fa-fw fa-diamond" style="margin-left: 20px; word-wrap: break-word; background-color: goldenrod; font-size: 20px; font-weight: bold; width: 30em; height: 10em " />
                         </p:column>
                         <p:column>
-                            <p:commandButton value="#{playQuizBackingBean.getcurrentQuestion().alt2}" action="#{playQuizController.onAnswer(2)}" update="@form" disabled="#{playQuizBackingBean.answered and !playQuizBackingBean.isCorrectAnswer(2)}" icon="fa fa-fw fa-briefcase" style="margin-left: 20px; word-wrap: break-word; background-color: green; font-size: 20px; font-weight: bold; width: 30em; height: 10em;" />
+                            <p:commandButton value="#{playQuizBackingBean.getcurrentQuestion().alt2}" action="#{playQuizController.onAnswer(2)}" update="@form" disabled="#{playQuizBackingBean.currentQuestionAnswered and !playQuizBackingBean.isCorrectAnswer(2) or playQuizBackingBean.timerAtZero}" icon="fa fa-fw fa-briefcase" style="margin-left: 20px; word-wrap: break-word; background-color: green; font-size: 20px; font-weight: bold; width: 30em; height: 10em;" />
                         </p:column>
 
                     </div>
 
                     <div style="margin-bottom: 20px; margin-top: 20px">
-                        <p:growl id="growl" showDetail="true" sticky="true"/>
+                        <p:growl id="growl" showDetail="true" life="5000" keepAlive="true"/>
                     </div>
 
                     <div class="card" style="text-align: center">
 
                         <p:column>
-                            <p:commandButton value="#{playQuizBackingBean.getcurrentQuestion().alt3}" action="#{playQuizController.onAnswer(3)}" update="@form" disabled="#{playQuizBackingBean.answered and !playQuizBackingBean.isCorrectAnswer(3)}" icon="fa fa-fw fa-android" style="margin-left: 20px; word-wrap: break-word; background-color: red; font-size: 20px; font-weight: bold; width: 30em; height: 10em" />
+                            <p:commandButton value="#{playQuizBackingBean.getcurrentQuestion().alt3}" action="#{playQuizController.onAnswer(3)}" update="@form" disabled="#{playQuizBackingBean.currentQuestionAnswered and !playQuizBackingBean.isCorrectAnswer(3) or playQuizBackingBean.timerAtZero}" icon="fa fa-fw fa-android" style="margin-left: 20px; word-wrap: break-word; background-color: red; font-size: 20px; font-weight: bold; width: 30em; height: 10em" />
                         </p:column>
                         <p:column>
-                            <p:commandButton value="#{playQuizBackingBean.getcurrentQuestion().alt4}" action="#{playQuizController.onAnswer(4)}" update="@form" disabled="#{playQuizBackingBean.answered and !playQuizBackingBean.isCorrectAnswer(4)}" icon="fa fa-fw fa-bank" style="margin-left: 20px; word-wrap: break-word; background-color: blue; font-size: 20px; font-weight: bold; width: 30em; height: 10em" />
+                            <p:commandButton value="#{playQuizBackingBean.getcurrentQuestion().alt4}" action="#{playQuizController.onAnswer(4)}" update="@form" disabled="#{playQuizBackingBean.currentQuestionAnswered and !playQuizBackingBean.isCorrectAnswer(4) or playQuizBackingBean.timerAtZero}" icon="fa fa-fw fa-bank" style="margin-left: 20px; word-wrap: break-word; background-color: blue; font-size: 20px; font-weight: bold; width: 30em; height: 10em" />
                         </p:column>
 
                     </div>
 
                     <div style="text-align: right; margin-right: 1em; margin-top: 0.5em" >
-                        <p:commandButton value="Next question" action="#{playQuizController.nextQuestion()}" disabled="#{!playQuizBackingBean.answered}" icon="fa fa-fw fa-arrow-right" update="@form" />
-                    </div>
-                    
-                     <div style="text-align: left; margin-right: 1em; margin-top: 0.5em;" >
-                         <p:button href="endquiz.xhtml" icon="fa fa-fw fa-arrow-right" value="Go to end quiz"> 
-                             <f:param name="quizId" value="#{playQuizBackingBean.quizId}"/>
-                           <f:param name="points" value="#{playQuizBackingBean.points}"/>
-                         </p:button>
-                        
+                        <p:commandButton value="Next question" action="#{playQuizController.nextQuestion()}" disabled="#{!playQuizBackingBean.currentQuestionAnswered}" icon="fa fa-fw fa-arrow-right" update="@form" />
                     </div>
 
+                    <div style="text-align: left; margin-right: 1em; margin-top: 0.5em;" >
+                        <p:button href="endquiz.xhtml" icon="fa fa-fw fa-arrow-right" value="Go to end quiz"> 
+                            <f:param name="quizId" value="#{playQuizBackingBean.quizId}"/>
+                            <f:param name="points" value="#{playQuizBackingBean.points}"/>
+                        </p:button>
+
+                    </div>
 
 
                 </h:form>
