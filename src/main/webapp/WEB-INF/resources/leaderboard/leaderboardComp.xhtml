@@ -14,19 +14,29 @@ and open the template in the editor.
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
 
-    <h:body>
-        <cc:interface>
-            <cc:attribute name="value"/>
-            <cc:implementation>
+    <cc:interface>
+        <cc:attribute name="value"/>
+        <cc:implementation>
+
+            <div class="box">
+                 <h1 class="ld_header">Leaderboard</h1>
                 <c:if test="#{cc.attrs.value.size()==0}">
-                    <h1 styleClass="no">No players yet</h1>
+                    <p:dataTable var="board" value="">
+                        <p:column headerText="Place">
+                            <h:outputText value="No players yet" />
+                        </p:column>
+                        <p:column headerText="User">
+                        </p:column>
+                        <p:column headerText="Score">
+                        </p:column>
+                    </p:dataTable>
                 </c:if>
                 <c:if test="#{cc.attrs.value.size()!=0}">
                     <h:form>
 
 
-                        <div class="card" styleClass="noPlayers">
-                            <p:dataTable var="board" value="#{cc.attrs.value}" rowIndexVar="index">
+                        <div class="card">
+                            <p:dataTable styleClass="ld_table" var="board" value="#{cc.attrs.value}" rowIndexVar="index">
                                 <p:column headerText="Place">
                                     <f:facet name="Place">
                                         <h:outputText value="index" />
@@ -45,8 +55,8 @@ and open the template in the editor.
 
                     </h:form>
                 </c:if>
-            </cc:implementation> 
+            </div>
+        </cc:implementation> 
 
-        </cc:interface>
-    </h:body>
+    </cc:interface>
 </html>
