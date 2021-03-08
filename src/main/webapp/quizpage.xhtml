@@ -12,13 +12,17 @@ and open the template in the editor.
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:ld="http://java.sun.com/jsf/composite/leaderboard"
       xmlns:b="http://bootsfaces.net/ui">
-    <h:head>
-        <title>QuizPage</title>
-    </h:head>
+
+
+
 
     <h:body>
 
-     <ui:composition template="WEB-INF/template/common.xhtml">
+        <ui:composition template="WEB-INF/template/common.xhtml">
+            <ui:define name="header">
+                <title>QuizPage</title>
+                <link rel="stylesheet" type = "text/css" href="leaderboard.css"> </link> 
+            </ui:define>
 
             <ui:define name="content">
 
@@ -33,7 +37,7 @@ and open the template in the editor.
                         <f:param name="quizId" value="#{quizPageBackingBean.quizId}"/>
                     </p:button>
                 </div>
-                
+
                 <ld:leaderboardComp value="#{leaderboardBackingBean.getBoard(quizPageBackingBean.quiz.id)}"></ld:leaderboardComp>
 
             </ui:define>
