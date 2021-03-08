@@ -24,9 +24,10 @@ import javax.ejb.Singleton;
 import javax.ejb.Startup;
 
 /**
- * Temporary class for initilization each run of the program with finished data in the databsae such as accounts, quizzes, categories, questions etc. Used for work not meant for final product.
+ * Temporary class for initilization each run of the program with finished data in the database such as accounts, quizzes, categories, questions etc. Used for work not meant for final product.
  * @author Rebecka
  */
+/*
 @Startup
 @Singleton
 public class TestData {
@@ -52,14 +53,20 @@ public class TestData {
     Account acc1;
     Account acc2;
     Account acc3;
+    Account acc4;
 
     Quiz quiz1;
     Quiz quiz2;
     Quiz quiz3;
+    Quiz quiz4;
 
     Category cat1;
     Category cat2;
     Category cat3;
+    Category cat4;
+    Category cat5;
+    Category cat6;
+    Category cat7;
 
     LeaderboardPK pk1;
     LeaderboardPK pk2;
@@ -87,6 +94,9 @@ public class TestData {
     Question q2_2;
     Question q3_1;
     Question q3_2;
+    Question q4_1;
+    Question q4_2;
+    Question q4_3;
 
     Ratings rat1;
     Ratings rat2;
@@ -100,26 +110,38 @@ public class TestData {
         acc1 = new Account("Rebecka", "rebecka@me.com", "psgjsg", "user", null, 0, null, null);
         acc2 = new Account("Emma", "reemma@me.com", "psdsgjsg", "user", null, 0, null, null);
         acc3 = new Account("AntonE", "antone@me.com", "psgsdfjsg", "user", null, 0, null, null);
+        acc4 = new Account("Albin", "albin@me.com", "password", "user", null, 22, null, null);
 
         accountDAO.create(acc1);
         accountDAO.create(acc2);
         accountDAO.create(acc3);
+        accountDAO.create(acc4);
 
         cat1 = new Category("Animals");
         cat2 = new Category("Geography");
         cat3 = new Category("Math");
+        cat4 = new Category("General Knowledge");
+        cat5 = new Category("Science");
+        cat6 = new Category("Movies");
+        cat7 = new Category("Space");
 
         categoryDAO.create(cat1);
         categoryDAO.create(cat2);
         categoryDAO.create(cat3);
+        categoryDAO.create(cat4);
+        categoryDAO.create(cat5);
+        categoryDAO.create(cat6);
+        categoryDAO.create(cat7);
 
         quiz1 = new Quiz("Such Amaze", acc1, cat1);
         quiz2 = new Quiz("Very Much", acc2, cat2);
         quiz3 = new Quiz("Best Quiz", acc2, cat3);
+        quiz4 = new Quiz("Space Quiz", acc4, cat7);
 
         quizDAO.create(quiz1);
         quizDAO.create(quiz2);
         quizDAO.create(quiz3);
+        quizDAO.create(quiz4);
 
         pk1 = new LeaderboardPK(acc1.getUsername(), quiz1.getId());
         pk2 = new LeaderboardPK(acc1.getUsername(), quiz2.getId());
@@ -156,7 +178,10 @@ public class TestData {
         q2_1 = new Question("What country is Florida in?", 3, "France", "Sweden", "USA", "UK", 3, quiz2);
         q2_2 = new Question("What country is Perth in?", 4, "New Zeland", "Indonesia", "India", "Australia", 4, quiz2);
         q3_1 = new Question("What is 2*3?", 5, "9", "6", "5", "8", 2, quiz3);
-        q3_2 = new Question("What is 2^3?", 6, "9", "6", "5", "8", 4, quiz3);
+        q3_2 = new Question("What is 2^3?", 6, "9", "6", "5", "8", 4, quiz3); 
+        q4_1 = new Question("Which planet is closest to the sun?", quiz4.getId(), "Pluto", "Venus", "Merkurius", "Mars", 3, quiz4);
+        q4_2 = new Question("Which was the first country to send a human into space?", quiz4.getId(), "Sweden", "USSR", "USA", "East Germany", 2, quiz4);
+        q4_3 = new Question("What were Buzz Aldrin's first words on the moon?", quiz4.getId(), "Beautiful view", "The moon is a cheese after all", "Hello world!", "That's one small step for a man, one giant leap for mankind", 1, quiz4);
 
         questionDAO.create(q1_1);
         questionDAO.create(q1_2);
@@ -164,6 +189,9 @@ public class TestData {
         questionDAO.create(q2_2);
         questionDAO.create(q3_1);
         questionDAO.create(q3_2);
+        questionDAO.create(q4_1);
+        questionDAO.create(q4_2);
+        questionDAO.create(q4_3);
 
         rat1 = new Ratings(1, 5, "Wow this is the best ever! I am so mother puffing impressed", acc3, quiz1);
         rat2 = new Ratings(1, 1, "Wtf who doesn't know how many legs these animals have?", acc2, quiz1);
@@ -182,3 +210,4 @@ public class TestData {
     }
 
 }
+*/

@@ -5,6 +5,7 @@
  */
 package com.quizapp.dat076.controller;
 
+import com.quizapp.dat076.model.Argon2PasswordHashing;
 import com.quizapp.dat076.model.beans.UserBean;
 import com.quizapp.dat076.model.dao.AccountDAO;
 import java.io.Serializable;
@@ -43,7 +44,7 @@ public class LoginController implements Serializable {
     private AccountDAO accountDAO;
 
     public String login() {
-
+        
         final Credential credential = new UsernamePasswordCredential(userBean.getAccount().getUsername(), userBean.getAccount().getPassword());
 
         final AuthenticationStatus status = securityContext.authenticate(Faces.getRequest(), Faces.getResponse(), AuthenticationParameters.withParams().credential(credential));
@@ -54,7 +55,7 @@ public class LoginController implements Serializable {
             
             return "success";
         }
-            
+        System.out.println("PLease dont show this to me");    
         return "";
 
     }
