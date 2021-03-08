@@ -27,7 +27,7 @@ import javax.ejb.Startup;
  * Temporary class for initilization each run of the program with finished data in the database such as accounts, quizzes, categories, questions etc. Used for work not meant for final product.
  * @author Rebecka
  */
-/*
+
 @Startup
 @Singleton
 public class TestData {
@@ -210,4 +210,3 @@ public class TestData {
     }
 
 }
-*/
