@@ -18,9 +18,11 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import lombok.Data;
 import org.omnifaces.cdi.Param;
+import org.primefaces.PrimeFaces;
 
 /**
  * Backing Bean for playquiz.xhtml.
+ *
  * @author Anton Blomdell
  * @author Albin
  */
@@ -44,12 +46,14 @@ public class PlayQuizBackingBean implements Serializable {
     private int currentQuestionIndex;
     private int correctAnswerIndex;
 
-    private boolean isAnswered;
+    private boolean isCurrentQuestionAnswered;
     private int points;
-    
+
+    private int timer = 10;
+    private boolean isTimerAtZero = false;
 
     private boolean isFinished;
-    
+
     /*public List<Question> getQuestions() {
 
         questions = questionDAO.findQuestionsinQuiz(quizDAO.find(quizId));
@@ -70,13 +74,15 @@ public class PlayQuizBackingBean implements Serializable {
     }
 
     public void nextQuestion() {
+        isCurrentQuestionAnswered = false;
         currentQuestionIndex++;
-        isAnswered = false;
+        resetTimer();
 
     }
-
-    public void incPoints() {
-        points++;
+    
+    private void resetTimer(){
+        timer = 10;
+        isTimerAtZero = false;
     }
 
     private void addMessage(FacesMessage.Severity severity, String summary, String detail) {
@@ -89,31 +95,54 @@ public class PlayQuizBackingBean implements Serializable {
     }
 
     public void correctAnswer() {
-        if (isAnswered) {
+        if (isCurrentQuestionAnswered) {
             return;
         }
 
         addMessage(FacesMessage.SEVERITY_INFO, "Correct answer", "1 point");
         points++;
-        isAnswered = true;
+        isCurrentQuestionAnswered = true;
     }
 
     public void incorrectAnswer() {
-        if (isAnswered) {
+        if (isCurrentQuestionAnswered) {
             return;
         }
 
         addMessage(FacesMessage.SEVERITY_ERROR, "Incorrect answer", "No point for you");
-        isAnswered = true;
+        isCurrentQuestionAnswered = true;
     }
     
-    
-    
-    public void isEndQuiz(){
-   
-     
-            isFinished = true;
-     
+    private void timeOut(){
+        addMessage(FacesMessage.SEVERITY_WARN, "Time out!!!", "You missed your chance to answer");
+        isCurrentQuestionAnswered = true;
+        isTimerAtZero = true;
+        PrimeFaces.current().ajax().update("questionform");
+    }
+
+    public void decrementTimer() {
+        
+        //As long as the timer is above zero and the current question is 
+        //unanswered, count down the timer
+        if ( !isTimerAtZero && !isCurrentQuestionAnswered) {
+            
+            timer--;
+
+            //When the timer reaches zero, call timeOut()
+            if (timer == 0) {
+                
+                timeOut();
+                
+            }
+            
+        }
+
+    }
+
+    public void isEndQuiz() {
+
+        isFinished = true;
+
     }
 
 }

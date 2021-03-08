@@ -1,0 +1,21 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 5 mars 2021, 17:52:50
+    Author     : Rebec
+*/
+
+.noPlayers{
+    color:greenyellow;
+    background-color: red;
+    margin:100px;
+    color: blue;
+    text-align: center;
+}
+
+.ui-datatable-tablewrapper{
+    background-color: green !important;
+}
