@@ -30,105 +30,20 @@ import org.omnifaces.cdi.ViewScoped;
 @Named
 @ViewScoped
 public class QuizListBackingBean implements Serializable {
-
-    //Initializing the contents to be added to the database
-    Account account1 = new Account("user1", "user1@gmail.com", "password1", "user", "Sweden", 20, null, null);
-    Account account2 = new Account("user2", "user2@gmail.com", "password2", "user", "Sweden", 20, null, null);
-    Account account3 = new Account("user3", "user3@gmail.com", "password3", "user", "Sweden", 20, null, null);
-
-    Category c1 = new Category("General Knowledge");
-    Category c2 = new Category("Science");
-    Category c3 = new Category("Movies");
-    Category c4 = new Category("Space");
-
-    Quiz first = new Quiz("First quiz", account1, c1);
-    Quiz second = new Quiz("Second quiz", account2, c2);
-    Quiz third = new Quiz("Third quiz", account3, c3);
-
-    Quiz bonus1 = new Quiz("Bonus quiz", account1, c2);
-    Quiz bonus2 = new Quiz("Bonus quiz", account2, c2);
-    Quiz bonus3 = new Quiz("Bonus quiz", account3, c1);
-
-    Quiz spaceQuiz = new Quiz("Space Quiz", account1, c4);
-
-    Question question1 = new Question("Which planet is closest to the sun?", spaceQuiz.getId(), "Pluto", "Venus", "Merkurius", "Mars", 3, spaceQuiz);
-    Question question2 = new Question("Which was the first country to send a human into space?", spaceQuiz.getId(), "Sweden", "USSR", "USA", "East Germany", 2, spaceQuiz);
-    Question question3 = new Question("What were Buzz Aldrin's first words on the moon?", spaceQuiz.getId(), "Beautiful view", "The moon is a cheese after all", "Hello world!", "That's one small step for a man, one giant leap for mankind", 1, spaceQuiz);
-
+    
     //Retrieve the beans for the DAO:s
-    @EJB
-    private AccountDAO acDAO;
-
-    @EJB
-    private CategoryDAO catDAO;
-
+    
     @EJB
     private QuizDAO quizDAO;
-
-    @EJB
-    private QuestionDAO questDAO;
-
+    
     //The list of all quizzes
     private List<Quiz> quizzes;
-
-    private static boolean databaseInitialized = false;
-
+    
     @PostConstruct
     private void init() {
-
-        if (!databaseInitialized) {
-            acDAO.create(account1);
-            acDAO.create(account2);
-            acDAO.create(account3);
-
-            catDAO.create(c1);
-            catDAO.create(c2);
-            catDAO.create(c3);
-            catDAO.create(c4);
-
-            quizDAO.create(first);
-            quizDAO.create(second);
-            quizDAO.create(third);
-
-            quizDAO.create(bonus1);
-            quizDAO.create(bonus2);
-            quizDAO.create(bonus3);
-            quizDAO.create(spaceQuiz);
-
-            questDAO.create(question1);
-            questDAO.create(question2);
-            questDAO.create(question3);
-        }
-
-        databaseInitialized = true;
-
+        
         quizzes = quizDAO.findAll();
 
-    }
-
-    @PreDestroy
-    public void tearDown() {
-        quizDAO.remove(first);
-        quizDAO.remove(second);
-        quizDAO.remove(third);
-
-        quizDAO.remove(bonus1);
-        quizDAO.remove(bonus2);
-        quizDAO.remove(bonus3);
-        quizDAO.remove(spaceQuiz);
-
-        acDAO.remove(account1);
-        acDAO.remove(account2);
-        acDAO.remove(account3);
-
-        catDAO.remove(c1);
-        catDAO.remove(c2);
-        catDAO.remove(c3);
-        catDAO.remove(c4);
-
-        questDAO.remove(question1);
-        questDAO.remove(question2);
-        questDAO.remove(question3);
     }
 
 }
