@@ -130,5 +130,9 @@ public class QuizListBackingBean implements Serializable {
         questDAO.remove(question2);
         questDAO.remove(question3);
     }
+    
+    public List<Category> getAllCategories(){
+        return catDAO.findAll();
+    }
 
 }
