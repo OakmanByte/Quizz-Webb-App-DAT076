@@ -11,36 +11,10 @@ and open the template in the editor.
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
-    <style>
-
-        #header {
-            background-color: rgba(0, 0, 0, 0.1);
-            border: 0.1px solid;
-
-            margin-top: 0;
-            margin-bottom: 1em;
-            padding-left: 2em;
-            height: 100%;
-        }
-
-        .header_title {
-            text-align: left;
-            font-weight: bold;
-            font-size: 30px;
-            font-family: monospace;
-            letter-spacing: 2px;
-        }
-
-        .header_right{
-            font-size: 15px;
-            padding-right: 0.5em;
-        }
-
-    </style>
-
     <h:head>
-        <title>QuizAppHeader</title>
+        <ui:insert name="header"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type = "text/css" href="template.css"> </link>
     </h:head>
 
 
@@ -71,6 +45,7 @@ and open the template in the editor.
 
         <section>
             <div class="container">
+               
                 <ui:insert name="content" />
             </div>
         </section>
