@@ -27,9 +27,9 @@ import org.junit.runner.RunWith;
  * @author Emma Dirnberger
  * @see com.quizapp.dat076.model.dao.AccountDAO
  */
-//@RunWith(Arquillian.class)
+@RunWith(Arquillian.class)
 public class AccountDAOTest {
-/*
+
     //Dummy data to test the database
     Account account1 = new Account("user", "user@gmail.com", "password", "user", "Science", 20, null, null);
     Account account2 = new Account("user1", "user1@gmail.com", "password", "user", "Science", 20, null, null);
@@ -113,7 +113,5 @@ public class AccountDAOTest {
 
         //3 quizzes have been added to account1, therefore size should be 3
         Assert.assertTrue(quizzes.size() == 3);
-
     }
-    */
 }

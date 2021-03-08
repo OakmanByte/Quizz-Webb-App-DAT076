@@ -26,9 +26,9 @@ import org.junit.runner.RunWith;
  * @author Albin
  * @see com.quizapp.dat076.model.dao.QuizDAO
  */
-//@RunWith(Arquillian.class)
+@RunWith(Arquillian.class)
 public class QuizDAOTest {
-/*
+
     Account account1 = new Account("user1", "user1@gmail.com", "password1", "user", "Science", 20, null, null);
     Account account2 = new Account("user2", "user2@gmail.com", "password2", "user", "Science", 20, null, null);
     Account account3 = new Account("user3", "user3@gmail.com", "password3", "user", "Science", 20, null, null);
@@ -44,7 +44,7 @@ public class QuizDAOTest {
     Quiz bonus1 = new Quiz("Bonus quiz", account1, c2);
     Quiz bonus2 = new Quiz("Bonus quiz", account2, c2);
     Quiz bonus3 = new Quiz("Bonus quiz", account3, c1);
-/*
+
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class)
@@ -52,7 +52,7 @@ public class QuizDAOTest {
                 .addAsResource("META-INF/persistence.xml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
-/*
+
     @EJB
     private QuizDAO quizDAO;
     @EJB
@@ -60,8 +60,7 @@ public class QuizDAOTest {
     @EJB
     private CategoryDAO catDAO;
 
-    //@Before
-    /*
+    @Before
     public void setUp() {
         acDAO.create(account1);
         acDAO.create(account2);
@@ -80,8 +79,7 @@ public class QuizDAOTest {
         quizDAO.create(bonus3);
     }
 
-    //@After
-    /*
+    @After
     public void tearDown() {
         quizDAO.remove(first);
         quizDAO.remove(second);
@@ -105,7 +103,6 @@ public class QuizDAOTest {
     /**
      * Checks that the quiz id leads to the correct quiz
      */
-    /*
     public void testFind_ID() {
 
         Quiz firstQuiz = quizDAO.find(1);
@@ -121,13 +118,12 @@ public class QuizDAOTest {
         assert (bonusQuiz.equals(bonus3));
     }
 
-    //@Test
+    @Test
     /**
      * Checks that only one quiz is returned by findQuizByTitle() when the title
      * is unique. Also check that the title of the returned quiz matches the
      * search
      */
-    /*
     public void testFindQuizByTitle_OneQuiz() {
 
         //Assert that there is only one quiz by name "First quiz"
@@ -147,14 +143,13 @@ public class QuizDAOTest {
 
     }
 
-    //@Test
+    @Test
     /**
      * Checks that several quizzes are returned by findQuizByTitle() if there
      * are several quizzes sharing the same title. Also check that the number of
      * quizzes returned are the same as the number of quizzes with the given
      * name, and that their titles match the search parameter.
      */
-    /*
     public void testFindQuizByTitle_MultipleQuizzes() {
 
         //Assert that there are three quizzes by the name of "Bonus quiz"
@@ -168,12 +163,11 @@ public class QuizDAOTest {
 
     }
 
-   // @Test
+    @Test
     /**
      * Checks that the correct number of quizzes are returned when filtering by
      * creator, and that the quizzes are correct.
      */
-    /*
     public void testFindQuizzesByCreator() {
 
         //Retrieve the quizzes created by account1
@@ -186,13 +180,11 @@ public class QuizDAOTest {
         assert (quizzes.get(1).getTitle().equals("Bonus quiz") && quizzes.get(1).getCreator().getUsername().equals("user1"));
 
     }
-    */
 
-   // @Test
+    @Test
     /**
      * Checks that filtering by category return the expected quizzes
      */
-    /*
     public void testFindQuizzesByCategory() {
 
         //Retrieve the quizzes with category "General Knowledge"
@@ -212,5 +204,5 @@ public class QuizDAOTest {
         }
 
     }
-*/
+
 }
