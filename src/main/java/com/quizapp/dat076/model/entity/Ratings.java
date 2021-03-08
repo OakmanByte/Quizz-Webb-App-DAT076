@@ -28,6 +28,8 @@ import lombok.NoArgsConstructor;
 @IdClass(RatingsPK.class)
 public class Ratings implements Serializable {
 
+    
+    //YOU CAN NOT HAVE Generatedvalues for a composite key like this, i think? //Anton
     @Id
     @GeneratedValue
     private int id;

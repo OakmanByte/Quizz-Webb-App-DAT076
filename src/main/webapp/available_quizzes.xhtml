@@ -23,15 +23,27 @@ and open the template in the editor.
 
                 <h:form>
 
-                    <p:dataTable value="#{quizListBackingBean.quizzes}" var="quiz">
-
+                    <p:dataTable var="quiz" value="#{quizListBackingBean.quizzes}" widgetVar="quizTable"
+                                 emptyMessage="No matching quiz found"
+                                 filteredValue="#{quizListBackingBean.filteredQuizzes}">
+                        
                         <f:facet name="header">
                             List of Quizzes
                         </f:facet>
-
-                        <p:column headerText="Title" sortBy="#{quiz.title}" >#{quiz.title}</p:column>
-                        <p:column headerText="Category" sortBy="#{quiz.quizzCategory.category}" >#{quiz.quizzCategory.category}</p:column>
-                        <p:column headerText="Creator" >#{quiz.creator.username}</p:column>
+                        
+                        <p:column headerText="Title" sortBy="#{quiz.title}" filterBy="#{quiz.title}" >#{quiz.title}</p:column>
+                        
+                        <p:column field="quizzCategory.category" headerText="Category" filterMatchMode="exact" sortBy="#{quiz.quizzCategory.category}">
+                            
+                            <f:facet name="filter">
+                                <p:selectOneMenu onchange="PF('quizTable').filter()" styleClass="custom-filter">
+                                    <f:selectItem itemLabel="All" itemValue="#{null}" noSelectionOption="true" />
+                                    <f:selectItems value="#{quizListBackingBean.allCategories}" />
+                                </p:selectOneMenu>
+                            </f:facet>
+                        </p:column>
+                        
+                        <p:column headerText="Creator" sortBy="#{quiz.creator.username}" filterBy="#{quiz.creator.username}" >#{quiz.creator.username}</p:column>
 
                         <p:column>
                             <p:button href="quizpage.xhtml" icon="fa fa-fw fa-search-plus" value="go to quiz page">
@@ -40,7 +52,7 @@ and open the template in the editor.
                         </p:column>
 
                     </p:dataTable>
-
+                    
                 </h:form>
 
             </ui:define>

@@ -25,11 +25,16 @@ public class DatabaseIdentityStore implements IdentityStore {
     public CredentialValidationResult validate(UsernamePasswordCredential usernamePasswordCredential) {
 
         Account account = accountDAO.findAccountByUsername(usernamePasswordCredential.getCaller());
-
-        if (account != null && account.getPassword().equals(usernamePasswordCredential.getPasswordAsString())) {
+        
+        Argon2PasswordHashing argon = new Argon2PasswordHashing();
+        
+        //if (account != null && account.getPassword().equals(usernamePasswordCredential.getPasswordAsString())) {
+       
+        if (account != null && argon.verifyPassword(account.getPassword(), usernamePasswordCredential.getPasswordAsString().toCharArray())) {
             //fill in list with roles that exist get roll from databse and store in list 
             return new CredentialValidationResult(account.getUsername(), new HashSet<>(asList(account.getUserrole())));
         }
+        System.out.println("THIS IS WHERE THE PROBELM IS");
         return INVALID_RESULT;
     }
 }
