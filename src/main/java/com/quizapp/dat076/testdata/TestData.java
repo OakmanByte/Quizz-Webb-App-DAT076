@@ -142,7 +142,7 @@ public class TestData {
         quizDAO.create(quiz2);
         quizDAO.create(quiz3);
         quizDAO.create(quiz4);
-
+/*
         pk1 = new LeaderboardPK(acc1.getUsername(), quiz1.getId());
         pk2 = new LeaderboardPK(acc1.getUsername(), quiz2.getId());
         pk3 = new LeaderboardPK(acc1.getUsername(), quiz3.getId());
@@ -162,7 +162,7 @@ public class TestData {
         lead7 = new Leaderboard(pk7, acc3, quiz1, 80);
         lead8 = new Leaderboard(pk8, acc3, quiz2, 50);
         lead9 = new Leaderboard(pk9, acc3, quiz3, 10);
-
+*/
         leaderboardDAO.create(lead1);
         leaderboardDAO.create(lead2);
         leaderboardDAO.create(lead3);
@@ -172,7 +172,7 @@ public class TestData {
         leaderboardDAO.create(lead7);
         leaderboardDAO.create(lead8);
         leaderboardDAO.create(lead9);
-
+/*
         q1_1 = new Question("How many legs does a dog have?", 1, "2", "4", "6", "8", 2, quiz1);
         q1_2 = new Question("How many legs does a duck have?", 2, "2", "4", "6", "8", 1, quiz1);
         q2_1 = new Question("What country is Florida in?", 3, "France", "Sweden", "USA", "UK", 3, quiz2);
@@ -182,7 +182,7 @@ public class TestData {
         q4_1 = new Question("Which planet is closest to the sun?", quiz4.getId(), "Pluto", "Venus", "Merkurius", "Mars", 3, quiz4);
         q4_2 = new Question("Which was the first country to send a human into space?", quiz4.getId(), "Sweden", "USSR", "USA", "East Germany", 2, quiz4);
         q4_3 = new Question("What were Buzz Aldrin's first words on the moon?", quiz4.getId(), "Beautiful view", "The moon is a cheese after all", "Hello world!", "That's one small step for a man, one giant leap for mankind", 1, quiz4);
-
+*/
         questionDAO.create(q1_1);
         questionDAO.create(q1_2);
         questionDAO.create(q2_1);

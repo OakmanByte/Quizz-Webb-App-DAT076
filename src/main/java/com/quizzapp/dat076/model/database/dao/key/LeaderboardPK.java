@@ -21,8 +21,8 @@ import lombok.NoArgsConstructor;
 @Data
 public class LeaderboardPK implements Serializable {
 
-   
-    private Account account;
-    private Quiz quiz;
+    private String account;
+    private int quiz;
+
 
 }
