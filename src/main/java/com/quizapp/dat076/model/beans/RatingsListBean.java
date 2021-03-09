@@ -57,57 +57,14 @@ public class RatingsListBean implements Serializable {
     
     public int AverageScore(){
         int temp1= 0;
-        int temp2= 0;
+        
         averageRatingscore = ratingsDAO.findratingsByQuizID(quizId);
         for(int i = 0; i< averageRatingscore.size(); i++){
             temp1 = temp1 + averageRatingscore.get(i).getScore();
         }
-        temp2 = temp1 / averageRatingscore.size();
+        temp1 = temp1 / averageRatingscore.size();
     
-        return temp2;
+        return temp1;
     }
-  
-      public List<Integer> calcAverageScore(List<Quiz> quiz){
-        int x;
-        for(int i = 0; i< quiz.size(); i++){
-            x = quiz.get(i).getId();
-            averageRatingscore = ratingsDAO.findratingsByQuizID(x);
-                int temp = 0;
-                for(int k = 0; k< averageRatingscore.size();k++){
-                    
-                    temp = temp+ averageRatingscore.get(k).getScore();
-                }
-             averageScores.add(temp/averageRatingscore.size());
-           
-        }
-        
-        return averageScores;
-    }
-
-    public List<Ratings> getRatings() {
-        return allRatings;
-    }
-
-    public Ratings getSelectedRatings() {
-        return selectedRating;
-    }
-
-    public void setSelectedProduct(Ratings selectedRating) {
-        this.selectedRating = selectedRating;
-    }
-
-    public List<Ratings> getSelectedProducts() {
-        return selectedRatings;
-    }
-
-    public void setSelectedProducts(List<Ratings> selectedRatings) {
-        this.selectedRatings = selectedRatings;
-    }
-
-    public void openNew() {
-        this.selectedRating = new Ratings();
-    }
-
-  
 
 }
