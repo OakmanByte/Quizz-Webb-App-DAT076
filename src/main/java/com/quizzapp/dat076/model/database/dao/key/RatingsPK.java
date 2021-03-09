@@ -5,6 +5,8 @@
  */
 package com.quizzapp.dat076.model.database.dao.key;
 
+import com.quizapp.dat076.model.entity.Account;
+import com.quizapp.dat076.model.entity.Quiz;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -16,7 +18,7 @@ import java.io.Serializable;
 @Data
 public class RatingsPK implements Serializable {
 
-    private int creator;
-    private int quiz;
+   private Account creator;
+   private Quiz quiz;
 
 }

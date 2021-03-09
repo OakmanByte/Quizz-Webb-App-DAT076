@@ -48,33 +48,4 @@ public class Ratings implements Serializable {
         this.quiz = quiz;
 
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
-
-    public String getReview() {
-        return review;
-    }
-
-    public void SetReview(String review) {
-        this.review = review;
-    }
-
-    public void setUsername(String username) {
-        this.creator.setUsername(username);
-    }
-
 }

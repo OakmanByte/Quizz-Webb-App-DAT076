@@ -29,9 +29,7 @@ public class Question implements Serializable {
 
     //@id private int id;
     @Id
-    private String question;
-    @Id
-    private int id;
+    private String questionID;
     //Attributes
     @NotNull
     private String alt1;
@@ -44,6 +42,7 @@ public class Question implements Serializable {
     @NotNull
     private int answer;
     //Relations
+    @Id
     @ManyToOne
     private Quiz quiz;
 
