@@ -106,7 +106,6 @@ public class AccountDAOTest {
     public void checkSizeOfQuizListForAccount() {
         // Is it possible to make so account1.getCreatedQuizzes() isn't empty?
         int sizeOfQuizList = account1.getCreatedQuizzes().size();
-        System.out.println("***** size is " + sizeOfQuizList);
 
         //Retrieve the quizzes created by account1
         List<Quiz> quizzes = quizDAO.findQuizzesByCreator(account1);
