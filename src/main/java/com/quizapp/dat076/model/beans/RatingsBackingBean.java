@@ -6,10 +6,13 @@
 package com.quizapp.dat076.model.beans;
 
 import com.quizapp.dat076.model.dao.AccountDAO;
+import com.quizapp.dat076.model.dao.QuizDAO;
 import com.quizapp.dat076.model.entity.Ratings;
 import com.quizapp.dat076.model.dao.RatingsDAO;
 import com.quizapp.dat076.model.entity.Account;
+import com.quizapp.dat076.model.entity.Quiz;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -29,6 +32,8 @@ public class RatingsBackingBean implements Serializable {
     private RatingsDAO ratingsDAO;
     @EJB
     private AccountDAO accountDAO;
+     @EJB
+    private QuizDAO quizDAO;
     @Inject
     private UserBean userBean;
     private int ratingsScore;
@@ -36,8 +41,8 @@ public class RatingsBackingBean implements Serializable {
     private int ratingsId;
     private String ratingsReview;
     private Account ratingscreator;
-    private int ratingscategory;
-
+    private Quiz ratingquiz;
+   
     private Ratings rating;
 
     public int getScoreRating() {
@@ -53,8 +58,8 @@ public class RatingsBackingBean implements Serializable {
 
         rating.setScore(ratingsScore);
         rating.SetReview(ratingsReview);
-        rating.setCategory(ratingscategory);
         rating.setCreator(accountDAO.findAccountByUsername(userBean.getAccount().getUsername()));
+        rating.setQuiz(ratingquiz);
         ratingsDAO.addRating(rating);
         return "success";
     }
@@ -70,4 +75,7 @@ public class RatingsBackingBean implements Serializable {
         ratingsDAO.remove(rating);
 
     }
+  
+    
+   
 }

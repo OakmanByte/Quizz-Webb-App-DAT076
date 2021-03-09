@@ -36,6 +36,14 @@ public class RatingsDAO extends AbstractDAO<String, Ratings> {
     public void addRating(Ratings rating) {
         entityManager.persist(rating);
     }
+    
+      public List<Ratings> findratingsByQuizID(int id) {
+
+        query = new JPAQuery(entityManager);
+
+        return query.from(rating).where(rating.quiz.id.eq(id)).list(rating);
+
+    }
 
     public List<Ratings> findAllRatings() {
         CriteriaQuery<Ratings> cq = entityManager.getCriteriaBuilder().createQuery(Ratings.class);
