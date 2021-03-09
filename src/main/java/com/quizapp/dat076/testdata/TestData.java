@@ -68,16 +68,6 @@ public class TestData {
     Category cat6;
     Category cat7;
 
-    LeaderboardPK pk1;
-    LeaderboardPK pk2;
-    LeaderboardPK pk3;
-    LeaderboardPK pk4;
-    LeaderboardPK pk5;
-    LeaderboardPK pk6;
-    LeaderboardPK pk7;
-    LeaderboardPK pk8;
-    LeaderboardPK pk9;
-
     Leaderboard lead1;
     Leaderboard lead2;
     Leaderboard lead3;
@@ -107,10 +97,10 @@ public class TestData {
 
     @PostConstruct
     public void init() {
-        acc1 = new Account("Rebecka", "rebecka@me.com", "psgjsg", "user", null, 0, null, null);
-        acc2 = new Account("Emma", "reemma@me.com", "psdsgjsg", "user", null, 0, null, null);
-        acc3 = new Account("AntonE", "antone@me.com", "psgsdfjsg", "user", null, 0, null, null);
-        acc4 = new Account("Albin", "albin@me.com", "password", "user", null, 22, null, null);
+        acc1 = new Account("Rebecka", "rebecka@me.com", "psgjsg", "user", "Science", 0, null, null);
+        acc2 = new Account("Emma", "reemma@me.com", "psdsgjsg", "user", "Science", 0, null, null);
+        acc3 = new Account("AntonE", "antone@me.com", "psgsdfjsg", "user", "Science", 0, null, null);
+        acc4 = new Account("Albin", "albin@me.com", "password", "user", "Science", 22, null, null);
 
         accountDAO.create(acc1);
         accountDAO.create(acc2);
@@ -142,6 +132,7 @@ public class TestData {
         quizDAO.create(quiz2);
         quizDAO.create(quiz3);
         quizDAO.create(quiz4);
+<<<<<<< HEAD
 /*
         pk1 = new LeaderboardPK(acc1.getUsername(), quiz1.getId());
         pk2 = new LeaderboardPK(acc1.getUsername(), quiz2.getId());
@@ -162,6 +153,18 @@ public class TestData {
         lead7 = new Leaderboard(pk7, acc3, quiz1, 80);
         lead8 = new Leaderboard(pk8, acc3, quiz2, 50);
         lead9 = new Leaderboard(pk9, acc3, quiz3, 10);
+=======
+        
+        lead1 = new Leaderboard(acc1, quiz1, 100);
+        lead2 = new Leaderboard(acc1, quiz2, 70);
+        lead3 = new Leaderboard(acc1, quiz3, 30);
+        lead4 = new Leaderboard(acc2, quiz1, 90);
+        lead5 = new Leaderboard(acc2, quiz2, 60);
+        lead6 = new Leaderboard(acc2, quiz3, 20);
+        lead7 = new Leaderboard(acc3, quiz1, 80);
+        lead8 = new Leaderboard(acc3, quiz2, 50);
+        lead9 = new Leaderboard(acc3, quiz3, 10);
+>>>>>>> main
 
         leaderboardDAO.create(lead1);
         leaderboardDAO.create(lead2);
@@ -173,6 +176,7 @@ public class TestData {
         leaderboardDAO.create(lead8);
         leaderboardDAO.create(lead9);
 
+<<<<<<< HEAD
         q1_1 = new Question("How many legs does a dog have?", 1, "2", "4", "6", "8", 2, quiz1);
         q1_2 = new Question("How many legs does a duck have?", 2, "2", "4", "6", "8", 1, quiz1);
         q2_1 = new Question("What country is Florida in?", 3, "France", "Sweden", "USA", "UK", 3, quiz2);
@@ -182,6 +186,18 @@ public class TestData {
         q4_1 = new Question("Which planet is closest to the sun?", quiz4.getId(), "Pluto", "Venus", "Merkurius", "Mars", 3, quiz4);
         q4_2 = new Question("Which was the first country to send a human into space?", quiz4.getId(), "Sweden", "USSR", "USA", "East Germany", 2, quiz4);
         q4_3 = new Question("What were Buzz Aldrin's first words on the moon?", quiz4.getId(), "Beautiful view", "The moon is a cheese after all", "Hello world!", "That's one small step for a man, one giant leap for mankind", 1, quiz4);
+=======
+
+        q1_1 = new Question("How many legs does a dog have?", "2", "4", "6", "8", 2, quiz1);
+        q1_2 = new Question("How many legs does a duck have?", "2", "4", "6", "8", 1, quiz1);
+        q2_1 = new Question("What country is Florida in?", "France", "Sweden", "USA", "UK", 3, quiz2);
+        q2_2 = new Question("What country is Perth in?", "New Zeland", "Indonesia", "India", "Australia", 4, quiz2);
+        q3_1 = new Question("What is 2*3?", "9", "6", "5", "8", 2, quiz3);
+        q3_2 = new Question("What is 2^3?", "9", "6", "5", "8", 4, quiz3); 
+        q4_1 = new Question("Which planet is closest to the sun?", "Pluto", "Venus", "Merkurius", "Mars", 3, quiz4);
+        q4_2 = new Question("Which was the first country to send a human into space?", "Sweden", "USSR", "USA", "East Germany", 2, quiz4);
+        q4_3 = new Question("What were Buzz Aldrin's first words on the moon?", "Beautiful view", "The moon is a cheese after all", "Hello world!", "That's one small step for a man, one giant leap for mankind", 1, quiz4);
+>>>>>>> main
 
         questionDAO.create(q1_1);
         questionDAO.create(q1_2);
@@ -206,7 +222,11 @@ public class TestData {
         ratingsDAO.create(rat4);
         ratingsDAO.create(rat5);
         ratingsDAO.create(rat6);
+<<<<<<< HEAD
 
     }*/
+=======
+    }
+>>>>>>> main
 
 }
