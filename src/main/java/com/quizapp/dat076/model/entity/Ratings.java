@@ -30,16 +30,18 @@ public class Ratings implements Serializable {
 
     
     //YOU CAN NOT HAVE Generatedvalues for a composite key like this, i think? //Anton
-    @Id
-    @GeneratedValue
-    private int id;
-    @Id
-    private int category;
+
     private int score;
     private String review;
+    @Id
     @ManyToOne
     private Account creator;
+<<<<<<< HEAD
     @ManyToOne
+=======
+    @Id
+    @OneToOne
+>>>>>>> main
     private Quiz quiz;
 
     public Ratings(int category, int score, String review, Account creator, Quiz quiz) {
