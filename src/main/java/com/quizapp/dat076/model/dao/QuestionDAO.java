@@ -27,7 +27,7 @@ public class QuestionDAO extends AbstractDAO<String, Question> {
     @PersistenceContext(unitName = "QuizApp")
     private EntityManager entityManager;
     private JPAQuery query;
-    private QQuestion question = QQuestion.question;
+    private QQuestion question = QQuestion.question1;
 
     public QuestionDAO() {
         super(Question.class);

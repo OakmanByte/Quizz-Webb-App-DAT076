@@ -16,7 +16,7 @@ import lombok.Data;
 @Data
 public class QuestionPK implements Serializable {
 
-    private String questionID;
+    private String question;
     private int quiz; 
 
 }
