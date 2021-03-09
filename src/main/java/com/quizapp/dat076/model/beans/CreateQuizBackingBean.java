@@ -10,6 +10,7 @@ import com.quizapp.dat076.model.entity.Category;
 import com.quizapp.dat076.model.entity.Question;
 import com.quizapp.dat076.model.entity.Quiz;
 import java.io.Serializable;
+import java.util.Random;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -40,9 +41,26 @@ public class CreateQuizBackingBean implements Serializable {
     @Inject
     private UserBean userBean;
 
-    public void add() {
+    public void addQuiz() {
+        //Correct answer = alt 1 always atm
+        Question newQuestion = new Question();
         Quiz quizToCreate = new Quiz(id, title, userBean.getAccount(), quizzCategory, null);
         System.out.println("***** " + quizToCreate.getCreator());
+    }
+
+    private boolean checkIfQuizIdExists() {
+        return false;
+    }
+
+    private boolean checkIfQuestionIdExists() {
+        return false;
+    }
+
+    private int generateId() {
+        Random rand = new Random();
+        int upperbound = Integer.MAX_VALUE;
+
+        return rand.nextInt(upperbound);
     }
 
 }
