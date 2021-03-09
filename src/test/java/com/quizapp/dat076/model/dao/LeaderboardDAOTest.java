@@ -108,33 +108,33 @@ public class LeaderboardDAOTest {
         quizDAO.update(quiz2);
         quizDAO.update(quiz3);
         accountDAO.update(acc1);
-
-        pk1 = new LeaderboardPK(acc1.getUsername(), quiz1.getId());
-        pk2 = new LeaderboardPK(acc1.getUsername(), quiz2.getId());
-        pk3 = new LeaderboardPK(acc1.getUsername(), quiz3.getId());
-        pk4 = new LeaderboardPK(acc2.getUsername(), quiz1.getId());
-        pk5 = new LeaderboardPK(acc2.getUsername(), quiz2.getId());
+/*
+        pk1 = new LeaderboardPK(acc1, quiz1);
+        pk2 = new LeaderboardPK(acc1, quiz2.getId());
+        pk3 = new LeaderboardPK(acc1, quiz3.getId());
+        pk4 = new LeaderboardPK(acc2, quiz1.getId());
+        pk5 = new LeaderboardPK(acc2), quiz2.getId());
         pk6 = new LeaderboardPK(acc2.getUsername(), quiz3.getId());
         pk7 = new LeaderboardPK(acc3.getUsername(), quiz1.getId());
         pk8 = new LeaderboardPK(acc3.getUsername(), quiz2.getId());
         pk9 = new LeaderboardPK(acc3.getUsername(), quiz3.getId());
-
+*/
         quizDAO.update(quiz1);
         accountDAO.update(acc1);
 
-        System.out.println("WAZZUP" + pk1.getQuizID());
+        //System.out.println("WAZZUP" + pk1.getQuizID());
 
-        lead1 = new Leaderboard(pk1, acc1, quiz1, 100);
-        lead2 = new Leaderboard(pk2, acc1, quiz2, 70);
-        lead3 = new Leaderboard(pk3, acc1, quiz3, 30);
-        lead4 = new Leaderboard(pk4, acc2, quiz1, 90);
-        lead5 = new Leaderboard(pk5, acc2, quiz2, 60);
-        lead6 = new Leaderboard(pk6, acc2, quiz3, 20);
-        lead7 = new Leaderboard(pk7, acc3, quiz1, 80);
-        lead8 = new Leaderboard(pk8, acc3, quiz2, 50);
-        lead9 = new Leaderboard(pk9, acc3, quiz3, 10);
+        lead1 = new Leaderboard(acc1, quiz1, 100);
+        lead2 = new Leaderboard(acc1, quiz2, 70);
+        lead3 = new Leaderboard(acc1, quiz3, 30);
+        lead4 = new Leaderboard(acc2, quiz1, 90);
+        lead5 = new Leaderboard(acc2, quiz2, 60);
+        lead6 = new Leaderboard(acc2, quiz3, 20);
+        lead7 = new Leaderboard(acc3, quiz1, 80);
+        lead8 = new Leaderboard(acc3, quiz2, 50);
+        lead9 = new Leaderboard(acc3, quiz3, 10);
 
-        System.out.printf("Creating leaderboard with PK %s, acc %s, quiz %d\n", lead1.getLeaderID(), lead1.getAccount().getUsername(), lead1.getQuiz().getId());
+        //System.out.printf("Creating leaderboard with PK %s, acc %s, quiz %d\n", lead1.getLeaderID(), lead1.getAccount().getUsername(), lead1.getQuiz().getId());
         leaderboardDAO.create(lead1);
         leaderboardDAO.create(lead2);
         leaderboardDAO.create(lead3);
