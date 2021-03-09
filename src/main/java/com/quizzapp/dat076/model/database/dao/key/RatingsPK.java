@@ -18,7 +18,7 @@ import java.io.Serializable;
 @Data
 public class RatingsPK implements Serializable {
 
-   private Account creator;
-   private Quiz quiz;
+   private String creator;
+   private int quiz;
 
 }

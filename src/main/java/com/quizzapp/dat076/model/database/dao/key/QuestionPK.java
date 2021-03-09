@@ -17,6 +17,6 @@ import lombok.Data;
 public class QuestionPK implements Serializable {
 
     private String questionID;
-    private Quiz quiz; 
+    private int quiz; 
 
 }
