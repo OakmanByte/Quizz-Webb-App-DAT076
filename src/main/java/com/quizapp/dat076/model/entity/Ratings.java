@@ -36,12 +36,11 @@ public class Ratings implements Serializable {
     @Id
     @ManyToOne
     private Account creator;
-<<<<<<< HEAD
-    @ManyToOne
-=======
+
+
     @Id
     @OneToOne
->>>>>>> main
+
     private Quiz quiz;
 
     public Ratings(int category, int score, String review, Account creator, Quiz quiz) {
@@ -51,22 +50,6 @@ public class Ratings implements Serializable {
         this.creator = creator;
         this.quiz = quiz;
 
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
-
-    public String getReview() {
-        return review;
-    }
-
-    public void SetReview(String review) {
-        this.review = review;
     }
 
     public void setUsername(String username) {
