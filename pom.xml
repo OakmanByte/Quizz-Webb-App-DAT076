@@ -93,9 +93,9 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-        <groupId>de.mkammerer</groupId>
-        <artifactId>argon2-jvm</artifactId>
-        <version>2.5</version>
+            <groupId>de.mkammerer</groupId>
+            <artifactId>argon2-jvm</artifactId>
+            <version>2.5</version>
         </dependency>      
     </dependencies>
     
@@ -166,6 +166,11 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.7-SNAPSHOT</version>
             </plugin>
         </plugins>
     </build>
