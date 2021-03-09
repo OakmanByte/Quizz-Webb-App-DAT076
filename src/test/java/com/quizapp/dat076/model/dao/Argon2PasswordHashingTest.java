@@ -47,7 +47,7 @@ public class Argon2PasswordHashingTest {
         Assert.assertFalse(Objects.equals(testpasswordhash, testpasswordhash2));
         //Checking null and empty string
         Assert.assertTrue(testpasswordhash != null);
-        Assert.assertTrue(Objects.equals(testpasswordhash ,""));
+        Assert.assertFalse(Objects.equals(testpasswordhash ,""));
     }
     
 }
