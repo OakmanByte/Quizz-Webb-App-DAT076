@@ -24,6 +24,7 @@ import org.junit.runner.RunWith;
 
 /**
  * A test class for the accountDAO class.
+ *
  * @author Emma Dirnberger
  * @see com.quizapp.dat076.model.dao.AccountDAO
  */
@@ -104,13 +105,33 @@ public class AccountDAOTest {
 
     @Test
     public void checkSizeOfQuizListForAccount() {
-        // Is it possible to make so account1.getCreatedQuizzes() isn't empty?
-        int sizeOfQuizList = account1.getCreatedQuizzes().size();
-
         //Retrieve the quizzes created by account1
         List<Quiz> quizzes = quizDAO.findQuizzesByCreator(account1);
 
         //3 quizzes have been added to account1, therefore size should be 3
         Assert.assertTrue(quizzes.size() == 3);
     }
+
+    @Test
+    public void testAbstractDAOfind() {
+        String accountUsername = account1.getUsername();
+        Account findAccount = accountDAO.find(accountUsername);
+
+        Assert.assertTrue(findAccount.getUsername().equals(accountUsername));
+    }
+
+    @Test
+    public void testAbstractDAOfindAll() {
+        List<Account> allAccounts = accountDAO.findAll();
+
+        Assert.assertTrue(allAccounts.size() == 3);
+    }
+
+    @Test
+    public void testAbstractDAOsize() {
+        int amountOfAccounts = accountDAO.size();
+
+        Assert.assertTrue(amountOfAccounts == 3);
+    }
+
 }

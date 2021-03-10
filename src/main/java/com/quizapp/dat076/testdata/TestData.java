@@ -17,7 +17,6 @@ import com.quizapp.dat076.model.entity.Leaderboard;
 import com.quizapp.dat076.model.entity.Question;
 import com.quizapp.dat076.model.entity.Quiz;
 import com.quizapp.dat076.model.entity.Ratings;
-import com.quizzapp.dat076.model.database.dao.key.LeaderboardPK;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;

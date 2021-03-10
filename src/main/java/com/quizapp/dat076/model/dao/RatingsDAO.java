@@ -51,6 +51,7 @@ public class RatingsDAO extends AbstractDAO<String, Ratings> {
         return entityManager.createQuery(cq).getResultList();
     }
 
+    //TODO remove or change? WHy would we want to return a Ratings on a specific score?
     public Ratings FindHighRated(int score) {
         JPAQuery query = new JPAQuery(entityManager);
 
@@ -58,7 +59,8 @@ public class RatingsDAO extends AbstractDAO<String, Ratings> {
 
     }
 
-    public int FindHighestRated() {
+    //TODO shouldn't it be highest score for a quiz?
+    public int FindHighestScore() {
         JPAQuery query = new JPAQuery(entityManager);
         int maxRating = query.from(rating).list(rating.score.max()).get(0);
         return maxRating;

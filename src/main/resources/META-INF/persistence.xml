@@ -6,6 +6,7 @@
     <class>com.quizapp.dat076.model.entity.Quiz</class>
     <class>com.quizapp.dat076.model.entity.Category</class>
     <class>com.quizapp.dat076.model.entity.Ratings></class>
+    <class>com.quizapp.dat076.model.entity.Question></class>
   </persistence-unit>
   <persistence-unit name="QuizApp" transaction-type="JTA">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>

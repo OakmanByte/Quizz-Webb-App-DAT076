@@ -29,7 +29,7 @@ public class Question implements Serializable {
 
     //@id private int id;
     @Id
-    private String questionID;
+    private String question;
     //Attributes
     @NotNull
     private String alt1;

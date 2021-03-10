@@ -8,7 +8,6 @@ package com.quizapp.dat076.model.entity;
 import com.quizzapp.dat076.model.database.dao.key.RatingsPK;
 import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.ManyToOne;
