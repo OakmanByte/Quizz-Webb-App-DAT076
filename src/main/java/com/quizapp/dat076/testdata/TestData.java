@@ -173,12 +173,12 @@ public class TestData {
         questionDAO.create(q4_2);
         questionDAO.create(q4_3);
 
-        rat1 = new Ratings(1, 5, "Wow this is the best ever! I am so mother puffing impressed", acc3, quiz1);
-        rat2 = new Ratings(1, 1, "Wtf who doesn't know how many legs these animals have?", acc2, quiz1);
-        rat3 = new Ratings(2, 4, "Wow this was the most difficult ever!", acc1, quiz2);
-        rat4 = new Ratings(2, 2, "Lol noo everyone knows Florida is in AMERICA pfft not USA. Idiot!", acc3, quiz2);
-        rat5 = new Ratings(3, 5, "Great! I am 10 and learned alot. I got all right!", acc1, quiz3);
-        rat6 = new Ratings(3, 5, "Pfft no this is wrong! 2^3 is 9!", acc2, quiz3);
+        rat1 = new Ratings(1, "Wow this is the best ever! I am so mother puffing impressed", acc3, quiz1);
+        rat2 = new Ratings(1, "Wtf who doesn't know how many legs these animals have?", acc2, quiz1);
+        rat3 = new Ratings(2, "Wow this was the most difficult ever!", acc1, quiz2);
+        rat4 = new Ratings(2, "Lol noo everyone knows Florida is in AMERICA pfft not USA. Idiot!", acc3, quiz2);
+        rat5 = new Ratings(3, "Great! I am 10 and learned alot. I got all right!", acc1, quiz3);
+        rat6 = new Ratings(3, "Pfft no this is wrong! 2^3 is 9!", acc2, quiz3);
 
         ratingsDAO.create(rat1);
         ratingsDAO.create(rat2);

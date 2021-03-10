@@ -5,22 +5,28 @@
  */
 package com.quizapp.dat076.model.beans;
 
+import com.quizapp.dat076.model.dao.QuizDAO;
 import com.quizapp.dat076.model.dao.RatingsDAO;
+import com.quizapp.dat076.model.entity.Quiz;
 import com.quizapp.dat076.model.entity.Ratings;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
+import lombok.Data;
+import org.omnifaces.cdi.Param;
 import org.primefaces.PrimeFaces;
 
 /**
  * Backing Bean for ratingsresults.xhtml
  * @author Anton Blomdell
  */
+@Data
 @Named
 @ViewScoped
 public class RatingsListBean implements Serializable {
@@ -28,67 +34,37 @@ public class RatingsListBean implements Serializable {
     private List<Ratings> allRatings;
     private Ratings selectedRating;
     private List<Ratings> selectedRatings;
-
-    @Inject
+    private List<Ratings> averageRatingscore;
+    
+    private List<Quiz> averageQuizes;
+    
+    private List<Integer> averageScores;
+     @Inject
+    @Param(name = "quizId")
+    private int quizId;
+     
+    @EJB
     private RatingsDAO ratingsDAO;
+    @EJB
+    private QuizDAO quizDAO;
 
     //  private RatingsController ratingsController;
     @PostConstruct
     public void postConstruct() {
         allRatings = ratingsDAO.findAll();
-
+       
     }
-
-    public List<Ratings> getRatings() {
-        return allRatings;
-    }
-
-    public Ratings getSelectedRatings() {
-        return selectedRating;
-    }
-
-    public void setSelectedProduct(Ratings selectedRating) {
-        this.selectedRating = selectedRating;
-    }
-
-    public List<Ratings> getSelectedProducts() {
-        return selectedRatings;
-    }
-
-    public void setSelectedProducts(List<Ratings> selectedRatings) {
-        this.selectedRatings = selectedRatings;
-    }
-
-    public void openNew() {
-        this.selectedRating = new Ratings();
-    }
-
-    public void deleteRating() {
-        this.allRatings.remove(this.selectedRating);
-        this.selectedRating = null;
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Product Removed"));
-        PrimeFaces.current().ajax().update("form:messages", "form:dt-ratings");
-    }
-
-    public String getDeleteButtonMessage() {
-        if (hasSelectedRatings()) {
-            int size = this.selectedRatings.size();
-            return size > 1 ? size + " ratings selected" : "1 ratings selected";
+    
+    public int AverageScore(){
+        int temp1= 0;
+        
+        averageRatingscore = ratingsDAO.findratingsByQuizID(quizId);
+        for(int i = 0; i< averageRatingscore.size(); i++){
+            temp1 = temp1 + averageRatingscore.get(i).getScore();
         }
-
-        return "Delete";
-    }
-
-    public boolean hasSelectedRatings() {
-        return this.selectedRatings != null && !this.selectedRatings.isEmpty();
-    }
-
-    public void deleteSelectedProducts() {
-        this.allRatings.removeAll(this.selectedRatings);
-        this.selectedRatings = null;
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Ratings Removed"));
-        PrimeFaces.current().ajax().update("form:messages", "form:dt-ratings");
-        PrimeFaces.current().executeScript("PF('dtratings').clearFilters()");
+        temp1 = temp1 / averageRatingscore.size();
+    
+        return temp1;
     }
 
 }

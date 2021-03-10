@@ -22,9 +22,12 @@
                             List of Ratings
                         </f:facet>
 
-                        <p:column headerText="Score" sortBy="#{ratings.score}" >#{ratings.score}</p:column>
+                        <p:column headerText="Score" sortBy="#{ratings.score}" >
+                         <p:rating value="#{ratings.score}" readonly="true"/>
+                         </p:column>
                         <p:column headerText="Review" sortBy="#{ratings.review}" >#{ratings.review}</p:column>
                         <p:column headerText="Creator" >#{ratings.creator.username}</p:column>
+                        <p:column headerText="Quiz" >#{ratings.quiz.title}</p:column>
 
 
 

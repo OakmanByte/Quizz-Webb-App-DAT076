@@ -36,7 +36,8 @@ public class RatingsDAOTest {
     Account account3 = new Account("user3", "user3@gmail.com", "password", "user", "Science", 20, null, null);
     Account account4 = new Account("user4", "user4@gmail.com", "password", "user", "Science", 20, null, null);
 
-    Quiz quiz1 = new Quiz("Such Amaze", account1, null);
+    //Quiz quiz1 = new Quiz("Such Amaze", account1, null);
+    Quiz quiz1 = new Quiz(1,"Such Amaze", account1 , null ,null);
     Ratings rat1 = new Ratings(5, "Wow this is the best ever! I am so mother puffing impressed", account1, quiz1);
     Ratings rat2 = new Ratings(1, "Wtf who doesn't know how many legs these animals have?", account2, quiz1);
     Ratings rat3 = new Ratings(4, "Wow this was the most difficult ever!", account3, quiz1);
@@ -93,25 +94,26 @@ public class RatingsDAOTest {
         Assert.assertTrue(true);
     }
 
-    @Test
-    public void findAllRatings() {
-        List<Ratings> ratings = ratingsDAO.findAllRatings();
-        Assert.assertTrue(ratings.size() == 3);
+
+   @Test
+   public void findratingsByQuizID() {
+       List<Ratings> firstquizRatings = ratingsDAO.findratingsByQuizID(1);
+        assert (firstquizRatings.get(0).getQuiz().equals(quiz1));
     }
-    // TODO fix addRating or remove
-//    @Test
-//    public void addNewRatings() {
-//        Ratings newrat = new Ratings(3, "This was ok", account4, quiz1);
-//        ratingsDAO.addRating(newrat);
-//
-//        List<Ratings> ratings = ratingsDAO.findAllRatings();
-//        Assert.assertTrue(ratings.size() == 4);
-//    }
+   
+   @Test
+   public void findratingsByUsername(){
+       List<Ratings> usernameRatings = ratingsDAO.findratingsByUsername(account3.getUsername());
+         assert (usernameRatings.size() == 1);
+       assert(usernameRatings.get(0).getCreator().getUsername().equals(account3.getUsername()));
+   
+   }
+   
     
-    @Test
-    public void findHighestScore() {
-        int highestScore = ratingsDAO.FindHighestScore();
-        
-        Assert.assertTrue(highestScore == 5);
-    }
+   @Test
+   public void FindHighestRatingScore(){
+       int maxScore = ratingsDAO.FindHighestRatingScore(quiz1.getId());
+       assert(maxScore == 5);
+   }
+ 
 }
