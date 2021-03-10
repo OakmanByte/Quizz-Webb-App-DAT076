@@ -42,15 +42,6 @@ public class Ratings implements Serializable {
 
     private Quiz quiz;
 
-    public Ratings(int category, int score, String review, Account creator, Quiz quiz) {
-        super();
-        this.score = score;
-        this.review = review;
-        this.creator = creator;
-        this.quiz = quiz;
-
-    }
-
     public void setUsername(String username) {
         this.creator.setUsername(username);
     }

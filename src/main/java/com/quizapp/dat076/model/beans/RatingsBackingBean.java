@@ -60,7 +60,7 @@ public class RatingsBackingBean implements Serializable {
         rating.setReview(ratingsReview);
         rating.setCreator(accountDAO.findAccountByUsername(userBean.getAccount().getUsername()));
         rating.setQuiz(ratingquiz);
-        ratingsDAO.addRating(rating);
+        ratingsDAO.create(rating);
         return "success";
     }
 
