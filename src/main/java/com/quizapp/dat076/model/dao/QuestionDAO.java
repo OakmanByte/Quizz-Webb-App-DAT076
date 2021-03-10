@@ -41,6 +41,7 @@ public class QuestionDAO extends AbstractDAO<String, Question> {
 
     }
 
+    //TODO should this be implemented?
     public int findCorrectAlternativeByQuestion(String queryQuestion) {
         //JPAQuery query = new JPAQuery(entityManager);
 
