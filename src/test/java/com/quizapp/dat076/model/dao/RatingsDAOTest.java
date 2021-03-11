@@ -89,12 +89,6 @@ public class RatingsDAOTest {
         accountDAO.remove(account4);
     }
 
-    @Test
-    public void truetest() {
-        Assert.assertTrue(true);
-    }
-
-
    @Test
    public void findratingsByQuizID() {
        List<Ratings> firstquizRatings = ratingsDAO.findratingsByQuizID(1);
@@ -109,11 +103,9 @@ public class RatingsDAOTest {
    
    }
    
-    
    @Test
-   public void FindHighestRatingScore(){
+   public void findHighestRatingScore(){
        int maxScore = ratingsDAO.FindHighestRatingScore(quiz1.getId());
        assert(maxScore == 5);
    }
- 
 }

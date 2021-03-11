@@ -17,6 +17,7 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -203,6 +204,17 @@ public class QuizDAOTest {
             assert (quiz.getQuizzCategory().getCategory().equals(c2.getCategory()));
         }
 
+    }
+    
+    /**
+     * Simple test to make sure that the findQuizByID method works properly
+     */
+    @Test
+    public void findFirstQuizByID() {
+        Quiz firstQuiz = quizDAO.findQuizByID(first.getId());
+        System.out.println("***** " + firstQuiz.getId()+ " *****");
+        
+        Assert.assertTrue(firstQuiz.equals(first));
     }
 
 }

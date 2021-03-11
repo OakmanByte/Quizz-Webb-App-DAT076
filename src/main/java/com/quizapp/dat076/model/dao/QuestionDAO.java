@@ -42,11 +42,13 @@ public class QuestionDAO extends AbstractDAO<String, Question> {
     }
 
     //TODO should this be implemented?
+    /*
     public int findCorrectAlternativeByQuestion(String queryQuestion) {
         //JPAQuery query = new JPAQuery(entityManager);
 
         //return query.select(question.answer).where(question.question.eq(queryQuestion)).fetch();
         return 0;
     }
+    */
 
 }

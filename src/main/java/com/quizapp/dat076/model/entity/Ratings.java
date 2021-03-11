@@ -42,8 +42,11 @@ public class Ratings implements Serializable {
 
     private Quiz quiz;
 
+    /*
+    TODO remove?
     public void setUsername(String username) {
         this.creator.setUsername(username);
     }
+*/
 
 }
