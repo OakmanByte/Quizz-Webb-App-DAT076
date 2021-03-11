@@ -30,6 +30,16 @@ and open the template in the editor.
                         <f:facet name="header">
                             List of Quizzes
                         </f:facet>
+
+                        <p:column headerText="Title" sortBy="#{quiz.title}" >#{quiz.title}</p:column>
+                        <p:column headerText="Category" sortBy="#{quiz.quizzCategory.category}" >#{quiz.quizzCategory.category}</p:column>
+                        <p:column headerText="Creator" >#{quiz.creator.username}</p:column>
+                        <p:column>
+                            <p:button  icon="fa fa-fw fa-search-plus" value="AverageScore" onclick="PF('dlg3').show()" >
+                                <f:param name="quizId" value="#{quiz.id}"/>
+                            </p:button>
+                        </p:column>
+=======
                         
                         <p:column headerText="Title" sortBy="#{quiz.title}" filterBy="#{quiz.title}" >#{quiz.title}</p:column>
                         
@@ -52,9 +62,15 @@ and open the template in the editor.
                         </p:column>
 
                     </p:dataTable>
+                    <p:dialog header="Average Score" widgetVar="dlg3" minHeight="40" width="350" showEffect="fade">
+                   <p:panelGrid columns="1" layout="grid">
+                    <p:rating value='#{ratingsListBean.AverageScore}'/>
                     
+                     </p:panelGrid>
+                        
+                      </p:dialog>
                 </h:form>
-
+                
             </ui:define>
 
         </ui:composition>

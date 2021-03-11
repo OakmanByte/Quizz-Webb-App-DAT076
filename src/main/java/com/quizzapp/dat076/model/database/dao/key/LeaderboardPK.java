@@ -5,6 +5,8 @@
  */
 package com.quizzapp.dat076.model.database.dao.key;
 
+import com.quizapp.dat076.model.entity.Account;
+import com.quizapp.dat076.model.entity.Quiz;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -17,15 +19,10 @@ import lombok.NoArgsConstructor;
  * @author Rebecka
  */
 @Data
-@Embeddable
-@NoArgsConstructor
-@AllArgsConstructor
 public class LeaderboardPK implements Serializable {
 
-    @Column(name = "user_name")
-    String username;
+    private String account;
+    private int quiz;
 
-    @Column(name = "quiz_id")
-    int quizID;
 
 }

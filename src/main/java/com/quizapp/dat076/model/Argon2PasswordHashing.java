@@ -12,8 +12,8 @@ import de.mkammerer.argon2.Argon2Factory;
 import javax.security.enterprise.credential.Password;
 
 /**
- *
- * @author anton
+ * Password hashing with Argon2. Method for hashing a password, and verifying a password with it's hash equivalent. 
+ * @author Anton Ekman
  */
 public class Argon2PasswordHashing {
     
@@ -38,7 +38,6 @@ public class Argon2PasswordHashing {
    
     //Wipe confidential information
     argon2.wipeArray(password);
-    inputPassword = "";
     
     return hash;
      }
@@ -51,7 +50,6 @@ public boolean verifyPassword(String hash, char[] password){
             
     //Wipe confidential information
     argon2.wipeArray(password);
-    hash = "";
         
     return result;
     }

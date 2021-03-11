@@ -33,27 +33,35 @@ public class RatingsDAO extends AbstractDAO<String, Ratings> {
         query = new JPAQuery(entityManager);
     }
 
-    public void addRating(Ratings rating) {
-        entityManager.persist(rating);
-    }
+      public List<Ratings> findratingsByQuizID(int id) {
 
-    public List<Ratings> findAllRatings() {
-        CriteriaQuery<Ratings> cq = entityManager.getCriteriaBuilder().createQuery(Ratings.class);
-        cq.select(cq.from(Ratings.class));
-        return entityManager.createQuery(cq).getResultList();
-    }
+        query = new JPAQuery(entityManager);
 
-    public Ratings FindHighRated(int score) {
+        return query.from(rating).where(rating.quiz.id.eq(id)).list(rating);
+
+    }
+      
+    public List<Ratings> findratingsByUsername(String username){
+    
+         query = new JPAQuery(entityManager);
+         return query.from(rating).where(rating.creator.username.eq(username)).list(rating);
+    }
+    
+
+
+    //TODO shouldn't it be highest score for a quiz?
+    public int FindHighestRatingScore(int id) {
         JPAQuery query = new JPAQuery(entityManager);
-
-        return query.from(rating).where(rating.score.loe(score)).singleResult(rating);
-
-    }
-
-    public int FindHighestRated() {
-        JPAQuery query = new JPAQuery(entityManager);
-        int maxRating = query.from(rating).list(rating.score.max()).get(0);
-        return maxRating;
+        List<Ratings> scores;
+         scores = query.from(rating).where(rating.quiz.id.eq(id)).list(rating);
+         int maxScore = 0;
+         for(int i = 0 ; i< scores.size(); i++){
+             
+             if(scores.get(i).getScore() > maxScore){
+                maxScore = scores.get(i).getScore(); 
+             }
+         }
+         return maxScore;
     }
 
 }

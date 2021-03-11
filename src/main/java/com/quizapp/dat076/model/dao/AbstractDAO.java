@@ -48,7 +48,7 @@ public abstract class AbstractDAO<K, T> {
 
     }
 
-    public int countTest() {
+    public int size() {
         CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<Long> cq = builder.createQuery(Long.class);
         Root<T> root = cq.from(entityType);
@@ -65,25 +65,11 @@ public abstract class AbstractDAO<K, T> {
         return query.getResultList();
     }
 
-    public T getFirst() {
-        final CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
-        cq.select(cq.from(entityType));
-        return (T) getEntityManager().createQuery(cq).getSingleResult();
-    }
-
     public void remove(T entity) {
         getEntityManager().remove(getEntityManager().merge(entity));
     }
 
     public T update(T entity) {
         return getEntityManager().merge(entity);
-    }
-
-    public void flush() {
-        getEntityManager().flush();
-    }
-
-    public void refresh(T entity) {
-        getEntityManager().refresh(entity);
     }
 }

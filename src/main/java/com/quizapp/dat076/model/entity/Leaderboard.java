@@ -6,9 +6,12 @@
 package com.quizapp.dat076.model.entity;
 
 import com.quizzapp.dat076.model.database.dao.key.LeaderboardPK;
+import com.quizzapp.dat076.model.database.dao.key.QuestionPK;
 import java.io.Serializable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
@@ -24,20 +27,15 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@IdClass(LeaderboardPK.class)
 public class Leaderboard implements Serializable {
 
-    @EmbeddedId
-    LeaderboardPK leaderID;
-
+    @Id
     @ManyToOne
-    @MapsId("username")
-    @JoinColumn(name = "user_name")
-    Account account;
-
+    private Account account; 
+    @Id
     @ManyToOne
-    @MapsId("quizID")
-    @JoinColumn(name = "quiz_id")
-    Quiz quiz;
+    private Quiz quiz;
 
     Integer score;
 
