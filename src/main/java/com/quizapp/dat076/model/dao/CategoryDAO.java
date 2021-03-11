@@ -33,9 +33,7 @@ public class CategoryDAO extends AbstractDAO<String, Category> {
 
     public Category findCategory(String catInput) {
 
-        if (query == null) {
-            query = new JPAQuery(entityManager);
-        }
+        JPAQuery query = new JPAQuery(entityManager);
         QCategory cat = QCategory.category1;
 
         query = new JPAQuery(entityManager);
