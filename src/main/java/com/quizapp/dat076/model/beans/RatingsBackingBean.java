@@ -32,7 +32,7 @@ public class RatingsBackingBean implements Serializable {
     private RatingsDAO ratingsDAO;
     @EJB
     private AccountDAO accountDAO;
-     @EJB
+    @EJB
     private QuizDAO quizDAO;
     @Inject
     private UserBean userBean;

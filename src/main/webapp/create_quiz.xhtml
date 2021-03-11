@@ -18,12 +18,12 @@ and open the template in the editor.
     <h:body>
         <h:form id="CreateQuiz">
             <b:panelGrid columns="2" styleClass="panelgridstyle" >
-                <p:outputLabel for="quizTitle" value="Quiz Title" />
-                <p:inputText id="quizTitle" placeholder="Title" />
+                <p:outputLabel for="title" value="Quiz Title" />
+                <p:inputText id="title" value="#{createQuiz.title}" placeholder="Title" />
 
-                <p:outputLabel for="quizCategory" value="Quiz Category"/>
-                <p:selectOneMenu id="quizCategory">
-                    <f:selectItem itemLabel="All" itemValue="#{null}" noSelectionOption="true" />
+                <p:outputLabel for="category" value="Quiz Category"/>
+                <p:selectOneMenu id="category" converter="omnifaces.SelectItemsConverter">
+                    <f:selectItem itemLabel="All" itemValue="#{createQuiz.category}" noSelectionOption="true" itemDisabled="true" />
                     <f:selectItems value="#{quizListBackingBean.allCategories}" />
                 </p:selectOneMenu>
 

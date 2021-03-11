@@ -10,7 +10,6 @@ import com.quizapp.dat076.model.entity.Category;
 import com.quizapp.dat076.model.entity.Question;
 import com.quizapp.dat076.model.entity.Quiz;
 import java.io.Serializable;
-import java.util.Random;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -26,41 +25,29 @@ import lombok.Data;
 @Named("createQuiz")
 @ViewScoped
 public class CreateQuizBackingBean implements Serializable {
-
-    //TODO give randomID or increasing id
-    private int id;
     //Attributes
     @NotNull
     private String title;
-    private Category quizzCategory;
+    @NotNull
+    private Category category;
     private Question question;
 
     @EJB
     private QuizDAO quizDAO;
-
+    
     @Inject
     private UserBean userBean;
 
     public void addQuiz() {
         //Correct answer = alt 1 always atm
         Question newQuestion = new Question();
-        Quiz quizToCreate = new Quiz(id, title, userBean.getAccount(), quizzCategory, null);
-        System.out.println("***** " + quizToCreate.getCreator());
+        //Quiz first = new Quiz("First quiz", account1, c1);
+       // Category cat = new Category(category.toString());
+        Quiz quizToCreate = new Quiz(title, userBean.getAccount(), category);
+        System.out.println("***** " + quizToCreate.getCreator().getUsername() + " " + quizToCreate.getTitle());
+        
+        
+        quizDAO.create(quizToCreate);
+        System.out.println("***** Quiz created is " + quizDAO.findQuizByID(quizToCreate.getId()));
     }
-
-    private boolean checkIfQuizIdExists() {
-        return false;
-    }
-
-    private boolean checkIfQuestionIdExists() {
-        return false;
-    }
-
-    private int generateId() {
-        Random rand = new Random();
-        int upperbound = Integer.MAX_VALUE;
-
-        return rand.nextInt(upperbound);
-    }
-
 }
