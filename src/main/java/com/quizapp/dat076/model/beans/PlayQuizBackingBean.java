@@ -48,6 +48,7 @@ public class PlayQuizBackingBean implements Serializable {
 
     private boolean isCurrentQuestionAnswered;
     private int points;
+    private int maximumpoints;
 
     private int timer = 10;
     private boolean isTimerAtZero = false;
@@ -65,6 +66,7 @@ public class PlayQuizBackingBean implements Serializable {
 
         if (questions == null) {
             questions = questionDAO.findQuestionsinQuiz(quizDAO.find(quizId));
+            maximumpoints = questions.size() * 10;
         }
 
         currentQuestion = questions.get(currentQuestionIndex);
@@ -99,8 +101,8 @@ public class PlayQuizBackingBean implements Serializable {
             return;
         }
 
-        addMessage(FacesMessage.SEVERITY_INFO, "Correct answer", "1 point");
-        points++;
+        addMessage(FacesMessage.SEVERITY_INFO, "Correct answer", timer + " points");
+        points += timer;
         isCurrentQuestionAnswered = true;
     }
 
