@@ -63,27 +63,4 @@ public class QuizDAO extends AbstractDAO<Integer, Quiz> {
 
         return query.from(quiz).where(quiz.quizzCategory.eq(category)).list(quiz);
     }
-
-    public void removeQuizById(int id) {
-
-        // query.remove(quiz).where(quiz.id.eq(id)).execute();
-        /*
-        boolean removed;
-        Quiz toDelete = queryFactory.selectFrom(quiz).where(quiz.id.eq(id)).fetchOne();
-        
-       if(toDelete != null){
-           remove(toDelete);
-           removed = true;
-       }else{
-           removed = false;
-       }
-       
-       return removed;*/
-    }
-
-    /*public void removeAllQuizzesByCreator(Account creator){
-        
-        queryFactory.delete(quiz).where(quiz.creator.eq(creator)).execute();
-        
-    }*/
 }

@@ -72,12 +72,4 @@ public abstract class AbstractDAO<K, T> {
     public T update(T entity) {
         return getEntityManager().merge(entity);
     }
-
-    public void flush() {
-        getEntityManager().flush();
-    }
-
-    public void refresh(T entity) {
-        getEntityManager().refresh(entity);
-    }
 }

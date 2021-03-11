@@ -41,5 +41,4 @@ public class Ratings implements Serializable {
     @OneToOne
 
     private Quiz quiz;
-
 }
