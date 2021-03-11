@@ -36,11 +36,8 @@ public class RatingsListBean implements Serializable {
     private List<Ratings> selectedRatings;
     private List<Ratings> averageRatingscore;
     
-    private List<Quiz> averageQuizes;
-    
-    private List<Integer> averageScores;
-     @Inject
-    @Param(name = "quizId")
+
+     
     private int quizId;
      
     @EJB

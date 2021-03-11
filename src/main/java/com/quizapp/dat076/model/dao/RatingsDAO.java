@@ -49,7 +49,6 @@ public class RatingsDAO extends AbstractDAO<String, Ratings> {
     
 
 
-    //TODO shouldn't it be highest score for a quiz?
     public int FindHighestRatingScore(int id) {
         JPAQuery query = new JPAQuery(entityManager);
         List<Ratings> scores;

@@ -34,11 +34,7 @@ and open the template in the editor.
                         <p:column headerText="Title" sortBy="#{quiz.title}" >#{quiz.title}</p:column>
                         <p:column headerText="Category" sortBy="#{quiz.quizzCategory.category}" >#{quiz.quizzCategory.category}</p:column>
                         <p:column headerText="Creator" >#{quiz.creator.username}</p:column>
-                        <p:column>
-                            <p:button  icon="fa fa-fw fa-search-plus" value="AverageScore" onclick="PF('dlg3').show()" >
-                                <f:param name="quizId" value="#{quiz.id}"/>
-                            </p:button>
-                        </p:column>
+                        <p:column headerText="Average Score"></p:column>
 =======
                         
                         <p:column headerText="Title" sortBy="#{quiz.title}" filterBy="#{quiz.title}" >#{quiz.title}</p:column>
