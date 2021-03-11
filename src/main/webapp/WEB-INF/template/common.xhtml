@@ -11,10 +11,11 @@ and open the template in the editor.
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
-    <h:head>
-        <ui:insert name="header"/>
+    <h:head> 
+        
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" type = "text/css" href="template.css"> </link>
+        <ui:insert name="header"/>
     </h:head>
 
 
@@ -25,7 +26,7 @@ and open the template in the editor.
 
             <f:facet name="left">
                 <p:toolbarGroup>
-                    <h2 class="header_title"><a href="available_quizzes.xhtml" style="text-decoration: none">Quiz App</a></h2>
+                    <h2 class="header_title"><a href="quizlist.xhtml" style="text-decoration: none">Quiz App</a></h2>
                 </p:toolbarGroup>
             </f:facet>
 
