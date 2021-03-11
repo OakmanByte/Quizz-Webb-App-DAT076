@@ -34,26 +34,38 @@
 
                     <div class="card" style="text-align: center">
                         <div style="text-align: center; margin-right:  1em; margin-top: 0.5em" >
-                            <p:commandButton value="Leave Ratings" action="#{playQuizController.redirectRatings()}"  icon="fa fa-fw fa-arrow-right" update="@form" />
+                            <p:commandButton value="Leave Ratings" type="button" onclick="PF('dlg3').show()"  icon="pi pi-external-link" />
                         </div>
                         <div style="text-align: center; margin-right: 1em; margin-top: 0.5em" >
-                            <p:commandButton value="Play More Quiz" action="#{playQuizController.redirectPlay()}" icon="fa fa-fw fa-arrow-right" update="@form" />
+                            <p:commandButton value="Play More Quiz" action="#{playQuizController.redirectPlay()}" icon="pi pi-external-link" update="@form" />
                         </div>
                         <div style="text-align: center; margin-right: 1em; margin-top: 0.5em" >
-                            <p:commandButton value="Account Page" action="#{playQuizController.redirectAccount()}" icon="fa fa-fw fa-arrow-right" update="@form" />
+                            <p:commandButton value="Account Page" action="#{playQuizController.redirectAccount()}" icon="pi pi-external-link" update="@form" />
                         </div>
                     </div>
+                    <p:dialog header="Leave Rating" widgetVar="dlg3" minHeight="40" width="350" showEffect="fade">
+                <h5 class="p-mt-0"> Enter Rating Score</h5>
+                    <p:rating value='#{ratingsBackingBean.ratingsScore}'/>
+                   
+
+                    <p:outputLabel for="ratings-review" value="Enter Rating Review"/>
+                    <p:inputText id="ratings-review" value='#{ratingsBackingBean.ratingsReview}'/>
+    <f:facet name="footer">
+       
+        <p:commandButton type="button" value="Leave Rating" style="width: 5rem" action="#{ratingsBackingBean.add()}" ajax="false" />
+    </f:facet>
+           </p:dialog>
                 </h:form> 
 
                 <ld:leaderboardComp value="#{leaderboardBackingBean.getBoard(quizPageBackingBean.quiz.id)}"></ld:leaderboardComp>
 
 
             </ui:define>
-
+   
 
 
         </ui:composition>
-
+        
     </h:body>
 </html>
 
