@@ -5,8 +5,10 @@
  */
 package com.quizapp.dat076.model.beans;
 
+import com.quizapp.dat076.model.dao.LeaderboardDAO;
 import com.quizapp.dat076.model.dao.QuestionDAO;
 import com.quizapp.dat076.model.dao.QuizDAO;
+import com.quizapp.dat076.model.entity.Leaderboard;
 import com.quizapp.dat076.model.entity.Question;
 import java.io.Serializable;
 import java.util.List;
@@ -40,6 +42,11 @@ public class PlayQuizBackingBean implements Serializable {
 
     @EJB
     private QuestionDAO questionDAO;
+
+    @EJB
+    private LeaderboardDAO leaderboardDAO;
+    @Inject
+    UserBean user;
 
     private List<Question> questions;
     private Question currentQuestion;
@@ -81,8 +88,8 @@ public class PlayQuizBackingBean implements Serializable {
         resetTimer();
 
     }
-    
-    private void resetTimer(){
+
+    private void resetTimer() {
         timer = 10;
         isTimerAtZero = false;
     }
@@ -114,8 +121,8 @@ public class PlayQuizBackingBean implements Serializable {
         addMessage(FacesMessage.SEVERITY_ERROR, "Incorrect answer", "No point for you");
         isCurrentQuestionAnswered = true;
     }
-    
-    private void timeOut(){
+
+    private void timeOut() {
         addMessage(FacesMessage.SEVERITY_WARN, "Time out!!!", "You missed your chance to answer");
         isCurrentQuestionAnswered = true;
         isTimerAtZero = true;
@@ -123,20 +130,20 @@ public class PlayQuizBackingBean implements Serializable {
     }
 
     public void decrementTimer() {
-        
+
         //As long as the timer is above zero and the current question is 
         //unanswered, count down the timer
-        if ( !isTimerAtZero && !isCurrentQuestionAnswered) {
-            
+        if (!isTimerAtZero && !isCurrentQuestionAnswered) {
+
             timer--;
 
             //When the timer reaches zero, call timeOut()
             if (timer == 0) {
-                
+
                 timeOut();
-                
+
             }
-            
+
         }
 
     }
@@ -145,6 +152,17 @@ public class PlayQuizBackingBean implements Serializable {
 
         isFinished = true;
 
+    }
+
+    public String add() {
+        System.out.println("TAILS");
+        if (user.isUser() == true) {
+            Leaderboard result = new Leaderboard(user.getAccount(), quizDAO.findQuizByID(quizId), points);
+            leaderboardDAO.create(result);
+            System.out.println("SONIC");
+            
+        }
+        return "success";
     }
 
 }
