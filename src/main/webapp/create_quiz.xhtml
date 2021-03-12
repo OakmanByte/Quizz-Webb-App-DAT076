@@ -21,8 +21,8 @@ and open the template in the editor.
                 <p:outputLabel for="title" value="Quiz Title" />
                 <p:inputText id="title" value="#{createQuiz.title}" placeholder="Title" />
 
-                <p:outputLabel for="category" value="Quiz Category"/>
-                <p:selectOneMenu id="category" converter="omnifaces.SelectItemsConverter">
+                <p:outputLabel value="Quiz Category"/>
+                <p:selectOneMenu id="category" >
                     <f:selectItem itemLabel="All" itemValue="#{createQuiz.category}" noSelectionOption="true" itemDisabled="true" />
                     <f:selectItems value="#{quizListBackingBean.allCategories}" />
                 </p:selectOneMenu>

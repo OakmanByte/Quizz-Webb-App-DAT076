@@ -43,8 +43,10 @@ public class CreateQuizBackingBean implements Serializable {
         Question newQuestion = new Question();
         //Quiz first = new Quiz("First quiz", account1, c1);
        // Category cat = new Category(category.toString());
-        Quiz quizToCreate = new Quiz(title, userBean.getAccount(), category);
-        System.out.println("***** " + quizToCreate.getCreator().getUsername() + " " + quizToCreate.getTitle());
+        Quiz quizToCreate = new Quiz(title, userBean.getAccount(), null);
+        quizToCreate.setQuizzCategory(category);
+        quizDAO.update(quizToCreate);
+        System.out.println("***** " + quizToCreate.getCreator().getUsername() + " " + category);
         
         
         quizDAO.create(quizToCreate);
