@@ -177,5 +177,19 @@ public class LeaderboardDAOTest {
         Assert.assertTrue(quizplayers2.size() == 3);
         Assert.assertTrue(quizplayers3.size() == 3);
     }
-
+    
+    @Test
+    public void checkCorrectValue(){
+        List<Leaderboard> quizplayers = leaderboardDAO.findScoresByQuizID(quiz1.getId());
+        for(Leaderboard x: quizplayers){
+            int tempScore = x.getScore();
+            int tempId = x.getQuiz().getId();
+            String tempUsername =x.getAccount().getUsername();
+            Assert.assertTrue((tempScore==100) || (tempScore == 90) || (tempScore==80) );
+            Assert.assertTrue((tempUsername=="Rebecka") || (tempUsername == "Emma") || (tempUsername=="AntonE") );
+             Assert.assertTrue(tempId==1);
+        }
+    
+    }
+    
 }
