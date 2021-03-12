@@ -23,7 +23,10 @@ and open the template in the editor.
 
                 <p:outputLabel value="Quiz Category"/>
                 <p:selectOneMenu id="category" >
-                    <f:selectItem itemLabel="All" itemValue="#{createQuiz.category}" noSelectionOption="true" itemDisabled="true" />
+                    <p:ajax event="itemSelect"
+                            listener="#{createQuiz.onItemSelectedListener}"/>
+                    <f:selectItem itemLabel="All" itemValue="#{createQuiz.category}" 
+                                  noSelectionOption="true" itemDisabled="true" />
                     <f:selectItems value="#{quizListBackingBean.allCategories}" />
                 </p:selectOneMenu>
 
