@@ -27,8 +27,8 @@ import com.quizapp.dat076.model.Argon2PasswordHashing;
 @RequestScoped
 @Setter
 @Getter
-@Named("user")
-public class UserBackingBean {
+@Named("register")
+public class RegisterBackingBean {
 
     @UserExists
     private String username;

@@ -12,7 +12,6 @@ and open the template in the editor.
        xmlns:o="http://omnifaces.org/ui"
        xmlns:b="http://bootsfaces.net/ui">
     <h:head>
-        <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
@@ -31,26 +30,26 @@ and open the template in the editor.
                 </p:selectOneMenu>
 
                 <p:outputLabel for="quizQuestion1" value="Question 1"/>
-                <p:inputText id="quizQuestion1" placeholder="Question 1"/>
+                <p:inputText id="quizQuestion1" value="#{createQuiz.question}" placeholder="Question 1"/>
                 <p:panelGrid >
                     <p:row>
                         <p:column>
                             <p:outputLabel for ="correctAnswer" value = "Correct Answer"/>
-                            <p:inputText id = "correctAnswer" placeholder = "Correct Answer"/>
+                            <p:inputText id = "correctAnswer" value="#{createQuiz.answer}" placeholder = "Correct Answer"/>
                         </p:column>
                         <p:column>
                             <p:outputLabel for ="option1" value = "Option 1"/>
-                            <p:inputText id = "option1" placeholder = "Option 1"/>
+                            <p:inputText id = "option1" value="#{createQuiz.option1}" placeholder = "Option 1"/>
                         </p:column>
                     </p:row>
                     <p:row>
                         <p:column>
                             <p:outputLabel for ="option2" value = "Option 2"/>
-                            <p:inputText id = "option2" placeholder = "Option 2"/>
+                            <p:inputText id = "option2" value="#{createQuiz.option2}" placeholder = "Option 2"/>
                         </p:column>
                         <p:column>
                             <p:outputLabel for ="option3" value = "Option 3"/>
-                            <p:inputText id = "option3" placeholder = "Option 3"/>
+                            <p:inputText id = "option3" value="#{createQuiz.option3}" placeholder = "Option 3"/>
                         </p:column>
                     </p:row>
                 </p:panelGrid>

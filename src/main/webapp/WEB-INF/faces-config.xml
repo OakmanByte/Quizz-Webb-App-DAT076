@@ -61,6 +61,16 @@
       <to-view-id>/ratingsresults.xhtml</to-view-id>
     </navigation-case>
   </navigation-rule>
+  
+      <navigation-rule>
+        <from-view-id>/createquiz.xhtml</from-view-id>
+        <navigation-case> 
+            <from-action>#{createQuiz.addQuiz}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/accountpage.xhtml</to-view-id> 
+            <redirect />
+        </navigation-case>
+      </navigation-rule>
     
 </faces-config>
 
