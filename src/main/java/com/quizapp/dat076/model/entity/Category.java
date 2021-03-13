@@ -27,6 +27,7 @@ public class Category implements Serializable {
     @Id
     private String category;
 
+    //Not categories but quizzes
     @OneToMany(mappedBy = "quizzCategory")
     private List<Quiz> categories;
 
