@@ -15,7 +15,8 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
-        <h:form id="CreateQuiz">
+        <h:form id="CreateQuiz" >
+            <h4>Create Quiz</h4>
             <b:panelGrid columns="2" styleClass="panelgridstyle" >
                 <p:outputLabel for="title" value="Quiz Title" />
                 <p:inputText id="title" value="#{createQuiz.title}" placeholder="Title" />
@@ -28,62 +29,63 @@ and open the template in the editor.
                                   noSelectionOption="true" itemDisabled="true" />
                     <f:selectItems value="#{quizListBackingBean.allCategories}" />
                 </p:selectOneMenu>
+            </b:panelGrid>
 
-                <p:outputLabel for="quizQuestion1" value="Question 1"/>
-                <p:inputText id="quizQuestion1" value="#{createQuiz.question1Text}" placeholder="Question 1"/>
-                <p:panelGrid >
-                    <p:row>
-                        <p:column>
-                            <p:outputLabel for ="correctAnswerQuestion1" value = "Correct Answer"/>
-                            <p:inputText id = "correctAnswerQuestion1" value="#{createQuiz.answerQuestion1}" placeholder = "Correct Answer"/>
-                        </p:column>
-                        <p:column>
-                            <p:outputLabel for ="option1Question1" value = "Option 1"/>
-                            <p:inputText id = "option1Question1" value="#{createQuiz.option1Question1}" placeholder = "Option 1"/>
-                        </p:column>
-                    </p:row>
-                    <p:row>
-                        <p:column>
-                            <p:outputLabel for ="option2Question1" value = "Option 2"/>
-                            <p:inputText id = "option2Question1" value="#{createQuiz.option2Question1}" placeholder = "Option 2"/>
-                        </p:column>
-                        <p:column>
-                            <p:outputLabel for ="option3Question1" value = "Option 3"/>
-                            <p:inputText id = "option3Question1" value="#{createQuiz.option3Question1}" placeholder = "Option 3"/>
-                        </p:column>
-                    </p:row>
-                </p:panelGrid>
-                
-                <p:outputLabel for="quizQuestion2" value="Question 2"/>
-                <p:inputText id="quizQuestion2" value="#{createQuiz.question2Text}" placeholder="Question 1"/>
-                <p:panelGrid >
-                    <p:row>
-                        <p:column>
-                            <p:outputLabel for ="correctAnswerQuestion2" value = "Correct Answer"/>
-                            <p:inputText id = "correctAnswerQuestion2" value="#{createQuiz.answerQuestion2}" placeholder = "Correct Answer"/>
-                        </p:column>
-                        <p:column>
-                            <p:outputLabel for ="option1Question2" value = "Option 1"/>
-                            <p:inputText id = "option1Question2" value="#{createQuiz.option1Question2}" placeholder = "Option 1"/>
-                        </p:column>
-                    </p:row>
-                    <p:row>
-                        <p:column>
-                            <p:outputLabel for ="option2Question2" value = "Option 2"/>
-                            <p:inputText id = "option2Question2" value="#{createQuiz.option2Question2}" placeholder = "Option 2"/>
-                        </p:column>
-                        <p:column>
-                            <p:outputLabel for ="option3Question2" value = "Option 3"/>
-                            <p:inputText id = "option3Question2" value="#{createQuiz.option3Question2}" placeholder = "Option 3"/>
-                        </p:column>
-                    </p:row>
-                </p:panelGrid>
+            <p:outputLabel for="quizQuestion1" value="Question 1"/>
+            <p:inputText id="quizQuestion1" value="#{createQuiz.question1Text}" placeholder="Question 1"/>
+            <p:panelGrid >
+                <p:row>
+                    <p:column>
+                        <p:outputLabel for ="correctAnswerQuestion1" value = "Correct Answer"/>
+                        <p:inputText id = "correctAnswerQuestion1" value="#{createQuiz.answerQuestion1}" placeholder = "Correct Answer"/>
+                    </p:column>
+                    <p:column>
+                        <p:outputLabel for ="option1Question1" value = "Option 1"/>
+                        <p:inputText id = "option1Question1" value="#{createQuiz.option1Question1}" placeholder = "Option 1"/>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column>
+                        <p:outputLabel for ="option2Question1" value = "Option 2"/>
+                        <p:inputText id = "option2Question1" value="#{createQuiz.option2Question1}" placeholder = "Option 2"/>
+                    </p:column>
+                    <p:column>
+                        <p:outputLabel for ="option3Question1" value = "Option 3"/>
+                        <p:inputText id = "option3Question1" value="#{createQuiz.option3Question1}" placeholder = "Option 3"/>
+                    </p:column>
+                </p:row>
+            </p:panelGrid>
 
+            <p:outputLabel for="quizQuestion2" value="Question 2"/>
+            <p:inputText id="quizQuestion2" value="#{createQuiz.question2Text}" placeholder="Question 1"/>
+            <p:panelGrid >
+                <p:row>
+                    <p:column>
+                        <p:outputLabel for ="correctAnswerQuestion2" value = "Correct Answer"/>
+                        <p:inputText id = "correctAnswerQuestion2" value="#{createQuiz.answerQuestion2}" placeholder = "Correct Answer"/>
+                    </p:column>
+                    <p:column>
+                        <p:outputLabel for ="option1Question2" value = "Option 1"/>
+                        <p:inputText id = "option1Question2" value="#{createQuiz.option1Question2}" placeholder = "Option 1"/>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column>
+                        <p:outputLabel for ="option2Question2" value = "Option 2"/>
+                        <p:inputText id = "option2Question2" value="#{createQuiz.option2Question2}" placeholder = "Option 2"/>
+                    </p:column>
+                    <p:column>
+                        <p:outputLabel for ="option3Question2" value = "Option 3"/>
+                        <p:inputText id = "option3Question2" value="#{createQuiz.option3Question2}" placeholder = "Option 3"/>
+                    </p:column>
+                </p:row>
+            </p:panelGrid>
+
+            <h:panelGroup>
                 <h:button value="Go back" outcome="accountpage"/>
                 <b:commandButton value="Create Quiz" type="submit" 
                                  styleClass="standardbutton" action="#{createQuiz.addQuiz}" />
-
-            </b:panelGrid>
+            </h:panelGroup>
         </h:form>
     </h:body>
 </html>
