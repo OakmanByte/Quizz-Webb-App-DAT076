@@ -42,7 +42,7 @@
         <description>register new user</description>
         <from-view-id>/register.xhtml</from-view-id>
         <navigation-case> 
-            <from-action>#{user.add}</from-action>
+            <from-action>#{register.add}</from-action>
             <from-outcome>success</from-outcome>
             <to-view-id>/homepage.xhtml</to-view-id> 
             <redirect />

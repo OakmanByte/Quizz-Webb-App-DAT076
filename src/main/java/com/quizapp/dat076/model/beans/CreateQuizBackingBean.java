@@ -34,15 +34,19 @@ public class CreateQuizBackingBean implements Serializable {
     private String title;
     @NotNull
     private Category category;
-    private Question newQuizQuestion;
-    private String question;
-    private String answer;
-    private String option1;
-    private String option2;
-    private String option3;
+    private String question1Text;
+    private String answerQuestion1;
+    private String option1Question1;
+    private String option2Question1;
+    private String option3Question1;
+    private String question2Text;
+    private String answerQuestion2;
+    private String option1Question2;
+    private String option2Question2;
+    private String option3Question2;
 
     @EJB
-    private QuizDAO quizDAO; 
+    private QuizDAO quizDAO;
     @EJB
     private CategoryDAO catDAO;
     @EJB
@@ -53,22 +57,28 @@ public class CreateQuizBackingBean implements Serializable {
 
     /**
      * Adding a new quiz to the account
-     * @return 
+     *
+     * @return
      */
     public String addQuiz() {
         Quiz quizToCreate = new Quiz(title, userBean.getAccount(), category);
 
         quizDAO.create(quizToCreate);
         //Correct answer = alt 1 always atm
-        Question newQuestion = new Question(question, answer, option1, option2, option3, 1, quizToCreate);
-        questionDAO.create(newQuestion);
+        Question question1 = new Question(question1Text, answerQuestion1, option1Question1,
+                option2Question1, option3Question1, 1, quizToCreate);
+        Question question2 = new Question(question2Text, answerQuestion2, option1Question2,
+                option2Question2, option3Question2, 1, quizToCreate);
+        questionDAO.create(question1);
+        questionDAO.create(question2);
 
         return "success";
     }
 
     /**
      * Turns the selected option (String) into a Category object
-     * @param event 
+     *
+     * @param event
      */
     public void onItemSelectedListener(SelectEvent event) {
         String catTitle = (String) event.getObject();

@@ -12,7 +12,6 @@ import com.quizapp.dat076.model.dao.RatingsDAO;
 import com.quizapp.dat076.model.entity.Account;
 import com.quizapp.dat076.model.entity.Quiz;
 import java.io.Serializable;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
