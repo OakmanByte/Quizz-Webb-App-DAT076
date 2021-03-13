@@ -53,5 +53,4 @@ public class QuizListBackingBean implements Serializable {
     public List<Category> getAllCategories(){
         return catDAO.findAll();
     }
-    
 }

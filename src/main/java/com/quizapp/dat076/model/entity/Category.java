@@ -21,7 +21,6 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
 public class Category implements Serializable {
 
     @Id
