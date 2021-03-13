@@ -43,7 +43,8 @@ public class AccountDAOTest {
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class)
-                .addClasses(AccountDAO.class, Account.class, QuizDAO.class, Quiz.class, Category.class, Question.class)
+                .addClasses(AccountDAO.class, Account.class, QuizDAO.class, 
+                        Quiz.class, Category.class, Question.class)
                 .addAsResource("META-INF/persistence.xml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
@@ -84,15 +85,13 @@ public class AccountDAOTest {
 
     @Test
     public void findAccountByEmail() {
-        //TODO make this more readable and nicer looking
-        Assert.assertTrue(accountDAO.findAccountByEmail(account1.getEmail())
+        assert (accountDAO.findAccountByEmail(account1.getEmail())
                 .getUsername().equals(account1.getUsername()));
     }
 
     @Test
     public void findAccountByUsername() {
-        //TODO make this more readable and nicer looking
-        Assert.assertTrue(accountDAO.findAccountByUsername(account1.getUsername())
+        assert (accountDAO.findAccountByUsername(account1.getUsername())
                 .getEmail().equals(account1.getEmail()));
     }
 
@@ -100,7 +99,7 @@ public class AccountDAOTest {
     public void updateEmail() {
         String emailTest = "HEJ@gmail.com";
         account1.setEmail(emailTest);
-        Assert.assertTrue(account1.getEmail().equals(emailTest));
+        assert (account1.getEmail().equals(emailTest));
     }
 
     @Test
@@ -109,7 +108,7 @@ public class AccountDAOTest {
         List<Quiz> quizzes = quizDAO.findQuizzesByCreator(account1);
 
         //3 quizzes have been added to account1, therefore size should be 3
-        Assert.assertTrue(quizzes.size() == 3);
+        assert (quizzes.size() == 3);
     }
 
     @Test
@@ -117,21 +116,21 @@ public class AccountDAOTest {
         String accountUsername = account1.getUsername();
         Account findAccount = accountDAO.find(accountUsername);
 
-        Assert.assertTrue(findAccount.getUsername().equals(accountUsername));
+        assert (findAccount.getUsername().equals(accountUsername));
     }
 
     @Test
     public void testAbstractDAOfindAll() {
         List<Account> allAccounts = accountDAO.findAll();
 
-        Assert.assertTrue(allAccounts.size() == 3);
+        assert (allAccounts.size() == 3);
     }
 
     @Test
     public void testAbstractDAOsize() {
         int amountOfAccounts = accountDAO.size();
 
-        Assert.assertTrue(amountOfAccounts == 3);
+        assert(amountOfAccounts == 3);
     }
 
 }

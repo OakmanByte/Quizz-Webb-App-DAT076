@@ -41,7 +41,8 @@ public class QuestionDAOTest {
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class)
-                .addClasses(AccountDAO.class, Account.class, QuizDAO.class, Category.class, Quiz.class, QuestionDAO.class, Question.class)
+                .addClasses(AccountDAO.class, Account.class, QuizDAO.class, 
+                        Category.class, Quiz.class, QuestionDAO.class, Question.class)
                 .addAsResource("META-INF/persistence.xml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
@@ -84,8 +85,8 @@ public class QuestionDAOTest {
 
         List<Question> questionsInQuiz = questionDAO.findQuestionsinQuiz(quiz1);
 
-        Assert.assertTrue(questionsInQuiz.size() == 3);
-        Assert.assertTrue(questionsInQuiz.contains(q1));
+        assert (questionsInQuiz.size() == 3);
+        assert (questionsInQuiz.contains(q1));
     }
 
 }

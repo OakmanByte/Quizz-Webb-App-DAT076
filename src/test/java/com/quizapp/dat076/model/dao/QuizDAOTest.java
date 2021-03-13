@@ -49,7 +49,8 @@ public class QuizDAOTest {
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class)
-                .addClasses(QuizDAO.class, Quiz.class, AccountDAO.class, Account.class, CategoryDAO.class, Category.class, Question.class)
+                .addClasses(QuizDAO.class, Quiz.class, AccountDAO.class, 
+                        Account.class, CategoryDAO.class, Category.class, Question.class)
                 .addAsResource("META-INF/persistence.xml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
@@ -158,9 +159,9 @@ public class QuizDAOTest {
         assert (bonus.size() == 3);
 
         //Loop through the returned quizzes and check that the title matches
-        for (Quiz quiz : bonus) {
+        bonus.forEach(quiz -> {
             assert (quiz.getTitle().equals("Bonus quiz"));
-        }
+        });
 
     }
 
@@ -177,8 +178,10 @@ public class QuizDAOTest {
         //Check that the number of quizzes created by account1 is 2, and that
         //the quizzes returned are matches what is expected
         assert (quizzes.size() == 2);
-        assert (quizzes.get(0).getTitle().equals("First quiz") && quizzes.get(0).getCreator().getUsername().equals("user1"));
-        assert (quizzes.get(1).getTitle().equals("Bonus quiz") && quizzes.get(1).getCreator().getUsername().equals("user1"));
+        assert (quizzes.get(0).getTitle().equals("First quiz") && 
+                quizzes.get(0).getCreator().getUsername().equals("user1"));
+        assert (quizzes.get(1).getTitle().equals("Bonus quiz") && 
+                quizzes.get(1).getCreator().getUsername().equals("user1"));
 
     }
 
@@ -192,9 +195,9 @@ public class QuizDAOTest {
         List<Quiz> quizzes = quizDAO.findQuizzesByCategory(c1);
 
         assert (quizzes.size() == 2);
-        for (Quiz quiz : quizzes) {
+        quizzes.forEach(quiz -> {
             assert (quiz.getQuizzCategory().getCategory().equals(c1.getCategory()));
-        }
+        });
 
         //Retrieve the quizzes with category "Science"
         List<Quiz> quizzes2 = quizDAO.findQuizzesByCategory(c2);
@@ -212,9 +215,8 @@ public class QuizDAOTest {
     @Test
     public void findFirstQuizByID() {
         Quiz firstQuiz = quizDAO.findQuizByID(first.getId());
-        System.out.println("***** " + firstQuiz.getId()+ " *****");
         
-        Assert.assertTrue(firstQuiz.equals(first));
+        assert (firstQuiz.equals(first));
     }
 
 }

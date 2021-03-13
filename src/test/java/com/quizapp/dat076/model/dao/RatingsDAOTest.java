@@ -37,7 +37,7 @@ public class RatingsDAOTest {
     Account account4 = new Account("user4", "user4@gmail.com", "password", "user", "Science", 20, null, null);
 
     //Quiz quiz1 = new Quiz("Such Amaze", account1, null);
-    Quiz quiz1 = new Quiz(1,"Such Amaze", account1 , null ,null);
+    Quiz quiz1 = new Quiz(1, "Such Amaze", account1, null, null);
     Ratings rat1 = new Ratings(5, "Wow this is the best ever! I am so mother puffing impressed", account1, quiz1);
     Ratings rat2 = new Ratings(1, "Wtf who doesn't know how many legs these animals have?", account2, quiz1);
     Ratings rat3 = new Ratings(4, "Wow this was the most difficult ever!", account3, quiz1);
@@ -60,7 +60,7 @@ public class RatingsDAOTest {
 
     @Before
     public void setUp() {
-        
+
         accountDAO.create(account1);
         accountDAO.create(account2);
         accountDAO.create(account3);
@@ -89,23 +89,31 @@ public class RatingsDAOTest {
         accountDAO.remove(account4);
     }
 
-   @Test
-   public void findratingsByQuizID() {
-       List<Ratings> firstquizRatings = ratingsDAO.findratingsByQuizID(1);
+    @Test
+    public void findratingsByQuizID() {
+        List<Ratings> firstquizRatings = ratingsDAO.findratingsByQuizID(1);
         assert (firstquizRatings.get(0).getQuiz().equals(quiz1));
     }
-   
-   @Test
-   public void findratingsByUsername(){
-       List<Ratings> usernameRatings = ratingsDAO.findratingsByUsername(account3.getUsername());
-         assert (usernameRatings.size() == 1);
-       assert(usernameRatings.get(0).getCreator().getUsername().equals(account3.getUsername()));
-   
-   }
-   
-   @Test
-   public void findHighestRatingScore(){
-       int maxScore = ratingsDAO.FindHighestRatingScore(quiz1.getId());
-       assert(maxScore == 5);
-   }
+
+    @Test
+    public void findratingsByUsername() {
+        List<Ratings> usernameRatings = ratingsDAO.findratingsByUsername(account3.getUsername());
+        assert (usernameRatings.size() == 1);
+        assert (usernameRatings.get(0).getCreator().getUsername().equals(account3.getUsername()));
+
+    }
+
+    @Test
+    public void findHighestRatingScore() {
+        int maxScore = ratingsDAO.FindHighestRatingScore(quiz1.getId());
+        assert (maxScore == 5);
+    }
+
+    @Test
+    public void changeRating() {
+        String newRatingComment = "First I loved this, but now I think it's crap!";
+        rat1.setReview(newRatingComment);
+        ratingsDAO.update(rat1);
+        assert (rat1.getReview().equals(newRatingComment));
+    }
 }

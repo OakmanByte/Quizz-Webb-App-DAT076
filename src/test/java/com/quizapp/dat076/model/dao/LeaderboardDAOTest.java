@@ -27,6 +27,7 @@ import org.junit.runner.RunWith;
 
 /**
  * A test class for the LeaderboardDAO class.
+ *
  * @author Rebecka
  * @see com.quizapp.dat076.model.dao.LeaderboardDAO
  */
@@ -64,7 +65,8 @@ public class LeaderboardDAOTest {
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class)
-                .addClasses(LeaderboardDAO.class, Category.class, Quiz.class, Account.class, QuizDAO.class, AccountDAO.class, Leaderboard.class,
+                .addClasses(LeaderboardDAO.class, Category.class, Quiz.class, 
+                        Account.class, QuizDAO.class, AccountDAO.class, Leaderboard.class,
                         LeaderboardPK.class, Question.class)
                 .addAsResource("META-INF/persistence.xml")
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
@@ -104,25 +106,14 @@ public class LeaderboardDAOTest {
         temp.add(quiz2);
         temp.add(quiz3);
         acc1.setCreatedQuizzes(temp);
+
         quizDAO.update(quiz1);
         quizDAO.update(quiz2);
         quizDAO.update(quiz3);
         accountDAO.update(acc1);
-/*
-        pk1 = new LeaderboardPK(acc1, quiz1);
-        pk2 = new LeaderboardPK(acc1, quiz2.getId());
-        pk3 = new LeaderboardPK(acc1, quiz3.getId());
-        pk4 = new LeaderboardPK(acc2, quiz1.getId());
-        pk5 = new LeaderboardPK(acc2), quiz2.getId());
-        pk6 = new LeaderboardPK(acc2.getUsername(), quiz3.getId());
-        pk7 = new LeaderboardPK(acc3.getUsername(), quiz1.getId());
-        pk8 = new LeaderboardPK(acc3.getUsername(), quiz2.getId());
-        pk9 = new LeaderboardPK(acc3.getUsername(), quiz3.getId());
-*/
+
         quizDAO.update(quiz1);
         accountDAO.update(acc1);
-
-        //System.out.println("WAZZUP" + pk1.getQuizID());
 
         lead1 = new Leaderboard(acc1, quiz1, 100);
         lead2 = new Leaderboard(acc1, quiz2, 70);
@@ -134,7 +125,6 @@ public class LeaderboardDAOTest {
         lead8 = new Leaderboard(acc3, quiz2, 50);
         lead9 = new Leaderboard(acc3, quiz3, 10);
 
-        //System.out.printf("Creating leaderboard with PK %s, acc %s, quiz %d\n", lead1.getLeaderID(), lead1.getAccount().getUsername(), lead1.getQuiz().getId());
         leaderboardDAO.create(lead1);
         leaderboardDAO.create(lead2);
         leaderboardDAO.create(lead3);
@@ -173,23 +163,27 @@ public class LeaderboardDAOTest {
         List<Leaderboard> quizplayers = leaderboardDAO.findScoresByQuizID(quiz1.getId());
         List<Leaderboard> quizplayers2 = leaderboardDAO.findScoresByQuizID(quiz2.getId());
         List<Leaderboard> quizplayers3 = leaderboardDAO.findScoresByQuizID(quiz3.getId());
-        Assert.assertTrue(quizplayers.size() == 3);
-        Assert.assertTrue(quizplayers2.size() == 3);
-        Assert.assertTrue(quizplayers3.size() == 3);
+        assert (quizplayers.size() == 3);
+        assert (quizplayers2.size() == 3);
+        assert (quizplayers3.size() == 3);
     }
-    
+
     @Test
-    public void checkCorrectValue(){
+    public void checkCorrectValue() {
+        String user1 = "Rebecka";
+        String user2 = "Emma";
+        String user3 = "AntonE";
         List<Leaderboard> quizplayers = leaderboardDAO.findScoresByQuizID(quiz1.getId());
-        for(Leaderboard x: quizplayers){
+
+        quizplayers.forEach(x -> {
             int tempScore = x.getScore();
             int tempId = x.getQuiz().getId();
-            String tempUsername =x.getAccount().getUsername();
-            Assert.assertTrue((tempScore==100) || (tempScore == 90) || (tempScore==80) );
-            Assert.assertTrue((tempUsername=="Rebecka") || (tempUsername == "Emma") || (tempUsername=="AntonE") );
-             Assert.assertTrue(tempId==1);
-        }
-    
+            String tempUsername = x.getAccount().getUsername();
+            assert ((tempScore == 100) || (tempScore == 90) || (tempScore == 80));
+            assert ((tempUsername.equals(user1))
+                    || (tempUsername.equals(user2))
+                    || (tempUsername.equals(user3)));
+            assert (tempId == 1);
+        });
     }
-    
 }
