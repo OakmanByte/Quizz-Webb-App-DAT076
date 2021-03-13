@@ -71,6 +71,26 @@
             <redirect />
         </navigation-case>
       </navigation-rule>
+      
+      <navigation-rule>
+        <description>register leaderboard score</description>
+        <from-view-id>/playquiz.xhtml</from-view-id>
+        <navigation-case> 
+            <from-action>#{playQuizBackingBean.add()}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>/endquiz.xhtml</to-view-id>
+            <redirect>
+                <view-param>
+                    <name>quizId</name>
+                    <value>#{playQuizBackingBean.quizId}</value>
+                </view-param>
+                <view-param>
+                    <name>points</name>
+                    <value>#{playQuizBackingBean.points}</value>
+                </view-param>
+            </redirect>
+        </navigation-case>
+    </navigation-rule>
     
 </faces-config>
 

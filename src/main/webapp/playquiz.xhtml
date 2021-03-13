@@ -73,10 +73,10 @@
                     </div>
 
                     <div style="text-align: left; margin-right: 1em; margin-top: 0.5em;" >
-                        <p:button href="endquiz.xhtml" icon="fa fa-fw fa-arrow-right" value="Go to end quiz"> 
+                        <p:commandButton action="#{playQuizBackingBean.add()}" icon="fa fa-fw fa-arrow-right" value="Go to end quiz"> 
                             <f:param name="quizId" value="#{playQuizBackingBean.quizId}"/>
                             <f:param name="points" value="#{playQuizBackingBean.points}"/>
-                        </p:button>
+                        </p:commandButton>
 
                     </div>
 
