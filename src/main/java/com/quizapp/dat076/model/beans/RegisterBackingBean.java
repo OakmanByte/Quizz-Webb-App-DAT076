@@ -13,6 +13,17 @@ import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 import com.quizapp.dat076.model.Argon2PasswordHashing;
+import com.quizapp.dat076.validators.PasswordCorrectFormat;
+import com.quizapp.dat076.validators.PasswordValidator;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+import javax.inject.Inject;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -34,11 +45,12 @@ public class RegisterBackingBean {
     @Email
     @EmailExists
     private String email;
-    @Size(min = 6, max = 12, message
-            = "Password must be between 6 and 12 characters")
+    @PasswordCorrectFormat
     private String password;
     private String userrole;
     private String favoritecategory;
+    @Min(value=1, message = "You have be older than 1 year old")
+    @Max(value=130, message = "You really that old? yhee..nah try again")
     private int age;
     private byte[] profilePicture;
 
@@ -53,7 +65,6 @@ public class RegisterBackingBean {
         userrole = "user";
         favoritecategory = "";
         age = 0;
-        //something for profilepicture
     }
 
     /**
@@ -64,6 +75,7 @@ public class RegisterBackingBean {
     public String add() {
         
         Argon2PasswordHashing argon = new Argon2PasswordHashing();
+        PasswordValidator passValidator = new PasswordValidator();
         
         Account accountToCreate = new Account(username, email, argon.hashPassword(password), 
                 userrole, favoritecategory, age, profilePicture, null);
@@ -77,6 +89,7 @@ public class RegisterBackingBean {
             userrole = "";
             favoritecategory = "";
             age = 0;
+        //something for profilepicture
             return "success";
         } else {
             return "unsuccess";

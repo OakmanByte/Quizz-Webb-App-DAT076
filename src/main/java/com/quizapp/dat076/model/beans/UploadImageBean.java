@@ -6,9 +6,14 @@
 package com.quizapp.dat076.model.beans;
 
 import com.quizapp.dat076.model.dao.AccountDAO;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.imageio.ImageIO;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.Part;
@@ -25,9 +30,9 @@ import org.omnifaces.util.Utils;
 @Data
 public class UploadImageBean {
 
-    private Part file;
+    private Part file = null;
     private byte[] content;
-
+    File img = null;
     @Inject
     private UserBean userBean;
 
@@ -35,9 +40,18 @@ public class UploadImageBean {
     private AccountDAO accountDAO;
 
     public void read() throws IOException {
-        content = Utils.toByteArray(file.getInputStream());
-
+        /*
+        if(file == null){
+            img = new File("ProfilePicturePlaceholder.jpg");
+            file = img;
+        }*/
+           try {                  
+            content = Utils.toByteArray(file.getInputStream());
+        } catch (IOException ex) {
+            Logger.getLogger(RegisterBackingBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
         userBean.getAccount().setProfilePicture(content);
         accountDAO.update(userBean.getAccount());
+
     }
 }
