@@ -21,6 +21,7 @@ import lombok.Data;
  * @author Albin
  * @see com.quizapp.dat076.model.beans.PlayQuizBackingBean
  */
+
 @Data
 @ViewScoped
 @Named

@@ -29,8 +29,11 @@ and open the template in the editor.
                                   noSelectionOption="true" itemDisabled="true" />
                     <f:selectItems value="#{quizListBackingBean.allCategories}" />
                 </p:selectOneMenu>
+                <b:commandButton value="Create Quiz" type="submit" 
+                                 styleClass="standardbutton" action="#{createQuiz.addQuiz}" />
             </b:panelGrid>
-
+        </h:form>
+        <h:form id="CreateQuestion">
             <p:outputLabel for="quizQuestion" value="Question 1"/>
             <p:inputText id="quizQuestion" value="#{createQuiz.questionText}" placeholder="Question 1"/>
             <p:panelGrid >
@@ -58,15 +61,13 @@ and open the template in the editor.
                         <p:inputText id = "option4Question" value="#{createQuiz.option4Question}" placeholder = "Option 4"/>
                     </p:column>
                 </p:row>
-                                
+
             </p:panelGrid>
 
-            <h:panelGroup>
+            <h:panelGroup>     
                 <h:button value="Go back" outcome="accountpage"/>
-                 <b:commandButton value="Add question" type="submit" 
+                <b:commandButton value="Add question" type="submit" 
                                  styleClass="standardbutton" action="#{createQuiz.addQuestionToList}" />
-                <b:commandButton value="Create Quiz" type="submit" 
-                                 styleClass="standardbutton" action="#{createQuiz.addQuiz}" />
             </h:panelGroup>
         </h:form>
     </h:body>
