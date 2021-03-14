@@ -46,13 +46,9 @@ and open the template in the editor.
                         </p:column>
                         
                         <p:column headerText="Creator" sortBy="#{quiz.creator.username}" filterBy="#{quiz.creator.username}" >#{quiz.creator.username}</p:column>
-                        
-                        <p:column>
-                            <p:button  icon="fa fa-fw fa-search-plus" value="AverageScore" onclick="PF('dlg3').show()" >
-                                <f:param name="quizId" value="#{quiz.id}"/>
-                            </p:button>
-                        </p:column>
-
+                          <p:column headerText="Average Score" >
+                              <p:rating value="#{ratingsListBean.averagescores}" disabled="true"/>
+                         </p:column>
                         <p:column>
                             <p:button href="quizpage.xhtml" icon="fa fa-fw fa-search-plus" value="go to quiz page">
                                 <f:param name="quizId" value="#{quiz.id}"/>

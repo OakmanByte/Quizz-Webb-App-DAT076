@@ -46,7 +46,6 @@ public class RatingsDAO extends AbstractDAO<String, Ratings> {
          query = new JPAQuery(entityManager);
          return query.from(rating).where(rating.creator.username.eq(username)).list(rating);
     }
-    
 
 
     public int FindHighestRatingScore(int id) {

@@ -32,9 +32,10 @@ import org.primefaces.PrimeFaces;
 public class RatingsListBean implements Serializable {
 
     private List<Ratings> allRatings;
-    private Ratings selectedRating;
-    private List<Ratings> selectedRatings;
-    private List<Ratings> averageRatingscore;
+    
+    private List<Quiz> ratingsquiz;
+  //  private List<Ratings> averageRating;
+    private List<Integer> averagescores;
     
 
      
@@ -52,16 +53,25 @@ public class RatingsListBean implements Serializable {
        
     }
     
-    public int AverageScore(){
-        int temp1= 0;
-        
-        averageRatingscore = ratingsDAO.findratingsByQuizID(quizId);
-        for(int i = 0; i< averageRatingscore.size(); i++){
-            temp1 = temp1 + averageRatingscore.get(i).getScore();
-        }
-        temp1 = temp1 / averageRatingscore.size();
+  
+   
     
-        return temp1;
+    public List<Integer> AverageScore(){
+       int tempscore = 0;
+        ratingsquiz = quizDAO.findAll();
+        
+         List<Ratings> averageRating;
+        for(int i = 0 ; i< ratingsquiz.size(); i++){
+            averageRating = ratingsDAO.findratingsByQuizID(ratingsquiz.get(i).getId());
+                for(int y= 0; y<averageRating.size(); y++){
+                    tempscore = tempscore + averageRating.get(y).getScore();
+                    averagescores.add(tempscore);
+                }
+            
+        }
+    
     }
+        
+    
 
 }

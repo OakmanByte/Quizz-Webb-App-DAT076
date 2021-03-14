@@ -52,7 +52,7 @@
                     <p:inputText id="ratings-review" value='#{ratingsBackingBean.ratingsReview}'/>
     <f:facet name="footer">
        
-        <p:commandButton type="button" value="Leave Rating" style="width: 5rem" action="#{ratingsBackingBean.add()}" ajax="false" />
+        <p:commandButton type="button" value="Leave Rating" style="width: 5rem" action="#{ratingsBackingBean.add()}" oncomplete="dlg3.hide();" />
     </f:facet>
            </p:dialog>
                 </h:form> 
