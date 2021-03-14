@@ -59,12 +59,12 @@ and open the template in the editor.
                     </p:column>
                 </p:row>
                                 
-                <b:commandButton value="Add question" type="submit" 
-                                 styleClass="standardbutton" action="#{createQuiz.addQuestionToList}" />
             </p:panelGrid>
 
             <h:panelGroup>
                 <h:button value="Go back" outcome="accountpage"/>
+                 <b:commandButton value="Add question" type="submit" 
+                                 styleClass="standardbutton" action="#{createQuiz.addQuestionToList}" />
                 <b:commandButton value="Create Quiz" type="submit" 
                                  styleClass="standardbutton" action="#{createQuiz.addQuiz}" />
             </h:panelGroup>

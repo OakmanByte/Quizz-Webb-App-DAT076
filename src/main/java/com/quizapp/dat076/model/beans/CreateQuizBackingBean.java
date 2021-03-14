@@ -71,9 +71,8 @@ public class CreateQuizBackingBean implements Serializable {
     
     public CreateQuizBackingBean(){
     
-            System.out.println("Constructor");
+        System.out.println("Constructor");
         questionList = new ArrayList<>();
-        //tempQuestion = new Question(null,null,null,null,null,1,null);
     }
     
     
@@ -87,13 +86,9 @@ public class CreateQuizBackingBean implements Serializable {
         
         try{
         quizDAO.create(quizToCreate);
-               System.out.println("WE got here5");
         for (Question q: questionList){
-                   System.out.println("WE got here6");
             q.setQuiz(quizToCreate);
-               System.out.println("WE got here7");
         questionDAO.create(q);
-               System.out.println("WE got here8");
         }
          }
         catch(NullPointerException e){
@@ -118,26 +113,10 @@ public class CreateQuizBackingBean implements Serializable {
         
         try{
         tempQuestion = new Question(questionText,option1Question,option2Question,option3Question,option4Question,answerQuestion,null);
-               System.out.println("WE got here1");
         questionList.add(tempQuestion);
         }
         catch(NullPointerException e){
             e.printStackTrace();
         }
-               System.out.println("WE got here2");
-        clear();
-    }
-    
-    public void clear(){
-           System.out.println("WE got here3");
-        tempQuestion.setQuestion(null);
-        tempQuestion.setAlt1(null);
-        tempQuestion.setAlt2(null);
-        tempQuestion.setAlt3(null);
-        tempQuestion.setAlt4(null);
-        tempQuestion.setAnswer(1);
-        
-        System.out.println("WE got her4");
-    
     }
 }
