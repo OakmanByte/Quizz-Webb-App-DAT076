@@ -12,17 +12,23 @@ import com.quizapp.dat076.model.entity.Category;
 import com.quizapp.dat076.model.entity.Question;
 import com.quizapp.dat076.model.entity.Quiz;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import lombok.Data;
 import org.primefaces.event.SelectEvent;
 
 /**
  *
  * @author Emma Dirnberger
+ * @author Anton Ekman
  */
 @Data
 @Named("createQuiz")
@@ -30,20 +36,23 @@ import org.primefaces.event.SelectEvent;
 public class CreateQuizBackingBean implements Serializable {
 
     //Attributes
-    @NotNull
+    @Size(min=3, max = 35, message="Too short or Too long")
     private String title;
-    @NotNull
     private Category category;
-    private String question1Text;
-    private String answerQuestion1;
-    private String option1Question1;
-    private String option2Question1;
-    private String option3Question1;
-    private String question2Text;
-    private String answerQuestion2;
-    private String option1Question2;
-    private String option2Question2;
-    private String option3Question2;
+    @Size(min=3, max = 35, message="Too short or Too long")
+    private String questionText;
+    @Min(value = 1, message="Correct alternativ can only be 1,2,3 or 4")
+    @Max(value = 4, message="Correct alternativ can only be 1,2,3 or 4")
+    private int answerQuestion;
+    @Size(min=1, max = 35, message="Too short or Too long")
+    private String option1Question;
+    @Size(min=1, max = 35, message="Too short or Too long")
+    private String option2Question;
+    @Size(min=1, max = 35, message="Too short or Too long")
+    private String option3Question;
+    @Size(min=1, max = 35, message="Too short or Too long")
+    private String option4Question;
+
 
     @EJB
     private QuizDAO quizDAO;
@@ -54,7 +63,20 @@ public class CreateQuizBackingBean implements Serializable {
 
     @Inject
     private UserBean userBean;
+    
+    private List<Question> questionList;
+    
+    private Question tempQuestion;
 
+    
+    public CreateQuizBackingBean(){
+    
+            System.out.println("Constructor");
+        questionList = new ArrayList<>();
+        //tempQuestion = new Question(null,null,null,null,null,1,null);
+    }
+    
+    
     /**
      * Adding a new quiz to the account
      *
@@ -62,16 +84,22 @@ public class CreateQuizBackingBean implements Serializable {
      */
     public String addQuiz() {
         Quiz quizToCreate = new Quiz(title, userBean.getAccount(), category);
-
+        
+        try{
         quizDAO.create(quizToCreate);
-        //Correct answer = alt 1 always atm
-        Question question1 = new Question(question1Text, answerQuestion1, option1Question1,
-                option2Question1, option3Question1, 1, quizToCreate);
-        Question question2 = new Question(question2Text, answerQuestion2, option1Question2,
-                option2Question2, option3Question2, 1, quizToCreate);
-        questionDAO.create(question1);
-        questionDAO.create(question2);
-
+               System.out.println("WE got here5");
+        for (Question q: questionList){
+                   System.out.println("WE got here6");
+            q.setQuiz(quizToCreate);
+               System.out.println("WE got here7");
+        questionDAO.create(q);
+               System.out.println("WE got here8");
+        }
+         }
+        catch(NullPointerException e){
+            e.printStackTrace();
+        }
+        
         return "success";
     }
 
@@ -84,5 +112,32 @@ public class CreateQuizBackingBean implements Serializable {
         String catTitle = (String) event.getObject();
         Category selectedItem = catDAO.find(catTitle);
         category = selectedItem;
+    }
+    
+    public void addQuestionToList(){
+        
+        try{
+        tempQuestion = new Question(questionText,option1Question,option2Question,option3Question,option4Question,answerQuestion,null);
+               System.out.println("WE got here1");
+        questionList.add(tempQuestion);
+        }
+        catch(NullPointerException e){
+            e.printStackTrace();
+        }
+               System.out.println("WE got here2");
+        clear();
+    }
+    
+    public void clear(){
+           System.out.println("WE got here3");
+        tempQuestion.setQuestion(null);
+        tempQuestion.setAlt1(null);
+        tempQuestion.setAlt2(null);
+        tempQuestion.setAlt3(null);
+        tempQuestion.setAlt4(null);
+        tempQuestion.setAnswer(1);
+        
+        System.out.println("WE got her4");
+    
     }
 }
