@@ -16,23 +16,23 @@
             <b:container fluid="true">
                 <b:panel title="Register Account" >
                     <b:panelGrid columns="1" columnClasses="field" styleClass="panelgridstyle" >
-                        <b:inputText id="username" value="#{user.username}" placeholder="Username"
+                        <b:inputText id="username" value="#{register.username}" placeholder="Username"
                                      required="true" requiredMessage="Please enter a username" >
                         </b:inputText>
                         <b:message for="username" />
 
-                        <b:inputText id="email" value="#{user.email}" placeholder="Email"
+                        <b:inputText id="email" value="#{register.email}" placeholder="Email"
                                      required="true" requiredMessage="Please enter your email, eg:yourid@domain.com">
                         </b:inputText>
                         <b:message for="email" />
 
-                        <b:inputSecret id="password" value="#{user.password}" placeholder="Password"
+                        <b:inputSecret id="password" value="#{register.password}" placeholder="Password"
                                        required="true" requiredMessage="Password cannot be empty">
                         </b:inputSecret>
                         <b:message for="password" />
 
                         <h:panelGroup />
-                        <b:commandButton value="Register" type="submit" styleClass="registerbutton" action="#{user.add}" />
+                        <b:commandButton value="Register" type="submit" styleClass="standardbutton" action="#{register.add}" />
                         <h:outputLink value="homepage.xhtml" styleClass="linkcolor">Home</h:outputLink>
                         <h:panelGroup />
                     </b:panelGrid>

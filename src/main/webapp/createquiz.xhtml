@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:f="http://java.sun.com/jsf/core"
+       xmlns:p="http://primefaces.org/ui"
+       xmlns:o="http://omnifaces.org/ui"
+       xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h:form id="CreateQuiz" >
+            <h4>Create Quiz</h4>
+            <b:panelGrid columns="2" styleClass="panelgridstyle" >
+                <p:outputLabel for="title" value="Quiz Title" />
+                <p:inputText id="title" value="#{createQuiz.title}" placeholder="Title" />
+
+                <p:outputLabel value="Quiz Category"/>
+                <p:selectOneMenu id="category" >
+                    <p:ajax event="itemSelect"
+                            listener="#{createQuiz.onItemSelectedListener}"/>
+                    <f:selectItem itemLabel="All" itemValue="#{createQuiz.category}" 
+                                  noSelectionOption="true" itemDisabled="true" />
+                    <f:selectItems value="#{quizListBackingBean.allCategories}" />
+                </p:selectOneMenu>
+            </b:panelGrid>
+
+            <p:outputLabel for="quizQuestion1" value="Question 1"/>
+            <p:inputText id="quizQuestion1" value="#{createQuiz.question1Text}" placeholder="Question 1"/>
+            <p:panelGrid >
+                <p:row>
+                    <p:column>
+                        <p:outputLabel for ="correctAnswerQuestion1" value = "Correct Answer"/>
+                        <p:inputText id = "correctAnswerQuestion1" value="#{createQuiz.answerQuestion1}" placeholder = "Correct Answer"/>
+                    </p:column>
+                    <p:column>
+                        <p:outputLabel for ="option1Question1" value = "Option 1"/>
+                        <p:inputText id = "option1Question1" value="#{createQuiz.option1Question1}" placeholder = "Option 1"/>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column>
+                        <p:outputLabel for ="option2Question1" value = "Option 2"/>
+                        <p:inputText id = "option2Question1" value="#{createQuiz.option2Question1}" placeholder = "Option 2"/>
+                    </p:column>
+                    <p:column>
+                        <p:outputLabel for ="option3Question1" value = "Option 3"/>
+                        <p:inputText id = "option3Question1" value="#{createQuiz.option3Question1}" placeholder = "Option 3"/>
+                    </p:column>
+                </p:row>
+            </p:panelGrid>
+
+            <p:outputLabel for="quizQuestion2" value="Question 2"/>
+            <p:inputText id="quizQuestion2" value="#{createQuiz.question2Text}" placeholder="Question 1"/>
+            <p:panelGrid >
+                <p:row>
+                    <p:column>
+                        <p:outputLabel for ="correctAnswerQuestion2" value = "Correct Answer"/>
+                        <p:inputText id = "correctAnswerQuestion2" value="#{createQuiz.answerQuestion2}" placeholder = "Correct Answer"/>
+                    </p:column>
+                    <p:column>
+                        <p:outputLabel for ="option1Question2" value = "Option 1"/>
+                        <p:inputText id = "option1Question2" value="#{createQuiz.option1Question2}" placeholder = "Option 1"/>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column>
+                        <p:outputLabel for ="option2Question2" value = "Option 2"/>
+                        <p:inputText id = "option2Question2" value="#{createQuiz.option2Question2}" placeholder = "Option 2"/>
+                    </p:column>
+                    <p:column>
+                        <p:outputLabel for ="option3Question2" value = "Option 3"/>
+                        <p:inputText id = "option3Question2" value="#{createQuiz.option3Question2}" placeholder = "Option 3"/>
+                    </p:column>
+                </p:row>
+            </p:panelGrid>
+
+            <h:panelGroup>
+                <h:button value="Go back" outcome="accountpage"/>
+                <b:commandButton value="Create Quiz" type="submit" 
+                                 styleClass="standardbutton" action="#{createQuiz.addQuiz}" />
+            </h:panelGroup>
+        </h:form>
+    </h:body>
+</html>
+
+

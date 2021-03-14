@@ -1,6 +1,5 @@
 package com.quizapp.dat076.model.beans;
 
-import com.quizapp.dat076.model.Argon2PasswordHashing;
 import com.quizapp.dat076.model.dao.AccountDAO;
 import com.quizapp.dat076.model.entity.Account;
 import com.quizapp.dat076.validators.EmailExists;
@@ -27,8 +26,8 @@ import com.quizapp.dat076.model.Argon2PasswordHashing;
 @RequestScoped
 @Setter
 @Getter
-@Named("user")
-public class UserBackingBean {
+@Named("register")
+public class RegisterBackingBean {
 
     @UserExists
     private String username;
@@ -66,7 +65,8 @@ public class UserBackingBean {
         
         Argon2PasswordHashing argon = new Argon2PasswordHashing();
         
-        Account accountToCreate = new Account(username, email, argon.hashPassword(password), userrole, favoritecategory, age, profilePicture, null);
+        Account accountToCreate = new Account(username, email, argon.hashPassword(password), 
+                userrole, favoritecategory, age, profilePicture, null);
 
         if (!userExists()) {
             accountDAO.create(accountToCreate);

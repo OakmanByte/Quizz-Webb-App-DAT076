@@ -59,11 +59,14 @@ public class CategoryDAOTest {
     }
 
     @Test
-    //TODO
-    public void checkThatFindCategoryCorrectly() {
-        Assert.assertTrue(categoryDAO.findCategory("Geography") != null);
-        Assert.assertTrue(categoryDAO.findCategory("Math") != null);
-        Assert.assertTrue(categoryDAO.findCategory("Music") != null);
+    public void findCategory() {
+        String category1 = "Geography";
+        String category2 = "Math";
+        String category3 = "Music";
+        
+        assert (categoryDAO.findCategory(category1) != null);
+        assert (categoryDAO.findCategory(category2) != null);
+        assert (categoryDAO.findCategory(category3) != null);
     }
 
 }
