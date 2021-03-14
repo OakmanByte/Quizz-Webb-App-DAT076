@@ -56,7 +56,7 @@ public class PlayQuizController implements Serializable {
     
     public String redirectPlay(){
     
-    return "available_quizzes.xhtml" + "?faces-redirect=true";
+    return "quizlist.xhtml" + "?faces-redirect=true";
     }
     public void EndQuiz(){
         

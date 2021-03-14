@@ -45,33 +45,20 @@ public class RatingsListBean implements Serializable {
     private RatingsDAO ratingsDAO;
     @EJB
     private QuizDAO quizDAO;
-
+     @Inject
+    private UserBean userBean;
     //  private RatingsController ratingsController;
     @PostConstruct
     public void postConstruct() {
         allRatings = ratingsDAO.findAll();
        
     }
-    
-  
    
-    
-    public List<Integer> AverageScore(){
-       int tempscore = 0;
-        ratingsquiz = quizDAO.findAll();
-        
-         List<Ratings> averageRating;
-        for(int i = 0 ; i< ratingsquiz.size(); i++){
-            averageRating = ratingsDAO.findratingsByQuizID(ratingsquiz.get(i).getId());
-                for(int y= 0; y<averageRating.size(); y++){
-                    tempscore = tempscore + averageRating.get(y).getScore();
-                    averagescores.add(tempscore);
-                }
-            
-        }
-    
-    }
-        
+    public List<Ratings> allratingsByName(){
+    List<Ratings> myratings;
+    myratings = ratingsDAO.findratingsByUsername(userBean.getAccount().getUsername());
+    return myratings;
+    }   
     
 
 }

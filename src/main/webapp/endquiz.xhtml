@@ -34,13 +34,13 @@
 
                     <div class="card" style="text-align: center">
                         <div style="text-align: center; margin-right:  1em; margin-top: 0.5em" >
-                            <p:commandButton value="Leave Ratings" type="button" onclick="PF('dlg3').show()"  icon="pi pi-external-link" />
+                            <p:commandButton value="Leave Ratings" type="button" onclick="PF('dlg3').show()"  icon="pi pi-external-link" update="@form" disabled="#{endQuizBackingBean.disableButtons() == true}"/>
                         </div>
                         <div style="text-align: center; margin-right: 1em; margin-top: 0.5em" >
                             <p:commandButton value="Play More Quiz" action="#{playQuizController.redirectPlay()}" icon="pi pi-external-link" update="@form" />
                         </div>
                         <div style="text-align: center; margin-right: 1em; margin-top: 0.5em" >
-                            <p:commandButton value="Account Page" action="#{playQuizController.redirectAccount()}" icon="pi pi-external-link" update="@form" />
+                            <p:commandButton value="Account Page" action="#{playQuizController.redirectAccount()}" icon="pi pi-external-link" update="@form" disabled="#{endQuizBackingBean.disableButtons() == true}" />
                         </div>
                     </div>
                     <p:dialog header="Leave Rating" widgetVar="dlg3" minHeight="40" width="350" showEffect="fade">
@@ -50,9 +50,10 @@
  
                    <p:outputLabel for="ratings-review" value="Enter Rating Review"/>
                     <p:inputText id="ratings-review" value='#{ratingsBackingBean.ratingsReview}'/>
+                   
     <f:facet name="footer">
        
-        <p:commandButton type="button" value="Leave Rating" style="width: 5rem" action="#{ratingsBackingBean.add()}" oncomplete="dlg3.hide();" />
+        <p:commandButton value="Leave Rating" style="width: 5rem" action="#{ratingsBackingBean.add()}" update="@form" ajax="false" />
     </f:facet>
            </p:dialog>
                 </h:form> 
