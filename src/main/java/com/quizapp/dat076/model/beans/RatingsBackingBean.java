@@ -35,8 +35,11 @@ public class RatingsBackingBean implements Serializable {
     private QuizDAO quizDAO;
     @Inject
     private UserBean userBean;
-    private int ratingsScore;
-
+      @Inject
+    private EndQuizBackingBean endBean;
+    
+      private Ratings selectedRating;
+      private int ratingsScore;
     private int ratingsId;
     private String ratingsReview;
     private Account ratingscreator;
@@ -58,22 +61,31 @@ public class RatingsBackingBean implements Serializable {
         rating.setScore(ratingsScore);
         rating.setReview(ratingsReview);
         rating.setCreator(accountDAO.findAccountByUsername(userBean.getAccount().getUsername()));
-        rating.setQuiz(ratingquiz);
+        rating.setQuiz(endBean.getQuiz());
         ratingsDAO.create(rating);
         return "success";
     }
 
-    public void update() {
+    public void update(Ratings rating) {
 
         rating.setReview(ratingsReview);
         rating.setScore(ratingsScore);
         ratingsDAO.update(rating);
     }
 
-    public void delete() {
+    public void delete(Ratings rating) {
         ratingsDAO.remove(rating);
 
     }
+    
+        public Ratings getSelectedRating() {
+        return selectedRating;
+    }
+
+    public void setSelectedRating(Ratings selectedRating) {
+        this.selectedRating = selectedRating;
+    }
+
   
     
    

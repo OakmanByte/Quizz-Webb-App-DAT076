@@ -32,39 +32,33 @@ import org.primefaces.PrimeFaces;
 public class RatingsListBean implements Serializable {
 
     private List<Ratings> allRatings;
-    private Ratings selectedRating;
-    private List<Ratings> selectedRatings;
-    private List<Ratings> averageRatingscore;
     
-    private List<Quiz> averageQuizes;
+    private List<Quiz> ratingsquiz;
+  //  private List<Ratings> averageRating;
+    private List<Integer> averagescores;
     
-    private List<Integer> averageScores;
-     @Inject
-    @Param(name = "quizId")
+
+     
     private int quizId;
      
     @EJB
     private RatingsDAO ratingsDAO;
     @EJB
     private QuizDAO quizDAO;
-
+     @Inject
+    private UserBean userBean;
     //  private RatingsController ratingsController;
     @PostConstruct
     public void postConstruct() {
         allRatings = ratingsDAO.findAll();
        
     }
+   
+    public List<Ratings> allratingsByName(){
+    List<Ratings> myratings;
+    myratings = ratingsDAO.findratingsByUsername(userBean.getAccount().getUsername());
+    return myratings;
+    }   
     
-    public int AverageScore(){
-        int temp1= 0;
-        
-        averageRatingscore = ratingsDAO.findratingsByQuizID(quizId);
-        for(int i = 0; i< averageRatingscore.size(); i++){
-            temp1 = temp1 + averageRatingscore.get(i).getScore();
-        }
-        temp1 = temp1 / averageRatingscore.size();
-    
-        return temp1;
-    }
 
 }

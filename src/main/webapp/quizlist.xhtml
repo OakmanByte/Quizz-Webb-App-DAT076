@@ -31,6 +31,8 @@ and open the template in the editor.
                             List of Quizzes
                         </f:facet>
 
+                        
+
                         <p:column headerText="Title" sortBy="#{quiz.title}" filterBy="#{quiz.title}" >#{quiz.title}</p:column>
                         
                         <p:column field="quizzCategory.category" headerText="Category" filterMatchMode="exact" sortBy="#{quiz.quizzCategory.category}">
@@ -45,11 +47,9 @@ and open the template in the editor.
                         
                         <p:column headerText="Creator" sortBy="#{quiz.creator.username}" filterBy="#{quiz.creator.username}" >#{quiz.creator.username}</p:column>
                         
-                        <p:column>
-                            <p:button  icon="fa fa-fw fa-search-plus" value="AverageScore" onclick="PF('dlg3').show()" >
-                                <f:param name="quizId" value="#{quiz.id}"/>
-                            </p:button>
-                        </p:column>
+                       <p:column headerText="Average Score" >
+                              <p:rating value="#{quizListBackingBean.getAverageScore(quiz.id)}" disabled="true"/>
+                         </p:column>
 
                         <p:column>
                             <p:button href="quizpage.xhtml" icon="fa fa-fw fa-search-plus" value="go to quiz page">

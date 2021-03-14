@@ -13,6 +13,7 @@ package com.quizapp.dat076.model.beans;
 
 
 import com.quizapp.dat076.model.dao.QuizDAO;
+import com.quizapp.dat076.model.dao.RatingsDAO;
 import com.quizapp.dat076.model.entity.Quiz;
 import java.io.Serializable;
 import javax.ejb.EJB;
@@ -37,10 +38,28 @@ public class EndQuizBackingBean implements Serializable{
     private Quiz quiz;
     @EJB
     private QuizDAO quizDAO;
-  
+    @EJB
+    private RatingsDAO ratingsDAO;
+    
+     @Inject
+    private UserBean userBean;
+     
+    private boolean disableEndquiz;
+   
     public Quiz fetchQuiz(){
      
         quiz = quizDAO.find(quizId);
         return quiz;
     }
+    
+    public boolean disableButtons(){
+        if(userBean.getAccount().getUsername() == null){
+        disableEndquiz = true;
+        }
+        else{
+        disableEndquiz=false;
+        }
+      return disableEndquiz;
+    }
+  
 }
