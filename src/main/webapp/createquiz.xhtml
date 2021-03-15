@@ -15,60 +15,57 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
-        <h:form id="CreateQuiz" >
-            <h4>Create Quiz</h4>
-            <b:panelGrid columns="2" styleClass="panelgridstyle" >
-                <p:outputLabel for="title" value="Quiz Title" />
-                <p:inputText id="title" value="#{createQuiz.title}" placeholder="Title" />
-
-                <p:outputLabel value="Quiz Category"/>
-                <p:selectOneMenu id="category" >
-                    <p:ajax event="itemSelect"
-                            listener="#{createQuiz.onItemSelectedListener}"/>
-                    <f:selectItem itemLabel="All" itemValue="#{createQuiz.category}" 
-                                  noSelectionOption="true" itemDisabled="true" />
-                    <f:selectItems value="#{quizListBackingBean.allCategories}" />
-                </p:selectOneMenu>
-                <b:commandButton value="Create Quiz" type="submit" 
-                                 styleClass="standardbutton" action="#{createQuiz.addQuiz}" />
-            </b:panelGrid>
-        </h:form>
         <h:form id="CreateQuestion">
-            <p:outputLabel for="quizQuestion" value="Question 1"/>
-            <p:inputText id="quizQuestion" value="#{createQuiz.questionText}" placeholder="Question 1"/>
+            <p:outputLabel for="quizQuestion" value="Question text"/>
+            <p:inputText id="quizQuestion" value="#{createQuiz.questionText}" placeholder="Question text"/>
             <p:panelGrid >
                 <p:row>
-                    <p:column>
-                        <p:outputLabel for ="correctAnswerQuestion" value = "Correct Answer"/>
-                        <p:inputText id = "correctAnswerQuestion" value="#{createQuiz.answerQuestion}" placeholder = "Correct Answer"/>
-                    </p:column>
                     <p:column>
                         <p:outputLabel for ="option1Question" value = "Option 1"/>
                         <p:inputText id = "option1Question" value="#{createQuiz.option1Question}" placeholder = "Option 1"/>
                     </p:column>
-                </p:row>
-                <p:row>
                     <p:column>
                         <p:outputLabel for ="option2Question" value = "Option 2"/>
                         <p:inputText id = "option2Question" value="#{createQuiz.option2Question}" placeholder = "Option 2"/>
                     </p:column>
+                </p:row>
+                <p:row>
                     <p:column>
                         <p:outputLabel for ="option3Question" value = "Option 3"/>
                         <p:inputText id = "option3Question" value="#{createQuiz.option3Question}" placeholder = "Option 3"/>
                     </p:column>
+
                     <p:column>
                         <p:outputLabel for ="option4Question" value = "Option 4"/>
                         <p:inputText id = "option4Question" value="#{createQuiz.option4Question}" placeholder = "Option 4"/>
                     </p:column>
                 </p:row>
-
+                <p:row>
+                    <p:column>
+                        <p:outputLabel for ="correctAnswerQuestion" value = "Correct Answer"/>
+                        <p:inputText id = "correctAnswerQuestion" value="#{createQuiz.answerQuestion}" placeholder = "Correct Answer"/>
+                    </p:column>
+                </p:row>
             </p:panelGrid>
-
             <h:panelGroup>     
                 <h:button value="Go back" outcome="accountpage"/>
                 <b:commandButton value="Add question" type="submit" 
                                  styleClass="standardbutton" action="#{createQuiz.addQuestionToList}" />
             </h:panelGroup>
+        </h:form>
+                <h:form id="CreateQuiz" >
+            <h4>Create Quiz</h4>
+            <b:panelGrid columns="2" styleClass="panelgridstyle" >
+                <p:outputLabel for="title" value="Quiz Title" />
+                <p:inputText id="title" value="#{createQuiz.title}" placeholder="Title" />
+                <p:outputLabel value="Quiz Category"/>
+                <p:selectOneMenu id="favoriteCategorySelected" value="#{createQuiz.category}">
+                    <f:selectItem itemLabel ="Select one Item" />
+                    <f:selectItems value="#{accountSettingsBackingBean.categories}"/>
+                </p:selectOneMenu>
+                <b:commandButton value="Create Quiz" type="submit" 
+                                 styleClass="standardbutton" action="#{createQuiz.addQuiz}" />
+            </b:panelGrid>
         </h:form>
     </h:body>
 </html>
