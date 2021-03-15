@@ -48,7 +48,7 @@ and open the template in the editor.
                 </p:row>
             </p:panelGrid>
             <h:panelGroup>     
-                <h:button value="Go back" outcome="accountpage"/>
+                <h:button value="Go back" outcome="account"/>
                 <b:commandButton value="Add question" 
                                  styleClass="standardbutton" action="#{createQuiz.addQuestionToList}"
                                  update="@form"/>
@@ -60,11 +60,14 @@ and open the template in the editor.
                 <p:outputLabel for="title" value="Quiz Title" />
                 <p:inputText id="title" value="#{createQuiz.title}" placeholder="Title" />
                 <p:outputLabel value="Quiz Category"/>
-                <p:selectOneMenu id="favoriteCategorySelected" value="#{createQuiz.category}">
-                    <f:selectItem itemLabel ="Select one Item" />
-                    <f:selectItems value="#{accountSettingsBackingBean.categories}"/>
+                <p:selectOneMenu id="category" >
+                    <p:ajax event="itemSelect"
+                            listener="#{createQuiz.onItemSelectedListener}"/>
+                    <f:selectItem itemLabel="All" itemValue="#{createQuiz.category}" 
+                                  noSelectionOption="true" itemDisabled="true" />
+                    <f:selectItems value="#{quizListBackingBean.allCategories}" />
                 </p:selectOneMenu>
-                <b:commandButton value="Create Quiz" type="submit" 
+                <b:commandButton value="Create Quiz"  
                                  styleClass="standardbutton" action="#{createQuiz.addQuiz}" />
             </b:panelGrid>
         </h:form>
