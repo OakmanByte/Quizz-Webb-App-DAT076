@@ -39,17 +39,23 @@ public class CreateQuizBackingBean implements Serializable {
     @Size(min=3, max = 35, message="Too short or Too long")
     private String title;
     private Category category;
+    
     @Size(min=3, max = 35, message="Too short or Too long")
     private String questionText;
+    
     @Min(value = 1, message="Correct alternativ can only be 1,2,3 or 4")
     @Max(value = 4, message="Correct alternativ can only be 1,2,3 or 4")
-    private int answerQuestion;
+    private Integer answerQuestion;
+    
     @Size(min=1, max = 35, message="Too short or Too long")
     private String option1Question;
+    
     @Size(min=1, max = 35, message="Too short or Too long")
     private String option2Question;
+    
     @Size(min=1, max = 35, message="Too short or Too long")
     private String option3Question;
+    
     @Size(min=1, max = 35, message="Too short or Too long")
     private String option4Question;
 
@@ -114,6 +120,16 @@ public class CreateQuizBackingBean implements Serializable {
         try{
         tempQuestion = new Question(questionText,option1Question,option2Question,option3Question,option4Question,answerQuestion,null);
         questionList.add(tempQuestion);
+        
+        //reset the question form values
+        questionText = "";
+        answerQuestion = null;
+        option1Question = "";
+        option2Question = "";
+        option3Question = "";
+        option4Question = "";
+        
+        
         }
         catch(NullPointerException e){
             e.printStackTrace();
