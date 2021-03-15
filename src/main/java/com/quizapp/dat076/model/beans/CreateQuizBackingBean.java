@@ -115,8 +115,9 @@ public class CreateQuizBackingBean implements Serializable {
         category = selectedItem;
     }
     
-    public void addQuestionToList(){
+    public void addQuestionToList(){        
         
+        if (!questionAlreadyAdded(questionText)){
         try{
         tempQuestion = new Question(questionText,option1Question,option2Question,option3Question,option4Question,answerQuestion,null);
         questionList.add(tempQuestion);
@@ -134,5 +135,16 @@ public class CreateQuizBackingBean implements Serializable {
         catch(NullPointerException e){
             e.printStackTrace();
         }
+        }
+    }
+    
+    public boolean questionAlreadyAdded(String question){
+    
+        for(Question tempQuestion : questionList){
+       
+           if (tempQuestion.getQuestion().equals(question))      
+               return true;
+       }
+       return false;
     }
 }

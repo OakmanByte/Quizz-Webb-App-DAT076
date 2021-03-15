@@ -40,15 +40,4 @@ public class QuestionDAO extends AbstractDAO<String, Question> {
         return query.from(question).where(question.quiz.eq(quiz)).list(question);
 
     }
-
-    //TODO should this be implemented?
-    /*
-    public int findCorrectAlternativeByQuestion(String queryQuestion) {
-        //JPAQuery query = new JPAQuery(entityManager);
-
-        //return query.select(question.answer).where(question.question.eq(queryQuestion)).fetch();
-        return 0;
-    }
-    */
-
 }
