@@ -111,6 +111,7 @@ public class PlayQuizBackingBean implements Serializable {
         addMessage(FacesMessage.SEVERITY_INFO, "Correct answer", timer + " points");
         points += timer;
         isCurrentQuestionAnswered = true;
+        isEndQuiz();
     }
 
     public void incorrectAnswer() {
@@ -120,6 +121,7 @@ public class PlayQuizBackingBean implements Serializable {
 
         addMessage(FacesMessage.SEVERITY_ERROR, "Incorrect answer", "No point for you");
         isCurrentQuestionAnswered = true;
+         isEndQuiz();
     }
 
     private void timeOut() {
@@ -150,7 +152,14 @@ public class PlayQuizBackingBean implements Serializable {
 
     public void isEndQuiz() {
 
+       if((isCurrentQuestionAnswered== true) && (correctAnswerIndex == questions.size()) ){
         isFinished = true;
+       }
+       else{
+       isFinished = false;
+       }
+        
+       
 
     }
 
