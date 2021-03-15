@@ -52,7 +52,7 @@ public class PlayQuizController implements Serializable {
     
     public String redirectAccount(){
     
-    return "accountpage.xhtml" + "?faces-redirect=true";
+    return "account.xhtml" + "?faces-redirect=true";
     }
     
     public String redirectPlay(){

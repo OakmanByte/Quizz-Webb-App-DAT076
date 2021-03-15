@@ -17,7 +17,7 @@ import javax.inject.Named;
 import lombok.Data;
 
 /**
- * Backing Bean for accountssettingspage.xhtml
+ * Backing Bean for accountsettings.xhtml
  * @author Anton Ekman
  * 
  *
@@ -46,7 +46,7 @@ public class AccountSettingsBackingBean implements Serializable {
 
         accountDAO.update(userBean.getAccount());
 
-        return "accountpage.xhtml" + "?faces-redirect=true";
+        return "account.xhtml" + "?faces-redirect=true";
 
     }
 

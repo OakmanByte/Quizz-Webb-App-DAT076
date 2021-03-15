@@ -33,7 +33,7 @@
     <from-view-id>/home.xhtml</from-view-id>
     <navigation-case>
     <from-outcome>success</from-outcome>
-    <to-view-id>/accountpage.xhtml</to-view-id>
+    <to-view-id>/account.xhtml</to-view-id>
     <redirect />
     </navigation-case>
     
@@ -62,7 +62,7 @@
         <navigation-case> 
             <from-action>#{createQuiz.addQuiz}</from-action>
             <from-outcome>success</from-outcome>
-            <to-view-id>/accountpage.xhtml</to-view-id> 
+            <to-view-id>/account.xhtml</to-view-id> 
             <redirect />
         </navigation-case>
       </navigation-rule>
