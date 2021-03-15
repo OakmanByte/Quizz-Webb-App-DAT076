@@ -7,9 +7,12 @@ package com.quizapp.dat076.model.beans;
 
 import com.quizapp.dat076.model.dao.CategoryDAO;
 import com.quizapp.dat076.model.dao.QuizDAO;
+import com.quizapp.dat076.model.dao.RatingsDAO;
 import com.quizapp.dat076.model.entity.Category;
 import com.quizapp.dat076.model.entity.Quiz;
+import com.quizapp.dat076.model.entity.Ratings;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -33,12 +36,16 @@ public class QuizListBackingBean implements Serializable {
     @EJB
     private CategoryDAO catDAO;
     
+    @EJB
+    private RatingsDAO ratingsDAO;
+    
     //The list of all quizzes
     private List<Quiz> quizzes;
     
     //The list of quizzes with filters applied
     private List<Quiz> filteredQuizzes;
     
+ 
     
     /**
      * Initialize the bean by retrieving the list of all quizzes
@@ -53,4 +60,26 @@ public class QuizListBackingBean implements Serializable {
     public List<Category> getAllCategories(){
         return catDAO.findAll();
     }
+  
+   public int getAverageScore(int id){
+      
+   List<Ratings> ratingslst;
+   int temp = 0 ;
+ 
+        
+            ratingslst = ratingsDAO.findratingsByQuizID(id);
+                for(int y = 0; y<ratingslst.size(); y++){
+                    temp = temp + ratingslst.get(y).getScore();
+                }
+                if(ratingslst.isEmpty()){
+                
+                }
+                else{
+                    temp = temp / ratingslst.size();
+                }
+               
+   
+   return temp;
+   
+   }
 }
