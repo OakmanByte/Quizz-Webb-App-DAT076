@@ -45,7 +45,7 @@ public class Account implements Serializable {
     private String favoritecategory;
     @Min(0)
     @Max(110)
-    private int age;
+    private Integer age;
 
     //Check out LOB annotation, saving bytestream for user profile picture
     @Lob

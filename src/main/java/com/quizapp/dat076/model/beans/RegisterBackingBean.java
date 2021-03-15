@@ -43,7 +43,7 @@ public class RegisterBackingBean {
     private String favoritecategory;
     @Min(value=1, message = "You have be older than 1 year old")
     @Max(value=130, message = "You really that old? yhee..nah try again")
-    private int age;
+    private Integer age;
     private byte[] profilePicture;
 
     @EJB
@@ -56,7 +56,7 @@ public class RegisterBackingBean {
         password = "";
         userrole = "user";
         favoritecategory = "";
-        age = 0;
+        age = null;
     }
 
     /**
