@@ -21,7 +21,6 @@ import javax.security.enterprise.authentication.mechanism.http.CustomFormAuthent
 import javax.security.enterprise.authentication.mechanism.http.LoginToContinue;
 import javax.security.enterprise.credential.Credential;
 import javax.security.enterprise.credential.UsernamePasswordCredential;
-import static jdk.internal.joptsimple.internal.Messages.message;
 import lombok.Data;
 import org.omnifaces.util.Faces;
 
@@ -54,7 +53,6 @@ public class LoginController implements Serializable {
         if (status == AuthenticationStatus.SUCCESS) {
 
             userBean.setAccount(accountDAO.find(userBean.getAccount().getUsername()));
-
             return "success";
         } else {
             //alert("Username is required");
@@ -67,6 +65,6 @@ public class LoginController implements Serializable {
 
     public String logout() {
         Faces.invalidateSession();
-        return "homepage.xhtml" + "?faces-redirect=true";
+        return "home.xhtml" + "?faces-redirect=true";
     }
 }

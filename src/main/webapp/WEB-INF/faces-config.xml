@@ -30,7 +30,7 @@
     
     <managed-bean-scope>request</managed-bean-scope></managed-bean>
     <navigation-rule>
-    <from-view-id>/homepage.xhtml</from-view-id>
+    <from-view-id>/home.xhtml</from-view-id>
     <navigation-case>
     <from-outcome>success</from-outcome>
     <to-view-id>/accountpage.xhtml</to-view-id>
@@ -44,14 +44,9 @@
         <navigation-case> 
             <from-action>#{register.add}</from-action>
             <from-outcome>success</from-outcome>
-            <to-view-id>/homepage.xhtml</to-view-id> 
+            <to-view-id>/home.xhtml</to-view-id> 
             <redirect />
         </navigation-case>
-<!--        <navigation-case>
-            <from-action>#{user.add}</from-action>
-            <from-outcome>unsuccess</from-outcome>
-            <to-view-id>/unsuccess.xhtml</to-view-id>
-        </navigation-case>-->
     </navigation-rule>
     
   <navigation-rule>

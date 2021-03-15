@@ -9,21 +9,13 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 import com.quizapp.dat076.model.Argon2PasswordHashing;
 import com.quizapp.dat076.validators.PasswordCorrectFormat;
 import com.quizapp.dat076.validators.PasswordValidator;
-import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
-import javax.inject.Inject;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

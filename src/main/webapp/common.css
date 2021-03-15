@@ -89,8 +89,6 @@ body {
 .alert-danger {
     width: 20em;
     margin: 1em auto;
-    margin-bottom: 2em;
-    margin-top: 2em;
 }
 
 .blockpanelgroup {
