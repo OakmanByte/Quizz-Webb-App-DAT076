@@ -28,12 +28,12 @@ and open the template in the editor.
 
                 <p:button value="go back to quiz list" icon="fa fa-reply" href="quizlist.xhtml"/>
 
-                <h1 style="text-align: center">#{quizPageBackingBean.quiz.title}</h1>
+                <h1 style="text-align: center; font-size: 40px">#{quizPageBackingBean.quiz.title}</h1>
                 <h2 style="text-align: center">#{quizPageBackingBean.quiz.quizzCategory.category}</h2>
                 <h2 style="text-align: center">Quiz created by:  #{quizPageBackingBean.quiz.creator.username}</h2>
 
                 <div style="text-align: center">
-                    <p:button href="playquiz.xhtml" icon="fa fa-fw fa-play-circle" value="go to play quiz">
+                    <p:button href="playquiz.xhtml" icon="fa fa-fw fa-play-circle" value="play quiz">
                         <f:param name="quizId" value="#{quizPageBackingBean.quizId}"/>
                     </p:button>
                 </div>
