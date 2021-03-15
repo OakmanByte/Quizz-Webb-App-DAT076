@@ -10,8 +10,7 @@ and open the template in the editor.
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:ld="http://java.sun.com/jsf/composite/leaderboard"
-      xmlns:b="http://bootsfaces.net/ui">
+      xmlns:ld="http://java.sun.com/jsf/composite/leaderboard" >
 
 
 
@@ -28,11 +27,11 @@ and open the template in the editor.
 
                 <p:button value="go back to quiz list" icon="fa fa-reply" href="quizlist.xhtml"/>
 
-                <h1 style="text-align: center; font-size: 40px">#{quizPageBackingBean.quiz.title}</h1>
-                <h2 style="text-align: center">#{quizPageBackingBean.quiz.quizzCategory.category}</h2>
-                <h2 style="text-align: center">Quiz created by:  #{quizPageBackingBean.quiz.creator.username}</h2>
+                <h1 class="quizTitle" >#{quizPageBackingBean.quiz.title}</h1>
+                <h3>#{quizPageBackingBean.quiz.quizzCategory.category}</h3>
+                <h3>Quiz created by:  #{quizPageBackingBean.quiz.creator.username}</h3>
 
-                <div style="text-align: center">
+                <div class="playquizdiv" >
                     <p:button href="playquiz.xhtml" icon="fa fa-fw fa-play-circle" value="play quiz">
                         <f:param name="quizId" value="#{quizPageBackingBean.quizId}"/>
                     </p:button>

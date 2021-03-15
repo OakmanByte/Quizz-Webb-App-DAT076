@@ -9,68 +9,58 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-
         <ui:composition template="WEB-INF/template/common.xhtml">
-
             <ui:define name="content">
-
+                <link rel="stylesheet" type = "text/css" href="leaderboard.css"> </link> 
                 <h:form>
-
                     <p:dataTable value="#{ratingsListBean.allratingsByName()}" var="ratings">
-
+                        
                         <f:facet name="header">
                             List of Ratings
                         </f:facet>
 
                         <p:column headerText="Score" sortBy="#{ratings.score}" >
-                         <p:rating value="#{ratings.score}" readonly="true"/>
-                         </p:column>
+                            <p:rating value="#{ratings.score}" readonly="true"/>
+                        </p:column>
                         <p:column headerText="Review" sortBy="#{ratings.review}" >#{ratings.review}</p:column>
                         <p:column headerText="Creator" >#{ratings.creator.username}</p:column>
                         <p:column headerText="Quiz" >#{ratings.quiz.title}</p:column>
-                    
-                            <p:column exportable="false">
-                <p:commandButton icon="pi pi-pencil"
-                                 oncomplete="PF('dlg3').show()"
-                                 styleClass="edit-button rounded-button ui-button-success" process="@this">
-                    <f:setPropertyActionListener value="#{ratings}" target="#{ratingsBackingBean.selectedRating}"/>
-                    <p:resetInput target=":form:manage-product-content"/>
-                </p:commandButton>
-                <p:commandButton class="ui-button-warning rounded-button" icon="pi pi-trash" process="@this"
-                                 oncomplete="PF('deleteRatingDialog').show()">
-                    <f:setPropertyActionListener value="#{ratings}" target="#{ratingsBackingBean.selectedRating}" />
-                </p:commandButton>
-            </p:column>
-                     
 
-
-
+                        <p:column exportable="false">
+                            <p:commandButton icon="pi pi-pencil"
+                                             oncomplete="PF('dlg3').show()"
+                                             styleClass="edit-button rounded-button ui-button-success" process="@this">
+                                <f:setPropertyActionListener value="#{ratings}" target="#{ratingsBackingBean.selectedRating}"/>
+                                <p:resetInput target=":form:manage-product-content"/>
+                            </p:commandButton>
+                            <p:commandButton class="ui-button-warning rounded-button" icon="pi pi-trash" process="@this"
+                                             oncomplete="PF('deleteRatingDialog').show()">
+                                <f:setPropertyActionListener value="#{ratings}" target="#{ratingsBackingBean.selectedRating}" />
+                            </p:commandButton>
+                        </p:column>
+                        
                     </p:dataTable>
-                    
+
                     <p:dialog header="Leave Rating" widgetVar="dlg3" minHeight="40" width="350" showEffect="fade">
-                <h5 class="p-mt-0"> Enter Rating Score</h5>
-                    <p:rating value='#{ratingsBackingBean.ratingsScore}'/>
-                   
- 
-                   <p:outputLabel for="ratings-review" value="Enter Rating Review"/>
-                    <p:inputText id="ratings-review" value='#{ratingsBackingBean.ratingsReview}'/>
-                   <f:facet name="footer">
-       
-                       <p:commandButton value="Change Rating" style="width: 5rem" action="#{ratingsBackingBean.update(ratingsBackingBean.selectedRating)}" update="@form" ajax="false" />
-                    </f:facet>
+                        <h5 class="p-mt-0"> Enter Rating Score</h5>
+                        <p:rating value='#{ratingsBackingBean.ratingsScore}'/>
+                        
+                        <p:outputLabel for="ratings-review" value="Enter Rating Review"/>
+                        <p:inputText id="ratings-review" value='#{ratingsBackingBean.ratingsReview}'/>
+                        <f:facet name="footer">
+                            <p:commandButton value="Change Rating" class="changeratingsButton" action="#{ratingsBackingBean.update(ratingsBackingBean.selectedRating)}" update="@form" ajax="false" />
+                        </f:facet>
                     </p:dialog>
-                     <p:confirmDialog widgetVar="deleteRatingDialog" showEffect="fade" width="300"
-                         message="Delete the rating?" header="Confirm" severity="warn">
-                         <p:commandButton value="Yes" icon="pi pi-check" actionListener="#{ratingsBackingBean.delete(ratingsBackingBean.selectedRating)}"
-                             process="@this" oncomplete="PF('deleteRatingDialog').hide()"/>
-            <p:commandButton value="No" type="button" styleClass="ui-button-secondary" icon="pi pi-times"
-                             onclick="PF('deleteRatingDialog').hide()"/>
-        </p:confirmDialog>
-
+                    <p:confirmDialog widgetVar="deleteRatingDialog" showEffect="fade" width="300"
+                                     message="Delete the rating?" header="Confirm" severity="warn">
+                        <p:commandButton value="Yes" icon="pi pi-check" actionListener="#{ratingsBackingBean.delete(ratingsBackingBean.selectedRating)}"
+                                         process="@this" oncomplete="PF('deleteRatingDialog').hide()"/>
+                        <p:commandButton value="No" type="button" styleClass="ui-button-secondary" icon="pi pi-times"
+                                         onclick="PF('deleteRatingDialog').hide()"/>
+                    </p:confirmDialog>
+                    
                 </h:form>
-
             </ui:define>
-
         </ui:composition>
     </h:body>
 </html>

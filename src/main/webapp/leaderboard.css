@@ -39,3 +39,60 @@ body .ui-datatable .ui-datatable-data > tr{
 .ui-datatable.ld_table .ui-datatable-data-empty td {
     border-style: none;
 }
+
+.quizTitle{
+    text-align: center;  
+    font-size: 2.5em; 
+}
+
+h3{
+    text-align: center;  
+    font-size: 1.5em;
+}
+
+.playquizdiv{
+    text-align: center;
+}
+
+.gameStatsDiv{
+    display: table-cell;
+}
+
+.card{
+    text-align: center;
+}
+
+.quizQuestion{
+    text-align: center; 
+    font-size: 2em;
+}
+
+.gameStatsText{
+    margin-left: 2.5em; 
+    font-size: 1.5em;
+}
+
+.growlStyle{
+    margin-bottom: 1.5em; 
+    margin-top: 1.5em;
+}
+
+#moddedCard{
+    text-align: right;
+    margin-right: 1em; 
+    margin-top: 0.5em
+}
+
+/* Couldn't simply set it to a styleClass */
+.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-icon-left.ui-state-disabled{
+    margin-left: 1em;
+}
+
+/* Couldn't simply set it to a styleClass */
+.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-icon-left{
+    margin-left: 1em;
+}
+
+.changeratingButton {
+    width: 5rem;
+}
