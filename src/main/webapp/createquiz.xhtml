@@ -49,11 +49,12 @@ and open the template in the editor.
             </p:panelGrid>
             <h:panelGroup>     
                 <h:button value="Go back" outcome="accountpage"/>
-                <b:commandButton value="Add question" type="submit" 
-                                 styleClass="standardbutton" action="#{createQuiz.addQuestionToList}" />
+                <b:commandButton value="Add question" 
+                                 styleClass="standardbutton" action="#{createQuiz.addQuestionToList}"
+                                 update="@form"/>
             </h:panelGroup>
         </h:form>
-                <h:form id="CreateQuiz" >
+        <h:form id="CreateQuiz" >
             <h4>Create Quiz</h4>
             <b:panelGrid columns="2" styleClass="panelgridstyle" >
                 <p:outputLabel for="title" value="Quiz Title" />
