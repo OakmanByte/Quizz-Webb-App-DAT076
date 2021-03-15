@@ -5,6 +5,7 @@
  */
 package com.quizapp.dat076.testdata;
 
+import com.quizapp.dat076.model.Argon2PasswordHashing;
 import com.quizapp.dat076.model.dao.AccountDAO;
 import com.quizapp.dat076.model.dao.CategoryDAO;
 import com.quizapp.dat076.model.dao.LeaderboardDAO;
@@ -93,13 +94,15 @@ public class TestData {
     Ratings rat4;
     Ratings rat5;
     Ratings rat6;
+    
+    Argon2PasswordHashing passwordHasher = new Argon2PasswordHashing();
 
     @PostConstruct
     public void init() {
-        acc1 = new Account("Rebecka", "rebecka@me.com", "psgjsg", "user", "Science", 0, null, null);
-        acc2 = new Account("Emma", "reemma@me.com", "psdsgjsg", "user", "Science", 0, null, null);
-        acc3 = new Account("AntonE", "antone@me.com", "psgsdfjsg", "user", "Science", 0, null, null);
-        acc4 = new Account("Albin", "albin@me.com", "password", "user", "Science", 22, null, null);
+        acc1 = new Account("Rebecka", "rebecka@me.com", passwordHasher.hashPassword("password"), "user", "Science", 0, null, null);
+        acc2 = new Account("Emma", "reemma@me.com", passwordHasher.hashPassword("password"), "user", "Science", 0, null, null);
+        acc3 = new Account("AntonE", "antone@me.com", passwordHasher.hashPassword("password"), "user", "Science", 0, null, null);
+        acc4 = new Account("Albin", "albin@me.com", passwordHasher.hashPassword("password"), "user", "Science", 22, null, null);
 
         accountDAO.create(acc1);
         accountDAO.create(acc2);
