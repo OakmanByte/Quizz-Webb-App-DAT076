@@ -6,17 +6,17 @@
        xmlns:p="http://primefaces.org/ui"
        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
        xmlns:ld="http://java.sun.com/jsf/composite/leaderboard">
-    
-    
+
+
     <h:head>
         <title>Facelet Title</title>
     </h:head>
-     
-    
+
+
 
 
     <h:body>
-     
+
         <ui:composition template="WEB-INF/template/common.xhtml">
             <ui:define name="header">
                 <title>Facelet Title</title>
@@ -24,49 +24,54 @@
             </ui:define>
             <ui:define name="content">
                 <h:form>
-                    <h3 style ="text-align: center; margin-left: 20px; font-size: 25px; "> Score : #{endQuizBackingBean.points} </h3>
 
+                    <h3 style ="text-align: center; margin-left: 20px; font-size: 40px; "> Quiz completed: #{endQuizBackingBean.quiz.title}</h3>
+                    
+                    <h3 style ="text-align: center; margin-left: 20px; font-size: 25px; "> #{endQuizBackingBean.message}</h3>
 
+                    <h3 style ="text-align: center; margin-left: 20px; font-size: 25px; "> Score : #{endQuizBackingBean.points} / #{endQuizBackingBean.maxPoints} points </h3>
 
-                    <h3 style ="text-align: center; margin-left: 20px; font-size: 25px; "> Creator :  #{endQuizBackingBean.fetchQuiz().creator.username}  </h3>
-
+                    <h3 style ="text-align: center; margin-left: 20px; font-size: 25px; "> Creator :  #{endQuizBackingBean.quiz.creator.username}  </h3>
 
 
                     <div class="card" style="text-align: center">
-                        <div style="text-align: center; margin-right:  1em; margin-top: 0.5em" >
-                            <p:commandButton value="Leave Ratings" type="button" onclick="PF('dlg3').show()"  icon="pi pi-external-link" update="@form" disabled="#{endQuizBackingBean.disableButtons() == true}"/>
-                        </div>
-                        <div style="text-align: center; margin-right: 1em; margin-top: 0.5em" >
-                            <p:commandButton value="Play More Quiz" action="#{playQuizController.redirectPlay()}" icon="pi pi-external-link" update="@form" />
-                        </div>
-                        <div style="text-align: center; margin-right: 1em; margin-top: 0.5em" >
-                            <p:commandButton value="Account Page" action="#{playQuizController.redirectAccount()}" icon="pi pi-external-link" update="@form" disabled="#{endQuizBackingBean.disableButtons() == true}" />
-                        </div>
+
+                        <p:column>
+                            <p:commandButton style = "margin-left: 20px" value="Account Page" action="#{playQuizController.redirectAccount()}" icon="pi pi-external-link" update="@form" disabled="#{endQuizBackingBean.disableButtons() == true}" />
+                        </p:column>
+                        <p:column>
+                            <p:commandButton style = "margin-left: 20px" value="Leave Rating" type="button" onclick="PF('dlg3').show()"  icon="pi pi-external-link" update="@form" disabled="#{endQuizBackingBean.disableButtons() == true}"/>
+                        </p:column>
+                        <p:column>
+                            <p:commandButton style = "margin-left: 20px" value="Play Another Quiz" action="#{playQuizController.redirectPlay()}" icon="pi pi-external-link" update="@form" />
+                        </p:column>
+
                     </div>
+                    
                     <p:dialog header="Leave Rating" widgetVar="dlg3" minHeight="40" width="350" showEffect="fade">
-                <h5 class="p-mt-0"> Enter Rating Score</h5>
-                    <p:rating value='#{ratingsBackingBean.ratingsScore}'/>
-                   
- 
-                   <p:outputLabel for="ratings-review" value="Enter Rating Review"/>
-                    <p:inputText id="ratings-review" value='#{ratingsBackingBean.ratingsReview}'/>
-                   
-    <f:facet name="footer">
-       
-        <p:commandButton value="Leave Rating" style="width: 5rem" action="#{ratingsBackingBean.add()}" update="@form" ajax="false" />
-    </f:facet>
-           </p:dialog>
+                        <h5 class="p-mt-0"> Enter Rating Score</h5>
+                        <p:rating value='#{ratingsBackingBean.ratingsScore}'/>
+
+
+                        <p:outputLabel for="ratings-review" value="Enter Rating Review"/>
+                        <p:inputText id="ratings-review" value='#{ratingsBackingBean.ratingsReview}'/>
+
+                        <f:facet name="footer">
+
+                            <p:commandButton value="Leave Rating" style="width: 5rem" action="#{ratingsBackingBean.add()}" update="@form" ajax="false" />
+                        </f:facet>
+                    </p:dialog>
                 </h:form> 
 
                 <ld:leaderboardComp value="#{leaderboardBackingBean.getBoard(quizPageBackingBean.quiz.id)}"></ld:leaderboardComp>
 
 
             </ui:define>
-   
+
 
 
         </ui:composition>
-        
+
     </h:body>
 </html>
 
