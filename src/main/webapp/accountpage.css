@@ -31,7 +31,7 @@ body {
     width: 6rem;
     object-fit: center;
     border-radius: 50%;
-    border: 2px solid #fff;
+    border: 0.2em solid #fff;
 }
 
 .location p {
@@ -55,16 +55,4 @@ body {
     font-weight: 400;
     font-size: 1.3rem;
     margin: 1rem 0;
-}
-
-.standardbutton{
-
-    background-color: #0099ff;
-    border: none;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-right: 10px;
 }

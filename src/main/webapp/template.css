@@ -10,7 +10,7 @@ and open the template in the editor.
 
 #header {
     background-color: rgba(0, 0, 0, 0.1);
-    border: 0.1px solid;
+    border: 0.01em solid;
 
     margin-top: 0;
     margin-bottom: 1em;
@@ -21,12 +21,12 @@ and open the template in the editor.
 .header_title {
     text-align: left;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 2em;
     font-family: monospace;
-    letter-spacing: 2px;
+    letter-spacing: 0.2em;
 }
 
 .header_right{
-    font-size: 15px;
+    font-size: 1.25em;
     padding-right: 0.5em;
 }

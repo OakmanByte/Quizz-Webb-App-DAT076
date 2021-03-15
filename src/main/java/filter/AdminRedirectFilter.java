@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  * A filter class that handles filteration of diffrent pages based on the users roll. Makes it possible to restric certain pages from none admins
  * @author Anton Ekman
  */
-@WebFilter({"/temp.xhtml", "/accountpage.xhtml"})
+@WebFilter({"/temp.xhtml", "/account.xhtml"})
 public class AdminRedirectFilter extends HttpFilter {
 
     @Inject

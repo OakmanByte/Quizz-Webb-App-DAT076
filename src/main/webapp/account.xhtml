@@ -16,6 +16,7 @@ and open the template in the editor.
         <title>My Account</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" type = "text/css" href="accountpage.css"> </link> 
+        <link rel="stylesheet" type = "text/css" href="common.css"> </link> 
     </h:head>
     <body>       
         <section class="profile">
@@ -66,7 +67,7 @@ and open the template in the editor.
                     <h:form>
                         <h:commandButton id = "logoutButton" value = "Logout" action="#{loginController.logout}" styleClass="standardbutton" />
                     </h:form>
-                    <h:button value="Create New Quiz" outcome = "createquiz" />
+                    <h:button value="Create New Quiz" styleClass="standardbutton" outcome = "createquiz" />
                 </div>
             </header>
         </section>
