@@ -92,6 +92,7 @@ public class PlayQuizBackingBean implements Serializable {
     private void resetTimer() {
         timer = 10;
         isTimerAtZero = false;
+        
     }
 
     private void addMessage(FacesMessage.Severity severity, String summary, String detail) {
@@ -152,7 +153,7 @@ public class PlayQuizBackingBean implements Serializable {
 
     public void isEndQuiz() {
 
-       if((isCurrentQuestionAnswered== true) && (correctAnswerIndex == questions.size()) ){
+       if((isCurrentQuestionAnswered== true) && (currentQuestionIndex +1 == questions.size()) ){
         isFinished = true;
        }
        else{
