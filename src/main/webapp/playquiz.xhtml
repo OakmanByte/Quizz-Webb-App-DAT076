@@ -39,6 +39,7 @@
                             <p:poll interval="1" listener="#{playQuizBackingBean.decrementTimer()}" update="txt_count"  />
 
                         </div>
+                        
                     </div>
 
 
@@ -68,15 +69,18 @@
 
                     </div>
 
-                    <div style="text-align: right; margin-right: 1em; margin-top: 0.5em" >
-                        <p:commandButton value="Next question" action="#{playQuizController.nextQuestion()}" disabled="#{!playQuizBackingBean.currentQuestionAnswered}" icon="fa fa-fw fa-arrow-right" update="@form" />
-                    </div>
+                    <div class="card" style="text-align: right; margin-right: 1em; margin-top: 0.5em">
 
-                    <div style="text-align: left; margin-right: 1em; margin-top: 0.5em;" >
-                        <p:commandButton action="#{playQuizBackingBean.add()}" icon="fa fa-fw fa-arrow-right" value="Go to end quiz" disabled="#{playQuizBackingBean.finished== false}"> 
-                            <f:param name="quizId" value="#{playQuizBackingBean.quizId}"/>
-                            <f:param name="points" value="#{playQuizBackingBean.points}"/>
-                        </p:commandButton>
+                        <p:column>
+                            <p:commandButton value="Next question" action="#{playQuizController.nextQuestion()}" disabled="#{!playQuizBackingBean.currentQuestionAnswered or playQuizBackingBean.finished}" icon="fa fa-fw fa-arrow-right" update="@form" />
+                        </p:column>
+
+                        <p:column>
+                            <p:commandButton style = "margin-left: 20px" action="#{playQuizBackingBean.add()}" icon="fa fa-fw fa-arrow-right" value="End quiz" disabled="#{!playQuizBackingBean.finished}"> 
+                                <f:param name="quizId" value="#{playQuizBackingBean.quizId}"/>
+                                <f:param name="points" value="#{playQuizBackingBean.points}"/>
+                            </p:commandButton>                        
+                        </p:column>
 
                     </div>
 
