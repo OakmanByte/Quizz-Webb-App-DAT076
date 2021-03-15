@@ -15,7 +15,9 @@ import javax.security.enterprise.SecurityContext;
 import lombok.Data;
 
 /**
- * Backing Bean that holds the logged in user. Useable for reaching all diffrent attributes a user can have, username, role, age etc. Session scoped so active during the whole logged in session.
+ * Backing Bean that holds the logged in user. Usable for reaching all different 
+ * attributes a user can have, username, role, age etc. Session scoped so active 
+ * during the whole logged in session.
  * @author Anton Ekman
  */
 @Data

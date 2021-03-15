@@ -5,12 +5,13 @@
  */
 package com.quizapp.dat076.controller;
 
-import com.quizapp.dat076.model.Argon2PasswordHashing;
 import com.quizapp.dat076.model.beans.UserBean;
 import com.quizapp.dat076.model.dao.AccountDAO;
 import java.io.Serializable;
 import javax.annotation.security.DeclareRoles;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.security.enterprise.AuthenticationStatus;
@@ -20,15 +21,16 @@ import javax.security.enterprise.authentication.mechanism.http.CustomFormAuthent
 import javax.security.enterprise.authentication.mechanism.http.LoginToContinue;
 import javax.security.enterprise.credential.Credential;
 import javax.security.enterprise.credential.UsernamePasswordCredential;
+import static jdk.internal.joptsimple.internal.Messages.message;
 import lombok.Data;
 import org.omnifaces.util.Faces;
 
 /**
  * Controller class for login authentication.
+ *
  * @author Anton Ekman
  * @see com.quizapp.dat076.model.DatabaseIdentityStore
  */
-
 @DeclareRoles({"admin", "user"})
 @CustomFormAuthenticationMechanismDefinition(loginToContinue = @LoginToContinue(useForwardToLogin = false))
 @RequestScoped
@@ -40,28 +42,31 @@ public class LoginController implements Serializable {
     private SecurityContext securityContext;
     @Inject
     private UserBean userBean;
-    @Inject 
+    @Inject
     private AccountDAO accountDAO;
 
     public String login() {
-        
+
         final Credential credential = new UsernamePasswordCredential(userBean.getAccount().getUsername(), userBean.getAccount().getPassword());
 
         final AuthenticationStatus status = securityContext.authenticate(Faces.getRequest(), Faces.getResponse(), AuthenticationParameters.withParams().credential(credential));
-        
-        if(status == AuthenticationStatus.SUCCESS){
-            
-            userBean.setAccount(accountDAO.find(userBean.getAccount().getUsername())); 
-            
+
+        if (status == AuthenticationStatus.SUCCESS) {
+
+            userBean.setAccount(accountDAO.find(userBean.getAccount().getUsername()));
+
             return "success";
+        } else {
+            //alert("Username is required");
+            String message = "Username or password doesn't match the database!";
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login failure:", message));
+            return "";
         }
-        System.out.println("PLease dont show this to me");    
-        return "";
 
     }
 
     public String logout() {
         Faces.invalidateSession();
-        return "homepage.xhtml"+"?faces-redirect=true";
+        return "homepage.xhtml" + "?faces-redirect=true";
     }
 }
