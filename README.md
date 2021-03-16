@@ -6,12 +6,12 @@ This is a repo for the course Web-Applications(DAT076)
 
 ## File organization
 - xhtml files and css files can be found under **src->main->webapp**.
-- Template can be found under src->main->webapp->WEB-INF->template.
-- Composite component leaderboard can be found under src->main->webapp-WEB-INF-resources.
-- Entities, DAOs, session scoped bean and composite keys can be found under src->main->java->com->quizapp->dat076->model.
-- Password hashing, validators and filters can be found under src->main->java->com->quizapp->dat076->service.
-- Backing beans can be found under src->main->java->com->quizapp->dat076->view.
-- Controllers can be found under src->main->java->com->quizapp->dat076->controller.
+- Template can be found under **src->main->webapp->WEB-INF->template**.
+- Composite component leaderboard can be found under **src->main->webapp-WEB-INF-resources**.
+- Entities, DAOs, session scoped bean and composite keys can be found under **src->main->java->com->quizapp->dat076->model**.
+- Password hashing, validators and filters can be found under **src->main->java->com->quizapp->dat076->service**.
+- Backing beans can be found under **src->main->java->com->quizapp->dat076->view**.
+- Controllers can be found under **src->main->java->com->quizapp->dat076->controller**.
 
 
 ## Gruppmedlemmar
