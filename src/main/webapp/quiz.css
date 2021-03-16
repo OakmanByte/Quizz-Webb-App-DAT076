@@ -5,7 +5,7 @@ and open the template in the editor.
 */
 /* 
     Created on : 5 mars 2021, 17:52:50
-    Author     : Rebec
+    Author     : Rebec, Emma
 */
 
 .box{
@@ -101,6 +101,6 @@ h3{
     width: 5rem;
 }
 
-.quizLabel{
+.outputLabel{
     margin-right: 0.5em;
 }

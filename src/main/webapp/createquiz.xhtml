@@ -23,38 +23,38 @@ and open the template in the editor.
             <ui:define name="content"> 
                 <h:form>
                     <h2>Add Question</h2>
-                    <p:outputLabel class="quizLabel" for="quizQuestion" value="Question text"/>
+                    <p:outputLabel class="outputLabel" for="quizQuestion" value="Question text"/>
                     <p:inputText id="quizQuestion" value="#{createQuiz.questionText}" placeholder="Question text"/>
                     <p:message for="quizQuestion"/>
                     <p:panelGrid >
                         <p:row>
                             <p:column>
-                                <p:outputLabel class="quizLabel" for ="option1Question" value = "Option 1"/>
+                                <p:outputLabel class="outputLabel" for ="option1Question" value = "Option 1"/>
                                 <p:inputText id = "option1Question" value="#{createQuiz.option1Question}" placeholder = "Option 1"/>
                                 <p:message for="option1Question"/>
                             </p:column>
                             <p:column>
-                                <p:outputLabel class="quizLabel" for ="option2Question" value = "Option 2"/>
+                                <p:outputLabel class="outputLabel" for ="option2Question" value = "Option 2"/>
                                 <p:inputText id = "option2Question" value="#{createQuiz.option2Question}" placeholder = "Option 2"/>
                                 <p:message for="option2Question"/>
                             </p:column>
                         </p:row>
                         <p:row>
                             <p:column>
-                                <p:outputLabel class="quizLabel" for ="option3Question" value = "Option 3"/>
+                                <p:outputLabel class="outputLabel" for ="option3Question" value = "Option 3"/>
                                 <p:inputText id = "option3Question" value="#{createQuiz.option3Question}" placeholder = "Option 3"/>
                                 <p:message for="option3Question"/>
                             </p:column>
 
                             <p:column>
-                                <p:outputLabel class="quizLabel" for ="option4Question" value = "Option 4"/>
+                                <p:outputLabel class="outputLabel" for ="option4Question" value = "Option 4"/>
                                 <p:inputText id = "option4Question" value="#{createQuiz.option4Question}" placeholder = "Option 4"/>
                                 <p:message for="option4Question"/>
                             </p:column>
                         </p:row>
                         <p:row>
                             <p:column>
-                                <p:outputLabel class="quizLabel" for ="correctAnswerQuestion" value = "Correct Answer"/>
+                                <p:outputLabel class="outputLabel" for ="correctAnswerQuestion" value = "Correct Answer"/>
                                 <p:inputText id = "correctAnswerQuestion" value="#{createQuiz.answerQuestion}" placeholder = "Correct Answer"/>
                                 <p:message for="correctAnswerQuestion"/>
                             </p:column>
