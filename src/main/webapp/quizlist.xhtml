@@ -39,7 +39,7 @@ and open the template in the editor.
                         </p:column>
 
                         <p:column headerText="Creator" sortBy="#{quiz.creator.username}" filterBy="#{quiz.creator.username}" >#{quiz.creator.username}</p:column>
-                        <p:column headerText="Average Score" >
+                        <p:column headerText="Average Score" sortBy="#{quizListBackingBean.getAverageScore(quiz.id)}" >
                             <p:rating value="#{quizListBackingBean.getAverageScore(quiz.id)}" disabled="true"/>
                         </p:column>
 
