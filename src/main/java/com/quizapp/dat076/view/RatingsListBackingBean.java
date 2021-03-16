@@ -30,7 +30,7 @@ import org.primefaces.PrimeFaces;
 @Data
 @Named
 @ViewScoped
-public class RatingsListBean implements Serializable {
+public class RatingsListBackingBean implements Serializable {
 
     private List<Ratings> allRatings;
     
