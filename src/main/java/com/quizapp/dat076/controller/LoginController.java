@@ -5,7 +5,7 @@
  */
 package com.quizapp.dat076.controller;
 
-import com.quizapp.dat076.model.beans.UserBean;
+import com.quizapp.dat076.model.UserBean;
 import com.quizapp.dat076.model.dao.AccountDAO;
 import java.io.Serializable;
 import javax.annotation.security.DeclareRoles;

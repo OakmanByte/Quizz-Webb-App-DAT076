@@ -13,7 +13,7 @@
             <ui:define name="content">
                 <link rel="stylesheet" type = "text/css" href="quiz.css"> </link> 
                 <h:form>
-                    <p:dataTable value="#{ratingsListBean.allratingsByName()}" var="ratings">
+                    <p:dataTable value="#{ratingsListBackingBean.allratingsByName()}" var="ratings">
                         
                         <f:facet name="header">
                             List of Ratings

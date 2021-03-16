@@ -5,7 +5,7 @@
  */
 package com.quizapp.dat076.controller;
 
-import com.quizapp.dat076.model.beans.PlayQuizBackingBean;
+import com.quizapp.dat076.view.PlayQuizBackingBean;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.logging.Level;
@@ -19,7 +19,7 @@ import lombok.Data;
 /**
  * Controller for PlayQuizBackingBean class. Handles the function of going to the next question aswell checking if the correct answer was choosen by the player when playing the quiz.
  * @author Albin
- * @see com.quizapp.dat076.model.beans.PlayQuizBackingBean
+ * @see com.quizapp.dat076.view.PlayQuizBackingBean
  */
 
 @Data

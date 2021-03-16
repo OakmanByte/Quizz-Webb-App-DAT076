@@ -5,7 +5,7 @@
  */
 package com.quizapp.dat076.model.entity;
 
-import com.quizzapp.dat076.model.database.dao.key.QuestionPK;
+import com.quizapp.dat076.model.key.QuestionPK;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
