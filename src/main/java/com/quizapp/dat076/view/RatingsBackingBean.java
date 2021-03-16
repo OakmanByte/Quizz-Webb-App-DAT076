@@ -13,6 +13,8 @@ import com.quizapp.dat076.model.dao.RatingsDAO;
 import com.quizapp.dat076.model.entity.Account;
 import com.quizapp.dat076.model.entity.Quiz;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -47,7 +49,7 @@ public class RatingsBackingBean implements Serializable {
     private Quiz ratingquiz;
    
     private Ratings rating;
-
+    private List<Ratings> temprat;
     public int getScoreRating() {
         return ratingsScore;
     }
@@ -86,6 +88,12 @@ public class RatingsBackingBean implements Serializable {
     public void setSelectedRating(Ratings selectedRating) {
         this.selectedRating = selectedRating;
     }
+    
+      public List<Ratings> getRatingsbyQuizID(int id){
+        temprat = ratingsDAO.findratingsByQuizID(id);
+        return temprat;
+    }
+    
 
   
     
