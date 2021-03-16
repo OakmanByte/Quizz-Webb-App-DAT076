@@ -14,7 +14,7 @@ This is a repo for the course Web-Applications(DAT076)
 - Controllers can be found under **src->main->java->com->quizapp->dat076->controller**.
 
 
-## Gruppmedlemmar
+## Group members
 - Anton Ekman (OakmanByte)
 - Albin Söderberg (Albin1118)
 - Anton Blomdell (AntonBlomdell)
