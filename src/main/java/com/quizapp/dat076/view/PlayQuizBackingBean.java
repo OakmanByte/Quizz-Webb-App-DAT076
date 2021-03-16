@@ -160,7 +160,8 @@ public class PlayQuizBackingBean implements Serializable {
        else{
        isFinished = false;
        }
-        
+
+
     }
 
     public String add() {

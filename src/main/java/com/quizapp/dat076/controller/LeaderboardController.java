@@ -25,7 +25,7 @@ import lombok.Data;
 @Data
 public class LeaderboardController implements Serializable {
 
-    public List<Leaderboard> getAccounts(List<Leaderboard> board, int size) {
+  /*  public List<Leaderboard> getAccounts(List<Leaderboard> board, int size) {
         if (size > board.size()) {
             Random rand = new Random();
 
@@ -37,8 +37,7 @@ public class LeaderboardController implements Serializable {
 
             return randomList;
         } else {
-            return new ArrayList<>(board.subList(0, size));
         }
-    }
+    }*/
 
 }
