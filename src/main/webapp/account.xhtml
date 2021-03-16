@@ -26,10 +26,10 @@ and open the template in the editor.
                     <h:form enctype="multipart/form-data">
                         <h:panelGrid columns="3">
                             <o:outputLabel for="file" value="Image" />
-                            <o:inputFile id="file" value="#{uploadImageBean.file}" 
+                            <o:inputFile id="file" value="#{uploadImageController.file}" 
                                          accept="image/*" acceptMessage="Wrong file type! Should match {2}"
                                          maxsize="#{1024 * 1024}" maxsizeMessage="File too large! Should be no more than {2}">
-                                <f:ajax listener="#{uploadImageBean.read()}" render="@form" />
+                                <f:ajax listener="#{uploadImageController.read()}" render="@form" />
                             </o:inputFile>
                             <h:message id="file_m" for="file" />
                         </h:panelGrid>

@@ -30,7 +30,7 @@ import org.omnifaces.util.Utils;
 @Named
 @RequestScoped
 @Data
-public class UploadImageBean {
+public class UploadImageController {
 
     private Part file = null;
     private byte[] content;
