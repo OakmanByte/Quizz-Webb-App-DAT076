@@ -27,17 +27,7 @@ public class LeaderboardController implements Serializable {
 
   /*  public List<Leaderboard> getAccounts(List<Leaderboard> board, int size) {
         if (size > board.size()) {
-            Random rand = new Random();
+            Random rand = new Random();*/
 
-            List<Leaderboard> randomList = new ArrayList<>();
-            for (int i = 0; i < size; i++) {
-                int randomIndex = rand.nextInt(board.size());
-                randomList.add(board.get(randomIndex));
-            }
-
-            return randomList;
-        } else {
-        }
-    }*/
 
 }
