@@ -5,7 +5,6 @@
  */
 package com.quizapp.dat076.view;
 
-import com.quizapp.dat076.controller.LeaderboardController;
 import com.quizapp.dat076.model.dao.LeaderboardDAO;
 import com.quizapp.dat076.model.entity.Leaderboard;
 import java.io.Serializable;
@@ -30,15 +29,6 @@ public class LeaderboardBackingBean implements Serializable {
 
     @EJB
     private LeaderboardDAO leaderboardDAO;
-
-    @Inject
-    private LeaderboardController controller;
-
-   // @PostConstruct
-    /*public void init() {
-        
-        //board = controller.getAccounts(board,8);
-    }*/
 
     public List<Leaderboard> getBoard(int id) {
         board = leaderboardDAO.findScoresByQuizID(id);
