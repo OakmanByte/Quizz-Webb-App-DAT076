@@ -25,16 +25,31 @@ and open the template in the editor.
                 <h1 class="quizTitle" >#{quizPageBackingBean.quiz.title}</h1>
                 <h3>#{quizPageBackingBean.quiz.quizzCategory.category}</h3>
                 <h3>Quiz created by:  #{quizPageBackingBean.quiz.creator.username}</h3>
-
+                <p:commandButton value="Show Reviews/Score" type="button" onclick="PF('dlg3').show()"  icon="fa fa-fw fa-search-plus" update="@form">
+                </p:commandButton>
+           
                 <div class="playquizdiv" >
                     <p:button href="playquiz.xhtml" icon="fa fa-fw fa-play-circle" value="play quiz">
                         <f:param name="quizId" value="#{quizPageBackingBean.quizId}"/>
                     </p:button>
                 </div>
-
+                
+      
                 <ld:leaderboardComp value="#{leaderboardBackingBean.getBoard(quizPageBackingBean.quiz.id)}"></ld:leaderboardComp>
-
+ <p:dialog header="All Score/Reviews" widgetVar="dlg3" minHeight="55" width="400" showEffect="fade">
+     
+     <p:dataTable value="#{ratingsBackingBean.getRatingsbyQuizID(quizPageBackingBean.quizId)}" var="ratings" >
+               <p:column headerText="Score">
+                            <p:rating value="#{ratings.score}" readonly="true"/>
+                        </p:column>
+                        <p:column headerText="Review" >#{ratings.review}</p:column>
+           </p:dataTable>
+          
+                    </p:dialog>
             </ui:define>
+        
         </ui:composition>
+        
+       
     </h:body>
 </html>
