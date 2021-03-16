@@ -55,7 +55,6 @@ public class LoginController implements Serializable {
             userBean.setAccount(accountDAO.find(userBean.getAccount().getUsername()));
             return "success";
         } else {
-            //alert("Username is required");
             String message = "Username or password doesn't match the database!";
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login failure:", message));
             return "";

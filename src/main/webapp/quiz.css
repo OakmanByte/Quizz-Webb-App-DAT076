@@ -42,7 +42,7 @@ body .ui-datatable .ui-datatable-data > tr{
 
 .quizTitle{
     text-align: center;  
-    font-size: 2.5em; 
+    font-size: 2em; 
 }
 
 h3{
@@ -64,12 +64,12 @@ h3{
 
 .quizQuestion{
     text-align: center; 
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 .gameStatsText{
     margin-left: 2.5em; 
-    font-size: 1.5em;
+    font-size: 1.25em;
 }
 
 .growlStyle{
@@ -92,7 +92,15 @@ h3{
 .ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-icon-left{
     margin-left: 1em;
 }
+.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-only{
+    margin-left: 1em;
+    margin-top: 0.5em;
+}
 
 .changeratingButton {
     width: 5rem;
+}
+
+.quizLabel{
+    margin-right: 0.5em;
 }

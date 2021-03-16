@@ -12,7 +12,7 @@ and open the template in the editor.
       xmlns:p="http://primefaces.org/ui">
 
     <h:head> 
-        
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" type = "text/css" href="template.css"> </link>
         <ui:insert name="header"/>
@@ -21,23 +21,23 @@ and open the template in the editor.
 
 
     <h:body>
-        
+
         <p:toolbar id="header">
 
             <f:facet name="left">
                 <p:toolbarGroup>
-                    <h2 class="header_title"><a href="quizlist.xhtml" style="text-decoration: none">Quiz App</a></h2>
+                    <h2 class="header_title"><a href="quizlist.xhtml" class="no_decoration">Quiz App</a></h2>
                 </p:toolbarGroup>
             </f:facet>
 
             <f:facet name="right">
                 <div>
-                    <div class="header_right" style="display: table-cell">
-                        <h3 class="header_right"><a href="account.xhtml" style="text-decoration: none">My Account</a></h3>
+                    <div class="header_right">
+                        <h3 class="header_right"><a href="account.xhtml" class="no_decoration">My Account</a></h3>
                     </div>
 
-                    <div class="header_right" style="display: table-cell">
-                        <h3 class="header_right"><a href="" style="text-decoration: none">Help</a></h3>
+                    <div class="header_right">
+                        <h3 class="header_right"><a href="" class="no_decoration">Help</a></h3>
                     </div>
                 </div>
             </f:facet>
@@ -46,10 +46,9 @@ and open the template in the editor.
 
         <section>
             <div class="container">
-               
                 <ui:insert name="content" />
             </div>
         </section>
-        
+
     </h:body>
 </html>

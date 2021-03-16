@@ -15,11 +15,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import lombok.Data;
@@ -36,29 +39,29 @@ import org.primefaces.event.SelectEvent;
 public class CreateQuizBackingBean implements Serializable {
 
     //Attributes
-    @Size(min=3, max = 35, message="Too short or Too long")
+    @Size(min = 3, max = 35, message = "Too short or Too long")
     private String title;
+    @NotNull
     private Category category;
-    
-    @Size(min=3, max = 35, message="Too short or Too long")
-    private String questionText;
-    
-    @Min(value = 1, message="Correct alternativ can only be 1,2,3 or 4")
-    @Max(value = 4, message="Correct alternativ can only be 1,2,3 or 4")
-    private Integer answerQuestion;
-    
-    @Size(min=1, max = 35, message="Too short or Too long")
-    private String option1Question;
-    
-    @Size(min=1, max = 35, message="Too short or Too long")
-    private String option2Question;
-    
-    @Size(min=1, max = 35, message="Too short or Too long")
-    private String option3Question;
-    
-    @Size(min=1, max = 35, message="Too short or Too long")
-    private String option4Question;
 
+    @Size(min = 3, max = 35, message = "Too short or Too long")
+    private String questionText;
+
+    @Min(value = 1, message = "Correct alternative can only be 1,2,3 or 4")
+    @Max(value = 4, message = "Correct alternative can only be 1,2,3 or 4")
+    private Integer answerQuestion;
+
+    @Size(min = 1, max = 35, message = "Too short or Too long")
+    private String option1Question;
+
+    @Size(min = 1, max = 35, message = "Too short or Too long")
+    private String option2Question;
+
+    @Size(min = 1, max = 35, message = "Too short or Too long")
+    private String option3Question;
+
+    @Size(min = 1, max = 35, message = "Too short or Too long")
+    private String option4Question;
 
     @EJB
     private QuizDAO quizDAO;
@@ -69,19 +72,17 @@ public class CreateQuizBackingBean implements Serializable {
 
     @Inject
     private UserBean userBean;
-    
+
     private List<Question> questionList;
-    
+
     private Question tempQuestion;
 
-    
-    public CreateQuizBackingBean(){
-    
+    public CreateQuizBackingBean() {
+
         System.out.println("Constructor");
         questionList = new ArrayList<>();
     }
-    
-    
+
     /**
      * Adding a new quiz to the account
      *
@@ -89,18 +90,19 @@ public class CreateQuizBackingBean implements Serializable {
      */
     public String addQuiz() {
         Quiz quizToCreate = new Quiz(title, userBean.getAccount(), category);
-        
-        try{
-        quizDAO.create(quizToCreate);
-        for (Question q: questionList){
-            q.setQuiz(quizToCreate);
-        questionDAO.create(q);
-        }
-         }
-        catch(NullPointerException e){
+
+        try {
+            quizDAO.create(quizToCreate);
+            questionList.stream().map(q -> {
+                q.setQuiz(quizToCreate);
+                return q;
+            }).forEachOrdered(q -> {
+                questionDAO.create(q);
+            });
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
-        
+
         return "success";
     }
 
@@ -114,37 +116,36 @@ public class CreateQuizBackingBean implements Serializable {
         Category selectedItem = catDAO.find(catTitle);
         category = selectedItem;
     }
-    
-    public void addQuestionToList(){        
-        
-        if (!questionAlreadyAdded(questionText)){
-        try{
-        tempQuestion = new Question(questionText,option1Question,option2Question,option3Question,option4Question,answerQuestion,null);
-        questionList.add(tempQuestion);
-        
-        //reset the question form values
-        questionText = "";
-        answerQuestion = null;
-        option1Question = "";
-        option2Question = "";
-        option3Question = "";
-        option4Question = "";
-        
-        
-        }
-        catch(NullPointerException e){
-            e.printStackTrace();
-        }
+
+    public void addQuestionToList() {
+
+        if (!questionAlreadyAdded(questionText)) {
+            try {
+                tempQuestion = new Question(questionText, option1Question, option2Question, option3Question, option4Question, answerQuestion, null);
+                questionList.add(tempQuestion);
+
+                //reset the question form values
+                questionText = "";
+                answerQuestion = null;
+                option1Question = "";
+                option2Question = "";
+                option3Question = "";
+                option4Question = "";
+
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            }
         }
     }
-    
-    public boolean questionAlreadyAdded(String question){
-    
-        for(Question tempQuestion : questionList){
-       
-           if (tempQuestion.getQuestion().equals(question))      
-               return true;
-       }
-       return false;
+
+    public boolean questionAlreadyAdded(String question) {
+
+        for (Question tempQuestion : questionList) {
+
+            if (tempQuestion.getQuestion().equals(question)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

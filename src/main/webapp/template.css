@@ -29,4 +29,9 @@ and open the template in the editor.
 .header_right{
     font-size: 1.25em;
     padding-right: 0.5em;
+    display: table-cell;
+}
+
+.no_decoration{
+    text-decoration: none;
 }

@@ -9,67 +9,80 @@ and open the template in the editor.
        xmlns:h="http://java.sun.com/jsf/html"
        xmlns:f="http://java.sun.com/jsf/core"
        xmlns:p="http://primefaces.org/ui"
-       xmlns:b="http://bootsfaces.net/ui">
+       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
-    <h:body>
-        <h:form id="CreateQuestion">
-            <p:outputLabel for="quizQuestion" value="Question text"/>
-            <p:inputText id="quizQuestion" value="#{createQuiz.questionText}" placeholder="Question text"/>
-            <p:panelGrid >
-                <p:row>
-                    <p:column>
-                        <p:outputLabel for ="option1Question" value = "Option 1"/>
-                        <p:inputText id = "option1Question" value="#{createQuiz.option1Question}" placeholder = "Option 1"/>
-                    </p:column>
-                    <p:column>
-                        <p:outputLabel for ="option2Question" value = "Option 2"/>
-                        <p:inputText id = "option2Question" value="#{createQuiz.option2Question}" placeholder = "Option 2"/>
-                    </p:column>
-                </p:row>
-                <p:row>
-                    <p:column>
-                        <p:outputLabel for ="option3Question" value = "Option 3"/>
-                        <p:inputText id = "option3Question" value="#{createQuiz.option3Question}" placeholder = "Option 3"/>
-                    </p:column>
 
-                    <p:column>
-                        <p:outputLabel for ="option4Question" value = "Option 4"/>
-                        <p:inputText id = "option4Question" value="#{createQuiz.option4Question}" placeholder = "Option 4"/>
-                    </p:column>
-                </p:row>
-                <p:row>
-                    <p:column>
-                        <p:outputLabel for ="correctAnswerQuestion" value = "Correct Answer"/>
-                        <p:inputText id = "correctAnswerQuestion" value="#{createQuiz.answerQuestion}" placeholder = "Correct Answer"/>
-                    </p:column>
-                </p:row>
-            </p:panelGrid>
-            <h:panelGroup>     
-                <h:button value="Go back" outcome="account"/>
-                <b:commandButton value="Add question" 
-                                 styleClass="standardbutton" action="#{createQuiz.addQuestionToList}"
-                                 update="@form"/>
-            </h:panelGroup>
-        </h:form>
-        <h:form id="CreateQuiz" >
-            <h4>Create Quiz</h4>
-            <b:panelGrid columns="2" styleClass="panelgridstyle" >
-                <p:outputLabel for="title" value="Quiz Title" />
-                <p:inputText id="title" value="#{createQuiz.title}" placeholder="Title" />
-                <p:outputLabel value="Quiz Category"/>
-                <p:selectOneMenu id="category" >
-                    <p:ajax event="itemSelect"
-                            listener="#{createQuiz.onItemSelectedListener}"/>
-                    <f:selectItem itemLabel="All" itemValue="#{createQuiz.category}" 
-                                  noSelectionOption="true" itemDisabled="true" />
-                    <f:selectItems value="#{quizListBackingBean.allCategories}" />
-                </p:selectOneMenu>
-                <b:commandButton value="Create Quiz"  
-                                 styleClass="standardbutton" action="#{createQuiz.addQuiz}" />
-            </b:panelGrid>
-        </h:form>
+    <h:body>
+        <ui:composition template="WEB-INF/template/common.xhtml">
+            <ui:define name="header">
+                <title>QuizPage</title>      
+                <link rel="stylesheet" type = "text/css" href="quiz.css"> </link> 
+            </ui:define>
+            <ui:define name="content"> 
+                <h:form>
+                    <h2>Add Question</h2>
+                    <p:outputLabel class="quizLabel" for="quizQuestion" value="Question text"/>
+                    <p:inputText id="quizQuestion" value="#{createQuiz.questionText}" placeholder="Question text"/>
+                    <p:message for="quizQuestion"/>
+                    <p:panelGrid >
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel class="quizLabel" for ="option1Question" value = "Option 1"/>
+                                <p:inputText id = "option1Question" value="#{createQuiz.option1Question}" placeholder = "Option 1"/>
+                                <p:message for="option1Question"/>
+                            </p:column>
+                            <p:column>
+                                <p:outputLabel class="quizLabel" for ="option2Question" value = "Option 2"/>
+                                <p:inputText id = "option2Question" value="#{createQuiz.option2Question}" placeholder = "Option 2"/>
+                                <p:message for="option2Question"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel class="quizLabel" for ="option3Question" value = "Option 3"/>
+                                <p:inputText id = "option3Question" value="#{createQuiz.option3Question}" placeholder = "Option 3"/>
+                                <p:message for="option3Question"/>
+                            </p:column>
+
+                            <p:column>
+                                <p:outputLabel class="quizLabel" for ="option4Question" value = "Option 4"/>
+                                <p:inputText id = "option4Question" value="#{createQuiz.option4Question}" placeholder = "Option 4"/>
+                                <p:message for="option4Question"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel class="quizLabel" for ="correctAnswerQuestion" value = "Correct Answer"/>
+                                <p:inputText id = "correctAnswerQuestion" value="#{createQuiz.answerQuestion}" placeholder = "Correct Answer"/>
+                                <p:message for="correctAnswerQuestion"/>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <p:button value="Go back" outcome="account"/>
+                    <p:commandButton value="Add question" 
+                                     action="#{createQuiz.addQuestionToList}"
+                                     update="@form"/>
+                </h:form>
+                <h:form>
+                    <h2>Create Quiz</h2>
+                    <p:panelGrid columns="2">
+                        <p:outputLabel for="title" value="Quiz Title" />
+                        <p:inputText id="title" value="#{createQuiz.title}" placeholder="Title" />
+                        <p:outputLabel value="Quiz Category"/>
+                        <p:selectOneMenu id="category" >
+                            <p:ajax event="itemSelect"
+                                    listener="#{createQuiz.onItemSelectedListener}"/>
+                            <f:selectItem itemLabel="All" itemValue="#{createQuiz.category}" 
+                                          noSelectionOption="true" itemDisabled="true" />
+                            <f:selectItems value="#{quizListBackingBean.allCategories}" />
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton value="Create Quiz" action="#{createQuiz.addQuiz}" />
+                </h:form>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
 
