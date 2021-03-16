@@ -12,21 +12,16 @@ and open the template in the editor.
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:ld="http://java.sun.com/jsf/composite/leaderboard" >
 
-
-
-
     <h:body>
 
         <ui:composition template="WEB-INF/template/common.xhtml">
             <ui:define name="header">
                 <title>QuizPage</title>
-                <link rel="stylesheet" type = "text/css" href="leaderboard.css"> </link> 
+                <link rel="stylesheet" type = "text/css" href="quiz.css"> </link> 
             </ui:define>
-
             <ui:define name="content">
 
                 <p:button value="go back to quiz list" icon="fa fa-reply" href="quizlist.xhtml"/>
-
                 <h1 class="quizTitle" >#{quizPageBackingBean.quiz.title}</h1>
                 <h3>#{quizPageBackingBean.quiz.quizzCategory.category}</h3>
                 <h3>Quiz created by:  #{quizPageBackingBean.quiz.creator.username}</h3>
@@ -40,9 +35,6 @@ and open the template in the editor.
                 <ld:leaderboardComp value="#{leaderboardBackingBean.getBoard(quizPageBackingBean.quiz.id)}"></ld:leaderboardComp>
 
             </ui:define>
-
         </ui:composition>
-
     </h:body>
-
 </html>
