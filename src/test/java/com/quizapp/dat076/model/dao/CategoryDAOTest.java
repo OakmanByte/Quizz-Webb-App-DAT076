@@ -44,7 +44,6 @@ public class CategoryDAOTest {
     private CategoryDAO categoryDAO;
 
     @Before
-    //TODO
     public void setUp() {
         categoryDAO.create(test1);
         categoryDAO.create(test2);
