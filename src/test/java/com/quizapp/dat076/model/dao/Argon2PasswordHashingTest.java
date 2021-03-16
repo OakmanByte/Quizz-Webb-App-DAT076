@@ -5,7 +5,7 @@
  */
 package com.quizapp.dat076.model.dao;
 
-import com.quizapp.dat076.model.Argon2PasswordHashing;
+import com.quizapp.dat076.service.Argon2PasswordHashing;
 import java.util.Objects;
 import org.jboss.arquillian.junit.Arquillian;
 import org.junit.Assert;

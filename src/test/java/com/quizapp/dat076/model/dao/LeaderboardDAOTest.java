@@ -10,7 +10,7 @@ import com.quizapp.dat076.model.entity.Category;
 import com.quizapp.dat076.model.entity.Leaderboard;
 import com.quizapp.dat076.model.entity.Question;
 import com.quizapp.dat076.model.entity.Quiz;
-import com.quizzapp.dat076.model.database.dao.key.LeaderboardPK;
+import com.quizapp.dat076.model.key.LeaderboardPK;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;

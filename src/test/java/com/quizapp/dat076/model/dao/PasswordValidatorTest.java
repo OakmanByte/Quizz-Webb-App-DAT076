@@ -5,7 +5,7 @@
  */
 package com.quizapp.dat076.model.dao;
 
-import com.quizapp.dat076.validators.PasswordValidator;
+import com.quizapp.dat076.service.validator.PasswordValidator;
 import javax.inject.Inject;
 import org.junit.Assert;
 import org.junit.Before;

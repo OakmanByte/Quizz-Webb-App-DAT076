@@ -5,8 +5,8 @@
  */
 package com.quizapp.dat076.model.entity;
 
-import com.quizzapp.dat076.model.database.dao.key.LeaderboardPK;
-import com.quizzapp.dat076.model.database.dao.key.QuestionPK;
+import com.quizapp.dat076.model.key.LeaderboardPK;
+import com.quizapp.dat076.model.key.QuestionPK;
 import java.io.Serializable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
