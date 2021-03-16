@@ -1,8 +1,10 @@
 # Quizz-Webb-App-DAT076
 This is a repo for the course Web-Applications(DAT076)
-## What you need to run this project.
+## What you need to run this project
 - Database name:QuizApp on port 1527
 - Make sure to build with dependencies 
+##Project report
+The project report is called project_report.pdf and can be found in the root directory
 
 ## File organization
 - xhtml files and css files can be found under **src->main->webapp**.
