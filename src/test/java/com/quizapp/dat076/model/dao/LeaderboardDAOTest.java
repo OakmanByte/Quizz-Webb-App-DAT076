@@ -65,7 +65,7 @@ public class LeaderboardDAOTest {
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class)
-                .addClasses(LeaderboardDAO.class, Category.class, Quiz.class, 
+                .addClasses(LeaderboardDAO.class, Category.class, Quiz.class,
                         Account.class, QuizDAO.class, AccountDAO.class, Leaderboard.class,
                         LeaderboardPK.class, Question.class)
                 .addAsResource("META-INF/persistence.xml")
@@ -185,5 +185,20 @@ public class LeaderboardDAOTest {
                     || (tempUsername.equals(user3)));
             assert (tempId == 1);
         });
+    }
+
+    @Test
+    public void updateLeaderboardScore() {
+        lead1.setScore(40);
+        leaderboardDAO.update(lead1);
+        List<Leaderboard> leaderboards = leaderboardDAO.findAll();
+
+        //Checking the Data attributes
+        assert (lead1.getAccount() != null);
+        assert (lead1.getQuiz() != null);
+        assert (lead1.getScore() != null);
+
+        //First entry is lead1 and should have the upated score of 40.
+        assert (leaderboards.get(0).getScore() == 40);
     }
 }

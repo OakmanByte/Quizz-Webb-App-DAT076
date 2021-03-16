@@ -5,19 +5,13 @@
  */
 package com.quizapp.dat076.model.dao;
 
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
 import lombok.RequiredArgsConstructor;
-import javax.validation.ValidatorFactory;
 
 /**
  * A DAO that provides general useful methods for the handling and retrieving of
@@ -36,32 +30,8 @@ public abstract class AbstractDAO<K, T> {
 
     protected abstract EntityManager getEntityManager();
 
-    /* public long count() {
-        final CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
-        final CriteriaQuery cq = builder.createQuery();
-        final Root<T> rt = cq.from(entityType);
-
-        cq.select(builder.count(rt));
-
-        final Query q = getEntityManager().createQuery(cq);
-        return ((Long) q.getSingleResult());
-    }*/
     public void create(T entity) {
-        //getEntityManager().persist(entity);
-        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-        Validator validator = factory.getValidator();
-        Set<ConstraintViolation<T>> constraintViolations = validator.validate(entity);
-        if (constraintViolations.size() > 0) {
-            Iterator<ConstraintViolation<T>> iterator = constraintViolations.iterator();
-            while (iterator.hasNext()) {
-                ConstraintViolation<T> cv = iterator.next();
-                System.err.println(cv.getRootBeanClass().getName() + "." + cv.getPropertyPath() + " " + cv.getMessage());
-
-                //JsfUtil.addErrorMessage(cv.getRootBeanClass().getSimpleName() + "." + cv.getPropertyPath() + " " + cv.getMessage());
-            }
-        } else {
-            getEntityManager().persist(entity);
-        }
+        getEntityManager().persist(entity);
 
     }
 
