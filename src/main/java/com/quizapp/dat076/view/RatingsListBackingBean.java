@@ -60,6 +60,4 @@ public class RatingsListBackingBean implements Serializable {
     myratings = ratingsDAO.findratingsByUsername(userBean.getAccount().getUsername());
     return myratings;
     }   
-    
-
 }

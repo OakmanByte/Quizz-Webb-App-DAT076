@@ -45,8 +45,6 @@ public class QuizListBackingBean implements Serializable {
     //The list of quizzes with filters applied
     private List<Quiz> filteredQuizzes;
     
- 
-    
     /**
      * Initialize the bean by retrieving the list of all quizzes
      **/

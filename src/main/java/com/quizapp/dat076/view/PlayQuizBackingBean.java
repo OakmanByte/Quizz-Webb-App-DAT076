@@ -161,16 +161,12 @@ public class PlayQuizBackingBean implements Serializable {
        isFinished = false;
        }
         
-       
-
     }
 
     public String add() {
-        System.out.println("TAILS");
         if (user.isUser() == true) {
             Leaderboard result = new Leaderboard(user.getAccount(), quizDAO.findQuizByID(quizId), points);
             leaderboardDAO.create(result);
-            System.out.println("SONIC");
             
         }
         return "success";
